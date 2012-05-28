@@ -1,0 +1,641 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass scrreprt
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language polish
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Lineární závislost a nezávislost, báze, dimenze.
+ Lineární zobrazení, jádro a obor hodnot, skalární a vektorový součin.
+ (A0B01LAG)
+\end_layout
+
+\begin_layout Section
+Lineární závislost a nezávislost
+\end_layout
+
+\begin_layout Standard
+Prvky 
+\begin_inset Formula $v_{1},v_{2},...,v_{n}$
+\end_inset
+
+ množiny 
+\begin_inset Formula $M$
+\end_inset
+
+ se nazývají 
+\series bold
+lineárně závislé
+\series default
+, pokud existuje taková 
+\series bold
+netriviální lineární kombinace
+\series default
+ těchto prvků, která vyhovuje vztahu
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\overset{n}{\underset{i\text{=1}}{\sum}}a_{i}v_{i}=0
+\]
+
+\end_inset
+
+kde 
+\begin_inset Formula $a_{i}$
+\end_inset
+
+ je skalár.
+ V opačném případě jsou lineárně nezávislé.
+\end_layout
+
+\begin_layout Itemize
+Pro 
+\series bold
+lineárně nezávislé 
+\series default
+prvky je jediným řešením výše uvedeného vzorce triviální řešení, tedy 
+\begin_inset Formula $a_{i}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Jsou-li prvky 
+\series bold
+lineárně závislé
+\series default
+, je možné nějaký z nich vyjádřit jako lineární kombinaci ostatních prvků
+\end_layout
+
+\begin_layout Subsection
+Příklad
+\end_layout
+
+\begin_layout Standard
+Lineárně zavislá množina
+\begin_inset Formula $M$
+\end_inset
+
+ a koeficienty netriviální lineární kombinace 
+\begin_inset Formula $a$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+M=\left[\begin{array}{ccc}
+1 & 2 & 0\\
+2 & 4 & 0\\
+3 & 6 & 1
+\end{array}\right],a=\left[\begin{array}{c}
+2\\
+-1\\
+0
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+M\bullet a=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Báze
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Paragraph
+Lineární obal
+\end_layout
+
+\begin_layout Plain Layout
+Mějme množinu 
+\begin_inset Formula $M$
+\end_inset
+
+, která je podmnožinou vektorového prostoru 
+\begin_inset Formula $V$
+\end_inset
+
+.
+ Průnik všech podprostorů prostoru 
+\begin_inset Formula $V$
+\end_inset
+
+, které obsahují množinu 
+\begin_inset Formula $M$
+\end_inset
+
+ se nazývá lineárním obalem množiny 
+\begin_inset Formula $M$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+Zjednodušeně - lineární obal množiny 
+\begin_inset Formula $M$
+\end_inset
+
+ je podprostor prostoru 
+\begin_inset Formula $V$
+\end_inset
+
+.
+ Co obsahuje? Všechny ty prvky, ke kterým se mohu dostat libovolnou lineární
+ kombinací vektorů z množiny 
+\begin_inset Formula $M$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\left\langle M\right\rangle =\left\{ \overset{n}{\underset{i=1}{\sum}}a_{i}u_{i}\mid u_{i}\in M,a_{i}\in\mathbb{R},i=1,2,3,...,n\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Báze vektorového prostoru 
+\begin_inset Formula $V$
+\end_inset
+
+ je nejmenší množina 
+\series bold
+lineárně nezávislých vektorů
+\series default
+ taková, že její lineární obal je roven celému prostoru 
+\begin_inset Formula $V$
+\end_inset
+
+.
+ V konečně dimenzionálním prostoru dimenze 
+\begin_inset Formula $n$
+\end_inset
+
+ je bází každá množina obsahující 
+\begin_inset Formula $n$
+\end_inset
+
+ lineárně nezávislých vektorů.
+\end_layout
+
+\begin_layout Itemize
+Obal báze prostoru 
+\begin_inset Formula $V$
+\end_inset
+
+ tvoří celý prostor 
+\begin_inset Formula $V$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Vektory báze jsou 
+\series bold
+lineárně nezávislé
+\series default
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Prostor může mít 
+\series bold
+více bází
+\series default
+.
+ Všechny ale mají 
+\series bold
+stejný počet prvků
+\series default
+.
+\end_layout
+
+\begin_layout Subsection
+Příklad
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+B_{1}=\left[\begin{array}{cc}
+1 & 1\\
+0 & 1
+\end{array}\right],B_{2}=\left[\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}\right]
+\]
+
+\end_inset
+
+Matice 
+\begin_inset Formula $B_{1}$
+\end_inset
+
+ i 
+\begin_inset Formula $B_{2}$
+\end_inset
+
+ tvoří bázi prostoru 
+\begin_inset Formula $\mathbb{R}^{2}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Section
+Lineární zobrazení
+\end_layout
+
+\begin_layout Standard
+Pojmem 
+\series bold
+lineární zobrazení
+\series default
+ (lineární transformace) se v matematice označuje takové zobrazení mezi
+ vektorovými prostory 
+\begin_inset Formula $X$
+\end_inset
+
+ a 
+\begin_inset Formula $Y$
+\end_inset
+
+, které zachovává vektorové operace sčítání a násobení skalárem.
+ Název lineární je odvozen z faktu, že grafem obecného lineárního zobrazení
+ z reálných čísel do reálných čísel je přímka.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+L\left(x+y\right)=L(x)+L(y)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+L(\alpha x)=\alpha L(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Jádro a obor hodnot
+\end_layout
+
+\begin_layout Standard
+Mějme matici 
+\begin_inset Formula $A$
+\end_inset
+
+, která je zároveň maticí lineárního zobrazení 
+\begin_inset Formula $L:U\rightarrow V$
+\end_inset
+
+, tak že 
+\begin_inset Formula $\left\{ A\bullet x=y\mid x\in U,y\in V,A\in\mathbb{R^{\mathbf{\mathsf{m\times n}}}}\right\} $
+\end_inset
+
+.
+ Množinu tvořenou všemi řešeními 
+\begin_inset Formula $A\bullet x=0$
+\end_inset
+
+ nazýváme 
+\series bold
+jádro
+\series default
+ lineárního zobrazení 
+\begin_inset Formula $L$
+\end_inset
+
+, nebo-li 
+\series bold
+nulový prostor
+\series default
+ matice 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Ker(L)=null(A)=\{x\in U\mid A\bullet x=0\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Obor hodnot
+\series default
+ zobrazení 
+\begin_inset Formula $L$
+\end_inset
+
+ (obraz matice 
+\begin_inset Formula $A$
+\end_inset
+
+) je podprostor, který obsahuje zobrazení všech prvků z prostoru 
+\begin_inset Formula $U$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+Im(L)=rng(A)=\{A\bullet x\mid x\in U\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/01-jadro_obraz.pdf
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Vztah jádra a obrazu prostoru
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Jádro
+\series default
+ zobrazení 
+\begin_inset Formula $L$
+\end_inset
+
+ je podmnožinou prostoru 
+\begin_inset Formula $U$
+\end_inset
+
+, ale 
+\series bold
+obor hodnot
+\series default
+ zobrazení 
+\begin_inset Formula $L$
+\end_inset
+
+ je podmnožinou 
+\begin_inset Formula $V$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Platí vztah 
+\begin_inset Formula $dim(Ker(L))+dim(Im(L))=dim(U)$
+\end_inset
+
+ jinak 
+\begin_inset Formula $dim(null(A))+dim(rng(A))=n$
+\end_inset
+
+ kde 
+\begin_inset Formula $n$
+\end_inset
+
+ je šířka matice 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Skalární a vektorový součin
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Skalární součin
+\series default
+ definujeme mezi dvěma vektory.
+ Výsledkem skalárního součinu je reálné číslo, není to vektor.
+ Máme-li dva vektory 
+\begin_inset Formula $u=\left[\begin{array}{c}
+u_{1}\\
+u_{2}
+\end{array}\right]$
+\end_inset
+
+ a 
+\begin_inset Formula $v=\left[\begin{array}{c}
+v_{1}\\
+v_{2}
+\end{array}\right]$
+\end_inset
+
+, pak jejich skalární součin je roven:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u^{T}\bullet v=\mid u\mid\mid v\mid\cos\alpha
+\]
+
+\end_inset
+
+kde 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ je velikost úhlu mezi vektory 
+\begin_inset Formula $u$
+\end_inset
+
+ a 
+\begin_inset Formula $v$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Vektorový součin
+\series default
+ je binární operace vektorů v trojrozměrném vektorovém prostoru.
+ Výsledkem této operace je vektor, který je kolmý k oběma původním vektorům.
+ Velikost tohoto vektoru je rovna obsahu rovnoběžníku tvořeného původními
+ vektory.
+ Spočítá se 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u\times v=\left[\begin{array}{c}
+u_{2}v_{3}-u_{3}v_{2}\\
+u_{3}v_{1}-u_{1}v_{3}\\
+u_{1}v_{2}-u_{2}v_{1}
+\end{array}\right]=w
+\]
+
+\end_inset
+
+a platí
+\begin_inset Formula 
+\[
+u^{T}\bullet w=0,\; v^{T}\bullet w=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
