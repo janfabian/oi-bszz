@@ -66,5 +66,529 @@ Matice, determinant, inverzní matice, vlastní čísla a vlastní vektory matic
  (A0B01LAG)
 \end_layout
 
+\begin_layout Section
+Matice
+\end_layout
+
+\begin_layout Standard
+Matice je obdélníkové či čtvercové schéma čísel nebo nějakých matematických
+ objektů - prvků matice (též elementů matice).
+ Obsahuje obecně 
+\begin_inset Formula $m$
+\end_inset
+
+ řádků a 
+\begin_inset Formula $n$
+\end_inset
+
+ sloupců.
+ Hovoříme pak o matici typu 
+\begin_inset Formula $m\times n$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Zápis matice 
+\begin_inset Formula 
+\[
+\mathbf{A}=\left(\begin{array}{cccc}
+a_{11} & a_{12} & \cdots & a_{1n}\\
+a_{21} & a_{22} & \cdots & a_{2n}\\
+\vdots & \vdots & \ddots & \vdots\\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{array}\right)=\left(a_{ij}\right)_{m,n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Determinant
+\end_layout
+
+\begin_layout Standard
+V lineární algebře je determinant zobrazení, které přiřadí každé 
+\series bold
+čtvercové
+\series default
+ matici 
+\begin_inset Formula $\mathbf{A}$
+\end_inset
+
+ skalár 
+\begin_inset Formula $det(\mathbf{A})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Výpočet
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+det(\mathbf{A})=\overset{}{\underset{\sigma\in S_{n}}{\sum}}sgn(\sigma)\overset{n}{\underset{i=1}{\prod}}a_{i,\sigma(i)}
+\]
+
+\end_inset
+
+vysvětlivky
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $S_{n}$
+\end_inset
+
+- množina všech permutací čísel 
+\begin_inset Formula $1,2,...,n$
+\end_inset
+
+, kde 
+\begin_inset Formula $n$
+\end_inset
+
+ je šířka (i výška) matice 
+\begin_inset Formula $A$
+\end_inset
+
+; pro 
+\begin_inset Formula $n=3$
+\end_inset
+
+ tedy 
+\begin_inset Formula $S_{n}=\left\{ \left[1,2,3\right],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $sgn()$
+\end_inset
+
+ - funkce vracející +1 nebo -1 (znaménko permutace).
+ To se odvíjí od počtu prohození dvou sousední prvků v permutaci, abychom
+ dostali základní řadu 
+\begin_inset Formula $\left[1,2,...,n\right]$
+\end_inset
+
+.
+ Pokud 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ je sudá permutace, vrací funkce +1, naopak pokud je lichá, vrací -1.
+ Např.
+ pro 
+\begin_inset Formula $\left[2,1,3\right]$
+\end_inset
+
+ musíme prohodit jen 2 s 1, abychom dostali [1,2,3], jedná se tedy o lichou
+ permutaci a funkce 
+\begin_inset Formula $sgn()$
+\end_inset
+
+ vrací -1.
+ U permutace 
+\begin_inset Formula $[3,2,1]$
+\end_inset
+
+ je prohození více: 
+\begin_inset Formula $[3,2,1]\rightarrow[3,1,2]\rightarrow[1,3,2]\rightarrow[1,2,3]$
+\end_inset
+
+, celkem 4 prohození, proto funkce 
+\begin_inset Formula $sgn()$
+\end_inset
+
+ vrací +1.
+ Jedná se o totéž, čemu profesor Pták říkal 
+\begin_inset Quotes pld
+\end_inset
+
+leftdown
+\begin_inset Quotes prd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $a_{i,\sigma(i)}$
+\end_inset
+
+ takto nastavené indexy zaručí, že do součinu vybereme vždy právě jeden
+ prvek z každého sloupce a řádku
+\end_layout
+
+\begin_layout Subsection
+Vlastnosti
+\end_layout
+
+\begin_layout Itemize
+Při výměně dvou řádků nebo dvou sloupců se znaménko determinantu změní na
+ opačné
+\end_layout
+
+\begin_layout Itemize
+Z předchozí vlastnosti plyne, že pokud má matice 
+\begin_inset Formula $\mathbf{A}$
+\end_inset
+
+ dva stejné řádky nebo dva stejné sloupce, tak musí platit 
+\begin_inset Formula $det(\mathbf{A})=-det(\mathbf{A})=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hodnota determinantu se nezmění, zaměníme-li řádky za sloupce 
+\begin_inset Formula $det(\mathbf{A})=det(\mathbf{A}^{T})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Jestliže jeden řádek (sloupec) lze vyjádřit jako lineární kombinaci ostatních
+ řádků (sloupců), je determinant nulový.
+\end_layout
+
+\begin_layout Itemize
+Matice se značí pojmem 
+\series bold
+singulární
+\series default
+, když 
+\begin_inset Formula $det(\mathbf{A})=0$
+\end_inset
+
+.
+ Pokud 
+\begin_inset Formula $det(\mathbf{A})\neq0$
+\end_inset
+
+, pak se jedná o matici 
+\series bold
+regulární.
+\end_layout
+
+\begin_layout Section
+Inverzní matice
+\end_layout
+
+\begin_layout Standard
+Inverzní matice k dané matici je taková matice, která po vynásobení s původní
+ maticí dá jednotkovou matici.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{A\bullet A^{-1}}=\mathbf{A^{-1}\bullet A}=1
+\]
+
+\end_inset
+
+Obě rovnosti znamenají, že inverzní matice může existovat jen pro čtvercovou
+ matici.
+ U obdélníkové matice mluvíme o tzn.
+ pseudoinverzi.
+\end_layout
+
+\begin_layout Subsection
+Výpočet
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+a_{i,j}=\frac{(-1)^{i+j}\mid\mathbf{A}_{j,i}\mid}{\mid\mathbf{A}\mid}
+\]
+
+\end_inset
+
+kde 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\mid\mathbf{A}_{j,i}\mid$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ je subdeterminant získaný z matice 
+\begin_inset Formula $\mathbf{A}$
+\end_inset
+
+ vynecháním j-tého řádku a i-tého sloupce, 
+\begin_inset Formula $\mid\mathbf{A}\mid$
+\end_inset
+
+ je determinant matice 
+\begin_inset Formula $\mathbf{A}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Vlastní čísla a vlastní vektory matice
+\end_layout
+
+\begin_layout Standard
+Jako 
+\series bold
+vlastní vektor
+\series default
+ dané transformace označujeme nenulový vektor, jehož směr se při transformaci
+ nemění.
+ Koeficient, o který se změní velikost vektoru, se nazývá 
+\series bold
+vlastní číslo
+\series default
+ (hodnota) daného vektoru.
+ Vyjádřeno vzorcem
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{A\mathbf{v}}=\lambda\mathbf{v}
+\]
+
+\end_inset
+
+ kde 
+\begin_inset Formula $\mathbf{A}$
+\end_inset
+
+ je matice transformace, 
+\begin_inset Formula $\mathbf{v}$
+\end_inset
+
+ je vlastní vektor, který je na obou stranách stejný, 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ je vlastní číslo, nebo-li onen koeficient, kterým je třeba vlastní vektor
+ vynásobit.
+ Definice totiž říká, že se při transformaci nemění jen směr, velikost se
+ ale lišit může.
+ 
+\end_layout
+
+\begin_layout Standard
+Rovnici můžeme upravit
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+(\mathbf{A}+\lambda\mathbf{E})\mathbf{v}=0
+\]
+
+\end_inset
+
+kde 
+\begin_inset Formula $\mathbf{E}$
+\end_inset
+
+ je jednotková matice.
+ Aby platila rovnice a my dostali netriviální řešení 
+\begin_inset Formula $\mathbf{v}\neq0$
+\end_inset
+
+, musí platit
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+det(\mathbf{A}+\lambda\mathbf{E})=0
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left|\begin{array}{cccc}
+a_{11}-\lambda & a_{12} & \cdots & a_{1n}\\
+a_{21} & a_{22}-\lambda & \cdots & a_{2n}\\
+\vdots & \vdots & \ddots & \vdots\\
+a_{n1} & a_{n2} & \cdots & a_{nn}-\lambda
+\end{array}\right|=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Při výpočtu tohoto determinantu dostaneme na levé straně polynom.
+ Ten se nazývá charakteristický polynom matice 
+\begin_inset Formula $\mathbf{A}$
+\end_inset
+
+ a jeho kořeny jsou vlastní čísla matice 
+\begin_inset Formula $\mathbf{A}$
+\end_inset
+
+.
+ Výsledkem je tedy vždy 
+\begin_inset Formula $n$
+\end_inset
+
+ vlastních čísel, z nichž některá se mohou opakovat.
+\end_layout
+
+\begin_layout Section
+Soustavy lineárních rovnic
+\end_layout
+
+\begin_layout Standard
+Soustava 
+\begin_inset Formula $m$
+\end_inset
+
+ lineárních rovnic s 
+\begin_inset Formula $n$
+\end_inset
+
+ proměnnými může být zapsána ve tvaru 
+\begin_inset Formula $\mathbf{Ax=b}$
+\end_inset
+
+, kde 
+\begin_inset Formula $\mathbf{A}\in\mathbb{R^{\mathsf{m\times n}}},\mathbf{x}\in\mathbb{R^{\mathsf{n}}},\mathbf{b}\in\mathbb{R^{\mathsf{m}}}$
+\end_inset
+
+.
+ Pokud je 
+\begin_inset Formula $\mathbf{b}$
+\end_inset
+
+ nulový vektor, mluvíme o homogenní soustavě lineárních rovnic.
+\end_layout
+
+\begin_layout Standard
+Zajímá nás, jestli má soustava řešení, případně kolik.
+ Může nastat jedna z těchto situací
+\end_layout
+
+\begin_layout Itemize
+soustava nemá 
+\series bold
+žádné
+\series default
+ řešení
+\end_layout
+
+\begin_layout Itemize
+soustava má 
+\series bold
+jedno
+\series default
+ řešení
+\end_layout
+
+\begin_layout Itemize
+soustava má 
+\series bold
+nekonečně
+\series default
+ mnoho řešení
+\end_layout
+
+\begin_layout Subsection
+Frobeniova věta
+\end_layout
+
+\begin_layout Standard
+Nehomogenní soustava lineárních algebraických rovnic má řešení pouze v případě,
+ že hodnost matice soustavy 
+\begin_inset Formula $h(\mathbf{A})$
+\end_inset
+
+ je rovna hodnosti rozšířené matice soustavy 
+\begin_inset Formula $h(\mathbf{\left[A\; b\right]})$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Dejme tomu, že máme matici 
+\begin_inset Formula $\mathbf{A}\in\mathbb{R^{\mathsf{4\times3}}}$
+\end_inset
+
+, tedy 3 neznámé, ale 4 rovnice.
+ Je zřejmé, že taková matice může mít hodnost maximálně 
+\begin_inset Formula $h(\mathbf{A})=3$
+\end_inset
+
+.
+ Řekněme, že má skutečně hodnost 3, potom se ptáme jakou hodnost má rozšířená
+ matice 
+\begin_inset Formula $\left[\mathbf{A}\;\mathbf{b}\right]\in\mathbb{R^{\mathsf{4\times4}}}$
+\end_inset
+
+.
+ Ta už může mít hodnost 4, a pokud ji skutečně má, potom soustava nemá řešení,
+ protože nalevo je jedna rovnice lineární kombinací zbývajících, ale napravo
+ má řešení, které není odpovídající lineární kombinací pravých stran.
+ Naopak, pokud 
+\begin_inset Formula $\left[\mathbf{A}\;\mathbf{b}\right]$
+\end_inset
+
+ má stále hodnost 3, jenom se nám potvrdilo, že jedna rovnice je v soustavě
+ zbytečná, můžeme ji vynechat a rovnice má řešení.
+\end_layout
+
+\begin_layout Subsection
+Počet řešení
+\end_layout
+
+\begin_layout Standard
+Soustava lineárních rovnic má právě jedno řešení, když 
+\begin_inset Formula $h(\mathbf{A})$
+\end_inset
+
+ je rovno počtu neznámých; pokud je 
+\begin_inset Formula $h(\mathbf{A})$
+\end_inset
+
+ menší než počet neznámých, je řešení nekonečně mnoho.
+\end_layout
+
 \end_body
 \end_document

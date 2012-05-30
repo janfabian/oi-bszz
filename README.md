@@ -1,7 +1,7 @@
 oi-bszz
 =======
 
-Vypracované otázky státních závěrečných zkoušek pro studijní program Otevřená informatika ČVUT FEL
+Otázky státních závěrečných zkoušek pro studijní program Otevřená informatika ČVUT FEL
 
 [Seznam všech otázek](http://www.fel.cvut.cz/education/bachelor/topicsOI.html)
 
