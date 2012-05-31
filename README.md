@@ -5,8 +5,15 @@ Otázky státních závěrečných zkoušek pro studijní program Otevřená inf
 
 [Seznam všech otázek](http://www.fel.cvut.cz/education/bachelor/topicsOI.html)
 
+[FAQ](https://github.com/janfabian/oi-bszz/wiki/FAQ)
+
 Hotové otázky
 -------------
 
-0.	Lineární závislost a nezávislost, báze, dimenze. Lineární zobrazení, jádro a obor hodnot, skalární a vektorový součin. (A0B01LAG)
-0.	Matice, determinant, inverzní matice, vlastní čísla a vlastní vektory matice. Soustavy lineárních rovnic. (A0B01LAG)
+### Společná část
+
+01.	Lineární závislost a nezávislost, báze, dimenze. Lineární zobrazení, jádro a obor hodnot, skalární a vektorový součin. (A0B01LAG)
+
+02.	Matice, determinant, inverzní matice, vlastní čísla a vlastní vektory matice. Soustavy lineárních rovnic. (A0B01LAG)
+
+14. Asymptotická časová a paměťová složitost algoritmů, řád růstu funkcí. (A4B36ALG)

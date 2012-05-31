@@ -1,0 +1,177 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass scrreprt
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language polish
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{chapter}{13} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Asymptotická časová a paměťová složitost algoritmů, řád růstu funkcí.
+ (A4B36ALG)
+\end_layout
+
+\begin_layout Section
+Asymptotická časová a paměťová složitost algoritmů
+\end_layout
+
+\begin_layout Standard
+Asymptotická složitost je způsob klasifikace počítačových algoritmů.
+ Určuje operační náročnost algoritmu tak, že zjišťuje jakým způsobem se
+ bude chování algoritmu měnit v závislosti na změně velikosti (počtu) vstupních
+ dat.
+ 
+\end_layout
+
+\begin_layout Subsection
+Třída složitosti
+\end_layout
+
+\begin_layout Standard
+Funkce vyjadřující počet operací potřebných ke zpracování dat.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+1\ll\log(n)\ll n\ll n*\log(n)\ll n^{k}\ll k^{n}\ll n!\ll n^{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pokud spadají dva algoritmy do různých tříd asymptotické složitosti, pak
+ vždy existuje takové množství dat, od kterého je asymptoticky lepší algoritmus
+ vždy rychlejší, bez ohledu na to, kolikrát je některý z počítačů výkonnější.
+\end_layout
+
+\begin_layout Section
+Řád růstu funkcí
+\end_layout
+
+\begin_layout Standard
+U většiny algoritmů nelze říci, že jejich složitost odpovídá přesně jedné
+ třídě, protože rychlost algoritmu závisí také na povaze dat.
+ Z tohoto důvodu se používáme řád růstu funkcí, který zohledňuje nejhorší
+ i nejlepší možný běh algoritmu.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\text{Ο}(f(x))$
+\end_inset
+
+ - Omicron(f(x)) – algoritmus probíhá asymptoticky stejně rychle nebo rychleji
+ než 
+\begin_inset Formula $f(x)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\text{Ω}(f(x))$
+\end_inset
+
+ - Gamma(f(x)) – algoritmus probíhá asymptoticky stejně rychle nebo pomaleji
+ než 
+\begin_inset Formula $f(x)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\text{θ}(f(x))$
+\end_inset
+
+ - Theta(f(x)) – algoritmus probíhá asymptoticky stejně rychle jako 
+\begin_inset Formula $f(x)$
+\end_inset
+
+, zároveň platí 
+\begin_inset Formula $\text{Ο}(f(x))$
+\end_inset
+
+ a 
+\begin_inset Formula $\text{Ω}(f(x))$
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
