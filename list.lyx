@@ -77,21 +77,21 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "spolecna/01.lyx"
+filename "spolecna/01/01.lyx"
 
 \end_inset
 
 
 \begin_inset CommandInset include
 LatexCommand include
-filename "spolecna/02.lyx"
+filename "spolecna/02/02.lyx"
 
 \end_inset
 
 
 \begin_inset CommandInset include
 LatexCommand include
-filename "spolecna/14.lyx"
+filename "spolecna/14/14.lyx"
 
 \end_inset
 

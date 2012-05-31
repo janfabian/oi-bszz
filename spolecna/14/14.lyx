@@ -173,5 +173,90 @@ U většiny algoritmů nelze říci, že jejich složitost odpovídá přesně j
 
 \end_layout
 
+\begin_layout Standard
+Funkce 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ ohraničuje funkci našeho algoritmu 
+\begin_inset Formula $g(x)$
+\end_inset
+
+, 
+\begin_inset Formula $\text{Ο}(f(x))$
+\end_inset
+
+ vyjadřuje ohraničení shora, zatímco 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\text{Ω}(f(x))$
+\end_inset
+
+ zdola.
+ 
+\begin_inset Formula $\text{θ}(f(x))$
+\end_inset
+
+ pak značí ohraničení z obou stran.
+ Zapsáno jinak 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\text{Ο}(f(x))\rightarrow(\exists c>0)(\exists n_{0})(\forall n>n_{0}):g(n)\leq c*f(n)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\text{Ω}(f(x))\rightarrow(\exists c>0)(\exists n_{0})(\forall n>n_{0}):c*f(n)\leq g(n)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\text{θ}(f(x))\rightarrow(\exists c_{1},c_{2}>0)(\exists n_{0})(\forall n>n_{0}):c_{1}*f(n)\leq g(n)\leq c_{2}*f(n)
+\]
+
+\end_inset
+
+kde 
+\begin_inset Formula $c,c_{1},c_{2}\in\mathbb{R^{>\mathsf{0}}}\; n_{0},n\in\mathbb{N}\; f,g\in\mathbb{N}\rightarrow\mathbb{R}^{\geq0}$
+\end_inset
+
+.
+ Vzorce říkají, že existuje taková konstanta 
+\begin_inset Formula $c$
+\end_inset
+
+ a takové 
+\begin_inset Formula $n$
+\end_inset
+
+ větší než určité 
+\begin_inset Formula $n_{0}$
+\end_inset
+
+, od kterého platí odpovídající nerovnost.
+\end_layout
+
 \end_body
 \end_document
