@@ -17,3 +17,5 @@ Hotové otázky
 02.	Matice, determinant, inverzní matice, vlastní čísla a vlastní vektory matice. Soustavy lineárních rovnic. (A0B01LAG)
 
 14. Asymptotická časová a paměťová složitost algoritmů, řád růstu funkcí. (A4B36ALG)
+
+21. Deterministický konečný automat, jazyk přijímaný konečným automatem. (A4B01JAG)

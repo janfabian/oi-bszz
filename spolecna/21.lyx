@@ -1,0 +1,4929 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass scrreprt
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{chapter}{20} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Deterministický konečný automat, jazyk přijímaný konečným automatem.
+ (A4B01JAG)
+\end_layout
+
+\begin_layout Section
+Jazyky - úvod
+\end_layout
+
+\begin_layout Subsection
+Abeceda
+\end_layout
+
+\begin_layout Standard
+Konečnou neprázdnou množinu Σ budeme nazývat 
+\emph on
+abecedou
+\emph default
+.
+ Prvky množiny Σ nazýváme symboly, písmeny apod.
+\end_layout
+
+\begin_layout Subsection
+Slovo nad abecedou
+\end_layout
+
+\begin_layout Standard
+Pro danou abecedu Σ 
+\emph on
+slovo nad
+\emph default
+ Σ je libovolná konečná posloupnost prvků abecedy Σ.
+ Tedy např.
+ pro Σ = {a, b} jsou 
+\emph on
+aab
+\emph default
+, 
+\emph on
+b
+\emph default
+, 
+\emph on
+bbaba
+\emph default
+ slova nad Σ.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Prázdné slovo
+\emph default
+, značíme je 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+, je posloupnost, která neobsahuje ani jeden symbol.
+\end_layout
+
+\begin_layout Subsection
+Délka slova
+\end_layout
+
+\begin_layout Standard
+Je dáno slovo nad abecedou Σ.
+ 
+\emph on
+Délka slova
+\emph default
+ je rovna délce posloupnosti, tj.
+ počtu symbolů, které se ve slově nacházejí.
+ Délku slova 
+\emph on
+u
+\emph default
+ značíme |
+\emph on
+u
+\emph default
+|.
+\end_layout
+
+\begin_layout Standard
+Tedy, délka slova 
+\emph on
+aab
+\emph default
+ je rovna 3, délka 
+\emph on
+b
+\emph default
+ je 1, délka prázdného slova 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ je 0.
+\end_layout
+
+\begin_layout Subsection
+Zřetězení slov
+\end_layout
+
+\begin_layout Standard
+Je dána abeceda Σ.
+ Pro dvě slova 
+\emph on
+u
+\emph default
+, 
+\emph on
+v
+\emph default
+ nad abecedou Σ definujeme operaci 
+\emph on
+zřetězení
+\emph default
+ takto: Je-li 
+\begin_inset Formula $u=a_{1}a_{2}\ldots a_{n}$
+\end_inset
+
+ a 
+\begin_inset Formula $v=b_{1}b_{2}\ldots b_{k}$
+\end_inset
+
+, pak 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula 
+\[
+u\cdot v=a_{1}a_{2}\ldots a_{n}b_{1}b_{2}\ldots b_{k}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Často znak pro operaci zřetězení vynecháváme; píšeme tedy 
+\emph on
+uv
+\emph default
+ místo přesnějšího 
+\begin_inset Formula $u\cdot v$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Zřetězení slov je asociativní operace na množině všech slov nad danou abecedou,
+ prázdné slovo 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ je neutrální prvek této operace.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\Sigma^{\star}$
+\end_inset
+
+, 
+\begin_inset Formula $\Sigma^{\text{+}}$
+\end_inset
+
+.
+ Označíme 
+\begin_inset Formula $\Sigma^{\star}$
+\end_inset
+
+ množinu všech slov nad abecedou Σ.
+ (Tj.
+ prázdné slovo patří do 
+\begin_inset Formula $\Sigma^{\star}$
+\end_inset
+
+) Pak 
+\begin_inset Formula $\Sigma^{\star}$
+\end_inset
+
+ spolu s operací zřetězení tvoří monoid, jehož neutrálním prvkem je prázdné
+ slovo 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Označíme 
+\begin_inset Formula $\Sigma^{+}$
+\end_inset
+
+množinu všch neprázdných slov nad abecedou 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+.
+ (Tj.
+ 
+\begin_inset Formula $\Sigma^{+}=\Sigma^{\star}\setminus\left\{ \epsilon\right\} $
+\end_inset
+
+.) Pak 
+\begin_inset Formula $\Sigma^{\star}$
+\end_inset
+
+ spolu s operací zřetězení tvoří pologrupu.
+\end_layout
+
+\begin_layout Standard
+Zřetězení slov není komutativní.
+ Např.
+ pro 
+\begin_inset Formula $u=aab$
+\end_inset
+
+ a 
+\begin_inset Formula $v=b$
+\end_inset
+
+ je 
+\begin_inset Formula $uv=aabb$
+\end_inset
+
+, ale 
+\begin_inset Formula $vu=baab$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Pro libovolná slova 
+\begin_inset Formula $u$
+\end_inset
+
+ a 
+\begin_inset Formula $v$
+\end_inset
+
+ nad stejnou abecedou platí:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left|uv\right|=\left|u\right|+\left|v\right|.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Je-li slovo nad abecedou 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+, pak 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u^{0}=\epsilon,
+\]
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+u^{i+1}=uu^{i}\;\textrm{pro každé \emph{i}.}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Podslovo
+\end_layout
+
+\begin_layout Standard
+Je dáno slovo 
+\emph on
+u
+\emph default
+.
+ Řekneme, že slovo 
+\emph on
+w
+\emph default
+ je podslovem slova 
+\emph on
+u
+\emph default
+, jestliže existují slova 
+\emph on
+x
+\emph default
+, 
+\emph on
+y
+\emph default
+ taková, že
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u=xwy.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Prefix slova
+\end_layout
+
+\begin_layout Standard
+Je dáno slovo 
+\emph on
+u
+\emph default
+.
+ Řekneme, že slovo 
+\emph on
+w
+\emph default
+ je prefix slova 
+\emph on
+u
+\emph default
+, jestliže existuje slovo 
+\emph on
+y
+\emph default
+ takové, že
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u=wy.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Jazyk nad abecedou
+\end_layout
+
+\begin_layout Standard
+Je dána abeceda Σ.
+ 
+\emph on
+Jazyk
+\emph default
+ L nad abecedou Σ je libovolná množina slov, tj.
+ 
+\emph on
+L
+\emph default
+ 
+\begin_inset Formula $\subseteq$
+\end_inset
+
+ 
+\begin_inset Formula $\Sigma^{\star}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Je-li 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ abeceda, pak množina všech slov 
+\begin_inset Formula $\Sigma^{\star}$
+\end_inset
+
+ je spočetná.
+ Jazyků, jako podmnožin spočetné množiny, je víc - nespočetně mnoho.
+\end_layout
+
+\begin_layout Section
+Deterministické konečné automaty
+\end_layout
+
+\begin_layout Subsection
+Použití
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Použití"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Konečné automaty se používají v různých oborech.
+ Jako příklady můžeme uvést překladače, dále se používají při zpracování
+ přirozeného jazyka, pří návrzích hardwaru.
+\end_layout
+
+\begin_layout Standard
+Zhruba řečeno konečný automat obsahuje konečnou množinu stavů 
+\emph on
+Q
+\emph default
+, konečnou množinu vstupů Σ, přechodovou funkci 
+\begin_inset Formula $\delta$
+\end_inset
+
+ a počáteční stav 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+.
+ V některých případech ještě i množinu výstupních symbolů 
+\emph on
+Y
+\emph default
+ a výstupních funkcí.
+\end_layout
+
+\begin_layout Subsection
+Příklad 1
+\end_layout
+
+\begin_layout Standard
+Uvažujme zjednodušený příklad automatu na kávu.
+ Automat přijímá mince 1 Kč, 2 Kč a 5 Kč.
+ Automat vydává jediný druh kávy, káva stojí 7 Kč.
+ Automat na tlačítko 
+\emph on
+s
+\emph default
+ vrátí nevyužité peníze.
+ Tento příkad uvedeme podrobněji.
+\end_layout
+
+\begin_layout Standard
+Zde 
+\emph on
+Q
+\emph default
+ = {0,1,2,3,4,5,6}, Σ = {1,2,5,s}, 
+\emph on
+Y
+\emph default
+ = {
+\emph on
+K
+\emph default
+,0,1,2,3,4,5,6}, přechodová a výstupní funkce jsou dány následující tabulkou:
+ 
+\end_layout
+
+\begin_layout Standard
+V prvním sloupci jsou stavy, ve kterých se automat může nacházet, v prvním
+ řádku jsou vstupní symboly.
+ V řádku odpovídajícím stavu 
+\emph on
+q
+\emph default
+ a sloupci se vstupen 
+\emph on
+a
+\emph default
+ je dvojice (nový stav, výstup).
+ (
+\emph on
+K
+\emph default
+ znamená kávu, číslo udává vrácené peníze).
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+s
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1/0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2/0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5/0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0/0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2/0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3/0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6/0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0/1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3/0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4/0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0/K
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0/2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4/0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5/0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1/K
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0/3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5/0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6/0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2/K
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0/4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6/0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0/K
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3/K
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0/5
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0/K
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1/K
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4/K
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0/6
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Formula $ $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Obecně rozlišujeme čtuři typy automatů
+\end_layout
+
+\begin_layout Standard
+Mealyho automat, Mooreův automat, akceptor a automat bez výstupu.
+ Dále se budeme zabývat hlavně tzv.
+ akceptory.
+\end_layout
+
+\begin_layout Subsection
+Mealyho automat
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Mealyho-automat"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mealyho automat je šestice (
+\emph on
+Q
+\emph default
+, Σ, 
+\emph on
+Y
+\emph default
+, 
+\begin_inset Formula $\delta$
+\end_inset
+
+, 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+, 
+\begin_inset Formula $\lambda$
+\end_inset
+
+).
+ kde 
+\emph on
+Q
+\emph default
+, Σ, 
+\emph on
+Y
+\emph default
+ a 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+ mají stejný význam jako v 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Použití"
+
+\end_inset
+
+, přechodová funkce je zobrazení 
+\begin_inset Formula $\delta$
+\end_inset
+
+: 
+\emph on
+Q
+\emph default
+ × Σ 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ 
+\emph on
+Q
+\emph default
+ a výstupní funkce je zobrazení 
+\begin_inset Formula $\lambda$
+\end_inset
+
+: 
+\emph on
+Q
+\emph default
+ × Σ 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ 
+\emph on
+Y
+\emph default
+ .
+\end_layout
+
+\begin_layout Subsection
+Moorův automat
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Moorův-automat"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Moorův automat je šestice (
+\emph on
+Q
+\emph default
+, Σ,
+\emph on
+ Y
+\emph default
+, 
+\begin_inset Formula $\delta$
+\end_inset
+
+, 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+, 
+\begin_inset Formula $\beta$
+\end_inset
+
+).
+ kde 
+\emph on
+Q
+\emph default
+, Σ, 
+\emph on
+Y
+\emph default
+, 
+\begin_inset Formula $\delta$
+\end_inset
+
+ a 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+ mají stejný význam jako v 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Mealyho-automat"
+
+\end_inset
+
+, 
+\begin_inset Formula $\beta$
+\end_inset
+
+ je zobrazení 
+\begin_inset Formula $\beta$
+\end_inset
+
+: 
+\emph on
+Q
+\emph default
+ 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ 
+\emph on
+Y
+\emph default
+ (říká se mu značkovací funkce).
+\end_layout
+
+\begin_layout Subsection
+Akceptor, též DFA
+\end_layout
+
+\begin_layout Standard
+DFA je pětice (
+\emph on
+Q
+\emph default
+, Σ, 
+\begin_inset Formula $\delta$
+\end_inset
+
+, 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+,
+\emph on
+ F
+\emph default
+), kde 
+\emph on
+Q
+\emph default
+, Σ, 
+\begin_inset Formula $\delta$
+\end_inset
+
+ a 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+ mají stejný význam jako v 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Moorův-automat"
+
+\end_inset
+
+ a 
+\emph on
+F
+\emph default
+ 
+\begin_inset Formula $\subseteq$
+\end_inset
+
+ 
+\emph on
+Q
+\emph default
+ je množina koncových (též přijímajících) stavů.
+\end_layout
+
+\begin_layout Standard
+Jedná se vlastně o Mooreův automat, kde množina výstupních symbolů má dva
+ prvky, totiž 
+\emph on
+Y
+\emph default
+ = {0, 1}, a proto značkovací funkci 
+\begin_inset Formula $\beta$
+\end_inset
+
+ nahrazujeme množinou těch stavů, kterým značkovací funkce přiřazuje 1.
+\end_layout
+
+\begin_layout Subsection
+Automat bez výstupu
+\end_layout
+
+\begin_layout Standard
+Automat bez výstupu je „společnou částí
+\begin_inset Quotes erd
+\end_inset
+
+ všech výše uvedených automatů; tj.
+ jedná se o (
+\emph on
+Q
+\emph default
+, Σ, 
+\begin_inset Formula $\delta$
+\end_inset
+
+, 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection
+Stavový diagram
+\end_layout
+
+\begin_layout Standard
+Kromě tabulky, můžeme konečný automat zadat též stavovým diagramem.
+\end_layout
+
+\begin_layout Standard
+Je dán konečný automat s množinou stavů 
+\emph on
+Q
+\emph default
+, množinou vstupních symbolů Σ, přechodovou funkcí 
+\begin_inset Formula $\delta$
+\end_inset
+
+.
+ 
+\emph on
+Stavovým diagramem
+\emph default
+ nazýváme orientovaný ohodnocený graf, jehož vrcholy jsou stavy (tj.
+ 
+\emph on
+V
+\emph default
+ = 
+\emph on
+Q
+\emph default
+) a orientovaná hrana vede z vrcholu 
+\emph on
+q
+\emph default
+ do vrcholu 
+\emph on
+p
+\emph default
+ právě tehdy, když 
+\begin_inset Formula $\delta$
+\end_inset
+
+(
+\emph on
+q
+\emph default
+, 
+\emph on
+a
+\emph default
+) 
+\emph on
+= p
+\emph default
+; v tomto případě je hrana ohodnocena vstupním symbolem 
+\emph on
+a
+\emph default
+ pro Moorův automat a DFA, nebo dvojicí 
+\emph on
+a/
+\emph default
+
+\begin_inset Formula $\lambda$
+\end_inset
+
+(
+\emph on
+q
+\emph default
+, 
+\emph on
+a
+\emph default
+) v případě, že se jedná o Mealyho automat.
+\end_layout
+
+\begin_layout Standard
+Jesliže se jedná o Mooreův automat, vrcholy stavového diagramu jsou navíc
+ ohodnoceny značkovací funkcí 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+ Pro akceptor, tj DFA, označujeme pouze množinu koncových stavů, a to buď
+ šipkou mířící ze stavu ven nebo jiným označením stavů, které patří do množiny
+ 
+\emph on
+F
+\emph default
+.
+ Počáteční stav 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+ je označován šipkou mířící do něj.
+\end_layout
+
+\begin_layout Subsection
+Rozšířená přechodová funkce
+\end_layout
+
+\begin_layout Standard
+Je dán automat (
+\emph on
+Q
+\emph default
+, Σ, 
+\begin_inset Formula $\delta$
+\end_inset
+
+).
+ Rozšířená přechodová funkce 
+\begin_inset Formula $\delta^{\star}$
+\end_inset
+
+: 
+\emph on
+Q
+\emph default
+ 
+\begin_inset Formula $\times$
+\end_inset
+
+ 
+\begin_inset Formula $\Sigma^{\star}$
+\end_inset
+
+ 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ 
+\emph on
+Q
+\emph default
+ je definovaná induktivně takto:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\delta^{\star}\left(q,\epsilon\right)=q$
+\end_inset
+
+, pro všechna 
+\begin_inset Formula $q\in Q$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\delta^{\star}\left(q,ua\right)=\delta\left(\delta^{\star}\left(q,u\right),a\right)$
+\end_inset
+
+, pro všechna 
+\begin_inset Formula $q\in Q$
+\end_inset
+
+, 
+\begin_inset Formula $a\in\Sigma$
+\end_inset
+
+, 
+\begin_inset Formula $u\in\Sigma^{\star}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Jazyk přijímaný konečným automatem
+\end_layout
+
+\begin_layout Standard
+Je dán DFA 
+\emph on
+M
+\emph default
+ = (
+\emph on
+Q
+\emph default
+, Σ, 
+\begin_inset Formula $\delta$
+\end_inset
+
+, 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+, 
+\emph on
+F
+\emph default
+).
+ Řekneme, že slovo 
+\emph on
+u
+\emph default
+ 
+\begin_inset Formula $\in$
+\end_inset
+
+ 
+\begin_inset Formula $\Sigma^{\star}$
+\end_inset
+
+ je 
+\emph on
+přijímáno
+\emph default
+ automatem M právě tehdy, když
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\delta^{\star}\left(q_{0},u\right)\in F.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Množina všech slov, které automat přijímá, se nazývá 
+\emph on
+jazyk přijímaný
+\emph default
+ 
+\emph on
+M
+\emph default
+, značíme ji 
+\emph on
+L(M)
+\emph default
+.
+ Tedy,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+L\left(M\right)=\left\{ \omega|\delta^{\star}\left(q_{0},\omega\right)\in F\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Regulární jazyky
+\end_layout
+
+\begin_layout Standard
+Každý jazyk, který je přijímán některým DFA, nazveme 
+\emph on
+regulární jazyk
+\emph default
+.
+ Třídu všech regulárních jazyků označujeme 
+\series bold
+Reg
+\series default
+.
+\end_layout
+
+\begin_layout Subsection
+Pumping lemma pro regulární jazyky
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Pumping-lemma-pro"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pro každý regulární jazyk 
+\emph on
+L
+\emph default
+ nad abecedou Σ (tj.
+ jazyk, který je přijímán nějakým DFA) existuje přirozené číslo 
+\emph on
+n
+\emph default
+ s touto vlastností:
+\end_layout
+
+\begin_layout Standard
+Jestliže nějaké slovo 
+\emph on
+u
+\emph default
+ 
+\begin_inset Formula $\in$
+\end_inset
+
+ 
+\emph on
+L
+\emph default
+ je delší než 
+\emph on
+n
+\emph default
+ (tj.
+ |
+\emph on
+u
+\emph default
+| > 
+\emph on
+n
+\emph default
+), pak 
+\emph on
+u
+\emph default
+ lze rozdělit na tři slova 
+\emph on
+u 
+\emph default
+=
+\emph on
+ xwy
+\emph default
+ tak, že
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $ $
+\end_inset
+
+
+\begin_inset Formula $w\neq\epsilon$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left|xw\right|\leq n$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $xw^{i}y\in L$
+\end_inset
+
+ pro každé přirozené číslo 
+\begin_inset Formula $i=0,1,\ldots.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Důkaz
+\series default
+: Předpokládejme, že jazyk 
+\emph on
+L
+\emph default
+ je regulární.
+ Tedy existuje DFA 
+\emph on
+M
+\emph default
+, který tento jazyk přijímá.
+ Označme 
+\emph on
+n
+\emph default
+ počet jeho stavů.
+ Vezměme libovolné slovo 
+\emph on
+u
+\emph default
+ 
+\begin_inset Formula $\in$
+\end_inset
+
+ 
+\emph on
+L
+\emph default
+ délky větší než 
+\emph on
+n
+\emph default
+.
+ Sled ve stavovém diagramu, který odpovídá práci automatu nad slovem 
+\emph on
+u
+\emph default
+, musí obsahovat cyklus (má větší délku než je počet vrcholů – stavů).
+ Označme 
+\emph on
+x
+\emph default
+ slovo, které odpovídá té části sledu než poprvé vstoupíme do cyklu, 
+\emph on
+w
+\emph default
+ slovo, které odpovídá jednomu průchodu tímto cyklem, a 
+\emph on
+y
+\emph default
+ slovo odpovídající zbylé části sledu.
+\end_layout
+
+\begin_layout Standard
+Není těžké se přesvědčit, že slova 
+\emph on
+x
+\emph default
+,
+\emph on
+ w
+\emph default
+,
+\emph on
+ y
+\emph default
+ splňují vlastnosti z pumping lemmatu.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Využití pumping lemmatu
+\series default
+: Jazyk 
+\begin_inset Formula $L=\left\{ 0^{m}1^{m}|m\geq0\right\} $
+\end_inset
+
+ není regulární jazyk.
+\end_layout
+
+\begin_layout Standard
+Kdyby 
+\emph on
+L
+\emph default
+ byl regulární jazyk, muselo by existovat přirozené číslo 
+\emph on
+n
+\emph default
+ s vlastností z 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Pumping-lemma-pro"
+
+\end_inset
+
+.
+ Položme 
+\emph on
+u
+\emph default
+ = 
+\begin_inset Formula $0^{n}1^{n}$
+\end_inset
+
+.
+ Zřejmě 
+\emph on
+u
+\emph default
+ 
+\begin_inset Formula $\in$
+\end_inset
+
+ 
+\emph on
+L
+\emph default
+ a |
+\emph on
+u
+\emph default
+| = 
+\emph on
+2n
+\emph default
+ 
+\begin_inset Formula $>$
+\end_inset
+
+ 
+\emph on
+n
+\emph default
+.
+ Tedy 
+\emph on
+u
+\emph default
+ = 
+\emph on
+xwy
+\emph default
+, 
+\emph on
+w
+\emph default
+ 
+\begin_inset Formula $\neq$
+\end_inset
+
+ 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+, |
+\emph on
+xw
+\emph default
+| 
+\begin_inset Formula $\leq$
+\end_inset
+
+ 
+\emph on
+n
+\emph default
+ a 
+\begin_inset Formula $xw^{2}y$
+\end_inset
+
+ 
+\begin_inset Formula $\in$
+\end_inset
+
+ 
+\emph on
+L
+\emph default
+.
+ To ale není možné; slovo 
+\emph on
+w
+\emph default
+ by muselo obsahovat jen 0, protože délka slova 
+\emph on
+xw
+\emph default
+ je menší nebo rovna 
+\emph on
+n
+\emph default
+ a prefix slova 
+\emph on
+u
+\emph default
+ délky 
+\emph on
+n
+\emph default
+ je 
+\begin_inset Formula $0^{n}$
+\end_inset
+
+.
+ Navíc slovo 
+\emph on
+w
+\emph default
+ není prázdné, a tedy 
+\emph on
+w
+\emph default
+ = 
+\begin_inset Formula $0^{k}$
+\end_inset
+
+ pro 0 
+\begin_inset Formula $<$
+\end_inset
+
+ 
+\emph on
+k
+\emph default
+ 
+\begin_inset Formula $\leq$
+\end_inset
+
+ 
+\emph on
+n
+\emph default
+.
+ Pak ale slovo 
+\begin_inset Formula $xw^{2}y$
+\end_inset
+
+ je rovno 
+\begin_inset Formula $0^{n+k}1^{n}$
+\end_inset
+
+ a nemá stejný počet 0 i 1, tj.
+ neleží v jazyce 
+\emph on
+L
+\emph default
+.
+ Spor.
+\end_layout
+
+\begin_layout Subsection
+Ekvivalentní automaty
+\end_layout
+
+\begin_layout Standard
+Řekneme, že dva automaty 
+\begin_inset Formula $M_{1}$
+\end_inset
+
+ a 
+\begin_inset Formula $M_{2}$
+\end_inset
+
+ jsou 
+\emph on
+ekvivalnetní
+\emph default
+, jestliže přijímají stejný jazyk, tj.
+ jestliže 
+\begin_inset Formula $L\left(M_{1}\right)=L\left(M_{2}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Dosažitelné stavy
+\end_layout
+
+\begin_layout Standard
+Je dán DFA 
+\emph on
+M
+\emph default
+ = (
+\emph on
+Q
+\emph default
+, Σ, 
+\begin_inset Formula $\delta$
+\end_inset
+
+, 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+, 
+\emph on
+F
+\emph default
+).
+ Řekneme, že stav 
+\begin_inset Formula $q\in Q$
+\end_inset
+
+ je 
+\emph on
+dosažitelný
+\emph default
+, jestliže existuje slovo 
+\begin_inset Formula $u\in\Sigma^{\star}$
+\end_inset
+
+ takové, že 
+\begin_inset Formula $\delta^{\star}\left(q_{0},u\right)=q$
+\end_inset
+
+.
+ Jinými slovy, stav 
+\emph on
+q
+\emph default
+ je dosažitelný, jestliže je dosažitelný z počátečního stavu 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+ ve stavovém diagramu 
+\emph on
+M
+\emph default
+ (tj.
+ z 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+ vede do q orientovaný sled).
+\end_layout
+
+\begin_layout Standard
+Je zřejmé, že stavy, které jsou nedosažitelné, nemají vliv na jazyk, který
+ daný automat přijímá.
+\end_layout
+
+\begin_layout Subsection
+Ekvivalence stavů 
+\begin_inset Formula $\sim$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Máme DFA M = (
+\emph on
+Q
+\emph default
+, Σ, 
+\begin_inset Formula $\delta$
+\end_inset
+
+, 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+, 
+\emph on
+F
+\emph default
+).
+ Řekneme, že dva stavy 
+\emph on
+p
+\emph default
+, 
+\emph on
+q
+\emph default
+ 
+\begin_inset Formula $\in$
+\end_inset
+
+ 
+\emph on
+Q
+\emph default
+ jsou 
+\emph on
+ekvivalentní
+\emph default
+, jestliže pro každé slovo 
+\emph on
+u
+\emph default
+ 
+\begin_inset Formula $\in$
+\end_inset
+
+ 
+\begin_inset Formula $\Sigma^{\star}$
+\end_inset
+
+ platí
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\delta^{\star}\left(p,u\right)\in F\;\textrm{iff}\;\delta^{\star}\left(q,u\right)\in F.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Fakt, že dva stavy 
+\emph on
+p
+\emph default
+ a 
+\emph on
+q
+\emph default
+ jsou ekvivalentní, zapisujeme 
+\begin_inset Formula $p\sim q$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Redukovaný automat
+\end_layout
+
+\begin_layout Standard
+Je dán DFA 
+\emph on
+M
+\emph default
+ = (
+\emph on
+Q
+\emph default
+, Σ, 
+\begin_inset Formula $\delta$
+\end_inset
+
+, 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+, 
+\emph on
+F
+\emph default
+ ).
+ Řekneme, že 
+\emph on
+M
+\emph default
+ je 
+\emph on
+redukovaný
+\emph default
+, jestliže nemá nedosažitelné stavy a žádné jeho dva různé stavy nejsou
+ ekvivalentní.
+ (To znamená, že ekvivalence 
+\begin_inset Formula $\sim$
+\end_inset
+
+ je identická ekvivalence.)
+\end_layout
+
+\begin_layout Subsection
+Konstrukce relace 
+\begin_inset Formula $\sim$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Konstruujeme relace 
+\begin_inset Formula $\sim_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $i=0,1,\ldots,$
+\end_inset
+
+ na množině všech stavů 
+\emph on
+Q
+\emph default
+ takto:
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+p
+\emph default
+ 
+\begin_inset Formula $\sim_{0}$
+\end_inset
+
+ 
+\emph on
+q
+\emph default
+ právě tehdy, když buď 
+\emph on
+p,q
+\emph default
+ 
+\begin_inset Formula $\in$
+\end_inset
+
+ 
+\emph on
+F
+\emph default
+ nebo 
+\emph on
+p,q
+\emph default
+ 
+\begin_inset Formula $\notin$
+\end_inset
+
+ 
+\emph on
+F
+\emph default
+;
+\end_layout
+
+\begin_layout Itemize
+je-li 
+\emph on
+i
+\emph default
+ 
+\begin_inset Formula $\geq$
+\end_inset
+
+ 0, pak 
+\emph on
+p
+\emph default
+ 
+\begin_inset Formula $\sim_{i+1}$
+\end_inset
+
+ 
+\emph on
+q
+\emph default
+ právě tehdy, když 
+\emph on
+p 
+\begin_inset Formula $\sim_{i}$
+\end_inset
+
+
+\emph default
+ 
+\emph on
+q
+\emph default
+ a pro každé 
+\emph on
+a
+\emph default
+ 
+\begin_inset Formula $\in$
+\end_inset
+
+ Σ máme 
+\begin_inset Formula $\delta$
+\end_inset
+
+(
+\emph on
+p, a
+\emph default
+) 
+\begin_inset Formula $\sim_{i}$
+\end_inset
+
+ 
+\begin_inset Formula $\delta$
+\end_inset
+
+(
+\emph on
+q, a
+\emph default
+).
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Věta
+\series default
+: Platí
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\sim_{0}\supseteq\sim_{1}\supseteq\ldots\supseteq\sim_{i}\supseteq\ldots
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Existuje 
+\begin_inset Formula $k$
+\end_inset
+
+ takové, že 
+\begin_inset Formula $\sim_{k}$
+\end_inset
+
+ je rovna 
+\begin_inset Formula $\sim_{k+1}$
+\end_inset
+
+.
+ Pak pro každé 
+\begin_inset Formula $j\geq1$
+\end_inset
+
+ platí 
+\begin_inset Formula $\sim_{k}=\sim_{k+j}$
+\end_inset
+
+ a tedy 
+\begin_inset Formula $\sim_{k}=\sim$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Algoritmus redukce
+\end_layout
+
+\begin_layout Standard
+Je dán DFA 
+\begin_inset Formula $M=\left(Q,\Sigma,\delta,q_{0},F\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Zkonstruujeme množinu 
+\begin_inset Formula $Q^{\shortmid}$
+\end_inset
+
+ všech dosažitelných stavů automatu 
+\emph on
+M
+\emph default
+.
+ Postupujeme např.
+ hledáním do šířky ze stavu 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+ ve stavovém diagramu.
+\end_layout
+
+\begin_layout Enumerate
+Podle předchozího odstavce zkonstruujeme ekvivalenci 
+\begin_inset Formula $\sim$
+\end_inset
+
+ pro DFA 
+\begin_inset Formula $M^{\shortmid}=\left(Q,\Sigma,\delta,q_{0},F\cap Q^{\shortmid}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Vytvoříme DFA 
+\begin_inset Formula $M_{1}=\left(Q_{1},\Sigma,\delta_{1},q_{1},F_{1}\right)$
+\end_inset
+
+, kde 
+\begin_inset Formula $Q_{1}=Q^{\shortmid}/\sim=\left\{ \left[q\right]_{\sim}|q\in Q^{\shortmid}\right\} $
+\end_inset
+
+, 
+\begin_inset Formula $q_{1}=\left[q_{0}\right]_{\sim}$
+\end_inset
+
+, 
+\begin_inset Formula $\delta_{1}\left(\left[q\right]_{\sim},a\right)=\left[\delta\left(q,a\right)\right]_{\sim}$
+\end_inset
+
+ a 
+\begin_inset Formula $F_{1}=\left\{ \left[q\right]_{\sim}|q\in F\cap Q^{\shortmid}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Automat 
+\begin_inset Formula $M_{1}$
+\end_inset
+
+ vznikl takto: za stavy jsme vzali třídy ekvivalence 
+\begin_inset Formula $\sim$
+\end_inset
+
+, počáteční stav je třída, ve které leží původní počáteční stav 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+, přechodová funkce „pracuje
+\begin_inset Quotes erd
+\end_inset
+
+ na třídách (což je možné vzhledem k vlastnosti 
+\begin_inset Formula $\sim$
+\end_inset
+
+) a množina koncových stavů je množina těch tříd, ve kterých leží koncové
+ stavy automatu 
+\begin_inset Formula $M^{\shortmid}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Příklad
+\end_layout
+
+\begin_layout Standard
+Je dán DFA 
+\begin_inset Formula $M$
+\end_inset
+
+ následující tabulkou:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="10" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+a
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+b
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nalezněte redukovaný automat k DFA 
+\begin_inset Formula $M$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Řešení
+\series default
+: Nejprve najdeme všechny dosažitelné stavy automatu 
+\emph on
+M
+\emph default
+.
+ Jsou to stavy {1,2,3,4,5,6,7}.
+ Tedy 
+\begin_inset Formula $Q^{\shortmid}$
+\end_inset
+
+ = {1,2,3,4,5,6,7}, 
+\begin_inset Formula $F^{\shortmid}$
+\end_inset
+
+ = 
+\emph on
+F
+\emph default
+ = {3,5,6}.
+\end_layout
+
+\begin_layout Standard
+Automat 
+\begin_inset Formula $M^{\shortmid}$
+\end_inset
+
+ je dán tabulkou:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+a
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+b
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vytvoříme rozklad 
+\begin_inset Formula $R_{0}$
+\end_inset
+
+ ekvivalence 
+\begin_inset Formula $\sim_{0}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+O=\left\{ 1,2,4,7\right\} \quad F=\left\{ 3,5,6\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Platí
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\delta(1,a)=2\in O$
+\end_inset
+
+, 
+\begin_inset Formula $\delta\left(2,a\right)=2\in O$
+\end_inset
+
+, 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\delta\left(4,a\right)=2\in O$
+\end_inset
+
+, 
+\begin_inset Formula $\delta\left(7,a\right)=7\in O$
+\end_inset
+
+, 
+\begin_inset Formula $\delta\left(1,b\right)=3\in F$
+\end_inset
+
+, 
+\begin_inset Formula $\delta\left(2,b\right)=4\in O$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tedy musíme množinu 
+\begin_inset Formula $O$
+\end_inset
+
+ rozdělit na dvě podmnožiny, a to 
+\begin_inset Formula $\left\{ 1\right\} $
+\end_inset
+
+ a 
+\begin_inset Formula $\left\{ 2,4,7\right\} $
+\end_inset
+
+.
+ Dále
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\delta\left(3,a\right)=3\in F$
+\end_inset
+
+, 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\delta\left(5,a\right)=6\in F$
+\end_inset
+
+, 
+\begin_inset Formula $\delta\left(6,a\right)=6\in F$
+\end_inset
+
+, 
+\begin_inset Formula $\delta\left(3,b\right)=5\in F$
+\end_inset
+
+, 
+\begin_inset Formula $\delta\left(5,b\right)=3\in F$
+\end_inset
+
+, 
+\begin_inset Formula $\delta\left(6,b\right)=6\in F$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Proto množinu 
+\begin_inset Formula $F$
+\end_inset
+
+ nedělíme.
+\end_layout
+
+\begin_layout Standard
+Rozklad odpovídající ekvivalenci 
+\begin_inset Formula $\sim_{1}$
+\end_inset
+
+ je
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+A=\left\{ 1\right\} ,\; O=\left\{ 2,4,7\right\} ,\; F=\left\{ 3,5,6\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Výpočet zahrneme do tabulky
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="7">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+a
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+b
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sim_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $b$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sim_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Analogicky postupujeme k vytvoření ekvivalence 
+\begin_inset Formula $\sim_{1}$
+\end_inset
+
+.
+ Výpočet již zkrátíme jen do tabulky.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="10">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+a
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+b
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sim_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $b$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sim_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $b$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sim_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Z tabulky vyplývá , že 
+\begin_inset Formula $\sim_{1}=\sim_{2}$
+\end_inset
+
+.
+ Proto 
+\begin_inset Formula $\sim_{1}=\sim$
+\end_inset
+
+ je hledaná ekvivalence.
+\end_layout
+
+\begin_layout Standard
+Máme tedy tři třídy ekvivalence, a to 
+\emph on
+A
+\emph default
+, 
+\emph on
+O
+\emph default
+ a 
+\emph on
+F
+\emph default
+.
+ Redukovaný automat 
+\begin_inset Formula $M_{1}$
+\end_inset
+
+ je dán tabulkou
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+a
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+b
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Není těžké nahlédnout, že automat 
+\begin_inset Formula $M_{1}$
+\end_inset
+
+ přijímá jazyk 
+\begin_inset Formula $L=\left\{ bu|u\in\left\{ a,b\right\} ^{\star}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Věta
+\series default
+: Automat 
+\begin_inset Formula $M$
+\end_inset
+
+ i k němu redukovaný automat 
+\begin_inset Formula $M_{1}$
+\end_inset
+
+ přijímají stejný jazyk, tj.
+ jsou ekvivalentní.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Věta
+\series default
+: Dva DFA 
+\begin_inset Formula $M_{1}$
+\end_inset
+
+ a 
+\begin_inset Formula $M_{2}$
+\end_inset
+
+ přijímají stejný jazyk (tj.
+ jsou ekvivalentní) právě tehdy, když jejich odpovídající redukované automaty
+ se liší pouze pojmenováním stavů.
+\end_layout
+
+\begin_layout Subsection
+Nerodova věta
+\end_layout
+
+\begin_layout Standard
+Je dán jazyk 
+\emph on
+L
+\emph default
+ nad abecedou Σ.
+ Pak 
+\emph on
+L
+\emph default
+ je regulární jazyk (tj.
+ je přijímán nějakým DFA) právě tehdy, když existuje ekvivalence 
+\emph on
+R
+\emph default
+ na množině všech slov 
+\begin_inset Formula $\Sigma^{\star}$
+\end_inset
+
+ taková, že
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+L
+\emph default
+ je sjednocení některých tříd ekvivalence 
+\emph on
+R
+\emph default
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+R
+\emph default
+ splňuje následující podmínku: Je-li 
+\begin_inset Formula $uRv$
+\end_inset
+
+ pro 
+\emph on
+u
+\emph default
+, 
+\emph on
+v
+\emph default
+ 
+\begin_inset Formula $\in$
+\end_inset
+
+ 
+\begin_inset Formula $\Sigma^{\star}$
+\end_inset
+
+, pak pro každé slovo 
+\emph on
+w
+\emph default
+ 
+\begin_inset Formula $\in$
+\end_inset
+
+ 
+\begin_inset Formula $\Sigma^{\star}$
+\end_inset
+
+ platí 
+\begin_inset Formula $uwRvw$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+R
+\emph default
+ má pouze konečně mnoho tříd ekvivalence.
+\end_layout
+
+\begin_layout Standard
+Poznamenejme, že druhá podmínka vlastně říká, že ekvivalence 
+\emph on
+R
+\emph default
+ je pravá kongruence monoidu (
+\begin_inset Formula $\Sigma^{\star}$
+\end_inset
+
+, 
+\begin_inset Formula $\cdot$
+\end_inset
+
+, 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Důkaz
+\series default
+: Jestliže je jazyk 
+\emph on
+L
+\emph default
+ regulární, pak existuje DFA 
+\begin_inset Formula $M=\left(Q,\Sigma,\delta,q_{0},F\right)$
+\end_inset
+
+, takový, že 
+\emph on
+L
+\emph default
+ = 
+\emph on
+L
+\emph default
+(
+\emph on
+M
+\emph default
+).
+ Definujme relaci 
+\emph on
+R
+\emph default
+ na 
+\begin_inset Formula $\Sigma^{\star}$
+\end_inset
+
+ takto:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+uRv\quad\textrm{iff}\quad\delta^{\star}\left(q_{0},u\right)=\delta^{\star}\left(q_{0},v\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Takto definovaná relace splňuje všechny podmínky Nerodovy věty.
+\end_layout
+
+\begin_layout Standard
+Předpokládejme, že pro jazyk 
+\emph on
+L
+\emph default
+ existuje ekvivalence 
+\emph on
+R
+\emph default
+ splňující všechny podmínky z Nerodovy věty.
+ Definujme DFA 
+\emph on
+M
+\emph default
+ = (
+\emph on
+Q
+\emph default
+, Σ, 
+\begin_inset Formula $\delta$
+\end_inset
+
+, 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+, 
+\emph on
+F
+\emph default
+ ) takto:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Q=\left\{ \left[u\right]_{R}|u\in\Sigma^{\star}\right\} ,\quad q_{0}=\left[\epsilon\right]_{R},\quad F=\left\{ \left[u\right]_{R}|\left[u\right]_{R}\subseteq L\right\} ;
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\delta\left(\left[u\right]_{R},a\right)=\left[ua\right]_{R}\qquad\textrm{pro každé }a\in\Sigma.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pak DFA 
+\begin_inset Formula $M$
+\end_inset
+
+ přijímá jazyk 
+\begin_inset Formula $L$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Poznámka
+\series default
+: Podobně jako pumping lemma i Nerodova věta se dá použít k tomu, abychom
+ ukázali, že některý jazyk není regulární.
+ Navíc je ale možné Nerodovu větu použít i pro konstrukci automatu, který
+ daný jazyk přijímá.
+\end_layout
+
+\end_body
+\end_document
