@@ -1,0 +1,502 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass scrreprt
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{chapter}{23} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Turingovy stroje.
+ (A4B01JAG)
+\end_layout
+
+\begin_layout Standard
+Turingův stroj si můžeme přdstavit takto: skládá se
+\end_layout
+
+\begin_layout Itemize
+z řídící jednotky, která se může nacházet v jednom z konečně mnoha stavů,
+\end_layout
+
+\begin_layout Itemize
+potenciálně nekonečné pásky rozdělené na jednotlivá pole a
+\end_layout
+
+\begin_layout Itemize
+hlavy, která umožňuje číst obsah polí a přepisovat obsah polí pásky.
+\end_layout
+
+\begin_layout Standard
+Na základě informace 
+\emph on
+X
+\emph default
+, která je přečtena na pásce, a na základě stavu 
+\emph on
+q
+\emph default
+, ve kterém se nachází řídící jednotka Turingova stroje, se řídící jednotka
+ přesune do stavu 
+\emph on
+p
+\emph default
+, pole pásky přepíše na 
+\emph on
+Y
+\emph default
+ a hlava se přesune buď doprava nebo doleva (tato akce je popsána tzv.
+ přechodovou funkcí).
+\end_layout
+
+\begin_layout Section
+Formální definice
+\end_layout
+
+\begin_layout Standard
+Turingův stroj je sedmice 
+\begin_inset Formula $\left(Q,\Sigma,\Gamma,\delta,q_{0},B,F\right)$
+\end_inset
+
+, kde
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Q$
+\end_inset
+
+ je konečná množina stavů,
+\end_layout
+
+\begin_layout Itemize
+Σ je konečná množina vstupních symbolů,
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ je konečná množina páskových symbolů, přitom 
+\begin_inset Formula $\Sigma\subset\Gamma$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+B
+\emph default
+ je prázdný symbol (též nazývaný 
+\emph on
+blank
+\emph default
+), jedná se o páskový symbol, který není vstupním symbolem, (tj.
+ 
+\begin_inset Formula $B\in\Gamma\setminus\Sigma$
+\end_inset
+
+),
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\delta$
+\end_inset
+
+ je přechodová funkce, tj.
+ parciální zobrazení z množiny 
+\begin_inset Formula $Q\times\Gamma$
+\end_inset
+
+ do množiny 
+\begin_inset Formula $Q\times\Gamma\times\left\{ L,R\right\} $
+\end_inset
+
+, (zde 
+\emph on
+L
+\emph default
+ znamená pohyb hlavy o jedno pole doleva, 
+\emph on
+R
+\emph default
+ znamená pohyb hlavy o jedno pole doprava),
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $q_{0}\in Q$
+\end_inset
+
+ je počáteční stav a
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $F\subseteq Q$
+\end_inset
+
+ je množina koncových stavů.
+\end_layout
+
+\begin_layout Section
+Konfigurace
+\end_layout
+
+\begin_layout Standard
+Konfiguraci Turingova stroje plně popisuje páska, pozice hlavy na pásce
+ a stav, ve kterém se nachází řídící jednotka.
+ Jestliže na pásce jsou v prvních k polích symboly 
+\begin_inset Formula $X_{1}X_{2}\ldots X_{k}$
+\end_inset
+
+, všechna pole s větším číslem již obsahují pouze 
+\emph on
+B
+\emph default
+, řídící jednotka je ve stavu 
+\emph on
+q
+\emph default
+ a hlava čte symbol 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+, tak danou konfiguraci zapisujeme
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+X_{1}X_{2}\ldots X_{i-1}qX_{i}X_{i+1}\ldots X_{k}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Počátek práce Turingova stroje
+\end_layout
+
+\begin_layout Standard
+Na začátku práce se Turingův stroj nachází v počátečním stavu 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+, na pásce má na prvních 
+\emph on
+n
+\emph default
+ polích vstupní slovo 
+\begin_inset Formula $a_{1}a_{2}\ldots a_{n}\left(a_{i}\in\Sigma\right)$
+\end_inset
+
+, ostatní pole obsahují blank 
+\emph on
+B
+\emph default
+ a hlava čte první pole pásky, tj.
+ symbol 
+\begin_inset Formula $a_{1}$
+\end_inset
+
+.
+ Tedy formálně je počáteční konfigurace 
+\begin_inset Formula $q_{0}a_{1}\ldots a_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Krok Turingova stroje
+\end_layout
+
+\begin_layout Standard
+Předpokládejme, že se Turingův stroj nachází v konfiguraci 
+\begin_inset Formula $X_{1}X_{2}\ldots X_{i-1}qX_{i}\ldots X_{k}$
+\end_inset
+
+.
+ Pak v jednom kroku udělá následující:
+\end_layout
+
+\begin_layout Standard
+Jestliže 
+\begin_inset Formula $\delta\left(q,X_{i}\right)=\left(p,Y,R\right)$
+\end_inset
+
+, stroj se přesune do stavu 
+\begin_inset Formula $p$
+\end_inset
+
+, na pásku napíše symbol 
+\begin_inset Formula $Y$
+\end_inset
+
+ a hlavu posune o jedno pole doprava.
+ Formálně to zapisujeme:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+X_{1}X_{2}\ldots X_{i-1}qX_{i}\ldots X_{k}\vdash X_{1}X_{2}\ldots X_{i-1}YpX_{i+1}\ldots X_{k}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Jestliže 
+\begin_inset Formula $\delta\left(q,X_{i}\right)=\left(p,Y,L\right)$
+\end_inset
+
+, a hlava nečte nejlevnější pole, stroj napíše na pásku 
+\begin_inset Formula $Y$
+\end_inset
+
+ (místo 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+) a posune hlavu o jedno pole doleva.
+ Formálně to zapisujeme:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+X_{1}X_{2}\ldots X_{i-1}qX_{i}\ldots X_{k}\vdash X_{1}X_{2}\ldots X_{i-2}pX_{i-1}YX_{i+1}\ldots X_{k}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Jestliže 
+\begin_inset Formula $\delta\left(q,X_{i}\right)=\left(p,Y,L\right)$
+\end_inset
+
+, a hlava čte první pole pásky, tj.
+ pole, které je 
+\begin_inset Quotes eld
+\end_inset
+
+nejvíce vlevo
+\begin_inset Quotes erd
+\end_inset
+
+, nebo jestliže 
+\begin_inset Formula $\delta\left(q,X_{i}\right)$
+\end_inset
+
+ není definováno, stroj se neúspěšně zastaví.
+\end_layout
+
+\begin_layout Section
+Výpočet Turingova stroje
+\end_layout
+
+\begin_layout Standard
+je posloupnost jeho kroků, která začíná v počáteční konfiguraci.
+ Tedy jedná se o reflexivní a tranzitivní uzávěr 
+\begin_inset Formula $\vdash^{\star}$
+\end_inset
+
+ relace 
+\begin_inset Formula $\vdash$
+\end_inset
+
+ (na množině všech konfigurací daného Turingova stroje).
+\end_layout
+
+\begin_layout Section
+Jazyk přijímaný Turingovým strojem
+\end_layout
+
+\begin_layout Standard
+Vstupní slovo 
+\begin_inset Formula $w\in\Sigma^{\star}$
+\end_inset
+
+ je 
+\emph on
+přijato
+\emph default
+ Turingovým strojem právě tehdy, když se Turingův stroj při práci na slově
+ 
+\emph on
+w
+\emph default
+ dostane do koncového stavu.
+ Tedy formálně: slovo 
+\begin_inset Formula $w\in\Sigma^{\star}$
+\end_inset
+
+ je 
+\emph on
+přijato Turingovým strojem
+\emph default
+ právě tehdy, když
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+q_{0}w\vdash^{\star}\alpha q\beta\quad\textrm{pro nějaké}\; q\in F\;\textrm{a}\;\alpha,\beta\in\Gamma^{\star}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Množina slov 
+\begin_inset Formula $w\in\Sigma^{\star}$
+\end_inset
+
+, které Turingův stroj přijímá, se nazývá 
+\emph on
+jazyk přijímaný
+\emph default
+ Turingovým strojem 
+\begin_inset Formula $M$
+\end_inset
+
+ a značíme ho 
+\begin_inset Formula $L\left(M\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Věta: Turingovy stroje přijímají právě třídu jazyků typu 0.
+ Přesněji: 
+\end_layout
+
+\begin_layout Standard
+Ke každé gramatice 
+\emph on
+G
+\emph default
+ typu 0 existuje Turingův stroj 
+\emph on
+M
+\emph default
+ takový, že
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+L\left(G\right)=L\left(M\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ke každému stroji 
+\begin_inset Formula $M$
+\end_inset
+
+ existuje gramatika 
+\begin_inset Formula $G$
+\end_inset
+
+ typu 0 taková, že
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+L\left(M\right)=L\left(G\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
