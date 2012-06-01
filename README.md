@@ -21,3 +21,5 @@ Hotové otázky
 21. Deterministický konečný automat, jazyk přijímaný konečným automatem. (A4B01JAG)
 
 22. Regulární výrazy a regulární jazyky, Kleeneova věta. Algoritmická složitost úloh souvisejících s regulárními jazyky. (A4B01JAG)
+
+24. Turingovy stroje. (A4B01JAG)
