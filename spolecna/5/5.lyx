@@ -1,0 +1,1198 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass scrreprt
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Společná část - otázka č.
+ 5
+\end_layout
+
+\begin_layout Subtitle
+Imperativní programování, software, překladač, interpret, vnitřní forma,
+ programovací jazyky, syntaxe, sémantika, proměnné, výrazy, vstup, výstup,
+ řídící struktury, jednoduché datové typy, přiřazení, funkce, procedury,
+ parametry, rozklad problému na podproblémy, princip rekurze a iterace (A0B36PR1
+) 
+\end_layout
+
+\begin_layout Chapter
+Základní pojmy
+\end_layout
+
+\begin_layout Section
+Informatika
+\end_layout
+
+\begin_layout Standard
+Informatika:
+\end_layout
+
+\begin_layout Standard
+- zabývá se zpracováním informací nejen na počítačích
+\end_layout
+
+\begin_layout Standard
+- studuje výpočetní a informační procesy z hlediska hardware i software
+ – „technická informatika“
+\end_layout
+
+\begin_layout Standard
+- je součástí teorie informací, věda spojující aplikovanou matematiku a
+ elektrotechniku za účelem kvantitativního vyjádření informace
+\end_layout
+
+\begin_layout Section
+Software
+\end_layout
+
+\begin_layout Standard
+V informatice sada všech počítačových programů v počítači.
+ Software zahrnuje:
+\end_layout
+
+\begin_layout Standard
+– operační systém (zajišťuje běh programů) 
+\end_layout
+
+\begin_layout Standard
+– aplikační software (pracuje s ním uživatel) 
+\end_layout
+
+\begin_layout Standard
+– další (knihovny, middleware, BIOS, firmware apod.)
+\end_layout
+
+\begin_layout Subsection
+Knihovna
+\end_layout
+
+\begin_layout Standard
+Knihovna je v informatice označení pro soubor funkcí a procedur (v objektovém
+ programování též objektů, datových typů a zdrojů), který může být sdílen
+ více počítačovými programy.
+ Knihovna usnadňuje programátorovi tvorbu zdrojového kódu tím, že umožňuje
+ použít již vytvořený kód i v jiných programech.
+ Knihovna navenek poskytuje své služby pomocí API (aplikační rozhraní),
+ což jsou názvy funkcí (včetně popisu jejich činnosti), předávané parametry
+ a návratové hodnoty.
+ Knihovny lze rozdělit podle vazby na program, který je používá, na statické
+ a dynamické.
+\end_layout
+
+\begin_layout Subsubsection
+Statické knihovny
+\end_layout
+
+\begin_layout Standard
+Statická knihovna tvoří s přeloženým programem kompaktní celek.
+ V závěrečné fázi překladu programu ze zdrojového kódu do strojového kódu
+ jsou volané funkce (a další jimi kaskádově volané funkce) připojovány linkerem
+ (odtud označení linkování) do výsledného spustitelného souboru.
+ V horším případě je k programu připojena celá knihovna bez ohledu na to,
+ jaké části program skutečně využívá.
+ Výsledný spustitelný soubor tak v sobě obsahuje všechny části, které jsou
+ nutné pro jeho běh.
+ Staticky slinkovaný spustitelný soubor proto typicky při spuštění nepotřebuje
+ žádné další soubory, takže je ho možné překopírovat na jiný systém a jednoduše
+ spustit (tj.
+ bez instalace, tak, jak je známá například pro běžné programy v Microsoft
+ Windows).
+ Př.
+ .lib, .a.
+\end_layout
+
+\begin_layout Subsubsection
+Dynamické knihovny
+\end_layout
+
+\begin_layout Standard
+Dynamické knihovny nejsou (na rozdíl od statických knihoven) k výslednému
+ spustitelnému souboru přidávány.
+ V závěrečné fázi překladu programu ze zdrojového kódu do strojového kódu
+ jsou odkazy na volané knihovní funkce pomocí linkeru (odtud označení linkování)
+ zapsány do speciální tabulky symbolů, která je připojena k výslednému spustitel
+ného souboru.
+ Pro chod programu (tj.
+ spuštění výsledného spustitelného souboru) je pak nutné mít k dispozici
+ též příslušné dynamické knihovny.
+ Pokud dynamická knihovna využívá ke své činnosti jiné dynamické knihovny,
+ vzniká řetězec závislostí a všechny potřebné knihovny musí být při spuštění
+ programu přítomny.
+ Př.
+ .dll, .o, .so.
+\end_layout
+
+\begin_layout Section
+Hardware
+\end_layout
+
+\begin_layout Standard
+Zahrnuje všechny fyzické součásti počítače 
+\end_layout
+
+\begin_layout Standard
+• čistě elektronická zařízení (procesor, paměť, display) 
+\end_layout
+
+\begin_layout Standard
+• elektromechanické díly (klávesnice, tiskárna, diskety, disky, jednotky
+ CD-ROM, páskové jednotky, reproduktory) pro vstup, výstup a ukládání dat.
+ 
+\end_layout
+
+\begin_layout Standard
+• Počítač se skládá z procesoru, operační paměti a vstupně-výstupních zařízení.
+\end_layout
+
+\begin_layout Section
+Algoritmus
+\end_layout
+
+\begin_layout Standard
+Postup při řešení určité třídy úloh, který je tvořen seznamem jednoznačně
+ definovaných příkazů a zaručuje, že pro každou přípustnou kombinaci vstupních
+ dat se po provedení konečného počtu kroků dospěje k požadovaným výsledkům.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+hromadnost
+\series default
+ - měnitelná vstupní data
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+determinovanost 
+\series default
+- každý krok je jednoznačně definován
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+konečnost a resultativnost
+\series default
+ - pro přípustná vstupní data se po provedení konečného počtu kroků dojde
+ k požadovaným výsledkům
+\end_layout
+
+\begin_layout Section
+Program
+\end_layout
+
+\begin_layout Standard
+Program je předpis (zápis algoritmu) pro provedení určitých akcí počítačem
+ zapsaný v programovacím jazyku.
+\end_layout
+
+\begin_layout Section
+Programovací jazyk
+\end_layout
+
+\begin_layout Standard
+Programovací jazyk je prostředek pro zápis algoritmů, jež mohou být provedeny
+ na počítači.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+strojově orientované
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+strojový jazyk
+\series default
+ = jazyk fyzického procesoru 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+asembler
+\series default
+ = jazyk symbolických adres
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+vyšší jazyky
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+imperativní
+\series default
+ (příkazové, procedurální) 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+neimperativní 
+\series default
+(např.
+ funkcionální)
+\end_layout
+
+\begin_layout Subsection
+Imperativní programování
+\end_layout
+
+\begin_layout Standard
+Hlavní rysy imperativních jazyků (např.
+ C, C++, Java, Pascal, Basic, ...) 
+\end_layout
+
+\begin_layout Standard
+• zpracovávané údaje mají formu datových objektů různých typů, které jsou
+ v programu reprezentovány pomocí proměnných resp.
+ konstant 
+\end_layout
+
+\begin_layout Standard
+• program obsahuje deklarace a příkazy
+\end_layout
+
+\begin_layout Standard
+• deklarace definují význam jmen (identifikátorů) 
+\end_layout
+
+\begin_layout Standard
+• příkazy předepisují akce s datovými objekty nebo způsob řízení výpočtu
+\end_layout
+
+\begin_layout Section
+Syntaxe
+\end_layout
+
+\begin_layout Standard
+Souhrn pravidel udávajících přípustné tvary dílčích konstrukcí a celého
+ programu.
+\end_layout
+
+\begin_layout Section
+Sémantika
+\end_layout
+
+\begin_layout Standard
+Udává význam jednotlivých konstrukcí.
+\end_layout
+
+\begin_layout Section
+Interpret
+\end_layout
+
+\begin_layout Standard
+Interpret je v informatice speciální počítačový program, který umožňuje
+ 
+\series bold
+přímo vykonávat (interpretovat)
+\series default
+ zápis jiného programu v jeho zdrojovém kódu ve zvoleném programovacím jazyce.
+ Program proto není nutné převádět do strojového kódu cílového procesoru,
+ jako je tomu v případě překladače.
+ Interpret tak umožňuje programování kódu, který je snadno přenositelný
+ mezi různými počítačovými platformami.
+\end_layout
+
+\begin_layout Enumerate
+provádějí přímo zdrojový kód (unixový shell, COMMAND.COM nebo interprety
+ jazyka BASIC)
+\end_layout
+
+\begin_layout Enumerate
+přeloží zdrojový kód do efektivnějšího mezikódu, který následně spustí (Perl,
+ Python nebo MATLAB)
+\end_layout
+
+\begin_layout Enumerate
+přímo spustí předem vytvořený předkompilovaný mezikód, který je produktem
+ části interpretu (UCSD Pascal a Java - zdrojové kódy jsou kompilovány předem,
+ uloženy ve strojově nezávislém tvaru, který je po spuštění linkován a interpret
+ován nebo kompilován v případě použití JIT).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename images/interpretace.png
+	width 11cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename images/interpretaceJazykaJava.png
+	width 11cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename images/interpretaceJazykaJava2.png
+	width 11cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Vnitřní forma
+\end_layout
+
+\begin_layout Standard
+Při interpretaci se zdrojový program přeloží do vnitřní formy.
+ Ta není strojovým jazykem fyzického procesoru, ale je jazykem virtuálního
+ počítače.
+ Provedení programu ve vnitřní formě na konkrétním počítači zajistí interpretr.
+\end_layout
+
+\begin_layout Section
+Kompilátor = překladač
+\end_layout
+
+\begin_layout Standard
+Překladač (též kompilátor) je v nejčastějším smyslu slova softwarový nástroj
+ používaný programátory pro vývoj softwaru.
+ Kompilátor slouží pro překlad algoritmů zapsaných ve vyšším programovacím
+ jazyce do jazyka strojového, či spíše do strojového kódu.
+ Z širšího obecného hlediska je kompilátor stroj, respektive program, provádějíc
+í překlad z nějakého vstupního jazyka do jazyka výstupního.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename images/kompilace.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename images/kompilaceJazykaC.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Části programovacích jazyků
+\end_layout
+
+\begin_layout Section
+Proměnná
+\end_layout
+
+\begin_layout Standard
+V imperativním programování je proměnná „úložiště“ informace (tedy vyhrazené
+ místo v paměti - v některých jazycích se ovšem v průběhu výpočtu může místo,
+ kde je proměnná uložena, měnit).
+ Proměnná nebo (v beztypových jazycích) její hodnota má typ.
+ 
+\end_layout
+
+\begin_layout Standard
+Proměnná je datový objekt, který je označen jménem a je v něm uložena hodnota
+ nějakého typu, která se může měnit.
+\end_layout
+
+\begin_layout Subsection
+Přiřazení
+\end_layout
+
+\begin_layout Standard
+Pro přiřazení hodnoty proměnné slouží přikazovací příkaz.
+ Má tvar <proměnná> = <výraz>;
+\end_layout
+
+\begin_layout Standard
+V jazyku Java zavedeme proměnnou deklarací int promenna = 0;
+\end_layout
+
+\begin_layout Standard
+Přiřazovací příkaz: promenna = 37;
+\end_layout
+
+\begin_layout Standard
+Konstantě nelze přiřadit hodnota: MAX = 32 -> CHYBA!!
+\end_layout
+
+\begin_layout Standard
+Jazyk JAVA má 
+\series bold
+silnou typovou kontrolu
+\series default
+, následující nelze: boolean b; b = 1; -> CHYBA!!
+\end_layout
+
+\begin_layout Subsubsection
+Přiřazovací operátory
+\end_layout
+
+\begin_layout Itemize
+<proměnná> = <proměnná> <OP> <výraz> e.g.
+ x = x +1
+\end_layout
+
+\begin_layout Itemize
+<proměnná> <OP>= <výraz> x += 1
+\end_layout
+
+\begin_layout Subsection
+Přidělení paměti proměnným
+\end_layout
+
+\begin_layout Standard
+Přidělením paměti proměnné rozumíme určení adresy umístění proměnné v paměti
+ počítače.
+\end_layout
+
+\begin_layout Subsection
+Typy proměnných
+\end_layout
+
+\begin_layout Itemize
+lokální proměnné funkcí - pamět přidělena při volání funkce, po jejím skončení
+ uvolněna, pamět na zásobníku
+\end_layout
+
+\begin_layout Itemize
+statické proměnné tříd - pamět přidělena při zavedení kódu třídy do paměti
+ (JVM), až do konce programu
+\end_layout
+
+\begin_layout Section
+Primitivní datové typy
+\end_layout
+
+\begin_layout Standard
+Datový typ (zkráceně jen typ) specifikuje: 
+\end_layout
+
+\begin_layout Standard
+• 
+\series bold
+množinu hodnot 
+\series default
+- pro int: -2147483648 ..
+ 2147483647
+\end_layout
+
+\begin_layout Standard
+• 
+\series bold
+množinu operací,
+\series default
+ které lze s hodnotami daného typu provádět (pro int je to například: relační
+ operace ==, !=, >, >=, <, <=, jejichž výsledkem je hodnota typu boolean)
+\end_layout
+
+\begin_layout Standard
+V jazyce JAVA je třeba deklarovat, s jakým typem dat budeme pracovat.
+ Překladač tuto deklaraci hlídá.
+ V důsledku reprezentace dat v počítači vznikají nepřesnosti (1.00 + 2.00
+ se nemusí rovnat 3.00).
+ Číslá jsou aproximována.
+ Čím větší exponent (tzn.
+ čím dále od nuly), tím je větší mezera mezi aproximacemi.
+ Kolem nuly je čísel nejvíce.
+ Reprezentace dat v počítači (int, double apod.) bude podrobněji rozebrána
+ pravděpodobně v nějaké otázce z APO.
+\end_layout
+
+\begin_layout Subsection
+JAVA - Primitivní datové typy
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+byte:
+\series default
+ Datový typ byte obsahuje 8bitové dvakrát doplněné celé číslo se znaménkem.
+ Jeho minimální hodnota je −128 a maximální 127.
+ Datový typ byte může být použit pro ušetření paměti ve velkých polích,
+ kde se může ve speciálních případech hodit každý bit.
+ Taktéž může být náhradou za typ int, kde mohou jeho limity pomoct objasnit
+ váš kód; takto je hodnota limitována víc než údajem v dokumentaci.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+short: 
+\series default
+Datový typ short je 16bitové dvakrát doplněné celé číslo.
+ Jeho minimální hodnota je −32 768 a maximální 32 767.
+ Stejně jako u typu byte jsou zde stejné případy použití: typ short můžete
+ použít k ušetření paměti při vytváření velkých polí u náročných aplikací.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+int: 
+\series default
+Datový typ int je 32bitové dvakrát doplněné celé číslo.
+ Jeho minimální hodnota je −2 147 483 648 a maximální 2 147 483 647 (2^31).
+ Pro celočíselné hodnoty je tento typ tou základní volbou, pokud se nedostanete
+ do výše popsaných situací.
+ Tento datový typ bude dostatečně velký pro většinu čísel ve vaší aplikaci,
+ pokud však budete potřebovat širší rozsah hodnot, použíjte místo něj typ
+ long.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+long: 
+\series default
+Datový typ long je 64bitové dvakrát doplněné celé číslo.
+ Jeho minimální hodnota je −9 223 372 036 854 775 808 a maximální 9 223
+ 372 036 854 775 807 (2^63).
+ Používejte tento datový typ, pokud vám nebude stačit rozsah hodnot poskytovaný
+ datovým typem int.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+float:
+\series default
+ Datový typ floatje 32bitové IEEE 754 číslo s pohyblivou desetinou čárkou.
+ Stejně jako u typu byte a short používejte typ float (místo double), pokud
+ potřebujete ušetřit paměť ve velkých polích.
+ Tento datový typ byste nikdy neměli používat pro přesné hodnoty, jako jsou
+ finanční částky.
+ Pro tento případ budete muset použít třídu java.math.BigDecimal.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+double:
+\series default
+ Datový typ double je 64bitové IEEE 754 číslo s pohyblivou desetinou čárkou.
+ Pro desetinná čísla je tento datový typ tou základní volbou.
+ Stejně jako typ float se double nehodí pro přesné hodnoty, jako jsou finanční
+ částky.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+boolean:
+\series default
+ Datový typ boolean má povoleny pouze 2 hodnoty: true a false.
+ Používejte tento datový typ, abyste specifikovali, zda je podmínka pravdivá
+ (true) nebo nepravdivá (false).
+ Tento datový typ obsahuje 1 bit informací, ale jeho velikost není přesně
+ definována.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+char:
+\series default
+ Datový typ char je jednoduchý 16bitový Unicode znak (proto jsou odstraněny
+ problémy s různými jazyky).
+ Jeho minimálni hodnou je u0000 (nebo 0) a maximální uffff (nebo 65535).
+ Konverze znaků probíhá v JAVA většinou automaticky podle nastavení jazyka
+ OS.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename images/javaPrimitivniTypy.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+byte +-*/ byte ...
+ int
+\end_layout
+
+\begin_layout Standard
+short +-*/ short ...
+ int 
+\end_layout
+
+\begin_layout Standard
+int +-*/ int ...
+ int (pozor na přetečení) 
+\end_layout
+
+\begin_layout Standard
+long +-*/ long ...
+ long
+\end_layout
+
+\begin_layout Subsection
+Typové konverze
+\end_layout
+
+\begin_layout Standard
+Typová konverze je operace, která hodnotu nějakého typu převede na hodnotu
+ jiného typu.
+\end_layout
+
+\begin_layout Itemize
+implicitní - např.
+ int na double (když se očekává hodnota double, ale je tam INT, dojde k
+ implicitní konverzi) - implicitní konverze je bezpečná
+\end_layout
+
+\begin_layout Itemize
+explicitiní - programátor musí explicitně označit, je potenciálně nebezpečná
+ (může dojít ke ztrátě informace) - eg.
+ double -> int, double d = 1E30; int i = (int)d; // i je 2147483647 asi
+ 2E10
+\end_layout
+
+\begin_layout Section
+Výrazy
+\end_layout
+
+\begin_layout Standard
+Výraz se skládá z operandů a operátorů.
+
+\series bold
+ Operandem
+\series default
+ může být konstanta, proměnná, volání metody nebo opět výraz.
+ 
+\series bold
+Operátory
+\series default
+ udávají, co se má provést s jednotlivými hodnotami operandů.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename images/operatoryPriorita.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pozor na asociativitu.
+ Odčítání je asociativní zleva, mocnění zprava.
+\end_layout
+
+\begin_layout Standard
+Přikazovací příkaz může být výraze: y = x = x + 6, tj.
+ y = (x = (x + 6));
+\end_layout
+
+\begin_layout Standard
+Operace && a || se vyhodnocují zkráceným způsobem, druhý operand se nevyhodnocuj
+e, když lze výsledek určit již z prvního operandu.
+\end_layout
+
+\begin_layout Section
+Výstup
+\end_layout
+
+\begin_layout Standard
+Pro výpis dat na obrazovku se v Javě používá příkaz System.out.println(parametr);
+ = výpis na standardní výstup.
+ Metoda je přetížená, jako její parametr lze zadat všechny primitivní datové
+ typy i String.
+\end_layout
+
+\begin_layout Subsection
+Formátovaný výstup
+\end_layout
+
+\begin_layout Standard
+Př.
+ System.out.printf("Cislo Pi = %6.3f %n ", Math.PI); 
+\end_layout
+
+\begin_layout Standard
+Specifikace formátu %[$indexParametru][modifikátor][šířka][.přesnost]konverze
+\end_layout
+
+\begin_layout Itemize
+konverze - povinný parametr 
+\end_layout
+
+\begin_layout Itemize
+typ celé číslo d,o,x - dekadicky, oktalově a hexadecimálně 
+\end_layout
+
+\begin_layout Itemize
+typ double f je desetinný zápis; e,E vědecký s exponentem
+\end_layout
+
+\begin_layout Itemize
+šířka - počet sázených míst, zarovnání vpravo
+\end_layout
+
+\begin_layout Itemize
+.přesnost - počet desetinných míst
+\end_layout
+
+\begin_layout Itemize
+modifikátor - v závislosti na typu konverze určuje další vlastnosti, například
+ pro konverzi f (typ double) –> symbol + určuje, že má být vždy sázeno znaménko,
+ –> symbol - určuje zarovnání vlevo, –> symbol 0 doplnění čísla zleva nulami.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename images/formatovanyVystup.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Vstup
+\end_layout
+
+\begin_layout Standard
+Pro vstup dat zadaných na klávesnici poslouží třída Scanner.
+ Je třeba vytvořit objekt třídy Scanner a napojit jej na standardní vstupní
+ proud: Scanner sc = new Scanner(System.in);
+\end_layout
+
+\begin_layout Itemize
+sc.nextInt() : přečte celé číslo z řádku zadaného klávesnicí (řádek je zakončen
+ klávesou Enter, číslo je zakončeno mezerou nebo Enter) a vrátí je jako
+ funkční hodnotu typu int
+\end_layout
+
+\begin_layout Itemize
+sc.nextDouble() : přečte číslo z řádku zadaného klávesnicí a vrátí je jako
+ funkční hodnotu typu double, jako oddělovač použijte .
+ nebo čárku v závislosti na definovaném jazyku OS.
+ Lze změnit pomocí před vytvořením Scanneru Locale.setDefault(Locale.ENGLISH);
+ 
+\end_layout
+
+\begin_layout Itemize
+sc.nextLine() : přečte zbytek řádku zadaného klávesnicí a vrátí je jako funkční
+ hodnotu typu String
+\end_layout
+
+\begin_layout Section
+Řídicí struktury
+\end_layout
+
+\begin_layout Standard
+Řídicí struktura je programová konstrukce, která se skládá z dílčích příkazů
+ a předepisuje pro ně způsob provedení.
+ Tři druhy řídicích struktur: 
+\end_layout
+
+\begin_layout Enumerate
+1.
+ posloupnost, předepisující postupné provedení dílčích příkazů 
+\end_layout
+
+\begin_layout Enumerate
+2.
+ větvení, předepisující provedení dílčích příkazů v závislosti na splnění
+ určité podmínky 
+\end_layout
+
+\begin_layout Enumerate
+3.
+ cyklus, předepisující opakované provedení dílčích příkazů v závislosti
+ na splnění určité podmínky
+\end_layout
+
+\begin_layout Subsection
+Podmínka
+\end_layout
+
+\begin_layout Standard
+Příkaz if (podmíněný příkaz) umožňuje větvení na základě podmínky.
+\end_layout
+
+\begin_layout Itemize
+if (podmínka) příkaz1 else příkaz2 
+\end_layout
+
+\begin_layout Itemize
+if (podmínka) příkaz1
+\end_layout
+
+\begin_layout Subsection
+Cyklus
+\end_layout
+
+\begin_layout Standard
+Základní příkaz cyklu, který má tvar: while (podmínka) příkaz (blok příkazů).
+\end_layout
+
+\begin_layout Standard
+Příkaz cyklu do se od příkazu while liší v tom, že podmínka se testuje až
+ za tělem cyklu.
+ Tvar příkazu: do příkaz while (podmínka);
+\end_layout
+
+\begin_layout Standard
+Poznámka k sémantice: příkaz do provede tělo cyklu alespoň jednou, nelze
+ jej tedy použít v případě, kdy lze očekávat ani jedno provedení těla cyklu
+\end_layout
+
+\begin_layout Standard
+Cyklus For: je často řízen proměnnou, pro kterou je stanoveno: 
+\end_layout
+
+\begin_layout Itemize
+jaká je počáteční hodnota
+\end_layout
+
+\begin_layout Itemize
+jaká je koncová hodnota 
+\end_layout
+
+\begin_layout Itemize
+jak změnit hodnotu proměnné po každém provedení těla cyklu
+\end_layout
+
+\begin_layout Subsubsection
+Konečnost cyklů
+\end_layout
+
+\begin_layout Standard
+Vstupní podmínku konečnosti cyklu lze určit téměř ke každému cyklu (někdy
+ je to velmi obtížné, až nespočetné).
+ Splnění vstupní podmínky konečnosti cyklu musí zajistit příkazy předcházející
+ příkazu cyklu.
+\end_layout
+
+\begin_layout Subsection
+Switch
+\end_layout
+
+\begin_layout Standard
+Příkaz switch (přepínač) umožňuje větvení do více větví na základě různých
+ hodnot výrazu (nejčastěji typu int nebo char).
+\end_layout
+
+\begin_layout Standard
+Sémantika (zjednodušeně): 
+\end_layout
+
+\begin_layout Itemize
+vypočte se hodnota výrazu a pak se provedou ty příkazy, které jsou označeny
+ konstantou označující stejnou hodnotu 
+\end_layout
+
+\begin_layout Itemize
+není-li žádná větev označena hodnotou výrazu, provedou se příkazydef
+\end_layout
+
+\begin_layout Section
+Funkce
+\end_layout
+
+\begin_layout Standard
+Funkce v programování je část programu, kterou je možné opakovaně volat
+ z různých míst kódu.
+ Funkce může mít argumenty (též parametry) – údaje, které jí jsou předávány
+ při volání – a návratovou hodnotu, kterou naopak vrací.
+\end_layout
+
+\begin_layout Standard
+Deklaraci funkce tvoří hlavička funkce a tělo funkce 
+\end_layout
+
+\begin_layout Standard
+• Hlavička funkce v jazyku Java má tvar static typ jméno(specifikace parametrů)
+ kde 
+\end_layout
+
+\begin_layout Standard
+- typ je typ výsledku funkce (funkční hodnoty) 
+\end_layout
+
+\begin_layout Standard
+- jméno je identifikátor funkce 
+\end_layout
+
+\begin_layout Standard
+- specifikací parametrů se deklarují parametry funkce, každá deklarace má
+ tvar typ_parametru jméno_parametru (a oddělují se čárkou) 
+\end_layout
+
+\begin_layout Standard
+- specifikace parametrů je prázdná, jde-li o funkci bez parametrů 
+\end_layout
+
+\begin_layout Standard
+• Tělo funkce je složený příkaz nebo blok, který se provede při volání funkce
+ 
+\end_layout
+
+\begin_layout Standard
+• Tělo funkce musí dynamicky končit příkazem return x; kde x je výraz, jehož
+ hodnota je výsledkem volání funkce
+\end_layout
+
+\begin_layout Subsection
+Parametry
+\end_layout
+
+\begin_layout Standard
+Parametry funkce slouží pro předání vstupních dat algoritmu, který je funkcí
+ realizován.
+ Parametr může být výraz.
+\end_layout
+
+\begin_layout Section
+Procedura
+\end_layout
+
+\begin_layout Standard
+Funkce, jejíž typ výsledku je void, nevrací žádnou hodnotu.
+\end_layout
+
+\begin_layout Section
+Rozklad problému na podproblémy
+\end_layout
+
+\begin_layout Standard
+Postupný návrh programu rozkladem problému na podproblémy:
+\end_layout
+
+\begin_layout Itemize
+zadaný problém rozložíme na podproblémy 
+\end_layout
+
+\begin_layout Itemize
+pro řešení podproblémů zavedeme abstraktní příkazy 
+\end_layout
+
+\begin_layout Itemize
+s pomocí abstraktních příkazů sestavíme hrubé řešení 
+\end_layout
+
+\begin_layout Itemize
+abstraktní příkazy realizujeme pomocí procedur (void)
+\end_layout
+
+\begin_layout Section
+Rekurze
+\end_layout
+
+\begin_layout Standard
+V imperativním programování rekurze představuje opakované vnořené volání
+ stejné funkce (podprogramu).
+\end_layout
+
+\begin_layout Subsection
+Rekurzivní algoritmus
+\end_layout
+
+\begin_layout Standard
+Rekurzivní algoritmus předepisuje výpočet „shora dolů“ v závislosti na velikosti
+ (složitosti) vstupních dat:
+\end_layout
+
+\begin_layout Itemize
+pro nejmenší (nejjednodušší) data je výpočet předepsán přímo 
+\end_layout
+
+\begin_layout Itemize
+pro obecná data je výpočet předepsán s využitím téhož algoritmu pro menší
+ (jednodušší) data
+\end_layout
+
+\begin_layout Standard
+Výhoda: jednoduchost a přehlednost (to je diskutabilní).
+\end_layout
+
+\begin_layout Standard
+Nevýhoda: Nevýhodou může být časová náročnost způsobená např.
+ zbytečným opakováním výpočtu.
+\end_layout
+
+\begin_layout Subsection
+Rekurzivní funkce
+\end_layout
+
+\begin_layout Standard
+Rekurzivní funkce (procedury) jsou přímou realizací rekurzivních algoritmů.
+ Použití: faktoriál, fibonacciho posloupnost (začíná 1,1,2,3,5,8...).
+ Fibonacci rekurzí (složitost exponenciální 
+\begin_inset Formula $2^{n}$
+\end_inset
+
+):
+\end_layout
+
+\begin_layout LyX-Code
+static int fib(int i) { 
+\end_layout
+
+\begin_layout LyX-Code
+   if (i<2) return 1; 
+\end_layout
+
+\begin_layout LyX-Code
+   return fib(i-1)+fib(i-2); 
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+Fibonacci iteračně (složitost 3n):
+\end_layout
+
+\begin_layout LyX-Code
+static int fib(int n) { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+int i, fibNMinus2=1; 
+\end_layout
+
+\begin_layout LyX-Code
+int fibNMinus1=1, fibN=1; 
+\end_layout
+
+\begin_layout LyX-Code
+for (i=2; i<=n; i++) { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+fibNMinus2 = fibNMinus1; 
+\end_layout
+
+\begin_layout LyX-Code
+fibNMinus1 = fibN; 
+\end_layout
+
+\begin_layout LyX-Code
+fibN = fibNMinus1 + fibNMinus2;
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+return fibN; 
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Section
+Iterace
+\end_layout
+
+\begin_layout Standard
+Iterace v programování znamená opakované volání funkce v počítačovém programu.
+ Zvláštní formou iterace je rekurze.
+ Pro naše účely lze chápat iteraci jako opakované provádění bloku příkazu,
+ typicky pomocí cyklu.
+\end_layout
+
+\end_body
+\end_document
