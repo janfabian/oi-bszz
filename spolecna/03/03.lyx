@@ -1,0 +1,676 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Společná část: 3 - DMA
+\end_layout
+
+\begin_layout Section
+Vlastnosti celých čísel
+\end_layout
+
+\begin_layout Itemize
+celá čísla Z se skládají z přirozených čísel, nuly a záporných celých čísel
+\end_layout
+
+\begin_layout Itemize
+množina je uzavřena na operaci sčítání, odčítání a násobení
+\end_layout
+
+\begin_layout Subsection
+Dělitelnost
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Definice: 
+\series default
+Nechť a, b
+\begin_inset Formula $\in$
+\end_inset
+
+ Z.
+ Řekneme, že a dělí b, značeno a|b, jestliže existuje k 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\in$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ Z takové, že b = k · a.
+ V takovém případě říkáme, že a je faktor b a že b je násobek a.
+ Také říkáme, že b je dělitelné číslem a.
+ Pokud toto není pravda, tak píšeme a
+\begin_inset Formula $\nmid$
+\end_inset
+
+b.
+\end_layout
+
+\begin_layout Itemize
+Číslo d
+\begin_inset Formula $\in$
+\end_inset
+
+N je 
+\series bold
+společný dělitel
+\series default
+ (common divisor) čísel a, b, jestliže d|a a d|b.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+největší společný dělitel
+\series default
+ (greatest common divisor), značeno gcd(a, b) je největší prvek množiny
+ jejich společných dělitelů, pokud je alespoň jedno z a,b nenulové.
+\end_layout
+
+\begin_layout Itemize
+Číslo d
+\begin_inset Formula $\in$
+\end_inset
+
+N je 
+\series bold
+společný násobek
+\series default
+ (common multiple) čísel a, b, jestliže a|d a b|d.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+nejmenší společný násobek
+\series default
+ (least common multiple), značeno lcm(a, b) je nejmenší prvek množiny jejich
+ společných násobků, pokud jsou obě a,b nenulové.
+\end_layout
+
+\begin_layout Itemize
+lcm(a, 0) = lcm(0, b) = 0
+\end_layout
+
+\begin_layout Itemize
+gcd(0, 0) = 0
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+lcm(a, b) · gcd(a, b) = |a| · |b|
+\end_layout
+
+\begin_layout Itemize
+čísla a, b 
+\begin_inset Formula $\in$
+\end_inset
+
+ Z jsou 
+\series bold
+nesoudělná
+\series default
+, jestliže gcd(a, b) = 1
+\end_layout
+
+\begin_layout Subsection
+Prvočíslo
+\end_layout
+
+\begin_layout Itemize
+je přirozené číslo, které je beze zbytku dělitelné 
+\series bold
+právě dvěma různými přirozenými čísly
+\series default
+, a to číslem 
+\series bold
+jedna
+\series default
+ a 
+\series bold
+sebou samým
+\series default
+ (tedy 1 není prvočíslo)
+\end_layout
+
+\begin_layout Itemize
+Přirozená čísla různá od jedné, která nejsou prvočísla, se nazývají 
+\series bold
+složená čísla
+\series default
+.
+\end_layout
+
+\begin_layout Subsection
+Eukleidův algoritmus
+\end_layout
+
+\begin_layout Standard
+Lze jím vypočítat 
+\series bold
+největšího společného dělitele
+\series default
+ dvou přirozených čísel.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+vychází z lemmatu
+\series default
+: Nechť a, b 
+\begin_inset Formula $\in$
+\end_inset
+
+ N, nechť q, r
+\begin_inset Formula $\in$
+\end_inset
+
+
+\begin_inset Formula $N_{0}$
+\end_inset
+
+ splňují a = qb + r a 0 ≤ r < b.
+ Pak platí následující: d 
+\begin_inset Formula $\in$
+\end_inset
+
+ N je společný dělitel a, b právě tehdy, když je to společný dělitel b,
+ r.
+ 
+\end_layout
+
+\begin_layout Itemize
+gcd(a, b) = gcd(b, r)
+\end_layout
+
+\begin_layout Itemize
+opakovaně hledáme gcd pro dvojici b, r místo a, b
+\end_layout
+
+\begin_layout Subsubsection
+příklad: Chceme najít gcd(408, 108)
+\end_layout
+
+\begin_layout Standard
+Máme 408 = 3 · 108 + 84 (408 mod 108 = 84), proto gcd(408, 108) = gcd(108,
+ 84).
+ 
+\end_layout
+
+\begin_layout Standard
+Máme 108 = 1 · 84 + 24, proto gcd(408, 108) = gcd(108, 84) = gcd(84, 24).
+ 
+\end_layout
+
+\begin_layout Standard
+Máme 84 = 3 · 24 + 12, proto gcd(408, 108) = gcd(108, 84) = gcd(84, 24)
+ = gcd(24, 12).
+ 
+\end_layout
+
+\begin_layout Standard
+Máme 24 = 2 · 12 + 0, proto gcd(408, 108) = gcd(108, 84) = gcd(84, 24) =
+ gcd(24, 12) = gcd(12, 0) = 12.
+\end_layout
+
+\begin_layout Section
+Binární relace
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Definice:
+\series default
+ Nechť A,B jsou množiny.
+ Libovolná podmnožina R 
+\begin_inset Formula $\subseteq$
+\end_inset
+
+ A × B se nazývá relace z A do B.
+ Jestliže (a, b)
+\begin_inset Formula $\in$
+\end_inset
+
+ R, pak to značíme aRb a řekneme, že a je v relaci s b vzhledem k R.
+ Jestliže (a, b) /
+\begin_inset Formula $\in$
+\end_inset
+
+ R, pak řekneme, že a není v relaci s b vzhledem k R.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Druhy relací:
+\end_layout
+
+\begin_layout Itemize
+R je reflexivní, jestliže pro všechna a 
+\begin_inset Formula $\in$
+\end_inset
+
+ A platí aRa.
+ např.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+je stejný
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+R je symetrická, jestliže pro všechna a, b 
+\begin_inset Formula $\in$
+\end_inset
+
+ A platí (aRb 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ bRa).
+ 
+\begin_inset Quotes eld
+\end_inset
+
+je sourozencem
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+R je antisymetrická, jestliže pro všechna a, b 
+\begin_inset Formula $\in$
+\end_inset
+
+ A platí ([aRb ∧ bRa] 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ a = b).
+ 
+\end_layout
+
+\begin_layout Itemize
+R je tranzitivní, jestliže pro všechna a, b, c 
+\begin_inset Formula $\in$
+\end_inset
+
+ A platí ([aRb ∧ bRc] 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ aRc).
+ 
+\begin_inset Quotes eld
+\end_inset
+
+je vyšší; A je vyšší než B, B je vyšší než C 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ A je vyšší než C
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsection
+Ekvivalence
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Definice:
+\series default
+ Nechť R je relace na nějaké množině A.
+ Řekneme, že R je ekvivalence, jestliže je 
+\series bold
+reflexivní, symetrická a tranzitivní
+\series default
+.
+\end_layout
+
+\begin_layout Subsubsection
+Třída ekvivalence 
+\end_layout
+
+\begin_layout Standard
+Každá ekvivalence rozdělí množinu A na systém disjunktních množin, které
+ pak nazýváme třídy ekvivalence.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Definice:
+\series default
+ Nechť R je relace ekvivalence na nějaké množině A.
+ Pro a
+\begin_inset Formula $\in$
+\end_inset
+
+A definujeme třídu ekvivalence prvku a (equivalence class of a) vzhledem
+ k R jako [a]
+\begin_inset Formula $_{R}$
+\end_inset
+
+ = {b 
+\begin_inset Formula $\in$
+\end_inset
+
+ A; aRb}.
+\end_layout
+
+\begin_layout Paragraph*
+Příklad: 
+\end_layout
+
+\begin_layout Standard
+Mějme ekvivalenci R na množině celých číslech Z definovanou takto: [a, b]
+ 
+\begin_inset Formula $\in$
+\end_inset
+
+ R právě tehdy, když |a| = |b|.
+ Pak:
+\end_layout
+
+\begin_layout Standard
+Z[0] = {0}.
+ Nula je v relaci pouze s nulou.
+ 
+\end_layout
+
+\begin_layout Standard
+Z[1] = {−1, 1}.
+ Jednička je v relaci s jedničkou a s minus jedničkou, protože |1| = |−1|.
+ 
+\end_layout
+
+\begin_layout Standard
+Z[2] = {−2, 2}.
+ Dvojka je v relaci s dvojkou a s minus dvojkou.
+ 
+\end_layout
+
+\begin_layout Standard
+Z[3] = {−3, 3}.
+ … 
+\end_layout
+
+\begin_layout Subsection
+Částečné uspořádání
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Definice: 
+\series default
+Nechť R je relace na nějaké množině A.
+ Řekneme, že R je částečné uspořádání, jestliže je 
+\series bold
+reflexivní, antisymetrická a tranzitivní
+\series default
+.
+ V tom případě řekneme, že dvojice (A, R) je částečně uspořádaná množina.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Příklad:
+\end_layout
+
+\begin_layout Standard
+Relace ≤ je uspořádání na přirozených, celých, racionálních i reálných číslech.
+\end_layout
+
+\begin_layout Standard
+Relace 
+\begin_inset Formula $\subseteq$
+\end_inset
+
+ je uspořádání na třídě všech množin (na univerzální třídě).
+\end_layout
+
+\begin_layout Standard
+Relace dělitelnosti | (a dělí b) je uspořádáním na přirozených číslech
+\end_layout
+
+\begin_layout Standard
+Relace "Být potomkem" je uspořádáním na množině osob.
+\end_layout
+
+\begin_layout Subsubsection
+Hesseův diagram
+\end_layout
+
+\begin_layout Itemize
+Uspořádané množiny můžeme zakreslit pomocí Hasseova diagramu.
+ 
+\end_layout
+
+\begin_layout Itemize
+vrcholy představují prvky množiny
+\end_layout
+
+\begin_layout Itemize
+hrana mezi vrcholy (a, b) nám říká, že a < b a zároveň neexistuje c takové,
+ že a < c < b.
+ Tedy mezi prvky a a b už žádný jiný prvek není.
+ Přitom musí platit, že v grafu je vrchol a níže než vrchol b.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Příklad: 
+\end_layout
+
+\begin_layout Standard
+Dělitelé čísla 60: A = {1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60}.
+ Uspořádání podle dělitelnosti:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/usp2.png
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Počítání modulo
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Definice
+\series default
+ Nechť n
+\begin_inset Formula $\in$
+\end_inset
+
+N.
+ Řekneme, že čísla a, b
+\begin_inset Formula $\in$
+\end_inset
+
+Z jsou 
+\series bold
+kongruentní modulo
+\series default
+ n, značeno a 
+\begin_inset Formula $\equiv$
+\end_inset
+
+ b (mod n), jestliže n|(a−b).
+\end_layout
+
+\begin_layout Standard
+Nechť n 
+\begin_inset Formula $\in$
+\end_inset
+
+ N.
+ Pro čísla a, b 
+\begin_inset Formula $\in$
+\end_inset
+
+ Z jsou následující podmínky ekvivalentní: 
+\end_layout
+
+\begin_layout Itemize
+a ≡ b (mod n)
+\end_layout
+
+\begin_layout Itemize
+existuje k 
+\begin_inset Formula $\in$
+\end_inset
+
+ Z takové, že a = b + kn
+\end_layout
+
+\begin_layout Itemize
+mod n = b mod n, tj.
+ jsou si rovny zbytky po dělení číslem n.
+\end_layout
+
+\begin_layout Subsection
+vlastnosti
+\end_layout
+
+\begin_layout Standard
+Nechť n 
+\begin_inset Formula $\in$
+\end_inset
+
+ N, uvažujme a, b, u, v 
+\begin_inset Formula $\in$
+\end_inset
+
+ Z takové, že a ≡ u (mod n) a b ≡ v (mod n): 
+\end_layout
+
+\begin_layout Itemize
+a + b ≡ u + v (mod n)
+\end_layout
+
+\begin_layout Itemize
+a − b ≡ u − v (mod n)
+\end_layout
+
+\begin_layout Itemize
+ab ≡ uv (mod n)
+\end_layout
+
+\end_body
+\end_document
