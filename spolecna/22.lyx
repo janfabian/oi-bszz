@@ -1,0 +1,1775 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass scrreprt
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{chapter}{21} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Regulární výrazy a regulární jazyky, Kleeneova věta.
+ Algoritmická složitost úloh souvisejících s regulárními jazyky.
+ (A4B01JAG)
+\end_layout
+
+\begin_layout Section
+Regulární jazyky
+\end_layout
+
+\begin_layout Standard
+Regulární jazyky viz kapitola 21 Deterministický konečný automat, jazyk
+ přijímaný konečným automatem.
+\end_layout
+
+\begin_layout Subsection
+Uzávěrkové vlastnosti třídy regulárních jazyků
+\end_layout
+
+\begin_layout Standard
+Třída regulárních jazyků je uzavřena na sjednocení, průnik, doplněk i rozdíl.
+\end_layout
+
+\begin_layout Standard
+Přesněji, jestliže 
+\begin_inset Formula $L_{1}$
+\end_inset
+
+ a 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+ jsou regulární jazyky, pak také 
+\begin_inset Formula $L_{1}\cup L_{2}$
+\end_inset
+
+, 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $L_{1}\cap L_{2}$
+\end_inset
+
+, 
+\begin_inset Formula $\bar{L_{1}}=\Sigma^{\star}\setminus L_{1}$
+\end_inset
+
+ a 
+\begin_inset Formula $L_{1}\setminus L_{2}$
+\end_inset
+
+ jsou také regulární jazyky.
+\end_layout
+
+\begin_layout Subsubsection
+Zřetězení jazyků
+\end_layout
+
+\begin_layout Standard
+Jsou dány jazyky 
+\begin_inset Formula $L_{1}$
+\end_inset
+
+ a 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+ nad abecdou Σ.
+ 
+\emph on
+Zřetězení
+\emph default
+ jazyků 
+\begin_inset Formula $L_{1}$
+\end_inset
+
+ a 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+ je jazyk 
+\begin_inset Formula $L_{1}L_{2}$
+\end_inset
+
+ definovaný
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+L_{1}L_{2}=\left\{ uv|u\in L_{1},v\in L_{2}\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Tvrzení
+\series default
+: Třída regulárních jazyků je uzavřena na zřetězení.
+ Přesněji, jsou-li jazyky 
+\begin_inset Formula $L_{1}$
+\end_inset
+
+ a 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+ regulární, je regulární i jazyk 
+\begin_inset Formula $L_{1}L_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Operace 
+\begin_inset Formula $\star$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Je dán jazyk 
+\emph on
+L
+\emph default
+ nad abecedou Σ.
+ Definujeme 
+\begin_inset Formula $L_{0}$
+\end_inset
+
+ = 
+\begin_inset Formula $\left\{ \epsilon\right\} $
+\end_inset
+
+, 
+\begin_inset Formula $L^{i+1}=L^{i}L$
+\end_inset
+
+ pro 
+\emph on
+i
+\emph default
+ 
+\begin_inset Formula $\geq$
+\end_inset
+
+ 0.
+ Pak operace 
+\begin_inset Formula $\star$
+\end_inset
+
+ pro jazyk 
+\emph on
+L
+\emph default
+ (
+\begin_inset Formula $L^{\star}$
+\end_inset
+
+) je definována
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+L^{\star}=\left\{ \epsilon\right\} \cup L\cup L^{2}\cup L^{3}\cup\ldots=\bigcup_{i=0}^{\text{∞}}L^{i}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Poznamenejme, že operaci 
+\begin_inset Formula $\star$
+\end_inset
+
+ se též říká 
+\emph on
+Kleeneho operátor
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Tvrzení
+\series default
+: Třída regulárních jazyků je uzavřena na operaci 
+\begin_inset Formula $\star$
+\end_inset
+
+.
+ Přesněji, je-li jazyk 
+\emph on
+L
+\emph default
+ regulární, je regulární i jazyk 
+\begin_inset Formula $L^{\star}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Regulární výrazy
+\end_layout
+
+\begin_layout Standard
+Regulární výrazy slouží k ještě jinému popisu regulárních jazyků.
+ Právě regulární výrazy daly jméno třídě jazyků přijímaných konečnými automaty
+ (ať už deterministickými nebo nedeterministickými).
+\end_layout
+
+\begin_layout Subsubsection
+Regulární výrazy nad abecedou
+\end_layout
+
+\begin_layout Standard
+Je dána abeceda 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+.
+ Množina všech regulárních výrazů nad 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ je definována:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\textrm{Ø}$
+\end_inset
+
+ je regulární výraz,
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ je regulární výraz,
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+a
+\series default
+ je regulární výraz pro každé písmeno 
+\begin_inset Formula $a\in\Sigma$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Itemize
+jsou-li 
+\series bold
+
+\begin_inset Formula $\mathbf{r_{1}}$
+\end_inset
+
+
+\series default
+ a 
+\begin_inset Formula $\mathbf{r_{2}}$
+\end_inset
+
+, pak 
+\begin_inset Formula $\mathbf{r_{1}}+\mathbf{r_{2}}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{r_{1}r_{2}}$
+\end_inset
+
+ a 
+\begin_inset Formula $\mathbf{r_{1}^{\star}}$
+\end_inset
+
+ jsou regulární výrazy.
+\end_layout
+
+\begin_layout Subsubsection
+Jazyk odpovídající regulárnímu výrazu
+\end_layout
+
+\begin_layout Standard
+Každému regulárnímu výrazu nad abecedou Σ odpovídá jazyk nad abecedou Σ
+ a to takto:
+\end_layout
+
+\begin_layout Itemize
+Regulárnímu výrazu 
+\begin_inset Formula $\textrm{Ø}$
+\end_inset
+
+ odpovídá jazyk 
+\begin_inset Formula $\textrm{Ø}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Regulárnímu výrazu 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ odpovídá jazyk {
+\begin_inset Formula $\epsilon$
+\end_inset
+
+}.
+\end_layout
+
+\begin_layout Itemize
+Je-li 
+\emph on
+a
+\emph default
+ 
+\begin_inset Formula $\in$
+\end_inset
+
+ Σ, pak regulárnímu výrazu 
+\series bold
+a
+\series default
+ odpovídá jazyk {
+\emph on
+a
+\emph default
+}.
+\end_layout
+
+\begin_layout Itemize
+Jestliže regulárnímu výrazu 
+\begin_inset Formula $\mathbf{r_{1}}$
+\end_inset
+
+ odpovídá jazyk 
+\begin_inset Formula $L_{1}$
+\end_inset
+
+ a regulárnímu výrazu 
+\begin_inset Formula $\mathbf{r_{2}}$
+\end_inset
+
+ odpovídá jazyk 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+, pak regulárnímu výrazu 
+\begin_inset Formula $\mathbf{r_{1}}+\mathbf{r_{2}}$
+\end_inset
+
+ odpovídá jazyk 
+\begin_inset Formula $L_{1}\cup L_{2}$
+\end_inset
+
+ a regulárnímu výrazu 
+\begin_inset Formula $\mathbf{r_{1}r_{2}}$
+\end_inset
+
+ odpovídá jazyk 
+\begin_inset Formula $L_{1}L_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Jestliže regulárnímu výrazu 
+\begin_inset Formula $\mathbf{r}$
+\end_inset
+
+ odpovídá jazyk 
+\emph on
+L
+\emph default
+, pak regulárnímu výrazu 
+\begin_inset Formula $\mathbf{r^{\star}}$
+\end_inset
+
+ odpovídá jazyk 
+\begin_inset Formula $L^{\star}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Věta
+\series default
+: Každý regulární výraz nad abecedou Σ odpovídá regulárnímu jazyku (nad
+ abecedou Σ), tj.
+ jazyku, který je přijímán konečným automatem.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Důkaz
+\series default
+: Regulárním výrazům 
+\begin_inset Formula $\textrm{Ø}$
+\end_inset
+
+, 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+, 
+\series bold
+a
+\series default
+ (pro 
+\begin_inset Formula $a$
+\end_inset
+
+ 
+\begin_inset Formula $\in$
+\end_inset
+
+ Σ) odpovídají po řadě jazyky 
+\begin_inset Formula $\textrm{Ø}$
+\end_inset
+
+, {
+\begin_inset Formula $\epsilon$
+\end_inset
+
+}, {
+\emph on
+a
+\emph default
+}.
+ Všechny tyto jazyky jsou přijímány konečným automatem.
+\end_layout
+
+\begin_layout Standard
+O třídě jazyků přijímaných konečnými automaty víme, že je uzavřena na sjednocení
+, zřetězení a Kleeneho operaci 
+\begin_inset Formula $\star$
+\end_inset
+
+.
+ To znamená, že jsou-li jazyky odpovídající regulárním výrazům 
+\series bold
+r
+\series default
+, 
+\begin_inset Formula $\mathbf{r_{1}}$
+\end_inset
+
+ a 
+\begin_inset Formula $\mathbf{r_{2}}$
+\end_inset
+
+ přijímány konečnými automaty, pak totéž platí i pro jazyky odpovídající
+ regulárním výrazům 
+\begin_inset Formula $\mathbf{r_{1}}+\mathbf{r_{2}}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{r_{1}r_{2}}$
+\end_inset
+
+ a 
+\begin_inset Formula $\mathbf{r^{\star}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Kleeneho věta
+\end_layout
+
+\begin_layout Standard
+Každý jazyk přijímaný konečným automatem je možné popsat regulárním výrazem.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Důkaz
+\series default
+: Je dán DFA 
+\emph on
+M
+\emph default
+ = (
+\emph on
+Q
+\emph default
+, Σ, 
+\begin_inset Formula $\delta$
+\end_inset
+
+, 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+,
+\emph on
+ F
+\emph default
+), který přijímá jazyk 
+\emph on
+L
+\emph default
+.
+ Pro jednoduchost označme množinu stavů 
+\emph on
+Q
+\emph default
+ = {
+\begin_inset Formula $1,\ldots,n$
+\end_inset
+
+} a počátěčni stav 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+ = 1.
+ Pro 
+\emph on
+k
+\emph default
+ = 
+\begin_inset Formula $0,1,\ldots,n$
+\end_inset
+
+ definujeme množiny slov 
+\begin_inset Formula $R_{i,j}^{(k)}$
+\end_inset
+
+ takto
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $R_{i,j}^{(k)}$
+\end_inset
+
+ je množina těch slov 
+\begin_inset Formula $w$
+\end_inset
+
+, které 
+\begin_inset Formula $\delta^{\star}\left(i,w\right)=j$
+\end_inset
+
+ a sled z 
+\begin_inset Formula $i$
+\end_inset
+
+ do 
+\begin_inset Formula $j$
+\end_inset
+
+ prochází pouze přes stavy 
+\begin_inset Formula $1,\ldots,k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Platí 
+\begin_inset Formula $R_{i,j}^{(0)}=\left\{ a\in\Sigma|\delta\left(i,a\right)=j\right\} $
+\end_inset
+
+, což je konečná množina písmen.
+ Proto umíme množinu 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $R_{i,j}^{(0)}$
+\end_inset
+
+ popsat regulárním výrazem.
+\end_layout
+
+\begin_layout Standard
+Jestliže všechny množiny slov 
+\begin_inset Formula $R_{i,j}^{(k)}$
+\end_inset
+
+ umíme popsat regulárním výrazem 
+\begin_inset Formula $\mathbf{r}_{i,j}^{k}$
+\end_inset
+
+, pak pro množinu slov 
+\begin_inset Formula $R_{i,j}^{(k+1)}$
+\end_inset
+
+ platí
+\begin_inset Formula 
+\[
+R_{i,j}^{(k+1)}=R_{i,j}^{(k)}\cup R_{i,k+1}^{(k)}\left(R_{k+1,k+1}^{(k)}\right)^{\star}R_{k+1,j}^{(k)}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tedy 
+\begin_inset Formula $R_{i,j}^{(k+1)}$
+\end_inset
+
+ popíšeme regulárním výrazem 
+\begin_inset Formula $\mathbf{r}_{i,j}^{k}+\mathbf{r}_{i,k+1}^{k}\left(\mathbf{r}_{k+1,k+1}^{k}\right)^{\star}\mathbf{r}_{k+1,j}^{k}$
+\end_inset
+
+, což je opět regulární výraz.
+\end_layout
+
+\begin_layout Standard
+Navíc jazyk 
+\begin_inset Formula $L$
+\end_inset
+
+ je sjednocení všech množin 
+\begin_inset Formula $R_{1,j}^{(n)}$
+\end_inset
+
+ pro 
+\begin_inset Formula $j\in F$
+\end_inset
+
+.
+ Proto jazyku 
+\begin_inset Formula $L$
+\end_inset
+
+ odpovídá regulární výraz 
+\begin_inset Formula $\Sigma_{j\in F}\mathbf{r}_{1,j}^{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Aplikace regulárních výrazů
+\end_layout
+
+\begin_layout Enumerate
+Program 
+\begin_inset Formula $grep$
+\end_inset
+
+ (Global search for Regular Expression and Print).
+\end_layout
+
+\begin_layout Enumerate
+Využití v editorech.
+\end_layout
+
+\begin_layout Enumerate
+Využití v programovacích jazycích.
+\end_layout
+
+\begin_layout Enumerate
+Využití při syntaktické analýze v překladačích.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Poznámka
+\series default
+: Zavedli jsme regulární výrazy tak, jak jsou definovány v teorii konečných
+ automatů.
+ Při praktickém použití regulárních výrazů v computer science se používá
+ jiné značení, a navíc se zavádí rozšířené regulární výrazy, které pak už
+ nepopisují jen regulární jazyky.
+ Víc o těchto regulárních výrazech najdete na webové stránce Pavla Satrapy
+ 
+\emph on
+http://www.nti.tul.cz/ satrapa/docs/regvyr/
+\emph default
+.
+\end_layout
+
+\begin_layout Subsubsection
+Některé rovnosti mezi regulárními výrazy
+\end_layout
+
+\begin_layout Standard
+Jsou-li 
+\series bold
+r
+\series default
+, 
+\series bold
+p
+\series default
+ a 
+\series bold
+q 
+\series default
+regulární výrazy, pak platí následující rovnosti (to znamená: regulární
+ výraz odpovídající levé straně a regulární výraz odpovídající pravé straně
+ popisují stejný jazyk):
+\series bold
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+p
+\series default
+ + 
+\series bold
+q
+\series default
+ = 
+\series bold
+p
+\series default
+ + 
+\series bold
+q
+\series default
+,
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+r
+\series default
+ (
+\series bold
+p
+\series default
+ + 
+\series bold
+q
+\series default
+) = 
+\series bold
+r p
+\series default
+ + 
+\series bold
+r q
+\series default
+,
+\end_layout
+
+\begin_layout Enumerate
+(
+\series bold
+p
+\series default
+ + 
+\series bold
+q
+\series default
+) 
+\series bold
+r
+\series default
+ = 
+\series bold
+p r
+\series default
+ + 
+\series bold
+q r
+\series default
+,
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\mathbf{r}^{\star}\right)^{\star}$
+\end_inset
+
+= 
+\begin_inset Formula $\mathbf{r}^{\star}$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\mathbf{p}+\mathbf{q}\right)^{\star}$
+\end_inset
+
+ = 
+\begin_inset Formula $\left(\mathbf{p}^{\star}\mathbf{q}^{\star}\right)^{\star}$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\mathbf{p}+\mathbf{q}\right)^{\star}$
+\end_inset
+
+ = 
+\begin_inset Formula $\left(\mathbf{p}^{\star}+\mathbf{q}\right)^{\star}$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Enumerate
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $\left(\mathbf{p}+\mathbf{q}\right)^{\star}$
+\end_inset
+
+ = 
+\begin_inset Formula $\left(\mathbf{p}^{\star}\mathbf{q}\right)^{\star}\mathbf{p}^{\star}$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\mathbf{r}^{\star}$
+\end_inset
+
+ = 
+\begin_inset Formula $\epsilon+\mathbf{r}\mathbf{r}^{\star}$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\mathbf{r}\mathbf{r}^{\star}$
+\end_inset
+
+ = 
+\begin_inset Formula $\mathbf{r}^{\star}\mathbf{r}$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\mathbf{pq}\right)^{\star}$
+\end_inset
+
+ = 
+\begin_inset Formula $\epsilon+\mathbf{p}\left(\mathbf{qp}\right)^{\star}\mathbf{q}$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\mathbf{pq}\right)^{\star}\mathbf{p}$
+\end_inset
+
+ = 
+\begin_inset Formula $\mathbf{p}\left(\mathbf{qp}\right)^{\star}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Další uzávěrkové vlastnosti třídy regulárních jazyků
+\end_layout
+
+\begin_layout Subsubsection
+Homomorfismus
+\end_layout
+
+\begin_layout Standard
+Jsou dány dvě abecedy Σ, 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ a zobrazení 
+\emph on
+h
+\emph default
+, které každému písmenu 
+\emph on
+a
+\emph default
+ 
+\begin_inset Formula $\in$
+\end_inset
+
+ Σ přiřadí slovo 
+\emph on
+h
+\emph default
+(
+\emph on
+a
+\emph default
+) nad abecedou 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Zobrazení 
+\begin_inset Formula $h$
+\end_inset
+
+ rozšíříme na zobrazení, které každému slovu 
+\begin_inset Formula $u\in\Sigma^{\star}$
+\end_inset
+
+ přiřazuje slovo nad 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ takto:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $h\left(\epsilon\right)=\epsilon$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $h\left(ua\right)=h\left(u\right)h\left(a\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Obraz jazyka 
+\begin_inset Formula $L$
+\end_inset
+
+ nad 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ je definován 
+\begin_inset Formula $h\left(L\right)=\cup\left\{ h\left(w\right)|w\in L\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Takto definované zobrazení 
+\begin_inset Formula $h$
+\end_inset
+
+ se nazývá 
+\emph on
+homomorfismus
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Příklad
+\series default
+: 
+\begin_inset Formula $\Sigma=\left\{ 0,1\right\} $
+\end_inset
+
+, 
+\begin_inset Formula $\Gamma=\left\{ a,b\right\} $
+\end_inset
+
+ a 
+\begin_inset Formula $h\left(0\right)=ab^{2}$
+\end_inset
+
+, 
+\begin_inset Formula $h\left(1\right)=bab$
+\end_inset
+
+.
+ Pak 
+\begin_inset Formula $h\left(010\right)=ab^{2}babab^{2}=ab^{2}\left(ba\right)^{2}b^{2}$
+\end_inset
+
+.
+ Homomorfní obraz jazyka 
+\begin_inset Formula $L=\left\{ 10^{k}|k\geq0\right\} $
+\end_inset
+
+ je 
+\begin_inset Formula $h\left(L\right)=\left\{ bab\left(ab^{2}\right)^{k}|k\geq0\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Substituce
+\end_layout
+
+\begin_layout Standard
+Obecnější pojem než homomorfismus je tzv.
+ substituce.
+ Jsou dány dvě abecedy Σ, 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ a zobrazení 
+\begin_inset Formula $\sigma$
+\end_inset
+
+, které každému písmenu 
+\emph on
+a
+\emph default
+ 
+\begin_inset Formula $\in$
+\end_inset
+
+ Σ přiřadí jazyk nad abecedou 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Analogicky jako pro homomorfismus zobrazení 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ rozšíříme na zobrazení, které každému slovu 
+\begin_inset Formula $u\in\Sigma^{\star}$
+\end_inset
+
+ přiřazuje jazyk nad 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ takto:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\sigma\left(\epsilon\right)=\left\{ \epsilon\right\} $
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\sigma\left(ua\right)=\sigma\left(u\right)\sigma\left(a\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Obraz jazyka 
+\begin_inset Formula $L$
+\end_inset
+
+ nad 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ je 
+\begin_inset Formula $\sigma\left(L\right)=\cup\left\{ \sigma\left(w\right)|w\in L\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Takto definované zobrazení 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ se nazývá 
+\emph on
+substituce
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Příklad
+\series default
+: 
+\begin_inset Formula $\Sigma=\left\{ 0,1\right\} $
+\end_inset
+
+, 
+\begin_inset Formula $\Gamma=\left\{ a,b\right\} $
+\end_inset
+
+, 
+\begin_inset Formula $\sigma\left(0\right)=L_{1}=\left\{ a^{n}|n\geq0\right\} $
+\end_inset
+
+, 
+\begin_inset Formula $\sigma\left(1\right)=L_{2}=\left\{ b^{n}|n\geq0\right\} $
+\end_inset
+
+.
+ Pak 
+\begin_inset Formula $\sigma\left(01\right)=L_{1}L_{2}=\left\{ a^{n}b^{m}|n,m\geq0\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Věta
+\end_layout
+
+\begin_layout Standard
+Třída regulárních jazyků je uzavřena na homomorfismy.
+ Jinými slovy, jestliže 
+\emph on
+L
+\emph default
+ je regulární jazyk nad abecedou Σ a 
+\emph on
+h
+\emph default
+ je homomorfismus z Σ do 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+, pak 
+\begin_inset Formula $h\left(L\right)$
+\end_inset
+
+ je regulární jazyk nad abecedou 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Poznamenejme, že obdobná věta platí i pro substituce.
+ Je-li 
+\emph on
+L
+\emph default
+ regulární jazyk nad abecedou Σ a 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ je taková substituce z Σ do 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+, že každý z jazyků 
+\begin_inset Formula $\sigma\left(a\right)$
+\end_inset
+
+ pro 
+\emph on
+a
+\emph default
+ 
+\begin_inset Formula $\in$
+\end_inset
+
+ Σ je regulární jazyk nad 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+, pak jazyk 
+\begin_inset Formula $\sigma\left(L\right)$
+\end_inset
+
+ je také regulární jazyk nad 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Věta
+\end_layout
+
+\begin_layout Standard
+Třída regulárních jazyků je uzavřena na inversní homomorfismy.
+ Jinými slovy, jestliže 
+\emph on
+h
+\emph default
+ je homomorfismus a 
+\emph on
+L
+\emph default
+ je regulární jazyk nad abecedou 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+, pak jazyk 
+\begin_inset Formula $h^{-1}\left(L\right)$
+\end_inset
+
+ je regulární jazyk nad abecedou Σ.
+\end_layout
+
+\begin_layout Standard
+Připomeňme, že 
+\begin_inset Formula $h^{-1}\left(L\right)=\left\{ u\in\Sigma^{\star}|h\left(u\right)\in L\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Příklad
+\series default
+: Uvažujme jazyk 
+\begin_inset Formula $L$
+\end_inset
+
+ nad abecedou 
+\begin_inset Formula $\Gamma=\left\{ a,b\right\} $
+\end_inset
+
+ popsaný regulárním výrazem 
+\begin_inset Formula $\left(\mathbf{00}+\mathbf{1}\right)^{\star}$
+\end_inset
+
+ a homomorfismus 
+\begin_inset Formula $h$
+\end_inset
+
+, kde 
+\begin_inset Formula $h\left(a\right)=01$
+\end_inset
+
+ a 
+\begin_inset Formula $h\left(b\right)=10$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Pak 
+\begin_inset Formula $h^{-1}\left(L\right)$
+\end_inset
+
+ je jazyk nad abecedou 
+\begin_inset Formula $\Sigma=\left\{ a,b\right\} $
+\end_inset
+
+ popsaný regulárním výrazem 
+\begin_inset Formula $\left(\mathbf{ba}\right)^{\star}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Reverse
+\end_layout
+
+\begin_layout Standard
+Je dán jazyk 
+\begin_inset Formula $L$
+\end_inset
+
+ nad abecedou 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+.
+ Pak jazyk 
+\begin_inset Formula $L^{R}$
+\end_inset
+
+ definovaný
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+L^{R}=\left\{ w^{R}|w\in L\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+se nazývá 
+\emph on
+reverse
+\emph default
+ jazyka 
+\begin_inset Formula $L$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Věta
+\series default
+: Třída regulárních jazyků je uzavřena na reverse, přesněji: jestliže 
+\emph on
+L
+\emph default
+ je regulární jazyk nad abecedou Σ, pak je regulární i jazyk 
+\begin_inset Formula $L^{R}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Levý kvocient
+\end_layout
+
+\begin_layout Standard
+Máme dva jazyky 
+\begin_inset Formula $L$
+\end_inset
+
+ a 
+\begin_inset Formula $L_{1}$
+\end_inset
+
+ nad abecedou 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+.
+ Pak 
+\emph on
+levý kvocient
+\emph default
+ je jazyk 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+L_{1}\setminus L=\left\{ v|\exists u\in L_{1},uv\in L\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Příklad
+\series default
+: Uvažujme jazyky 
+\begin_inset Formula $L_{1}$
+\end_inset
+
+ a 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+ nad abecedou 
+\begin_inset Formula $\Sigma=\left\{ 0,1\right\} $
+\end_inset
+
+, kde 
+\begin_inset Formula $L_{1}=\left\{ 0^{k}10^{n}|k,n\geq0\right\} $
+\end_inset
+
+, 
+\begin_inset Formula $L_{2}=\left\{ 10^{m}1|m\geq0\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Pak 
+\begin_inset Formula $L_{2}\setminus L_{1}=\textrm{Ø}$
+\end_inset
+
+ a 
+\begin_inset Formula $L_{1}\setminus L_{2}=\left\{ 0^{q}1|q\geq0\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Věta
+\series default
+: Třída regulárních jazyků je uzavřena na levé kvocienty.
+ Přesněji, jestliže 
+\emph on
+L
+\emph default
+ a 
+\begin_inset Formula $L_{1}$
+\end_inset
+
+ jsou regulární jazyky, pak i 
+\begin_inset Formula $L_{1}\setminus L$
+\end_inset
+
+ je regulární jazyk.
+\end_layout
+
+\begin_layout Subsubsection
+Pravý kvocient
+\end_layout
+
+\begin_layout Standard
+Máme dva jazyky 
+\begin_inset Formula $L$
+\end_inset
+
+ a 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+ nad abecedou 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+.
+ Pak 
+\emph on
+pravý kvocient
+\emph default
+ je jazyk
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+L/L_{2}=\left\{ v|\exists u\in L_{2},vu\in L\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Příklad
+\series default
+: Uvažujme jazyky 
+\begin_inset Formula $L_{1}$
+\end_inset
+
+ a 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+ nad abecedou 
+\begin_inset Formula $\Sigma=\left\{ 0,1\right\} $
+\end_inset
+
+, kde 
+\begin_inset Formula $L_{1}=\left\{ 0^{k}10^{n}|k,n\geq0\right\} $
+\end_inset
+
+, 
+\begin_inset Formula $L_{2}=\left\{ 10^{m}1|m\geq0\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Pak 
+\begin_inset Formula $L_{2}/L_{1}=\left\{ 10^{k}|k\geq0\right\} $
+\end_inset
+
+ a 
+\begin_inset Formula $L_{1}/L_{2}=\textrm{Ø}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Věta
+\series default
+: Třída regulárních jazyků je uzavřena na pravé kvocienty.
+ Přesněji, jestliže 
+\emph on
+L
+\emph default
+ a 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+ jsou regulární jazyky, pak i 
+\begin_inset Formula $L/L_{2}$
+\end_inset
+
+ je regulární jazyk.
+\end_layout
+
+\begin_layout Section
+Algoritmická řešitelnost úloh pro regulární jazyky
+\end_layout
+
+\begin_layout Standard
+Pro následující otázky týkající se konečných automatů a jimi přijímaných
+ jazyků existují algoritmy, které dají správnou odpověď.
+\end_layout
+
+\begin_layout Enumerate
+Pro daný konečný automat 
+\emph on
+M
+\emph default
+ (ať deterministický nebo nedeterministický) a slovo 
+\emph on
+w
+\emph default
+ 
+\begin_inset Formula $\in\Sigma^{\star}$
+\end_inset
+
+ rozhodnout, zda 
+\begin_inset Formula $w\in L\left(M\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Pro daný konečný automat 
+\emph on
+M
+\emph default
+ (ať deterministický nebo nedeterministický) rozhodnout, zda 
+\begin_inset Formula $L\left(M\right)\neq\textrm{Ø}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Pro daný konečný automat 
+\emph on
+M
+\emph default
+ rozhodnout, zda 
+\begin_inset Formula $L\left(M\right)=\Sigma^{\star}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Pro dva konečné automaty 
+\begin_inset Formula $M_{1}$
+\end_inset
+
+ a 
+\begin_inset Formula $M_{2}$
+\end_inset
+
+ rozhodnout, zda 
+\begin_inset Formula $L\left(M_{1}\right)=L\left(M_{2}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Tvrzení
+\series default
+: Je dán deterministický konečný automat 
+\emph on
+M
+\emph default
+ s 
+\emph on
+n
+\emph default
+ stavy.
+ Pak
+\end_layout
+
+\begin_layout Enumerate
+Jazyk 
+\begin_inset Formula $L\left(M\right)$
+\end_inset
+
+ je neprázdný právě tehdy, když 
+\emph on
+M
+\emph default
+ přijímá slovo 
+\emph on
+w
+\emph default
+ délky 
+\begin_inset Formula $\left|w\right|<n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Jazyk 
+\begin_inset Formula $L\left(M\right)$
+\end_inset
+
+ je nekonečný právě tehdy, když 
+\emph on
+M
+\emph default
+ přijímá slovo 
+\emph on
+v
+\emph default
+ délky 
+\begin_inset Formula $n\leq\left|v\right|<2n$
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document
