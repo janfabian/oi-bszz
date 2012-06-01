@@ -19,3 +19,5 @@ Hotové otázky
 14. Asymptotická časová a paměťová složitost algoritmů, řád růstu funkcí. (A4B36ALG)
 
 21. Deterministický konečný automat, jazyk přijímaný konečným automatem. (A4B01JAG)
+
+22. Regulární výrazy a regulární jazyky, Kleeneova věta. Algoritmická složitost úloh souvisejících s regulárními jazyky. (A4B01JAG)
