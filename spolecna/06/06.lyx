@@ -1,0 +1,1148 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass scrbook
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Společná část - otázka č.
+ 6
+\end_layout
+
+\begin_layout Subtitle
+Principy objektového přístupu, třída jako: programová jednotka, zdroj funkcí,
+ datový typ; struktura objektu, konstruktory, přetěžování, instance třídy,
+ hierarchie tříd, dědění, kompozice; abstraktní třídy, polymorfismus, rozhraní,
+ rozhraní jako typ proměnné, typ interface.
+\end_layout
+
+\begin_layout Chapter
+Objektové programování
+\end_layout
+
+\begin_layout Standard
+Objektově orientované programování (zkracováno na OOP) je metodika vývoje
+ softwaru, založená na následujících myšlenkách, koncepci:
+\end_layout
+
+\begin_layout Enumerate
+Objekty – jednotlivé prvky modelované reality (jak data, tak související
+ funkčnost) jsou v programu seskupeny do entit, nazývaných objekty.
+ Objekty si pamatují svůj stav a navenek poskytují operace (přístupné jako
+ metody pro volání).
+\end_layout
+
+\begin_layout Enumerate
+Abstrakce – programátor, potažmo program, který vytváří, může abstrahovat
+ od některých detailů práce jednotlivých objektů.
+ Každý objekt pracuje jako černá skříňka, která dokáže provádět určené činnosti
+ a komunikovat s okolím, aniž by vyžadovala znalost způsobu, kterým vnitřně
+ pracuje.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Zapouzdření
+\series default
+ – zaručuje, že objekt nemůže přímo přistupovat k „vnitřnostem“ jiných objektů,
+ což by mohlo vést k nekonzistenci.
+ Každý objekt navenek zpřístupňuje rozhraní, pomocí kterého (a nijak jinak)
+ se s objektem pracuje.
+\end_layout
+
+\begin_layout Enumerate
+Skládání – Objekt může obsahovat jiné objekty.
+\end_layout
+
+\begin_layout Enumerate
+Delegování – Objekt může využívat služeb jiných objektů tak, že je požádá
+ o provedení operace.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Dědičnost
+\series default
+ – objekty jsou organizovány stromovým způsobem, kdy objekty nějakého druhu
+ mohou dědit z jiného druhu objektů, čímž přebírají jejich schopnosti, ke
+ kterým pouze přidávají svoje vlastní rozšíření.
+ Tato myšlenka se obvykle implementuje pomocí rozdělení objektů do tříd,
+ přičemž každý objekt je instancí nějaké třídy.
+ Každá třída pak může dědit od jiné třídy (v některých programovacích jazycích
+ i z několika jiných tříd).
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Polymorfismus
+\series default
+ – odkazovaný objekt se chová podle toho, jaké třídy je instancí.
+ Pokud několik objektů poskytuje stejné rozhraní, pracuje se s nimi stejným
+ způsobem, ale jejich konkrétní chování se liší podle implementace.
+ U polymorfismu podmíněného dědičností to znamená, že na místo, kde je očekávána
+ instance nějaké třídy, můžeme dosadit i instanci libovolné její podtřídy,
+ neboť rozhraní třídy je podmnožinou rozhraní podtřídy.
+ U polymorfismu nepodmíněného dědičností je dostačující, jestliže se rozhraní
+ (nebo jejich požadované části) u různých tříd shodují, pak jsou vzájemně
+ polymorfní.
+ 
+\end_layout
+
+\begin_layout Standard
+Objektový přístup programování trochu jinak:
+\end_layout
+
+\begin_layout Itemize
+Modelování problému jako systému spolupracujících tříd 
+\end_layout
+
+\begin_layout Itemize
+Třída modeluje jeden koncept 
+\end_layout
+
+\begin_layout Itemize
+Třídy umožní generování instancí, objektů příslušné třídy 
+\end_layout
+
+\begin_layout Itemize
+Jednotlivé objekty spolu spolupracují, „posílají si zprávy“, 
+\end_layout
+
+\begin_layout Itemize
+Třída je „vzorem“ pro strukturu a vlastnosti generovaných objektů 
+\end_layout
+
+\begin_layout Itemize
+Každý objekt je charakteristický specifickými hodnotami svých atributů a
+ společnými vlastnostmi třídy
+\end_layout
+
+\begin_layout Section
+Třída
+\end_layout
+
+\begin_layout Standard
+Třída je základem uživatelského programu v jazyku Java (nebo obecně v OOP).
+ Třída = koncept.
+ Každá třída je reprezentována svými prvky, objekty dané třídy.
+ Každá třída je charakterizována svými vlastnostmi, svými funkčními možnostmi
+ a svými parametry.
+ Třída tedy popise nějaký 
+\begin_inset Quotes eld
+\end_inset
+
+objekt
+\begin_inset Quotes erd
+\end_inset
+
+ reálného problému a udržuje jeho parametry a poskytuje metody pro práci
+ s ním.
+ Třída v bodech:
+\end_layout
+
+\begin_layout Itemize
+musí být deklarována hlavní funkce main (NOTE: bylo v přednášce, ale není
+ to pravda, třídy bez třídy main se běžně používá, např.
+ jako knihovna).
+ Funkce main musí být statická, volá se ještě před vytvořením nějaké instance,
+ slouží pro spuštění programu, testování.
+\end_layout
+
+\begin_layout Itemize
+jsou deklarovány další (static) funkce (či procedury) třídy, případně i
+ v jiných třídách: projekt, package 
+\end_layout
+
+\begin_layout Itemize
+mohou být deklarovány statické proměnné, které jsou použitelné jako nelokální
+ proměnné ve funkcích dané třídy 
+\end_layout
+
+\begin_layout Itemize
+program probíhá spuštěním příkazů metody main
+\end_layout
+
+\begin_layout Standard
+Třída je definována množinou identifikátorů, které mají třídou definovaný
+ význam:
+\end_layout
+
+\begin_layout Standard
+– data: proměnné, konstanty (členské proměnné, datové složky, atributy)
+ 
+\end_layout
+
+\begin_layout Standard
+– metody: pracovně funkce a procedury
+\end_layout
+
+\begin_layout Subsection
+Třída = předpis vs.
+ Objekt = instance třídy
+\end_layout
+
+\begin_layout Standard
+Třída jako šablona pro generování konkrétních instancí třídy, tzv.
+ objektů.
+ Jednotlivé instance třídy (objekty) mají stejné metody, ale nacházejí se
+ v různých stavech – Stav objektu je určen hodnotami instančních, členských
+ proměnných.
+ Schopnosti objektu jsou dány instančními metodami třídy.
+ V jazyku Java lze objekty (instance tříd) vytvářet pouze dynamicky pomocí
+ operátoru new a přistupovat k nim pomocí referenčních proměnných (podobně
+ jako u pole).
+ Třída bez vytvořené instance (objektu) může „pracovat“ pouze „staticky“
+ (mohou být použity jen její statické metody či proměnné – procedurální
+ přístup).
+ Statické proměnné = společné pro všechny instance třídy.
+\end_layout
+
+\begin_layout Subsection
+Konstruktor třídy
+\end_layout
+
+\begin_layout Standard
+Konstruktory = speciální metody pro generování instancí tříd, konkrétních
+ objektů.
+\end_layout
+
+\begin_layout Itemize
+vytvoří objekt 
+\end_layout
+
+\begin_layout Itemize
+případně nastaví vlastnosti objektu 
+\end_layout
+
+\begin_layout Itemize
+jméno konstruktoru je totožné se jménem třídy (jediná metoda začínající
+ velkým písmenem) 
+\end_layout
+
+\begin_layout Itemize
+volání pomocí operátoru new, např.
+ malyObdelnik = new Obdelnik(2,5); 
+\end_layout
+
+\begin_layout Itemize
+neosahuje návratový typ - nic nevrací, vytváří objekt 
+\end_layout
+
+\begin_layout Itemize
+není-li konstruktor vytvořen, je vygenerován implicitní konstruktor s prázdným
+ seznamem parametrů – je-li konstruktor deklarován, implicitní zaniká
+\end_layout
+
+\begin_layout Subsubsection
+Přetěžování (nejen konstruktoru třídy)
+\end_layout
+
+\begin_layout Standard
+Umožňuje objektům volání jedné metody se stejným jménem, ale s jinou implementac
+í.
+ Provádí se to tak, že se deklaruje více metod se stejným názvem, které
+ se mohou lišit různým počtem, typem argumentů popř.
+ jejich pořadím.
+ Umožňuje volat vytvoření instance s různými parametry - různým počtem i
+ typem parametrů.
+ Př.:
+\end_layout
+
+\begin_layout LyX-Code
+public class Obdelnik { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+// vsechny konstruktory lze pouzit zvenci pro vytvoreni objektu
+\end_layout
+
+\begin_layout LyX-Code
+// kontruktor pro volani se vsemi tremi vlastnostmi, 
+\end_layout
+
+\begin_layout LyX-Code
+Obdelnik(int s, int v, Color c){ 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+sirka = s; 
+\end_layout
+
+\begin_layout LyX-Code
+vyska = v; 
+\end_layout
+
+\begin_layout LyX-Code
+barva = c; 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} 
+\end_layout
+
+\begin_layout LyX-Code
+// kontruktor pouze s rozmery - vyuziva prvni konstruktor pomoci this
+\end_layout
+
+\begin_layout LyX-Code
+Obdelnik(int s, int v){ 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+this(s,v,Color.BLACK); 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} 
+\end_layout
+
+\begin_layout LyX-Code
+// prazdny konstruktor
+\end_layout
+
+\begin_layout LyX-Code
+Obdelnik() { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+this(0,0,Color.BLACK); 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+Konstruktor dále:
+\end_layout
+
+\begin_layout Itemize
+Jméno konstruktoru je totožné se jménem třídy 
+\end_layout
+
+\begin_layout Itemize
+Konstruktor nemá návratovou hodnotu (ani void) 
+\end_layout
+
+\begin_layout Itemize
+Předčasně lze ukončit činnost konstruktoru return 
+\end_layout
+
+\begin_layout Itemize
+Konstruktor má parametrovou část jako metoda - může mít libovolný počet
+ a typ parametrů 
+\end_layout
+
+\begin_layout Itemize
+V těle konstruktoru použít operátor this, odkaz na příslušný konstruktor
+ s týmž počtem, pořadím a typem parametrů - nepíše se jméno třídy 
+\end_layout
+
+\begin_layout Itemize
+Konstruktor je zpravidla vždy public (!) – //třída java.lang.Math jej má private
+ – proč? Protože je designována jako utilitní třída, která poskytuje statické
+ metody (a atributy) a nevyžaduje vytvoření instance
+\end_layout
+
+\begin_layout Subsection
+Třída jako datový typ
+\end_layout
+
+\begin_layout Standard
+Příkladem třídy jako datového typu je třída Complex 
+\end_layout
+
+\begin_layout Itemize
+hodnotami typu jsou komplexní čísla tvořená dvojicemi čísel typu double
+ (reálná a imaginární část) 
+\end_layout
+
+\begin_layout Itemize
+množinu operací tvoří obvyklé operace nad komplexními čísly (absolutní hodnota,
+ sčítání, odčítání, násobení a dělení)
+\end_layout
+
+\begin_layout Subsection
+Statické vs.
+ Instanční metody
+\end_layout
+
+\begin_layout Standard
+Třída může definovat dva druhy metod: 
+\end_layout
+
+\begin_layout Itemize
+statické metody – metody třídy, procedury a funkce
+\end_layout
+
+\begin_layout Itemize
+instanční metody – metody objektů 
+\end_layout
+
+\begin_layout Standard
+Metody obou druhů mohou mít parametry a mohou vracet výsledek nějakého typu.
+ Statická metoda označuje operaci (dílčí algoritmus, řešení dílčího podproblému)
+, jejíž vyvolání (provedení) obsahuje jméno třídy, jméno metody a seznam
+ skutečných parametrů jméno_třídy.jméno_metody(seznam skutečných parametrů).
+ Statickým metodám třídy odpovídají v jiných jazycích procedury (nevracejí
+ žádnou hodnotu) a funkce (vracejí hodnotu nějakého typu).
+ Instanční metoda označuje operaci nad objektem (instancí (!)) dané třídy,
+ jejíž vyvolání obsahuje referenční proměnnou objektu, jméno metody a seznam
+ skutečných parametrů referenční_proměnná.jméno_metody(seznam skut.
+ parametrů).
+ 
+\end_layout
+
+\begin_layout Itemize
+Statickým metodám třídy budeme i nadále říkat procedury a funkce 
+\end_layout
+
+\begin_layout Itemize
+Instančním metodám budeme zkráceně říkat metody
+\end_layout
+
+\begin_layout Subsection
+Operátor this
+\end_layout
+
+\begin_layout Standard
+Každý objekt má implicitní operátor this, který obsahuje odkaz na "svou"
+ instanci 
+\end_layout
+
+\begin_layout Itemize
+Hodnotou operátoru this je odkaz na objekt pro který byla metoda zavolána
+ (implicitní parametr odkazu na objekt) 
+\end_layout
+
+\begin_layout Itemize
+Umožňuje přístup k vlastním instančním proměnným v instančních metodách
+ 
+\end_layout
+
+\begin_layout Itemize
+Používá se v přetížených konstruktorech
+\end_layout
+
+\begin_layout Standard
+Podobně funguje operátor this i pro metody: 
+\end_layout
+
+\begin_layout Itemize
+pokud je instanční metoda volána z jiné instanční metody té samé třídy,
+ potom se volá pomocí operátoru this (operátor se může vynechat) 
+\end_layout
+
+\begin_layout Itemize
+pokud se volá metoda z jiného kontextu, uvádí se před jejím jménem přístup
+ k příslušné instanci (tečka notace) např.
+ předané parametrem
+\end_layout
+
+\begin_layout Itemize
+nelze volat ze statické metody - u ní by nebylo jasné, kam this odkazuje
+\end_layout
+
+\begin_layout Section
+Objekt
+\end_layout
+
+\begin_layout Standard
+Objekt - datový prvek, instance třídy, dynamicky vytvořen podle „vzoru“-
+ třídy (viz sekce Třída).
+ Objekt si pamatuje svůj stav (v podobě dat čili atributů) a zveřejněním
+ některých svých operací (nazývaných metody) poskytuje rozhraní, jak s ním
+ pracovat.
+ Objekt je strukturován tzn.
+ skládá se z jednotlivých položek tzv.
+ atributů.
+ Objekt = heterogenní objekt skládající se z položek různého typu (x pole,
+ pole se skládá z položek stejného typu).
+ Složky objektu:
+\end_layout
+
+\begin_layout Itemize
+atributy objektu (datové složky, členské proměnné (member variables)) -
+ proměnné objektu, definují typ a jména vlastností objektu
+\end_layout
+
+\begin_layout Itemize
+metody
+\end_layout
+
+\begin_layout Standard
+Hodnota objektu je strukturovaná, tzn.
+ skládá se dílčích hodnot, které mohou být obecně různého typu (heterogenní
+ datová struktura – na rozdíl od pole).
+ Objekt je tedy abstrakcí paměťového místa skládajícího se z částí, ve kterých
+ jsou uloženy dílčí hodnoty - nazývají se položkami objektu (složkami, atributy,
+ instančními proměnnými, fields, attributes).
+ Položky objektu jsou označeny jmény, která mohou (ale nemusí) být třídou
+ zveřejněna, zásadně se nezveřejňují.
+ Pro manipulaci se zavádějí settery, gettery.
+\end_layout
+
+\begin_layout Section
+Zapouzdření
+\end_layout
+
+\begin_layout Standard
+Zapouzdření v objektech znamená, že k obsahu objektu se nedostane nikdo
+ jiný, než sám vlastník.
+ Navenek se objekt projeví jen svým rozhraním (operacemi, metodami) a komunikačn
+ím protokolem.
+ (Př.
+ private proměnné -> pro manipulaci metody: nejjednodušší např.
+ settery, gettery).
+ Důležité pojmy:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Skládání objektů: 
+\series default
+udržování odkazů na jiné objekty (objekt obsahuje jiné objekty).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Delegování: 
+\series default
+Využívání služeb jiných objektů.
+\end_layout
+
+\begin_layout Standard
+Zapoudření = Daný stav objektu je přístupný nebo měnitelný pouze prostřednictvím
+ rozhraní poskytovaného objektem.
+ Důsledkem zapouzdření je autorizovaný přístup k datům, při kterém zajistíme,
+ že s daty objektu nebude možné z vnějšku třídy manipulovat jinak než pomocí
+ metod této třídy, které tvoří komunikační rozhraní třídy.
+ Zapouzdření je zajištěno pomocí modifikátorů:
+\end_layout
+
+\begin_layout Enumerate
+public - lze je volat odkudkoli 
+\end_layout
+
+\begin_layout Enumerate
+neurčený - lze volat ze stejného package
+\end_layout
+
+\begin_layout Enumerate
+protected - lze je volat pouze z metod stejné či odovozené třídy 
+\end_layout
+
+\begin_layout Enumerate
+private - lze je volat pouze z metod téže třídy 
+\end_layout
+
+\begin_layout Section
+Dědičnost
+\end_layout
+
+\begin_layout Standard
+Dědičnost je mechanismus umožňující 
+\end_layout
+
+\begin_layout Itemize
+rozšiřovat datové položky tříd (také modifikovat) 
+\end_layout
+
+\begin_layout Itemize
+rozšiřovat či modifikovat metody tříd
+\end_layout
+
+\begin_layout Standard
+Dědičnost umožní
+\end_layout
+
+\begin_layout Itemize
+vytvářet hierarchie tříd 
+\end_layout
+
+\begin_layout Itemize
+„předávat“ datové položky a metody k rozšíření a úpravě
+\end_layout
+
+\begin_layout Itemize
+specializovat, „upřesňovat“ třídy
+\end_layout
+
+\begin_layout Standard
+Dvě základní výhody dědění 
+\end_layout
+
+\begin_layout Itemize
+Dědění má praktický význam v znuvupoužitelnosti programového kódu 
+\end_layout
+
+\begin_layout Itemize
+Dědičnost je základem polymorfismu
+\end_layout
+
+\begin_layout Standard
+Java dědí pouze od jediného předka.
+ Mnohonásobné dědění se řeší pomocí rozhraní.
+ Nejvyšší třída je Object, všechny třídy dědí třídu Object (metody: equals
+ (standardní implementace neporovnává objekty, ale reference), toString,
+ hashCode (stejné objekty by měly generovat stejný hashCode), clone..)
+\end_layout
+
+\begin_layout Subsection
+Příklad: Obdélník je případ kvádru (ne naopak)
+\end_layout
+
+\begin_layout Standard
+Obdélník je „kvádrem“ s nulovou hloubkou
+\end_layout
+
+\begin_layout Itemize
+Potomek se deklaruje pomocí klauzule extends 
+\end_layout
+
+\begin_layout Itemize
+Obdelnik převezme proměnné sirka, vyska, hloubka metody hodnotaSirky, delkaUhlop
+ricky
+\end_layout
+
+\begin_layout Itemize
+Konstruktor se dědí, parametr hloubka se nastaví do nuly 
+\end_layout
+
+\begin_layout Itemize
+Objekty Obdelnik mohou využívat proměnné sirka, vyska a hloubka, metody
+ hodnotaSirky a delkaUhlopricky
+\end_layout
+
+\begin_layout LyX-Code
+public class Kvadr2 { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+public int sirka; 
+\end_layout
+
+\begin_layout LyX-Code
+public int vyska; 
+\end_layout
+
+\begin_layout LyX-Code
+public int hloubka; 
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+public Kvadr2(int sirka, int vyska, int hloubka) { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+this.hloubka = hloubka;
+\end_layout
+
+\begin_layout LyX-Code
+this.sirka = sirka; 
+\end_layout
+
+\begin_layout LyX-Code
+this.vyska = vyska; 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} 
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+public int hodnotaSirky() { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+return sirka; 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} 
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+public double delkaUhlopricky() { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+double pom = (sirka * sirka) + (vyska*vyska) + (hloubka * hloubka); 
+\end_layout
+
+\begin_layout LyX-Code
+return Math.sqrt(pom); 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+class Obdelnik2 extends Kvadr2{
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+public Obdelnik2(int sirka, int vyska) { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+super(sirka, vyska, 0); 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Subsection
+Hiearchie tříd
+\end_layout
+
+\begin_layout Standard
+Třída Tpod, která je podtřídou třídy Tnad, dědí vlastnosti nadtřídy Tnad
+ a rozšiřuje je o nové vlastnosti; některé zděděné vlastnosti mohou být
+ v podtřídě modifikovány.
+ Pro instanční metody to znamená: 
+\end_layout
+
+\begin_layout Enumerate
+každá metoda třídy Tnad je i metodou třídy Tpod, v podtřídě však může mít
+ jinou implementaci (může být zastíněna - override = Podtřída obsahuje metodu
+ se stejným názvem i stejnými parametry, metody nadtřídy zastíní vlastní
+ implementací.
+ Př.
+ typicky toString())
+\end_layout
+
+\begin_layout Enumerate
+v podtřídě mohou být definovány nové metody
+\end_layout
+
+\begin_layout Standard
+Pro strukturu objektu to znamená:
+\end_layout
+
+\begin_layout Itemize
+instance třídy Tpod mají všechny členy třídy Tnad a případně další
+\end_layout
+
+\begin_layout Standard
+Pro referenční proměnné to znamená: 
+\end_layout
+
+\begin_layout Itemize
+proměnné typu Tnad může být přiřazena reference na objekt typu Tpod
+\end_layout
+
+\begin_layout Itemize
+na objekt referencovaný proměnnou typu Tnad lze vyvolat pouze metodu deklarovano
+u ve třídě Tnad; jde-li však o objekt typu Tpod, metoda se provede tak,
+ jak je dáno třídou Tpod 
+\end_layout
+
+\begin_layout Itemize
+hodnotu referenční proměnné typu Tnad lze přiřadit referenční proměnné typu
+ Tpod pouze s použitím přetypování, které zkontroluje, zda referencovaný
+ objekt je typu Tpod
+\end_layout
+
+\begin_layout Standard
+Vztah nadtřída – podtřída je tranzitivní = jestliže je x nad třídou y a
+ y je nad třídou z, pak je x nadtřídou z
+\end_layout
+
+\begin_layout Section
+Kompozice
+\end_layout
+
+\begin_layout Standard
+Obsahuje-li deklarace třídy členské proměnné objektového typu, pak mluvíme
+ o kompozici objektů.
+ Kompozice vytváří hierarchii objektů, nikoli však dědičnost.
+ Například třída, která obsahuje jako členskou proměnnou integer, ale hlavně
+ i například Datum (další, jiný objekt).
+ (Kompozice označována jako struktura HAS (
+\begin_inset Quotes eld
+\end_inset
+
+má
+\begin_inset Quotes erd
+\end_inset
+
+, dědičnost jako ISE 
+\begin_inset Quotes eld
+\end_inset
+
+je
+\begin_inset Quotes erd
+\end_inset
+
+).
+ Kompozice objektů je tvořena atributy objektového typu, pouze je skládá
+\end_layout
+
+\begin_layout Section
+Polymorfismus
+\end_layout
+
+\begin_layout Standard
+V programovacím jazyce se jedná o možnost volat stejné metody u různých
+ objektů, aniž bychom věděli, jakého přesně jsou typu.
+ Navíc může mít stejná metoda u různých objektů odlišný význam.
+ To je možné díky tomu, že vždy známe společného předka těchto různých objektů.
+ Tím může být třída, abstraktní třída nebo rozhraní.
+ 
+\end_layout
+
+\begin_layout LyX-Code
+// soubor Osoba.java 
+\end_layout
+
+\begin_layout LyX-Code
+public class Osoba {    
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+public int fce () {       
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+return 10;    
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}  
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+// soubor Zamestnanec.java
+\end_layout
+
+\begin_layout LyX-Code
+public class Zamestnanec extends Osoba {    
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+public int fce () {       
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+return 20;    
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}  
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+// jiny soubor 
+\end_layout
+
+\begin_layout LyX-Code
+Zamestnanec a = new Zamestnanec(); 
+\end_layout
+
+\begin_layout LyX-Code
+Osoba b = new Zamestnanec(); 
+\end_layout
+
+\begin_layout LyX-Code
+Osoba c = new Osoba(); 
+\end_layout
+
+\begin_layout LyX-Code
+System.out.println(a.fce());    // vypíše 20 
+\end_layout
+
+\begin_layout LyX-Code
+System.out.println(b.fce());    // vypíše 20 
+\end_layout
+
+\begin_layout LyX-Code
+System.out.println(c.fce());    // vypíše 10 
+\end_layout
+
+\begin_layout Section
+Abstraktní třídy
+\end_layout
+
+\begin_layout Standard
+V některých situacích je výhodné vytvořit jedinou bázovou třídu pro více
+ tříd odpovídajících konkrétním objektům, i když tato samotná bázová třída
+ žádnému konkrétnímu objektu neodpovídá.
+ Může ovšem nést některá data a poskytovat metody, které jsou odvozeným
+ třídám společné.
+ Taková třída se pak nazývá abstraktní a je označena klíčovým slovem abstract.
+ Překladač jazyka Java pak zajistí, že instanci abstraktní třídy nelze operátore
+m new přímo vytvořit, mohou se vytvářet pouze instance konkrétních tříd.
+ 
+\end_layout
+
+\begin_layout Standard
+Abstraktní třída může deklarovat některé společné metody a poskytovat jejich
+ základní implementaci.
+ Pokud odvozená třída takovou metodu nepředefinuje, pak se pro její instance
+ použije implementace poskytnutá v bázové třídě.
+\end_layout
+
+\begin_layout Standard
+Mohou však nastat i situace, kdy skutečně vyžadujeme, aby odvozené třídy
+ určitou metodu vždy definovaly.
+ Takovou metodu pak také nazýváme abstraktní a označujeme klíčovým slovem
+ abstract, navíc u ní není uvedeno tělo a hlavička metody je zakončena středníke
+m.
+ Pokud odvozená třída některou abstraktní metodu neimplementuje, musí být
+ také označena jako abstraktní.
+ Tím je zajištěno, že instance konkrétních tříd mají všechny metody implementova
+né.
+ 
+\end_layout
+
+\begin_layout LyX-Code
+abstract class Obrazec {     
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+public Obrazec(double x, double y) {        
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+this.x = x; 
+\end_layout
+
+\begin_layout LyX-Code
+this.y = y;     
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}     
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+public abstract double obvod();
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+public abstract double obsah();   
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+protected double x;     
+\end_layout
+
+\begin_layout LyX-Code
+protected double y;   
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Section
+Rozhraní
+\end_layout
+
+\begin_layout Standard
+Druhou velmi podobnou konstrukcí jsou rozhraní (klíčové slovo interface).
+ Základním rozdílem je, že interface obsahuje pouze konstanty a metody bez
+ těla (v tomto případě je neoznačujeme slovem abstract).
+ Rozhraní je kontrakt, který specifikuje operace, které má třída splňovat,
+ a který se již nezabývá tím, jak toho bude konkrétně dosaženo.
+\end_layout
+
+\begin_layout Standard
+Velkou výhodou rozhraní oproti abstraktním třídám je, že každá třída může
+ implementovat až mnoho rozhraní, avšak vždy maximálně jednu třídu.
+ 
+\end_layout
+
+\begin_layout Standard
+Zatímto pro dědění tříd (a dědení interfaců mezi sebou) využíváme v hlavičce
+ klíčové slovo extends, tak pro implementaci rozhraní používáme slovo implements.
+\end_layout
+
+\begin_layout LyX-Code
+public interface Visualni {   
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+public void vykresli (Graphics kam);
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} 
+\end_layout
+
+\begin_layout Subsection
+Rozhraní jako typ proměnné
+\end_layout
+
+\begin_layout Standard
+V Javě lze definovat proměnnou typu reference na rozhraní, ve které může
+ být uložena libovolná třída, která toto rozhraní implementuje.
+ Jména rozhraní lze používat jako referenční datové typy stejným způsobem
+ jako jména tříd.
+ 
+\end_layout
+
+\begin_layout LyX-Code
+Visualni visualniObjekt = new VisualniKruznice(); 
+\end_layout
+
+\begin_layout LyX-Code
+visualniObjekt = new VisualniCtverec(); 
+\end_layout
+
+\end_body
+\end_document
