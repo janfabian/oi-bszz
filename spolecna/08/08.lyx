@@ -1,0 +1,583 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Společná část: 8 - MA2
+\end_layout
+
+\begin_layout Section
+Limita funkce a posloupnosti
+\end_layout
+
+\begin_layout Subsection
+funkce
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/graf1.gif
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Definice:
+\series default
+ Nechť f je funkce, nechť a je reálné číslo, 
+\begin_inset Formula $\infty$
+\end_inset
+
+ nebo 
+\begin_inset Formula $-\infty$
+\end_inset
+
+.
+ Předpokládejme, že f je definovaná na nějakém prstencovém okolí bodu a.
+ Nechť L je reálné číslo, nebo 
+\begin_inset Formula $\infty$
+\end_inset
+
+ nebo 
+\begin_inset Formula $-\infty$
+\end_inset
+
+.
+ Řekneme, že L je limita funkce f pro x jdoucí k a, jestliže pro každé 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+
+\begin_inset Formula $>0$
+\end_inset
+
+ existuje nějaké 
+\begin_inset Formula $\delta>0$
+\end_inset
+
+ tak, aby pro všechna 
+\begin_inset Formula $x\in D(f)$
+\end_inset
+
+ splňující 
+\begin_inset Formula $x\in U_{\delta}(a)−{a}$
+\end_inset
+
+ platilo 
+\begin_inset Formula $f(x)\in U_{\varepsilon}(L)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Pokud najdeme limitu L, která je 
+\series bold
+reálné číslo
+\series default
+, řekneme, že je to 
+\series bold
+vlastní limita a že limita konverguje
+\series default
+.
+ Jinak řekneme, že limita diverguje.
+ Limita 
+\series bold
+nekonečno nebo mínus nekonečno
+\series default
+ se nazývá 
+\series bold
+nevlastní limita
+\series default
+.
+ Pokud najdeme nějakou limitu (vlastní či nevlastní), řekneme, že limita
+ existuje.
+ Jinak řekneme, že limita neexistuje.
+ 
+\end_layout
+
+\begin_layout Subsection
+posloupnost
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/graf2.gif
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Definice: 
+\series default
+Uvažujme posloupnost 
+\begin_inset Formula ${a_{n}}$
+\end_inset
+
+.
+ Řekneme, že nekonečno je limita této posloupnosti pro n jdoucí do nekonečna,
+ nebo že posloupnost jde do nekonečna pro n jdoucí do nekonečna, jestliže
+ pro každé reálné číslo K existuje přirozené číslo N takové, že pro všechna
+ n = N, N + 1, N + 2,...
+ máme 
+\begin_inset Formula $a_{n}>K$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Když má posloupnost limitu, která je reálné číslo, řekneme, že posloupnost
+ konverguje.
+ Taková limita se nazývá 
+\series bold
+vlastní limita
+\series default
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Když má posloupnost limitu, která je plus či mínus nekonečno, říkáme této
+ limitě 
+\series bold
+nevlastní limita
+\series default
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Když má posloupnost limitu, vlastní či nevlastní, řekneme, že limita 
+\series bold
+existuje
+\series default
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Pokud posloupnost nemá vůbec žádnou limitu, řekneme, že limita 
+\series bold
+neexistuje
+\series default
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Posloupnosti s nevlastní limitou a bez limity se nazývají 
+\series bold
+divergentní
+\series default
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+Rychlost růstu
+\end_layout
+
+\begin_layout Standard
+škála mocnin
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/scala.gif
+	width 5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+L'Hopitalovo pravidlo
+\end_layout
+
+\begin_layout Standard
+Při hledání limity podílu dvou funkcí (i posloupností) dostaneme 
+\begin_inset Quotes eld
+\end_inset
+
+neurčitý podíl
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+řešíme l'Hopitalovým pravidlem
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/neurcity podil.gif
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+příklad
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/priklad.gif
+	width 10cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Derivace
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/derivace.gif
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Definice: 
+\series default
+Nechť f je funkce definovaná na nějakém okolí bodu a.
+ Definujeme derivaci f v a vzorcem 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/derivacevzorec.gif
+	width 4cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Jestliže konverguje, řekneme, že funkce je diferencovatelná v a.
+ 
+\end_layout
+
+\begin_layout Subsection
+význam derivace
+\end_layout
+
+\begin_layout Subsubsection
+
+\series bold
+geometrický význam
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+směrnice tečny
+\series bold
+ 
+\series default
+ke grafu dané funkce v daném bodě
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/smernice.gif
+	width 6cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/smernicevypocet.gif
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\series bold
+fyzikální význam 
+\end_layout
+
+\begin_layout Itemize
+derivace podle časové proměnné, vyjadřující rychlost změny nějaké proměnné
+ v čase (např.
+ okamžitá rychlost: 
+\begin_inset Formula $v=\frac{ds}{dt}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+diferenciální rovnice
+\end_layout
+
+\begin_layout Subsection
+Monotonie
+\end_layout
+
+\begin_layout Itemize
+vlastnost, označující, zda je funkce v bodě či na daném intervalu monotónní
+\end_layout
+
+\begin_layout Standard
+existuje nějaké okolí U(a) bodu a takové, že pro všechna x v tomto okolí
+ platí:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+rostoucí
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x>a\Rightarrow f(x)>f(a)x<a\wedge\Rightarrow f(x)<f(a).$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+klesající
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x>a\Rightarrow f(x)<f(a)\wedge x<a\Rightarrow f(x)>f(a),$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+nerostoucí
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x>a\Rightarrow f(x)\le f(a)\wedge x<a\Rightarrow f(x)\ge f(a),$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+neklesající
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x>a\Rightarrow f(x)\ge f(a)\wedge x<a\Rightarrow f(x)\le f(a).$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+typ monotonie určíme z první derivace f(x) 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+rostoucí
+\series default
+ pro f
+\begin_inset Formula $^{\prime}$
+\end_inset
+
+(x) > 0; 
+\series bold
+klesající
+\series default
+ pro f
+\begin_inset Formula $^{\prime}$
+\end_inset
+
+(x) < 0
+\end_layout
+
+\begin_layout Subsubsection
+
+\series bold
+kritický bod
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Definice:
+\series default
+ Nechť je funkce f definovaná na nějakém okolí bodu c.
+ Řekneme, že c je 
+\series bold
+kritický bod
+\series default
+, jestliže f '(c) = 0 nebo f '(c) neexistuje.
+ 
+\end_layout
+
+\begin_layout Subsection
+Lokální extrémy
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/extremy.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nechť je f spojitá v c:
+\end_layout
+
+\begin_layout Itemize
+Jestliže existuje pravé okolí c, na kterém je f rostoucí, a levé okolí a,
+ na kterém je f klesající, pak má f lokální minimum v c 
+\end_layout
+
+\begin_layout Itemize
+Jestliže existuje pravé okolí c, na kterém je f klesající, a levé okolí
+ a, na kterém je f rostoucí, pak má f lokální maximum v c
+\end_layout
+
+\begin_layout Subsection
+Parciální derivace 
+\end_layout
+
+\begin_layout Standard
+Parciální derivace funkce více proměnných představuje v matematice takovou
+ derivaci dané funkce, při které se derivuje pouze vzhledem 
+\series bold
+k jedné z proměnných
+\series default
+, ostatní proměnné jsou považovány za konstanty
+\end_layout
+
+\begin_layout Subsection
+Gradient
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/gradient.png
+	scale 12
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/kriterium.png
+	scale 12
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
