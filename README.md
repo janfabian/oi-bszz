@@ -26,6 +26,8 @@ Hotové otázky
 
 07\.  Spojové struktury (PRG1)
 
+08\. Limita funkce a posloupnosti, zejména rychlosti růstu v nekonečnu a l'Hospitalovo pravidlo. Derivace a parciální derivace: výpočet a význam (rychlost změny, monotonie, extrémy, gradient). (A4B01MA2) 
+
 12\.  JAVA události a výjimky (PRG2)
 
 14\.  Asymptotická časová a paměťová složitost algoritmů, řád růstu funkcí. (A4B36ALG)
