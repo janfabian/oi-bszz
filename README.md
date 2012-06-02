@@ -16,6 +16,10 @@ Hotové otázky
 
 02\.  Matice, determinant, inverzní matice, vlastní čísla a vlastní vektory matice. Soustavy lineárních rovnic. (A0B01LAG)
 
+03\. Vlastnosti celých čísel (dělitelnost, prvočísla) a Eukleidův algoritmus. Binární relace, zejména ekvivalence a uspořádání, a jejich reprezentace. Počítání modulo. (A4B01DMA) 
+
+04\. Kombinatorika (kombinatorická čísla, princip inkluze a exkluze); Využití matematické indukce; rekurzivní vztahy (řešení rovnic, odhad náročnosti algoritmů) (A4B01DMA) 
+
 05\.  Programovací jazyky, imperativní programování. (PRG1)
 
 06\.  Objektové programování. (PRG1)
