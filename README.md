@@ -20,6 +20,8 @@ Hotové otázky
 
 06\.  Objektové programování. (PRG1)
 
+07\.  Spojové struktury (PRG1)
+
 14\.  Asymptotická časová a paměťová složitost algoritmů, řád růstu funkcí. (A4B36ALG)
 
 15\.  Základní algoritmy řazení (mergesort, quicksort, heapsort, radixsort) a vyhledávání půlením intervalu, jejich složitost. (A4B36ALG)
