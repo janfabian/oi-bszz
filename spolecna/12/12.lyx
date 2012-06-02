@@ -1,0 +1,1388 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass scrreprt
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Společná část - otázka č.
+ 12
+\end_layout
+
+\begin_layout Subtitle
+Programování v jazyce JAVA: struktura tříd a programu.
+ Události, zdroj a posluchač události, šíření událostí, vlastní události,
+ více zdrojů a posluchačů, rozlišení zdrojů.
+ Výjimky a jejich zpracování, propagace výjimek, hierarchie výjimek, kontrolovan
+é a nekontrolované výjimky.
+ (A0B36PR2) 
+\end_layout
+
+\begin_layout Chapter
+JAVA - struktura jazyka
+\end_layout
+
+\begin_layout Standard
+Většina této části PRG2 byla zpracována pro otázky pro PRG1 (5, 6, 7 ->
+ struktura tříd a programu).
+ Proto zde vynecháno, nebo stručně doplněno co chybělo.
+\end_layout
+
+\begin_layout Section
+Typy programovacích jazyků
+\end_layout
+
+\begin_layout Itemize
+deklarativní - nepopisují jak se co má dělat, ale co má být výsledkem (př.
+ HTML, Prolog: nepopisuje kroky výpočtu, ale fakta o problému a požadovaný
+ výsledek)
+\end_layout
+
+\begin_layout Itemize
+imperativní - zbytek (JAVA, C...), viz.
+ imperativní programování otázka č.
+ 5
+\end_layout
+
+\begin_layout Section
+Programovací styly
+\end_layout
+
+\begin_layout Itemize
+Naivní
+\end_layout
+
+\begin_layout Itemize
+Procedurální 
+\end_layout
+
+\begin_layout Itemize
+Objektově orientovaný
+\end_layout
+
+\begin_layout Itemize
+Návrhové vzory 
+\end_layout
+
+\begin_layout Itemize
+SOA - service-oriented architecture
+\end_layout
+
+\begin_layout Chapter
+JAVA GUI
+\end_layout
+
+\begin_layout Standard
+(Tato kapitola = pouze stručný přehled <= není to přímo vypsáno jako otázka).
+ Vizuální a interaktivní komunikaci počítač-člověk podporují balíčky:
+\end_layout
+
+\begin_layout Section
+Knihovny pro GUI
+\end_layout
+
+\begin_layout Standard
+Základní knihovny:
+\end_layout
+
+\begin_layout Subsection
+AWT - Abstract Window ToolKit
+\end_layout
+
+\begin_layout Itemize
+první, těžké(heavyweight)
+\end_layout
+
+\begin_layout Itemize
+vykreslení zajišťuje platforma – rychlejší, ne vždy vše funguje vše stejně
+\end_layout
+
+\begin_layout Subsection
+SWING
+\end_layout
+
+\begin_layout Itemize
+doporučené
+\end_layout
+
+\begin_layout Itemize
+nové komponenty (tree-view, list box,...), 
+\end_layout
+
+\begin_layout Itemize
+robustní 
+\end_layout
+
+\begin_layout Itemize
+Look and Feel - na platformě nezávislý a vypadá stejně na všech platformách
+ a přitom respektuje i18n
+\end_layout
+
+\begin_layout Itemize
+důsledné oddělení modelu od pohledu a řadiče
+\end_layout
+
+\begin_layout Subsection
+(SWT-Standard Widget Toolkit, Eclipse IBM)
+\end_layout
+
+\begin_layout Itemize
+podobné AWT (platformově závislé vykreslení)
+\end_layout
+
+\begin_layout Itemize
+mnoho rozšiřujících vlastností
+\end_layout
+
+\begin_layout Section
+Základní součásti GUI
+\end_layout
+
+\begin_layout Standard
+Velmi stručně, jen pro úvod do problematiky, v zadání otázky není vypsáno.
+\end_layout
+
+\begin_layout Subsection
+Komponenty (dialogové prvky) - v knihovně javax.swing 
+\end_layout
+
+\begin_layout Itemize
+tlačítka, seznamy, jezdci, textová pole, zatrhávací tlačítka, rádio tlačítka,
+ … 
+\end_layout
+
+\begin_layout Itemize
+společné metody pro velikost, barvu, umístění textu, … 
+\end_layout
+
+\begin_layout Subsection
+Kontejnery (v oknech) - v knihovně javax.swing 
+\end_layout
+
+\begin_layout Itemize
+Kontejnery se vkládají do oken 
+\end_layout
+
+\begin_layout Itemize
+komponenty musí být umístěny v kontejnerech 
+\end_layout
+
+\begin_layout Itemize
+dva základní typy kontejnerů: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+JPanel
+\series default
+ – nejjednodušší, přidělí se komponenty ( také JApplet), 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+JFrame
+\series default
+ – složitější, ale více možností
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Správce rozmístění (Layout Manager) - v knihovně javax.swing a java.awt 
+\end_layout
+
+\begin_layout Itemize
+definuje pozici komponent v kontejneru
+\end_layout
+
+\begin_layout Itemize
+postupně, pevná pozice, podle mřížky, sdružování, ..
+ 
+\end_layout
+
+\begin_layout Itemize
+vzhled a chování celé aplikace
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename images/layout.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+// pr.
+ border layout
+\end_layout
+
+\begin_layout LyX-Code
+class Okno4_1 extends JFrame{ 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+public Okno4_1 () { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+… 
+\end_layout
+
+\begin_layout LyX-Code
+Container kon = getContentPane(); 
+\end_layout
+
+\begin_layout LyX-Code
+kon.setBackground(Color.green);
+\end_layout
+
+\begin_layout LyX-Code
+BorderLayout srb = new BorderLayout(); 
+\end_layout
+
+\begin_layout LyX-Code
+kon.setLayout(srb); 
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+JButton tl1 = new JButton("Test1"); 
+\end_layout
+
+\begin_layout LyX-Code
+kon.add(tl1,srb.WEST); 
+\end_layout
+
+\begin_layout LyX-Code
+JButton tl2 = new JButton("Test2"); 
+\end_layout
+
+\begin_layout LyX-Code
+kon.add(tl2,srb.EAST); 
+\end_layout
+
+\begin_layout LyX-Code
+JButton tl3 = new JButton("Test3"); 
+\end_layout
+
+\begin_layout LyX-Code
+kon.add(tl3,srb.NORTH); 
+\end_layout
+
+\begin_layout LyX-Code
+setContentPane(kon); 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Chapter
+Obsluha událostí
+\end_layout
+
+\begin_layout Standard
+Mechanismus, který umožní zpracovávat vstupní informace programu, predávané
+ nejčastěji přes GUI.
+ Mechanismus reakce na akci uživatele: stisk tlačítka, zadání textu, stisk
+ tlačítka myši, …
+\end_layout
+
+\begin_layout Enumerate
+Zpracování vstupní informace v GUI je realizováno:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+vysláním „události“ na jedné straně „producentem“ (producent = třída)
+\end_layout
+
+\begin_layout Enumerate
+zachycením této „události“ (událost = objekt této třídy) „posluchačem“ (poslucha
+č = naše třída)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Pro každou komponentu je třeba: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+deklarovat typ zachycované události, kterou je zájem zpracovat 
+\end_layout
+
+\begin_layout Enumerate
+určit „posluchače“, který má událost obsloužit 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Akcí uživatele vznikne událost 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+událost je objektem Javy! 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Události jsou zachyceny 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+události jsou zpracovány (obslouženy ) „posluchači“ (listener) – třídami
+ s uživatelskými metodami pro reakci na událost
+\end_layout
+
+\begin_layout Enumerate
+„posluchači“ jsou třídy, které implementují rozhraní naslouchání – musejí
+ mít schopnost „naslouchání“
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Událost
+\end_layout
+
+\begin_layout Standard
+Událost je objekt, který vznikne změnou stavu zdroje - důsledek interakce
+ uživatele sřídícími grafickými elementy GUI
+\end_layout
+
+\begin_layout Enumerate
+Událost vznikne:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+kliknutím na tlačítko
+\end_layout
+
+\begin_layout Enumerate
+stiskem klávesy
+\end_layout
+
+\begin_layout Enumerate
+posunem kurzoru, atd.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Události jsou produkovány tzv.
+ producenty což jsou:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+tlačítka 
+\end_layout
+
+\begin_layout Enumerate
+rámy 
+\end_layout
+
+\begin_layout Enumerate
+ostatními grafické prvky 
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Zpracování události
+\end_layout
+
+\begin_layout Standard
+Informace o jedné události (zdroj události, poloha kurzoru, atd.) jsou shromážden
+y v objektu, jehož třída určuje charakter události, napr.: 
+\end_layout
+
+\begin_layout Itemize
+ActionEvent ~ událost generovaná tlacítkem 
+\end_layout
+
+\begin_layout Itemize
+WindowEvent ~ událost generovaná oknem 
+\end_layout
+
+\begin_layout Itemize
+MouseEvent ~ událost generovaná myší 
+\end_layout
+
+\begin_layout Standard
+Všechny třídy událostí jsou 
+\series bold
+následníky třídy event
+\series default
+ a jsou umísteny v 
+\series bold
+java.awt.event.* 
+\end_layout
+
+\begin_layout Standard
+Základní princip zpracování událostí: 
+\end_layout
+
+\begin_layout Enumerate
+Události jsou generovány zdroji událostí (jsou to objekty, které nesou informaci
+ o události) 
+\end_layout
+
+\begin_layout Enumerate
+Události jsou přijímány ke zpracování posluchači událostí (to jsou opět
+ objekty tříd s metodami schopnými událost zpracovat)
+\end_layout
+
+\begin_layout Enumerate
+Zdroj události rozhoduje o tom, který posluchač má reagovat (registruje
+ si svého posluchače)
+\end_layout
+
+\begin_layout LyX-Code
+class Okno extends JFrame{ 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+public Okno (){ 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+… 
+\end_layout
+
+\begin_layout LyX-Code
+FlowLayout srb = new FlowLayout(); 
+\end_layout
+
+\begin_layout LyX-Code
+kon.setLayout(srb); 
+\end_layout
+
+\begin_layout LyX-Code
+JButton aTlac = new JButton("Pred stiskem"); 
+\end_layout
+
+\begin_layout LyX-Code
+kon.add(aTlac);
+\end_layout
+
+\begin_layout LyX-Code
+// registrace posluchace
+\end_layout
+
+\begin_layout LyX-Code
+aTlac.addActionListener(new Posluchac0()); 
+\end_layout
+
+\begin_layout LyX-Code
+setContentPane(kon); 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+// posluchac 
+\end_layout
+
+\begin_layout LyX-Code
+class Posluchac0 implements ActionListener {
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+public void actionPerformed(ActionEvent e) { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+//urcen objekt události 
+\end_layout
+
+\begin_layout LyX-Code
+JButton o=(JButton)e.getSource();
+\end_layout
+
+\begin_layout LyX-Code
+//reakce na udalost
+\end_layout
+
+\begin_layout LyX-Code
+o.setLabel(“Po stisku");
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+Pozn.
+ Jedna třída může být producentem i posluchačem (addActionListener(
+\series bold
+this
+\series default
+), třída zároveň i implemetuje příslušné rozhranní a potřebnou metodu).
+ Pro zpracování události se často používá i vnitřní třída (přehlednost,
+ efektivita kódu, zapouzdření).
+\end_layout
+
+\begin_layout LyX-Code
+class Okno6 extends Okno3 { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+JLabel lab1;
+\end_layout
+
+\begin_layout LyX-Code
+// vnitrni trida, obsluha udalosti
+\end_layout
+
+\begin_layout LyX-Code
+class Udalost implements ActionListener { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+String vypis; 
+\end_layout
+
+\begin_layout LyX-Code
+public Udalost(String vypis) { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+this.vypis = vypis; 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout LyX-Code
+// oblsuha udalosti
+\end_layout
+
+\begin_layout LyX-Code
+public void actionPerformed(ActionEvent e) { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+lab1.setText(vypis); 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+Udalost aUD, nUD; 
+\end_layout
+
+\begin_layout LyX-Code
+// konstruktor
+\end_layout
+
+\begin_layout LyX-Code
+Okno6() { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+lab1 = new JLabel("Nazdar6"); 
+\end_layout
+
+\begin_layout LyX-Code
+kon.add(lab1); 
+\end_layout
+
+\begin_layout LyX-Code
+aUD = new Udalost("AHOJ"); 
+\end_layout
+
+\begin_layout LyX-Code
+// registrace 1.
+ posluchace
+\end_layout
+
+\begin_layout LyX-Code
+aTlac.addActionListener(aUD); 
+\end_layout
+
+\begin_layout LyX-Code
+nUD = new Udalost("NAZDAR"); 
+\end_layout
+
+\begin_layout LyX-Code
+// registrace 2.
+ posluchace
+\end_layout
+
+\begin_layout LyX-Code
+bbTlac.addActionListener(nUD); 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+Anonymní třída jako posluchač:
+\end_layout
+
+\begin_layout LyX-Code
+aTlac.addActionListener(new ActionListener() { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+public void actionPerformed(ActionEvent e) { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+lab.setText("AHOJ"); 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+});
+\end_layout
+
+\begin_layout Section
+Model šíření události
+\end_layout
+
+\begin_layout Enumerate
+Události jsou předávány posluchačům, které si nejprve musí producent zaregistrov
+at – např.
+ metodami: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+addActionListener()
+\end_layout
+
+\begin_layout Enumerate
+addWindowListener()
+\end_layout
+
+\begin_layout Enumerate
+addMouseListener()
+\end_layout
+
+\begin_layout Enumerate
+...
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Producent vysílá jen těm posluchačům, které si sám zaregistroval.
+\end_layout
+
+\begin_layout Enumerate
+Posluchač musí implementovat některé z posluchačských rozhraní (!) (schopnost
+ naslouchat): 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+ActionListener
+\end_layout
+
+\begin_layout Enumerate
+WindowListener
+\end_layout
+
+\begin_layout Enumerate
+MouseListener
+\end_layout
+
+\begin_layout Enumerate
+…
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Implementace modelu události
+\end_layout
+
+\begin_layout Standard
+Posluchac události musí implementovat príslušné rozhraní (interface), tj.
+ implementovat príslušné abstraktní metody rozhraní.
+ Pro každý druh události je definována 
+\series bold
+abstraktní metoda (handler)
+\series default
+, která tuto událost ošetruje:
+\end_layout
+
+\begin_layout Itemize
+actionPerformed
+\end_layout
+
+\begin_layout Itemize
+mouseClicked
+\end_layout
+
+\begin_layout Itemize
+windowClosing, atd.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Handlery
+\series default
+ jsou deklarovány v rozhraních - posluchaci: 
+\end_layout
+
+\begin_layout Itemize
+ActionListener
+\end_layout
+
+\begin_layout Itemize
+MouseListener
+\end_layout
+
+\begin_layout Itemize
+WindowListener, atd.
+ 
+\end_layout
+
+\begin_layout Standard
+Předání události posluchači ve skutečnosti znamená vyvolání činnosti handleru.
+ Objekt události je předán jako skutečný parametr handleru.
+ Producent registruje posluchače zavoláním registrační metody: 
+\end_layout
+
+\begin_layout Itemize
+addActionListener
+\end_layout
+
+\begin_layout Itemize
+addMouseListener
+\end_layout
+
+\begin_layout Itemize
+addWindowListener, atd.
+\end_layout
+
+\begin_layout Standard
+Vazba mezi producentem a posluchacem je vztah N:M.
+ Jeden posluchac muže být registrován u více producentů, u jednoho producenta
+ muže být registrováno více posluchačů.
+ Událost se předá všem posluchačům, avšak pořadí zpracování není zaručeno.
+\end_layout
+
+\begin_layout Section
+Více zdrojů události - jeden posluchač
+\end_layout
+
+\begin_layout Standard
+Následuje ukázka zpracování události a rozlišení producenta:
+\end_layout
+
+\begin_layout LyX-Code
+// rozliseni popisem zdroje
+\end_layout
+
+\begin_layout LyX-Code
+public void actionPerformed(ActionEvent e) { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+String s = e.getActionCommand(); 
+\end_layout
+
+\begin_layout LyX-Code
+String napis = (s.equals(aTlac.getLabel()))?"PRVNI":"DRUHE"; 
+\end_layout
+
+\begin_layout LyX-Code
+lab.setText(napis); 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+// rozliseni objektem zdroje
+\end_layout
+
+\begin_layout LyX-Code
+public void actionPerformed(ActionEvent e) {
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+Object o = e.getSource(); 
+\end_layout
+
+\begin_layout LyX-Code
+String napis = (o.equals(aTlac)) ? "PRVNI!":"DRUHE!"; 
+\end_layout
+
+\begin_layout LyX-Code
+lab.setText(napis); 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Section
+Jeden zdroj událost - více posluchačů
+\end_layout
+
+\begin_layout Standard
+Zajistí se zkrátka vícenásobným voláním metody addActionListener(new Posluchac()
+) u příslušného elementu.
+ Každá třída=posluchač má svojí metodu, která se po události provede.
+ Pořadí provedení není určeno.
+\end_layout
+
+\begin_layout Section
+Zrušení posluchače
+\end_layout
+
+\begin_layout Standard
+removeActionListener(ActionListener posluchac)
+\end_layout
+
+\begin_layout Chapter
+Výjimky
+\end_layout
+
+\begin_layout Standard
+Vyjímka je „nestandardní situace“: 
+\end_layout
+
+\begin_layout Enumerate
+Situace, které jsou nestandardní, či které my považujeme za nestandardní,
+ měli bychom reagovat a mužeme a dokážeme reagovat (RuntimeException) 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Pokus o čtení z prázdného zásobníku EmptyStackException 
+\end_layout
+
+\begin_layout Enumerate
+Dělení nulou, indexování mimo rozsah pole, špatný formát císel AritmeticExceptio
+n, NumberFormatException 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Situace, na které musíme reagovat, Java nás přinutí (Exception, IOException)
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Odkaz na chybějící soubor FileNotFoundException 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Chyba v hardware, závažné chyby, nemůžeme reagovat (Error), (OutOfMemoryError,Un
+knownError)
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Chyba v JVM 
+\end_layout
+
+\begin_layout Enumerate
+HW chyba 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Obecne chyba vzniká pri porušení sémantických omezení jazyka Java.
+ Bezpe4nostní prvek Javy: zpracování chyb a nestandardních stavů není ponecháno
+ jen na vůli programátora! Reakce na očekávané chyby se vynucuje na úrovni
+ překladu, při nerespektování se překlad nepodaří.
+\end_layout
+
+\begin_layout Section
+Reakce na výjimky
+\end_layout
+
+\begin_layout Standard
+Chyba při provádení programu v jazyku Java nemusí znamenat ukončení programu
+ – chybu lze ošetrit a pokracovat dál.
+ Při vzniku výjimky je automaticky vytvořen objekt, který nese informace
+ o vzniklé výjimce.
+ Mechanismus výjimek umožní přenést řízení z místa, kde výjimka vznikla
+ do místa, kde bude zpracována.
+ Oddělení "výkonné" části (try) od části "chybové" - catch.
+\end_layout
+
+\begin_layout Subsection
+Úplné neošetření výjimky
+\end_layout
+
+\begin_layout Standard
+Žádné použití throws nebo try-catch, způsobí ukončení programu - CHYBA.
+ Java sama ohlásí při překladu, které části jsou kritické a je je třeba
+ ošetrit.
+ Nejsou-li, pak minimálně "vyhozením" na vyšší úroven pomocí klauzule throws,
+ jinak nedojde k překladu.
+\end_layout
+
+\begin_layout Subsection
+Neošetření výjimky, ale předání výše
+\end_layout
+
+\begin_layout Standard
+public static void main(String[] args) 
+\series bold
+throws IOException 
+\series default
+{ ...
+ }
+\end_layout
+
+\begin_layout Standard
+Závisí-li chod dalšího programu na korektní funkci metody, nemá cenu ji
+ ošetrovat a přitom by činnost programu stejně nemohla pokračovat (proste
+ tu hodnotu musíme mít a ne jen "nespadnutý" program!)
+\end_layout
+
+\begin_layout Subsection
+Ošetření výjimky a předání výš - throw
+\end_layout
+
+\begin_layout LyX-Code
+public static int XctiInt() throws Exception { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+try { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+Scanner sc = new Scanner(System.in); 
+\end_layout
+
+\begin_layout LyX-Code
+int i = sc.nextInt(); 
+\end_layout
+
+\begin_layout LyX-Code
+return i; 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} catch (Exception e) { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+System.out.println("Chyba v udaji"); 
+\end_layout
+
+\begin_layout LyX-Code
+throw e; // predani vyse
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+Volající metoda musí opět použít try-catch, nebo výjimku throws výše.
+ 
+\end_layout
+
+\begin_layout Subsection
+Kompletní Ošetření výjimky - try-catch
+\end_layout
+
+\begin_layout Standard
+Kompletní ošetření výjimky se provádí konstrukcí try - catch:
+\end_layout
+
+\begin_layout Standard
+try { ...
+ } catch (Exception e) { ...
+ }
+\end_layout
+
+\begin_layout Standard
+Klauzulí catch muže být i více pro ruzné typy výjimek.
+ Pokud výjimka vyhovuje jedné větvi catch, tato se provede a ostatní už
+ ne.
+ Existuje také blok finally, ten se provede vždy, ať už výjimka nastane
+ nebo ne.
+\end_layout
+
+\begin_layout Section
+Mechanismus šíření výjimek
+\end_layout
+
+\begin_layout Standard
+Jestliže vznikne výjimka, potom JVM hledá odpovídající klauzuli, která je
+ schopná výjimku ošetrit (tj.
+ převzít rízení):
+\end_layout
+
+\begin_layout Enumerate
+pokud výjimka vznikla v bloku příkazu try, hledá se odpovídající klauzule
+ catch v tomto příkazu, další príkazy bloku try se neprovedou a řízení se
+ předá konstrukci ošetrující výjimku daného typu do místa ošetrení výjimky
+ (tzv.
+ handler = catch blok)
+\end_layout
+
+\begin_layout Enumerate
+pokud výjimka vznikne mimo příkaz try, předá se řízení do místa volání metody
+ a pokračuje se podle předchozího bodu 
+\end_layout
+
+\begin_layout Enumerate
+pokud taková konstrukce v těle funkce (metody, konstruktoru) není, skončí
+ funkce nestandardně a výjimka se šírí na dynamicky nadřazenou úroven 
+\end_layout
+
+\begin_layout Enumerate
+není-li výjimka ošetrena ani ve funkci main, vypíše se (na výstup) a program
+ skončí 
+\end_layout
+
+\begin_layout Standard
+Pro rozlišení různých typů výjimek je v jazyku Java zavedena řada knihovních
+ tříd, výjimky jsou instancemi těchto tříd.
+\end_layout
+
+\begin_layout Section
+Typy výjimek
+\end_layout
+
+\begin_layout Standard
+Začněme obrázkem:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename images/vyjimky.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Kontrolované
+\end_layout
+
+\begin_layout Standard
+Kontrolované výjimky musí být na rozdíl od nekontrolovaných explicitne deklarová
+ny v hlavicce metody, ze které se mohou šírit, jedná se o výjimky trídy
+ Exception, je nutné je povinne obsloužit.
+ Oznacují se též jako výjimky synchronní:
+\end_layout
+
+\begin_layout LyX-Code
+void m() throws Exception { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+if (…) throw new Exception(); 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+Potomek třídy Exception muže ošetrovat i "naše" výjimky, jednoznačne synchronní,
+ vznikají na námi specifikovaném míste.
+ Vyžadují povinné ošetrení, jinak se ohlásí!.
+ Třída Exception je nadtřída výjimek, které prevážne vznikají vlastní chybou
+ aplikace a má smysl je ošetrovat (typicky ošetrení chyb vstupu/výstupu
+ (IOException)).
+\end_layout
+
+\begin_layout Subsection
+Nekontrolované
+\end_layout
+
+\begin_layout Standard
+Nekontrolované výjimky jsou takové, které se mohou šírit z vetšiny metod
+ a proto by jejich deklarování obtežovalo, tzv.
+ asynchronní výjimky.
+ 
+\end_layout
+
+\begin_layout Itemize
+bežný uživatel není schopen výjimku ošetrit – ze třídy Error.
+ Třída Error je nadtřída všech výjimek, které převážne vznikají v důsledku
+ softwarových či hardwarových chyb výpočetního systému a které vetšinou
+ nelze v aplikaci smysluplně ošetrit.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+MemoryOverflowError - přetecení paměti
+\end_layout
+
+\begin_layout Itemize
+ClassFormatError - chybný formát byte-kódu
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+chyby, které ošetrujeme podle potřeby, prekladac nekontroluje, zda tyto
+ výjimky jsou ošetreny - podtřídy třídy RuntimeException.
+ Nemusíme na ně reagovat, ale mužeme je predat "výše", překladač nás k reakci
+ nenutí.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ArithmeticException - delení 0 
+\end_layout
+
+\begin_layout Itemize
+IndexOutOfBoundsException - indexace mimo meze
+\end_layout
+
+\begin_layout Itemize
+NumberFormatException - nedovolený prevod znaku na císlo, prectení nenumerické
+ hodnoty
+\end_layout
+
+\begin_layout Itemize
+NegativeArraySizeException - vytvárení pole se zápornou délkou 
+\end_layout
+
+\begin_layout Itemize
+NullPointerException - dereference odkazu null 
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Vlastní výjimky
+\end_layout
+
+\begin_layout Standard
+Ve vlastních třídách muže nastat stav, který chceme ošetrit standardně výjimecný
+m stavem.
+ Vlastní výjimka je potomkem třídy Exception.
+ Jedná se o tzv.synchronní výjimku, vzniká na přesne definovaném míste.
+ Vetšinou se jedná o výjimku, na kterou chceme reakci uživatele.
+ Reakci na vlastní výjimky systém vyžaduje.
+\end_layout
+
+\begin_layout LyX-Code
+throw new Exception(); // generujeme vyjímku
+\end_layout
+
+\begin_layout Subsection
+Vytvoření vlastní výjimky
+\end_layout
+
+\begin_layout LyX-Code
+class MojeVyjimka extends Exception { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+int n;  
+\end_layout
+
+\begin_layout LyX-Code
+int d; 
+\end_layout
+
+\begin_layout LyX-Code
+MojeVyjimka(int i, int j) { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+n = i; 
+\end_layout
+
+\begin_layout LyX-Code
+d = j; 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout LyX-Code
+public String toString() {
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+return "Hodnota " + n + "/" + d +" není integer."; 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout LyX-Code
+//priklad pouziti
+\end_layout
+
+\begin_layout LyX-Code
+throw new MojeVyjimka(numer[i], denom[i]);
+\end_layout
+
+\end_body
+\end_document

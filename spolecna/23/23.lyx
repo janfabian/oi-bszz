@@ -1,0 +1,3744 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass scrreprt
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{chapter}{22} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Gramatiky, regulární gramatiky a bezkontextové gramatiky, bezkontextové
+ jazyky.
+ Zásobníkové automaty a jejich vztah k bezkontextovým jazykům.
+ Vlastnosti bezkontextových gramatik, lemma o vkládání.
+ (A4B01JAG)
+\end_layout
+
+\begin_layout Section
+Gramatiky
+\end_layout
+
+\begin_layout Subsection
+Hierarchie gramatik
+\end_layout
+
+\begin_layout Subsubsection
+Definice
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Definice"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Gramatika
+\emph default
+ je uspořádaná čtveřice 
+\begin_inset Formula $G=\left(N,\Sigma,S,P\right)$
+\end_inset
+
+, kde 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $N$
+\end_inset
+
+ je konečná množina tzv.
+ 
+\emph on
+neterminálů;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ je konečná neprázdná množina tzv.
+ 
+\emph on
+terminálů
+\emph default
+, platí 
+\begin_inset Formula $N\cap\Sigma=\textrm{Ø}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $S\in N$
+\end_inset
+
+ je startovací symbol;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $P$
+\end_inset
+
+ je konečná množina pravidel typu 
+\begin_inset Formula $\alpha\rightarrow\beta$
+\end_inset
+
+, kde 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ a 
+\begin_inset Formula $\beta$
+\end_inset
+
+ jsou slova nad 
+\begin_inset Formula $N\cup\Sigma$
+\end_inset
+
+ taková, že 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ obsahuje alespoň jeden neterminál.
+\end_layout
+
+\begin_layout Subsubsection
+Příklad
+\end_layout
+
+\begin_layout Standard
+V programovacích jazycích se často vyskytují definice typu číslo v Backus-Naurov
+ě formě:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left\langle \textrm{číslo}\right\rangle ::=\left\langle \textrm{číso bez zn.}\right\rangle |+\left\langle \textrm{číslo bez zn.}\right\rangle |-\left\langle \textrm{číslo bez zn.}\right\rangle $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left\langle \textrm{číslo bez zn.}\right\rangle ::=\left\langle \textrm{číslice}\right\rangle |\left\langle \textrm{číslice}\right\rangle \left\langle \textrm{číslo bez zn.}\right\rangle $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left\langle \textrm{číslice}\right\rangle ::=0|1|2|3|4|5|6|7|8|9$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Jedná se o speciální příklad gramatiky: Označíme 
+\begin_inset Formula $S=\left\langle \textrm{číslo}\right\rangle $
+\end_inset
+
+, 
+\begin_inset Formula $A=\left\langle \textrm{číslo bez zn.}\right\rangle $
+\end_inset
+
+ a 
+\begin_inset Formula $B=\left\langle \textrm{číslice}\right\rangle $
+\end_inset
+
+.
+ Pak se jedná o gramatiku, kde
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+N=\left\{ S,A,B\right\} ,\quad\Sigma=\left\{ +,-,0,1,2,3,4,5,6,7,8,9\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+a pravidla 
+\begin_inset Formula $P$
+\end_inset
+
+ jsou 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $S\rightarrow A$
+\end_inset
+
+, 
+\begin_inset Formula $S\rightarrow+A$
+\end_inset
+
+, 
+\begin_inset Formula $S\rightarrow-A$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $A\rightarrow B$
+\end_inset
+
+, 
+\begin_inset Formula $A\rightarrow BA$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $B\rightarrow0$
+\end_inset
+
+, 
+\begin_inset Formula $B\rightarrow1,\ldots$
+\end_inset
+
+, 
+\begin_inset Formula $B\rightarrow9$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Přímé odvození
+\end_layout
+
+\begin_layout Standard
+Je dána gramatika 
+\begin_inset Formula $G=\left(N,\Sigma,S,P\right)$
+\end_inset
+
+.
+ Řekneme, že 
+\begin_inset Formula $\delta$
+\end_inset
+
+ se 
+\emph on
+přímo odvodí
+\emph default
+ z 
+\begin_inset Formula $\gamma$
+\end_inset
+
+, značíme 
+\begin_inset Formula $\gamma\Rightarrow_{G}\delta$
+\end_inset
+
+, jestliže existuje v 
+\begin_inset Formula $P$
+\end_inset
+
+ pravidlo 
+\begin_inset Formula $\alpha\rightarrow\beta$
+\end_inset
+
+ a slova 
+\begin_inset Formula $\varphi,\psi\in\left(N\cup\Sigma^{\star}\right)$
+\end_inset
+
+ taková, že 
+\begin_inset Formula $\gamma=\varphi\alpha\psi$
+\end_inset
+
+ a 
+\begin_inset Formula $\delta=\varphi\beta\psi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Zhruba řečeno, ve slově 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ najdeme některý výskyt podslova 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, které tvoří levou stranu pravidla 
+\begin_inset Formula $\alpha\rightarrow\beta$
+\end_inset
+
+ z 
+\emph on
+P
+\emph default
+ .
+ Slovo 
+\begin_inset Formula $\delta$
+\end_inset
+
+ dostaneme tak, že zvolený výskyt 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ (v 
+\begin_inset Formula $\gamma$
+\end_inset
+
+) nahradíme slovem 
+\begin_inset Formula $\beta$
+\end_inset
+
+ (tj.
+ pravou stranou pravidla).
+\end_layout
+
+\begin_layout Subsubsection
+Odvození
+\end_layout
+
+\begin_layout Standard
+Je dána gramatika 
+\begin_inset Formula $G=\left(N,\Sigma,S,P\right)$
+\end_inset
+
+.
+ Řekneme, že 
+\begin_inset Formula $\delta$
+\end_inset
+
+ se 
+\emph on
+odvodí
+\emph default
+ z 
+\begin_inset Formula $\gamma$
+\end_inset
+
+, jestliže
+\end_layout
+
+\begin_layout Itemize
+buď 
+\begin_inset Formula $\gamma=\delta$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Itemize
+nebo existuje posloupnost přímých odvození
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula 
+\[
+\gamma\Rightarrow\gamma_{1}\Rightarrow_{G}\gamma_{2}\Rightarrow_{G}\ldots\Rightarrow_{G}\gamma_{k}=\delta.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Tento fakt značíme 
+\begin_inset Formula $\gamma\Rightarrow_{G}^{\star}\delta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Jazyk generovaný gramatikou
+\end_layout
+
+\begin_layout Standard
+Řekneme, že slovo 
+\begin_inset Formula $w\in\Sigma^{\star}$
+\end_inset
+
+ je 
+\emph on
+generováno
+\emph default
+ gramatikou 
+\begin_inset Formula $G$
+\end_inset
+
+, jestliže 
+\begin_inset Formula $S\Rightarrow_{G}^{\star}w$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Jazyk
+\emph default
+ 
+\begin_inset Formula $L\left(G\right)$
+\end_inset
+
+ 
+\emph on
+generovaný
+\emph default
+ gramatikou 
+\begin_inset Formula $G$
+\end_inset
+
+ se skládá ze všech slov generovaných gramatikou 
+\begin_inset Formula $G$
+\end_inset
+
+, tj.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+L\left(G\right)=\left\{ w\in\Sigma^{\star}|S\Rightarrow_{G}^{\star}w\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Konvence
+\end_layout
+
+\begin_layout Itemize
+Neterminály značíme obvykle velkými písmeny 
+\begin_inset Formula $A,B,X,Y,\ldots$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Terminály značíme obvykle malými písmeny ze začátku abecedy 
+\begin_inset Formula $a,b,c,d,\ldots$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Slova z 
+\begin_inset Formula $\left(N\cup\Sigma\right)^{\star}$
+\end_inset
+
+ obvykle značíme řeckými písmeny 
+\begin_inset Formula $\alpha,\beta,\ldots$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Terminální slova, tj.
+ slova z 
+\begin_inset Formula $\Sigma^{\star}$
+\end_inset
+
+, značíme malými písmeny z konce abecedy 
+\begin_inset Formula $u,w,x,y,\ldots$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Obvykle v textu vynecháváme jméno gramatiky, je-li z kontextu jasné o jakou
+ gramatiku se jedná.
+ Píšeme proto 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ a 
+\begin_inset Formula $\Rightarrow^{\star}$
+\end_inset
+
+ místo 
+\begin_inset Formula $\Rightarrow_{G}$
+\end_inset
+
+ a 
+\begin_inset Formula $\Rightarrow_{G}^{\star}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Chomského hierarchie
+\end_layout
+
+\begin_layout Standard
+Podle podmínek, které klademe na pravidla dané gramatiky rozlišujeme gramatiky
+ a jimi generované jazyky na:
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Gramatiky typu
+\emph default
+ 
+\emph on
+0
+\emph default
+ jsou gramatiky tak, jak jsme je zavedli v odstavci 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Definice"
+
+\end_inset
+
+.
+ Jazyky generované gramatikami typu 0 se nazývají 
+\emph on
+jazyky typu 0
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Gramatiky typu 1
+\emph default
+ též 
+\emph on
+kontextové gramatiky
+\emph default
+ jsou takové gramatiky, kde každé pravidlo v P je tvaru
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\alpha A\beta\rightarrow\alpha\gamma\beta,
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+kde 
+\begin_inset Formula $\alpha,\beta,\gamma\in\left(N\cup\Sigma\right)^{\star}$
+\end_inset
+
+, 
+\begin_inset Formula $A$
+\end_inset
+
+ je neterminál a 
+\begin_inset Formula $\gamma\neq\epsilon$
+\end_inset
+
+.
+ Jedinou výjimku tvoří pravidlo 
+\begin_inset Formula $S\rightarrow\epsilon$
+\end_inset
+
+, pak se 
+\begin_inset Formula $S$
+\end_inset
+
+ nevyskytuje na pravé straně žádného pravidla.
+\end_layout
+
+\begin_layout Standard
+Jazyky generované gramatikami typu 1 se nazývají 
+\emph on
+jazyky typu 1
+\emph default
+, též 
+\emph on
+kontextové jazyky
+\emph default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Gramatiky typu
+\emph default
+ 
+\emph on
+2
+\emph default
+ též 
+\emph on
+bezkontextové gramatiky
+\emph default
+ (což zkracujeme na CFG) jsou takové gramatiky, kde každé pravidlo v 
+\emph on
+P
+\emph default
+ je tvaru
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+A\rightarrow\gamma,
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+kde 
+\begin_inset Formula $\gamma\in\left(N\cup\Sigma\right)^{\star}$
+\end_inset
+
+ a 
+\begin_inset Formula $A$
+\end_inset
+
+ je neterminál.
+\end_layout
+
+\begin_layout Standard
+Jazyky generované gramatikami typu 2 se nazývají 
+\emph on
+bezkontextové jazyky
+\emph default
+ nebo j
+\emph on
+azyky typu 2
+\emph default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Gramatiky typu 3
+\emph default
+ neboli 
+\emph on
+regulární gramatiky
+\emph default
+ (též 
+\emph on
+pravé lineární gramatiky
+\emph default
+) jsou takové gramatiky, kde každé pravidlo v P je tvaru
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+A\rightarrow wB,\; A\rightarrow w,
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+kde 
+\begin_inset Formula $A,B$
+\end_inset
+
+ jsou neterminály a 
+\begin_inset Formula $w$
+\end_inset
+
+ je terminální slovo.
+\end_layout
+
+\begin_layout Standard
+Jazyky generované gramatikami typu 3 se nazývají 
+\emph on
+regulární jazyky
+\emph default
+ nebo 
+\emph on
+jazyky typu 3
+\emph default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Poznamenejme, že regulární jazyky již byly definovány jako ty jazyky, které
+ jsou přijímány konečnými automaty — později ukážeme, že je to správně,
+ totiž, že každý jazyk typu 3 je přijímán konečným automatem.
+\end_layout
+
+\begin_layout Subsubsection
+Nevypouštěcí gramatiky
+\end_layout
+
+\begin_layout Standard
+Gramatiku 
+\begin_inset Formula $G=\left(N,\Sigma,S,P\right)$
+\end_inset
+
+ nazveme 
+\emph on
+nevypouštěcí
+\emph default
+, jestliže neobsahuje žádné pravidlo typu 
+\begin_inset Formula $A\rightarrow\epsilon$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Tvrzení
+\series default
+: Ke každé bezkontextové gramatice 
+\emph on
+G
+\emph default
+ existuje nevypouštěcí gramatika 
+\begin_inset Formula $G_{1}$
+\end_inset
+
+ taková, že
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+L\left(G\right)=L\left(G_{1}\right)-\left\{ \epsilon\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Důsledek
+\series default
+: Označme 
+\begin_inset Formula $L_{i}$
+\end_inset
+
+ třídu jazyků typu 
+\emph on
+i
+\emph default
+.
+ Pak platí:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+L_{3}\subseteq L_{2}\subseteq L_{1}\subseteq L_{0}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Regulární jazyky a regulární gramatiky
+\end_layout
+
+\begin_layout Subsection
+Tvrzení
+\end_layout
+
+\begin_layout Standard
+Ke každému regulárnímu jazyku 
+\emph on
+L
+\emph default
+ existuje regulární gramatika 
+\emph on
+G
+\emph default
+, která ho generuje.
+\end_layout
+
+\begin_layout Subsection
+Lemma
+\end_layout
+
+\begin_layout Standard
+Ke každé gramatice 
+\emph on
+G
+\emph default
+ typu 3 existuje gramatika 
+\begin_inset Formula $G_{1}$
+\end_inset
+
+ typu 3 generující stejný jazyk a taková, že má pravidla pouze tvaru
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+A\rightarrow aB,\; A\rightarrow\epsilon.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Přidáním nových neterminálů je možné pravidlo 
+\begin_inset Formula $A\rightarrow wB$
+\end_inset
+
+, kde 
+\begin_inset Formula $w=a_{1}a_{2}\ldots a_{k}$
+\end_inset
+
+, nahradit posloupností pravidel 
+\begin_inset Formula $A\rightarrow a_{1}X_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $X_{1}\rightarrow a_{2}X_{2},\ldots,X_{k-1}\rightarrow a_{k}B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Tvrzení
+\end_layout
+
+\begin_layout Standard
+Ke každé gramatice 
+\begin_inset Formula $G$
+\end_inset
+
+ typu 3 existuje konečný automat 
+\begin_inset Formula $M$
+\end_inset
+
+ takový, že
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+L\left(G\right)=L\left(M\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Věta 
+\end_layout
+
+\begin_layout Standard
+Gramatiky typu 3 generují právě třídu regulárních jazyků.
+\end_layout
+
+\begin_layout Section
+Bezkontextové gramatiky
+\end_layout
+
+\begin_layout Standard
+Připomeňme, že bezkontextová gramatika (CFG) je gramatika 
+\begin_inset Formula $G=(N,\Sigma,S,P)$
+\end_inset
+
+, která obsahuje pouze pravidla typu
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+A\rightarrow\gamma,\quad\textrm{kde }\gamma\in\left(N\cup\Sigma\right)^{\star}\;\textrm{a}\; A\;\textrm{je neterminál.}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dále připomeňme, že ke každé CFG gramatice 
+\begin_inset Formula $G$
+\end_inset
+
+ existuje nevypouštěcí CFG gramatika 
+\begin_inset Formula $G_{1}$
+\end_inset
+
+ taková, že
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+L\left(G_{1}\right)=L\left(G\right)-\left\{ \epsilon\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Tvrzení
+\end_layout
+
+\begin_layout Standard
+Máme dánu bezkontextovou gramatiku 
+\begin_inset Formula $G=(N,\Sigma,S,P)$
+\end_inset
+
+ a v ní derivaci
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+S\Rightarrow_{G}^{\star}\alpha A\beta\Rightarrow_{G}^{\star}w,
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+pro 
+\begin_inset Formula $\alpha,\beta\in\left(\Sigma\cup N\right)^{\star}$
+\end_inset
+
+, 
+\begin_inset Formula $A\in N$
+\end_inset
+
+ a 
+\begin_inset Formula $w\in\Sigma^{\star}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Pak existují slova 
+\begin_inset Formula $u,x,v\in\Sigma^{\star}$
+\end_inset
+
+ taková, že
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+w=uxv\quad\textrm{a}\quad\alpha\Rightarrow_{G}^{\star}u,\quad A\Rightarrow_{G}^{\star}x,\quad\beta\Rightarrow_{G}^{\star}v.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Redukovaná bezkontextová gramatika
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Redukovaná-bezkontextová-gramati"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Je dána bezkontextová gramatika 
+\begin_inset Formula $G=(N,\Sigma,S,P)$
+\end_inset
+
+, pro kterou 
+\begin_inset Formula $L\left(G\right)\neq\textrm{Ø}$
+\end_inset
+
+.
+ Řekneme, že 
+\begin_inset Formula $G$
+\end_inset
+
+ je 
+\emph on
+redukovaná
+\emph default
+, jestliže splňuje tyto dvě podmínky:
+\end_layout
+
+\begin_layout Enumerate
+Ke každému neterminálu 
+\begin_inset Formula $A$
+\end_inset
+
+ existuje aspoň jedno terminální slovo 
+\begin_inset Formula $w$
+\end_inset
+
+ takové, že 
+\begin_inset Formula $A\Rightarrow_{G}^{\star}w$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Ke každému neterminálu 
+\begin_inset Formula $A$
+\end_inset
+
+ existují slova 
+\begin_inset Formula $\alpha,\beta\in\left(N\cup\Sigma\right)^{\star}$
+\end_inset
+
+ tak, že 
+\begin_inset Formula $S\Rightarrow_{G}^{\star}\alpha A\beta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Tvrzení
+\end_layout
+
+\begin_layout Standard
+Ke každé bezkontextové gramatice 
+\begin_inset Formula $G=(N,\Sigma,S,P)$
+\end_inset
+
+, pro kterou 
+\begin_inset Formula $L\left(G\right)\neq\textrm{Ø}$
+\end_inset
+
+, existuje redukovaná gramatika 
+\begin_inset Formula $G_{1}$
+\end_inset
+
+ taková, že 
+\begin_inset Formula $L\left(G_{1}\right)=L\left(G\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Algoritmus redukce CFG
+\end_layout
+
+\begin_layout Standard
+Je dána bezkontextová gramatika 
+\begin_inset Formula $G=(N,\Sigma,S,P)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Sestrojíme množinu 
+\begin_inset Formula $V=\left\{ A|A\in N,A\Rightarrow_{G}^{\star}w,w\in\Sigma^{\star}\right\} $
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{0}=\Sigma,
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{i+1}=V_{i}\cup\left\{ A|\textrm{ existuje }\alpha\in V_{i}^{\star}\textrm{ takové, že }A\Rightarrow_{G}^{\star}\alpha\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Platí
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{O}\subseteq V_{1}\subseteq V_{2}\subseteq\ldots\subseteq\left(N\cup\Sigma\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Proto existuje 
+\begin_inset Formula $n$
+\end_inset
+
+ takové, že 
+\begin_inset Formula $V_{n}=V_{n+1}$
+\end_inset
+
+.
+ Položíme 
+\begin_inset Formula $V=V_{n}-\Sigma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Jestliže 
+\begin_inset Formula $S\notin V$
+\end_inset
+
+, pak 
+\begin_inset Formula $L\left(G\right)=\textrm{Ø}$
+\end_inset
+
+ a redukovaná gramatika ke gramatice 
+\begin_inset Formula $G$
+\end_inset
+
+ neexistuje.
+\end_layout
+
+\begin_layout Standard
+Definujeme 
+\begin_inset Formula $G^{\shortmid}=\left(V,\Sigma,S,P^{\shortmid}\right)$
+\end_inset
+
+: do 
+\begin_inset Formula $P^{\shortmid}$
+\end_inset
+
+ dáme pouze ta pravidla z 
+\begin_inset Formula $P$
+\end_inset
+
+, která obsahují neterminály z množiny 
+\begin_inset Formula $V$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Pro gramatiku 
+\begin_inset Formula $G^{\shortmid}=\left(V,\Sigma,S,P^{\shortmid}\right)$
+\end_inset
+
+ zkonstruujeme množinu
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+U=\left\{ A|A\in V,\textrm{ existují }\alpha,\beta\in\left(V\cup\Sigma\right)^{\star}\textrm{ tak, že }S\Rightarrow_{G}^{\star}\alpha A\beta\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+U_{0}=\left\{ S\right\} ,
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+U_{i+1}=U_{i}\cup\left\{ A|\textrm{existují }B\in U_{i},\alpha,\beta\in\left(V\cup\Sigma\right)^{\star}\textrm{ tak, že }B\Rightarrow_{G}^{\star}\alpha A\beta\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Platí
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+U_{0}\subseteq U_{1}\subseteq U_{2}\subseteq\ldots\subseteq V.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Proto existuje 
+\begin_inset Formula $n$
+\end_inset
+
+ takové, že 
+\begin_inset Formula $U_{n}=U_{n+1}$
+\end_inset
+
+.
+ Položíme 
+\begin_inset Formula $U=U_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Hledaná gramatika je gramatika 
+\begin_inset Formula $G_{1}=\left(U,\Sigma,S,P_{1}\right)$
+\end_inset
+
+, kde 
+\begin_inset Formula $P_{1}$
+\end_inset
+
+ je množina všech pravidel z 
+\begin_inset Formula $P^{\shortmid}$
+\end_inset
+
+ (a tedy i z 
+\emph on
+P
+\emph default
+), které obsahují neterminály pouze z množiny 
+\emph on
+U
+\emph default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Platí: gramatika 
+\begin_inset Formula $G_{1}=\left(U,\Sigma,S,P_{1}\right)$
+\end_inset
+
+ je redukovaná a generuje stejný jazyk jako původní gramatika 
+\begin_inset Formula $G=(N,\Sigma,S,P)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Poznámky
+\end_layout
+
+\begin_layout Itemize
+Uvědomte si, že redukovaná CFG gramatika „nemá zbytečné neterminály
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Je obtížné ke dvěma bezkontextovým gramatikám zjistit, zda generují stejný
+ jazyk.
+ Redukce gramatik nám k rozhodnutí nepomůže.
+\end_layout
+
+\begin_layout Itemize
+Kroky předchozího postupu nelze zaměnit.
+ Kdybychom nejprve hledali množinu neterminálů 
+\emph on
+U
+\emph default
+ a pak teprve z ní vybírali ty neterminály, ze kterých je možné odvodit
+ terminální slovo, výsledná gramatika by nemusela splňovat druhou podmínku
+ z 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Redukovaná-bezkontextová-gramati"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Levá derivace, levé odvození
+\end_layout
+
+\begin_layout Standard
+Přímé odvození se nazývá 
+\emph on
+levé
+\emph default
+, jestliže se přepisuje ten neterminál, který je nejvíc „vlevo
+\begin_inset Quotes erd
+\end_inset
+
+, tj.
+ 
+\begin_inset Formula $uA\beta\Rightarrow_{G}u\delta\beta$
+\end_inset
+
+, kde 
+\begin_inset Formula $u\in\Sigma^{\star}$
+\end_inset
+
+ a 
+\begin_inset Formula $A\rightarrow\delta$
+\end_inset
+
+ je pravidlo gramatiky.
+\end_layout
+
+\begin_layout Standard
+Derivace (odvození) se nazývá 
+\emph on
+levá
+\emph default
+, jestliže se skládá pouze z levých přímých odvození.
+\end_layout
+
+\begin_layout Standard
+Obdobně definujeme pravé přímé odvození a pravou derivaci.
+\end_layout
+
+\begin_layout Subsection
+Tvrzení
+\end_layout
+
+\begin_layout Standard
+Je dána bezkontextová gramatika 
+\begin_inset Formula $G=(N,\Sigma,S,P)$
+\end_inset
+
+.
+ Pak pro každou derivaci 
+\begin_inset Formula $S\Rightarrow_{G}^{\star}w$
+\end_inset
+
+ existuje levá derivace terminálního 
+\emph on
+w
+\emph default
+ z 
+\emph on
+S
+\emph default
+ taková, že používá stejná pravidla jako původní derivace (pouze možná v
+ jiném pořadí).
+\end_layout
+
+\begin_layout Subsection
+Derivační strom (parse tree)
+\end_layout
+
+\begin_layout Standard
+Je dána bezkontextová gramatika 
+\begin_inset Formula $G=(N,\Sigma,S,P)$
+\end_inset
+
+.
+ 
+\emph on
+Derivační strom
+\emph default
+ (anglicky 
+\emph on
+parse tree
+\emph default
+) je kořenový strom, takový, že:
+\end_layout
+
+\begin_layout Enumerate
+Každý vrchol, který není list, je ohodnocen neterminálem.
+\end_layout
+
+\begin_layout Enumerate
+Každý list je ohodnocen terminálem nebo prázdným slovem 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+.
+ V případě, že je list ohodnocen prázdným slovem 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+, jedná se o jediný následník (svého předchůdce).
+\end_layout
+
+\begin_layout Enumerate
+Jestliže některý vrchol, který není list, je ohodnocen neterminálem 
+\emph on
+A
+\emph default
+ a má následníky (v pořadí od leva do prava) 
+\begin_inset Formula $X_{1},X_{2},\ldots,X_{k}$
+\end_inset
+
+, 
+\begin_inset Formula $X_{i}\in N\cup\Sigma$
+\end_inset
+
+, pak 
+\begin_inset Formula $A\rightarrow X_{1}X_{2}\ldots X_{k}$
+\end_inset
+
+ je pravidlo gramatiky 
+\begin_inset Formula $G$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Řekneme, že derivační strom 
+\emph on
+dává
+\emph default
+, nebo 
+\emph on
+má za výsledek
+\emph default
+ slovo 
+\emph on
+w
+\emph default
+, jestliže w je ohodnocení listů derivačního stromu (čteno od leva do prava).
+\end_layout
+
+\begin_layout Subsection
+Tvrzení
+\end_layout
+
+\begin_layout Enumerate
+Pro každou derivaci 
+\begin_inset Formula $S\Rightarrow_{G}^{\star}w$
+\end_inset
+
+ existuje derivační strom s výsledkem 
+\emph on
+w
+\emph default
+.
+\end_layout
+
+\begin_layout Enumerate
+Ke každému derivačnímu stromu s výsledkem 
+\emph on
+w
+\emph default
+ existuje aspoň jedna derivance 
+\begin_inset Formula $S\Rightarrow_{G}^{\star}w$
+\end_inset
+
+ (takových derivací může být více).
+\end_layout
+
+\begin_layout Enumerate
+Ke každému derivačnímu stromu s výsledkem 
+\emph on
+w
+\emph default
+ existuje právě jedna levá (právě jedna pravá) derivace 
+\emph on
+w
+\emph default
+ z 
+\emph on
+S
+\emph default
+.
+\end_layout
+
+\begin_layout Subsection
+Jednoznačné a víceznačné bezkontextové gramatiky
+\end_layout
+
+\begin_layout Standard
+Je dána bezkontextová gramatika 
+\begin_inset Formula $G=(N,\Sigma,S,P)$
+\end_inset
+
+.
+ Řekneme, že 
+\emph on
+G
+\emph default
+ je 
+\emph on
+jednoznačná
+\emph default
+, jestliže pro každé slovo 
+\emph on
+w
+\emph default
+ generované gramatikou 
+\emph on
+G
+\emph default
+ existuje jediný derivační strom s výsledkem 
+\emph on
+w
+\emph default
+ (tj.
+ existuje jediná levá derivace 
+\emph on
+w
+\emph default
+ z 
+\emph on
+S
+\emph default
+).
+\end_layout
+
+\begin_layout Standard
+V opačném případě mluvíme o 
+\emph on
+víceznačné
+\emph default
+ gramatice.
+\end_layout
+
+\begin_layout Subsection
+Víceznačný jazyk
+\end_layout
+
+\begin_layout Standard
+Bezkontextový jazyk 
+\emph on
+L
+\emph default
+ se nazývá 
+\emph on
+víceznačný
+\emph default
+ (též 
+\emph on
+podstatně víceznačný
+\emph default
+), jestliže každá bezkontextová gramatika, která ho generuje, je víceznačná.
+\end_layout
+
+\begin_layout Standard
+Například jazyk 
+\begin_inset Formula $L=\left\{ a^{i}b^{j}c^{k}d^{l}|i=j\textrm{ nebo }k=l\right\} $
+\end_inset
+
+ je podstatně víceznačný.
+\end_layout
+
+\begin_layout Section
+Zásobníkové automaty
+\end_layout
+
+\begin_layout Standard
+Zhruba řečeno, zásobníkový automat se skládá z řídící jednotky, která je
+ v jednom z možných stavů, ze vstupní pásky se čtecí hlavou a ze zásobníku.
+ Na základě toho, v jakém stavu se automat nachází, co hlava čte na vstupní
+ pásce a jaký symbol je na vrcholu zásobníku, automat udělá akci: přejde
+ do nového stavu, posune čtecí hlavu o jedno políčko doprava nebo stojí
+ (to v případě, že automat reagoval na prázdné slovo) a vrchol zásobníku
+ nahradí zásobníkovým slovem.
+\end_layout
+
+\begin_layout Subsection
+Definice
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Zásobníkový automat
+\emph default
+ je sedmice 
+\begin_inset Formula $\left(Q,\Sigma,\Gamma,\delta,q_{0},Z_{0},F\right)$
+\end_inset
+
+, kde 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Q$
+\end_inset
+
+ je konečná množina stavů,
+\end_layout
+
+\begin_layout Itemize
+Σ je konečná množina vstupních symbolů,
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ je konečná množina zásobníkových symbolů,
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\delta$
+\end_inset
+
+ přiřazuje každé trojici 
+\begin_inset Formula $\left(q,a,X\right)$
+\end_inset
+
+, 
+\begin_inset Formula $q\in Q$
+\end_inset
+
+, 
+\begin_inset Formula $a\in\Sigma\cup\left\{ \epsilon\right\} $
+\end_inset
+
+, 
+\begin_inset Formula $X\in\Gamma$
+\end_inset
+
+, konečnou množinu dvojic 
+\begin_inset Formula $\left(p,\alpha\right)$
+\end_inset
+
+, kde 
+\begin_inset Formula $p\in Q$
+\end_inset
+
+ a 
+\begin_inset Formula $\alpha\in\Gamma^{\star}$
+\end_inset
+
+.
+ Formálně:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\delta:Q\times\left(\Sigma\cup\left\{ \epsilon\right\} \right)\times\Gamma\rightarrow P_{f}\left(Q\times\Gamma^{\star}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+(
+\begin_inset Formula $P_{f}\left(A\right)$
+\end_inset
+
+ značí množinu všech konečných podmnožin množiny 
+\begin_inset Formula $A$
+\end_inset
+
+.)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $q_{0}\in Q$
+\end_inset
+
+ je počáteční stav,
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Z_{0}\in\Gamma$
+\end_inset
+
+ je počáteční zásobníkový symbol a
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $F\subseteq Q$
+\end_inset
+
+ je množina koncových stavů.
+\end_layout
+
+\begin_layout Standard
+Uvědomte si, že zásobníkový automat tak, jak byl definován, je nedeterministický.
+\end_layout
+
+\begin_layout Subsection
+Situace zásobníkového automatu
+\end_layout
+
+\begin_layout Standard
+Je dán zásobníkový automat 
+\begin_inset Formula $\left(Q,\Sigma,\Gamma,\delta,q_{0},Z_{0},F\right)$
+\end_inset
+
+.
+ 
+\emph on
+Situace
+\emph default
+ zásobníkového automatu je trojice 
+\begin_inset Formula $\left(q,u,\gamma\right)$
+\end_inset
+
+, kde 
+\begin_inset Formula $q$
+\end_inset
+
+ je stav, 
+\begin_inset Formula $u$
+\end_inset
+
+ je vstupní slovo a 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ je zásobníkové slovo.
+\end_layout
+
+\begin_layout Standard
+Znamená to, že zásobníkový automat je ve stavu 
+\begin_inset Formula $q$
+\end_inset
+
+, na vstupní pásce má slovo 
+\begin_inset Formula $u$
+\end_inset
+
+ a v zásobníku slovo 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ s tím, že první písmeno 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ je na vrcholu zásobníku.
+\end_layout
+
+\begin_layout Subsection
+Jeden krok práce zásobníkového automatu - relace 
+\begin_inset Formula $\vdash_{A}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Je dán zásobníkový automat 
+\begin_inset Formula $A=\left(Q,\Sigma,\Gamma,\delta,q_{0},Z_{0},F\right)$
+\end_inset
+
+, který je v situaci 
+\begin_inset Formula $\left(q,au,X\gamma\right)$
+\end_inset
+
+, kde 
+\begin_inset Formula $a\in\Sigma\cup\left\{ \epsilon\right\} $
+\end_inset
+
+, 
+\begin_inset Formula $X\in\Gamma$
+\end_inset
+
+.
+ Pak 
+\begin_inset Formula $A$
+\end_inset
+
+ 
+\emph on
+přejde
+\emph default
+ do situace 
+\begin_inset Formula $\left(p,u,\alpha\gamma\right)$
+\end_inset
+
+ pro 
+\begin_inset Formula $\left(p,\alpha\right)\in\delta\left(q,a,X\right)$
+\end_inset
+
+.
+ Značíme
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left(q,au,X\gamma\right)\vdash_{A}\left(p,u,\alpha\gamma\right)\quad\textrm{iff}\quad\left(p,\alpha\right)\in\delta\left(q,a,X\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Relace 
+\begin_inset Formula $\vdash_{A}^{\star}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Jeden krok zásobníkového automatu rozšíříme na konečný počet.
+ Automat 
+\begin_inset Formula $A$
+\end_inset
+
+ 
+\emph on
+přejde ze situace
+\emph default
+ 
+\begin_inset Formula $S$
+\end_inset
+
+ 
+\emph on
+do situace
+\emph default
+ 
+\begin_inset Formula $S^{\shortmid}$
+\end_inset
+
+, píšeme 
+\begin_inset Formula $S\vdash^{\star}S^{\shortmid}$
+\end_inset
+
+, právě tehdy, když buď 
+\begin_inset Formula $S=S^{\shortmid}$
+\end_inset
+
+ nebo existuje konečný počet situací 
+\begin_inset Formula $S_{1},S_{2},\ldots,S_{n}$
+\end_inset
+
+ takových, že
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+S\vdash_{A}S_{1},S_{1}\vdash_{A}S_{2},\ldots,S_{n}\vdash_{A}S^{\shortmid}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Jazyk přijímaný prázdným zásobníkem
+\end_layout
+
+\begin_layout Standard
+Je dán zásobníkový automat 
+\begin_inset Formula $A=\left(Q,\Sigma,\Gamma,\delta,q_{0},Z_{0},F\right)$
+\end_inset
+
+.
+ 
+\emph on
+Jazyk přijímaný prázdným zásobníkem
+\emph default
+ 
+\begin_inset Formula $N\left(A\right)$
+\end_inset
+
+ je definován takto:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+N\left(A\right)=\left\{ u\in\Sigma^{\star}|\left(q_{0},u,Z_{0}\right)\vdash_{A}^{\star}\left(p,\epsilon,\epsilon\right),p\in Q\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Zhruba řečeno, zásobníkový automat začne v počátečním stavu 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+, na vstupní pásce má slovo 
+\emph on
+u
+\emph default
+ a na zásobníku pouze počáteční zásobníkový symbol 
+\begin_inset Formula $Z_{0}$
+\end_inset
+
+.
+ Slovo je přijato, když po jeho přečtení je (může být) zásobník vyprázdněn.
+\end_layout
+
+\begin_layout Subsection
+Jazyk přijímaný koncovým stavem
+\end_layout
+
+\begin_layout Standard
+Je dán zásobníkový automat 
+\begin_inset Formula $A=\left(Q,\Sigma,\Gamma,\delta,q_{0},Z_{0},F\right)$
+\end_inset
+
+.
+ 
+\emph on
+Jazyk přijímaný koncovým stavem
+\emph default
+ 
+\begin_inset Formula $L\left(A\right)$
+\end_inset
+
+ je definován takto:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+L\left(A\right)=\left\{ u\in\Sigma^{\star}|\left(q_{0},u,Z_{0}\right)\vdash_{A}^{\star}\left(p,\epsilon,\gamma\right),p\in F\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Zhruba řečeno, zásobníkový automat začne v počátečním stavu 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+, na vstupní pásce má slovo 
+\emph on
+u
+\emph default
+ a na zásobníku pouze počáteční zásobníkový symbol 
+\begin_inset Formula $Z_{0}$
+\end_inset
+
+.
+ Slovo je přijato, když po jeho přečtení je (může být) automat v některém
+ koncovém stavu.
+ To, zda je současně vyprázdněn zásobník nebo není, nehraje roli.
+\end_layout
+
+\begin_layout Subsection
+Tvrzení
+\end_layout
+
+\begin_layout Standard
+Ke každému zásobníkovému automatu 
+\emph on
+A
+\emph default
+ existuje zásobníkový automat 
+\emph on
+B
+\emph default
+ takový, že
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+N\left(A\right)=L\left(B\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Tvrzení
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Tvrzení"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ke každému zásobníkovému automatu 
+\emph on
+A
+\emph default
+ existuje zásobníkový automat 
+\emph on
+B
+\emph default
+ takový, že
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+L\left(A\right)=N\left(B\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Věta
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Věta"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ke každé bezkontextové gramatice 
+\begin_inset Formula $G=\left(N,\Sigma,S,P\right)$
+\end_inset
+
+ existuje zásobníkový automat 
+\emph on
+A
+\emph default
+ takový, že
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+L\left(G\right)=N\left(A\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Nástin důkazu
+\series default
+: Je dána bezkontextová gramatika 
+\begin_inset Formula $G=\left(N,\Sigma,S,P\right)$
+\end_inset
+
+.
+ Zkonstruujeme zásobníkový automat s jedním stavem 
+\begin_inset Formula $q$
+\end_inset
+
+ takto:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Q_{A}=\left\{ q\right\} ,q_{0}=q$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Gamma_{A}=N\cup\Sigma$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Z_{0}=S$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\delta_{A}\left(q,\epsilon,X\right)=\left\{ \left(q,\alpha\right)|X\rightarrow\alpha\in P,X\in N\right\} $
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\delta_{A}\left(q,a,a\right)=\left\{ \left(q,\epsilon\right)\right\} $
+\end_inset
+
+, pro 
+\begin_inset Formula $a\in\Sigma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Zhruba řečeno, je-li na vrcholu zásobníku automatu 
+\emph on
+A
+\emph default
+ neterminál 
+\emph on
+X
+\emph default
+, nahradíme ho v zásobníku některým pravidlem gramatiky 
+\emph on
+G
+\emph default
+.
+ Je-li na vrcholu zásobníku terminál 
+\begin_inset Formula $a\in\Sigma$
+\end_inset
+
+, tak v případě, že 
+\emph on
+a
+\emph default
+ je též čten čtecí hlavou, odstraníme ho z vrcholu zásobníku a hlavu posuneme
+ o jedno políčko doprava.
+ Jestliže se terminální písmeno na vrcholu zásobníku nerovná prvnímu čtenému
+ symbolu, automat se neúspěšně zastaví.
+\end_layout
+
+\begin_layout Standard
+Dá se dokázat, že zásobníkový automat 
+\emph on
+A
+\emph default
+ přijme slovo 
+\begin_inset Formula $u\in\Sigma^{\star}$
+\end_inset
+
+ prázdným zásobníkem právě tehdy, když je slovo 
+\emph on
+u
+\emph default
+ vygenerováno gramatikou 
+\emph on
+G
+\emph default
+.
+\end_layout
+
+\begin_layout Subsection
+Věta
+\end_layout
+
+\begin_layout Standard
+Ke každému zásobníkovému automatu 
+\emph on
+A
+\emph default
+ existuje bezkontextová gramatika 
+\emph on
+G
+\emph default
+ taková, že
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+N\left(A\right)=L\left(G\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Důkaz přechozí věty (jedná se o opačnou implikaci k větě 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Věta"
+
+\end_inset
+
+) je obtížnější.
+ Je třeba ho rozdělit do dvou kroků.
+ Nejprve se dokáže, že pro každý zásobníkový automat 
+\emph on
+A
+\emph default
+ existuje zásobníkový automat 
+\emph on
+B
+\emph default
+ s jedním stavem takový, že 
+\begin_inset Formula $N\left(A\right)=N\left(B\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Pak už je jednoduché pro zásobníkový automat 
+\emph on
+B
+\emph default
+ s jedním stavem vytvořit bezkontextovou gramatiku 
+\emph on
+G
+\emph default
+, která generuje stejná slova jako zásobníkový automat 
+\emph on
+B
+\emph default
+ přijal prázdným zásobníkem.
+ Jedná se vlastně o opačný postup jako v důkazu věty 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Věta"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Deterministický zásobníkový automat
+\end_layout
+
+\begin_layout Standard
+O zásobníkovém automatu 
+\begin_inset Formula $A=\left(Q,\Sigma,\Gamma,\delta,q_{0},Z_{0},F\right)$
+\end_inset
+
+ řekneme, že je 
+\emph on
+deterministický
+\emph default
+, jestliže splňuje následující dvě podmínky:
+\end_layout
+
+\begin_layout Itemize
+Pro každé 
+\begin_inset Formula $q\in Q$
+\end_inset
+
+, 
+\begin_inset Formula $a\in\Sigma\cup\left\{ \epsilon\right\} $
+\end_inset
+
+ a 
+\begin_inset Formula $X\in\Gamma$
+\end_inset
+
+ je 
+\begin_inset Formula $\delta\left(q,a,X\right)$
+\end_inset
+
+ nejvýše jednoprvková (tj.
+ 
+\begin_inset Formula $\left|\delta\left(q,a,X\right)\right|\leq1$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+Jestliže pro nějaké 
+\begin_inset Formula $q\in Q$
+\end_inset
+
+ a 
+\begin_inset Formula $X\in\Gamma$
+\end_inset
+
+ je 
+\begin_inset Formula $\delta\left(q,\epsilon,X\right)$
+\end_inset
+
+ neprázdné, pak pro každé 
+\begin_inset Formula $a\in\Sigma$
+\end_inset
+
+ je 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\delta\left(q,a,X\right)$
+\end_inset
+
+ prázdná množina.
+\end_layout
+
+\begin_layout Standard
+Uvědomte si, že předchozí dvě podmínky zajišťují, že v každém okamžiku máme
+ vždy nejvýše jednu možnost, jak pokračovat.
+\end_layout
+
+\begin_layout Subsection
+Jazyky přijímané deterministickým zásobníkovým automatem
+\end_layout
+
+\begin_layout Standard
+Stejně jako u (nedeterministických) zásobníkových automatů rozlišujeme i
+ u deterministických zásobníkových automatů příjímání koncovým stavem a
+ přijímání prázdným zásobníkem.
+ Tj.
+ pro daný deterministický zasobníkový automat 
+\begin_inset Formula $A=\left(Q,\Sigma,\Gamma,\delta,q_{0},Z_{0},F\right)$
+\end_inset
+
+ je
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+L\left(A\right)=\left\{ u|\left(q_{0},u,Z_{0}\right)\vdash_{A}^{\star}\left(p,\epsilon,\gamma\right),p\in F\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+N\left(A\right)=\left\{ u|\left(q_{0},u,Z_{0}\right)\vdash_{A}^{\star}\left(p,\epsilon,\epsilon\right)\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Tvrzení
+\end_layout
+
+\begin_layout Standard
+Pro každý deterministický zásobníkový automat 
+\emph on
+A
+\emph default
+ existuje deterministický zásobníkový automat 
+\emph on
+B
+\emph default
+ takový, že
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+N\left(A\right)=L\left(B\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Jinými slovy, každý jazyk přijímaný deterministickým zásobníkovým automatem
+ prázdným zásobníkem je také přijímán (nějakým) deterministickým zásobníkovým
+ automatem koncovým stavem.
+\end_layout
+
+\begin_layout Subsection
+Bezprefixový jazyk
+\end_layout
+
+\begin_layout Standard
+je jazyk, který je příjímán nějakým deterministickým zásobníkovým automatem
+ prázdným zásobníkem.
+\end_layout
+
+\begin_layout Standard
+Obdoba tvrzení 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Tvrzení"
+
+\end_inset
+
+ pro deterministické zásobníkové automaty neplatí.
+ Jestliže totiž deterministický zásobníkový automat 
+\emph on
+A
+\emph default
+ přijme slovo 
+\emph on
+u
+\emph default
+ prázdným zásobníkem, pak nemůže prázdným zásobníkem přijmout žádné slovo
+ 
+\emph on
+uv
+\emph default
+, kde 
+\begin_inset Formula $v\neq\epsilon$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Deterministický jazyk
+\end_layout
+
+\begin_layout Standard
+je jazyk, který je přijímán některým deterministickým zásobníkovým automatem
+ koncovým stavem.
+\end_layout
+
+\begin_layout Section
+Vlastnosti bezkontextových jazyků
+\end_layout
+
+\begin_layout Subsection
+Chomského normální tvar
+\end_layout
+
+\begin_layout Standard
+Je dána bezkontextová gramatika 
+\begin_inset Formula $G=\left(N,\Sigma,S,P\right)$
+\end_inset
+
+.
+ Řekneme, že gramatika 
+\begin_inset Formula $G$
+\end_inset
+
+ je v 
+\emph on
+Chomském normálním tvaru
+\emph default
+, jestliže má pouze pravidla tvaru
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+A\rightarrow BC,A\rightarrow a\quad\textrm{pro}\; A,B,C\in N,a\in\Sigma.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Věta
+\end_layout
+
+\begin_layout Standard
+Pro každou bezkontextovou gramatiku 
+\emph on
+G
+\emph default
+ existuje bezkontextová gramatika 
+\begin_inset Formula $G^{\shortmid}$
+\end_inset
+
+ v Chomského normálním tvaru taková, že
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+L\left(G^{\shortmid}\right)=L\left(G\right)-\left\{ \epsilon\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+CYK
+\end_layout
+
+\begin_layout Standard
+Jedná se o algoritmus, který pro danou bezkontextovou gramatiku 
+\emph on
+G
+\emph default
+ v Chomského normálním tvaru a pro dané terminální slovo 
+\emph on
+w
+\emph default
+ rozhodne, zda 
+\begin_inset Formula $w\in L\left(G\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Označíme 
+\begin_inset Formula $G=\left(N,\Sigma,S,P\right)$
+\end_inset
+
+ a 
+\begin_inset Formula $w=a_{1}a_{2}\ldots a_{k}$
+\end_inset
+
+.
+ Postupně vytváříme množiny 
+\begin_inset Formula $X_{i,j}$
+\end_inset
+
+ pro 
+\begin_inset Formula $1\leq i\leq j\leq k$
+\end_inset
+
+, kde
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+X_{i,j}=\left\{ A\in N|A\Rightarrow_{G}^{\star}a_{i}a_{i+1}\ldots a_{j}\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Platí
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+A\in X_{i,i}\quad\textrm{iff}\quad A\rightarrow a_{i}\in P.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Navíc
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+X_{1,k}=\left\{ A\in N|A\Rightarrow_{G}^{\star}a_{1}a_{2}\ldots a_{k}=w\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dále si uvědomte, že 
+\begin_inset Formula $A\Rightarrow_{G}^{\star}a_{i}a_{i+1}\ldots a_{j}$
+\end_inset
+
+ iff existují neterminály 
+\begin_inset Formula $B,C$
+\end_inset
+
+ takové, že
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+A\rightarrow BC\in P,\textrm{ kde}\quad\textrm{buď}\quad B\Rightarrow_{G}^{\star}a_{i}\quad\textrm{a}\quad C\Rightarrow_{G}^{\star}a_{i+1}\ldots a_{j}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\textrm{nebo }B\Rightarrow_{G}^{\star}a_{i}a_{i+1}\quad\textrm{a}\quad C\Rightarrow_{G}^{\star}a_{i+2}\ldots a_{j}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\textrm{nebo }B\Rightarrow_{G}^{\star}a_{i}a_{i+1}a_{i+2}\quad\textrm{a}\quad C\Rightarrow_{G}^{\star}a_{i+3}\ldots a_{j}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\ldots
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\textrm{nebo }B\Rightarrow_{G}^{\star}a_{i}\ldots a_{i+j-1}\quad\textrm{a}\quad C\Rightarrow_{G}^{\star}a_{j,j}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Předpokládejme, že máme zkonstruovány všechny množiny 
+\begin_inset Formula $X_{p,q}$
+\end_inset
+
+ , kde 
+\begin_inset Formula $q-p<n$
+\end_inset
+
+.
+ Pak množiny 
+\begin_inset Formula $X_{i,j}$
+\end_inset
+
+ pro 
+\begin_inset Formula $j-i=n$
+\end_inset
+
+ utvoříme takto:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+A\in X_{i,j}\textrm{ iff }\exists A\rightarrow BC\in P\textrm{ tak, že}\quad\textrm{buď}\quad B\in X_{i,i}\quad\textrm{a}\quad C\in X_{i+1,j}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\textrm{nebo}\quad B\in X_{ii+1}\quad a\quad C\in X_{i+2,j}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\textrm{nebo}\quad B\in X_{i,i+2}\quad a\quad C\in X_{i+3,j}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\ldots
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\textrm{nebo}\quad B\in X_{i,j-1}\quad a\quad C\in X_{j,j}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Začínám tedy konstrukcí množin 
+\begin_inset Formula $X_{i,i},$
+\end_inset
+
+ 
+\begin_inset Formula $i=1,2,\ldots,k$
+\end_inset
+
+, následuje pak 
+\begin_inset Formula $k-1$
+\end_inset
+
+ množin 
+\begin_inset Formula $X_{i,i+1}$
+\end_inset
+
+, 
+\begin_inset Formula $i=1,2,\ldots,k-1$
+\end_inset
+
+, atd.
+ dvě množiny 
+\begin_inset Formula $X_{1,k.-1}$
+\end_inset
+
+, 
+\begin_inset Formula $X_{2,,k}$
+\end_inset
+
+ a nakonec jednu množinu 
+\begin_inset Formula $X_{1,k}$
+\end_inset
+
+ a to podle následujícího postupu:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+X_{i,j}=\left\{ A\in N|\exists A\rightarrow BC\in P\textrm{ tak, že }B\in X_{i,i+m},C\in X_{i+m+1,j}\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Platí 
+\begin_inset Formula $w\in L\left(G\right)$
+\end_inset
+
+ právě tehdy, když 
+\begin_inset Formula $S\in X_{1,k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Příklad
+\end_layout
+
+\begin_layout Standard
+Je dána gramatika 
+\begin_inset Formula $G$
+\end_inset
+
+ pravidly
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+S\rightarrow AB|BC
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+A\rightarrow BA|a
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+B\rightarrow CC|b
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C\rightarrow AB|a
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pomocí algoritmu CYK rozhodněte, zda slovo 
+\begin_inset Formula $aabab$
+\end_inset
+
+ je generováno bezkontextovou gramatikou 
+\begin_inset Formula $G$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Řešení
+\series default
+: Konstrukci množin 
+\begin_inset Formula $X_{i,j}$
+\end_inset
+
+ pro 
+\begin_inset Formula $1\leq i\leq j\leq5$
+\end_inset
+
+ si znázorníme do tabulky.
+ Tabulka bude mít 5 řádků a 5 sloupců, kde vyplněných bude jen ta část,
+ která se nachází „pod diagonálou
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Poslední řádek obsahuje pět množin 
+\begin_inset Formula $X_{1,1}$
+\end_inset
+
+, 
+\begin_inset Formula $X_{2,2}$
+\end_inset
+
+, 
+\begin_inset Formula $X_{3,3}$
+\end_inset
+
+, 
+\begin_inset Formula $X_{4,4}$
+\end_inset
+
+ a 
+\begin_inset Formula $X_{5,5}$
+\end_inset
+
+.
+ Předposlední řádek obsahuje čtyři množiny 
+\begin_inset Formula $X_{1,2}$
+\end_inset
+
+, 
+\begin_inset Formula $X_{2,3}$
+\end_inset
+
+, 
+\begin_inset Formula $X_{3,4}$
+\end_inset
+
+ a 
+\begin_inset Formula $X_{4,5}$
+\end_inset
+
+.
+ Řádek, který je třetí od spodu (a také shora) obsahuje tři množiny 
+\begin_inset Formula $X_{1,3}$
+\end_inset
+
+, 
+\begin_inset Formula $X_{2,4}$
+\end_inset
+
+ a 
+\begin_inset Formula $X_{3,5}$
+\end_inset
+
+.
+ Řádek, který je čtvrtý od spodu (a druhý shora) obsahuje dvě množiny 
+\begin_inset Formula $X_{1,4}$
+\end_inset
+
+ a 
+\begin_inset Formula $X_{2,5}$
+\end_inset
+
+.
+ Nejvyšší řádek obsahuje jednu množinu 
+\begin_inset Formula $X_{1,5}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+S,C
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+S,A,C
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+S,C
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+S,C
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+S,A
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+S,C
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A,C
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A,C
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A,C
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+a
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+a
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+b
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+a
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+b
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Z předchozí tabulky také můžeme odvodit derivace slova 
+\emph on
+aabab
+\emph default
+ gramatikou 
+\emph on
+G
+\emph default
+.
+ Jedna z takových derivací je např.
+ tato:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+S\Rightarrow AB\Rightarrow aB\Rightarrow aCC\Rightarrow aaC\Rightarrow aaAB\Rightarrow aaBAB\Rightarrow aabAB\Rightarrow aabaB\Rightarrow aabab.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Pumping lemma pro bezkontextové gramatiky
+\end_layout
+
+\begin_layout Standard
+Pro každý bezkontextový jazyk 
+\emph on
+L
+\emph default
+ existuje kladné přirozené číslo 
+\emph on
+m
+\emph default
+ takové, že jestliže některé slovo z obsažené v jazyce 
+\emph on
+L
+\emph default
+ má délku alespoň 
+\emph on
+m
+\emph default
+, pak 
+\emph on
+z
+\emph default
+ lze psát ve tvaru 
+\begin_inset Formula $z=uvwxy$
+\end_inset
+
+, kde
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left|vwx\right|\leq m$
+\end_inset
+
+, (tj.
+ prostřední část není příliš dlouhá),
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $vx\neq\epsilon$
+\end_inset
+
+ (tj.
+ aspoň jedno ze slov 
+\emph on
+v
+\emph default
+, 
+\emph on
+x
+\emph default
+ není prázdné),
+\end_layout
+
+\begin_layout Itemize
+pro všechna 
+\begin_inset Formula $i\geq0$
+\end_inset
+
+ platí 
+\begin_inset Formula $uv^{i}wx^{i}y\in L$
+\end_inset
+
+, (tj.
+ 
+\emph on
+v
+\emph default
+ a 
+\emph on
+x
+\emph default
+ se dají do slova 
+\emph on
+z
+\emph default
+ „napumpovat
+\begin_inset Quotes erd
+\end_inset
+
+ a stále dostaneme slovo z jazyka 
+\emph on
+L
+\emph default
+).
+\end_layout
+
+\begin_layout Subsection
+Využití Pumping lemmatu pro bezkontextové gramatiky
+\end_layout
+
+\begin_layout Standard
+Ukážeme, že jazyk 
+\begin_inset Formula $L=\left\{ 0^{n}1^{n}2^{n}|n\geq0\right\} $
+\end_inset
+
+ není bezkontextový.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Zdůvodnění
+\series default
+: Předpokládejme, že jazyk 
+\emph on
+L
+\emph default
+ je bezkontextový.
+ Pak existuje kladné číslo 
+\emph on
+m
+\emph default
+ z Pumping lemmatu.
+ V jazyce 
+\emph on
+L
+\emph default
+ leží slovo 
+\begin_inset Formula $z=0^{m}1^{m}2^{m}$
+\end_inset
+
+.
+ Podle Pumping lemmatu existují slova 
+\begin_inset Formula $u,vw,x,y$
+\end_inset
+
+ taková, že
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+0^{m}1^{m}2^{m}=uvwxy,\;\left|vx\right|>0,\;\left|vwx\right|\leq m\;\textrm{a}\; uv^{i}wx^{i}y\in L\textrm{ pro }i\geq0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ukážeme, že slovo 
+\begin_inset Formula $uv^{0}wx^{0}y=uwy\notin L$
+\end_inset
+
+.
+ To bude hledaný spor.
+\end_layout
+
+\begin_layout Standard
+Podmínka 
+\begin_inset Formula $\left|vwx\right|\leq m$
+\end_inset
+
+ znamená, že slovo 
+\begin_inset Formula $vwx$
+\end_inset
+
+ buď neobsahuje písmeno 2 nebo neobsahuje písmeno 0.
+\end_layout
+
+\begin_layout Standard
+Jestliže 
+\begin_inset Formula $vwx$
+\end_inset
+
+ neobsahuje písmeno 2, pak slova 
+\begin_inset Formula $v,x$
+\end_inset
+
+ obsahují pouze 0 nebo 1, to je nejvýše dva ze tří písmen 0,1,2.
+\end_layout
+
+\begin_layout Standard
+Jestliže 
+\begin_inset Formula $vwx$
+\end_inset
+
+ neobsahuje písmeno 0, pak slova 
+\begin_inset Formula $v,x$
+\end_inset
+
+ obsahují pouze 1 nebo 2, to je nejvýše dva ze tří písmen 0,1,2.
+\end_layout
+
+\begin_layout Standard
+To ale znamená, že v obou případech nemůže slovo 
+\emph on
+uwy
+\emph default
+ (tj.
+ slovo 
+\emph on
+z
+\emph default
+, ze kterého jsme vypustili slova 
+\emph on
+v
+\emph default
+ a 
+\emph on
+x
+\emph default
+) obsahovat stejný počet všech tří písmen 0,1,2.
+\end_layout
+
+\begin_layout Section
+Uzávěrkové vlastnosti bezkontextových jazyků
+\end_layout
+
+\begin_layout Subsection
+Tvrzení
+\end_layout
+
+\begin_layout Standard
+Bezkontextové jazyky jsou uzavřeny na sjednocení.
+\end_layout
+
+\begin_layout Standard
+To znamená, jsou-li 
+\begin_inset Formula $L_{1}$
+\end_inset
+
+ a 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+ dva bezkontextové jazyky, pak také jazyk 
+\begin_inset Formula $L_{1}\cup L_{2}$
+\end_inset
+
+ je bezkontextový.
+\end_layout
+
+\begin_layout Subsection
+Tvrzení
+\end_layout
+
+\begin_layout Standard
+Bezkontextové jazyky jsou uzavřeny na zřetězení.
+\end_layout
+
+\begin_layout Standard
+To znamená, jsou-li 
+\begin_inset Formula $L_{1}$
+\end_inset
+
+ a 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+ dva bezkontextové jazyky, pak také jazyk 
+\begin_inset Formula $L_{1}L_{2}$
+\end_inset
+
+ je bezkontextový.
+\end_layout
+
+\begin_layout Subsection
+Tvrzení
+\end_layout
+
+\begin_layout Standard
+Bezkontextové jazyky jsou uzavřeny na Kleeneho operaci 
+\begin_inset Formula $\star$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+To znamená, je-li 
+\emph on
+L
+\emph default
+ bezkontextový jazyk, pak také jazyk 
+\begin_inset Formula $L\star$
+\end_inset
+
+ je bezkontextový.
+\end_layout
+
+\begin_layout Subsection
+Tvrzení
+\end_layout
+
+\begin_layout Standard
+Bezkontextové jazyky jsou uzavřeny na reverzi.
+\end_layout
+
+\begin_layout Standard
+To znamená, je-li 
+\emph on
+L
+\emph default
+ bezkontextový jazyk, pak také jazyk 
+\begin_inset Formula $L^{R}$
+\end_inset
+
+ je bezkontextový.
+\end_layout
+
+\begin_layout Subsection
+Tvrzení
+\end_layout
+
+\begin_layout Standard
+Bezkontextové jazyky nejsou uzavřeny na průnik.
+\end_layout
+
+\begin_layout Standard
+To znamená, jsou-li 
+\begin_inset Formula $L_{1}$
+\end_inset
+
+ a 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+ dva bezkontextové jazyky, pak jazyk 
+\begin_inset Formula $L_{1}\cap L_{2}$
+\end_inset
+
+ nemusí být bezkontextový.
+\end_layout
+
+\begin_layout Subsection
+Tvrzení
+\end_layout
+
+\begin_layout Standard
+Bezkontextové jazyky nejsou uzavřeny na doplněk.
+\end_layout
+
+\begin_layout Standard
+To znamená, je-li 
+\emph on
+L
+\emph default
+ bezkontextový jazyk, pak jeho doplněk 
+\begin_inset Formula $\bar{L}$
+\end_inset
+
+ nemusí být bezkontextový.
+\end_layout
+
+\begin_layout Subsection
+Tvrzení
+\end_layout
+
+\begin_layout Standard
+Třída bezkontextových jazyků je uzavřena na průniky s regulárními jazyky.
+\end_layout
+
+\begin_layout Standard
+To znamená, je-li 
+\emph on
+L
+\emph default
+ bezkontextový jazyk a 
+\emph on
+R
+\emph default
+ regulární jazyk, pak jazyk 
+\begin_inset Formula $L\cap R$
+\end_inset
+
+ je bezkontextový.
+\end_layout
+
+\begin_layout Subsection
+Tvrzení
+\end_layout
+
+\begin_layout Standard
+Třída bezkontextových jazyků je uzavřena na substituce.
+\end_layout
+
+\end_body
+\end_document

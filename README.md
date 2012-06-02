@@ -26,6 +26,8 @@ Hotové otázky
 
 07\.  Spojové struktury (PRG1)
 
+12\.  JAVA události a výjimky (PRG2)
+
 14\.  Asymptotická časová a paměťová složitost algoritmů, řád růstu funkcí. (A4B36ALG)
 
 15\.  Základní algoritmy řazení (mergesort, quicksort, heapsort, radixsort) a vyhledávání půlením intervalu, jejich složitost. (A4B36ALG)
@@ -33,5 +35,7 @@ Hotové otázky
 21\. Deterministický konečný automat, jazyk přijímaný konečným automatem. (A4B01JAG)
 
 22\. Regulární výrazy a regulární jazyky, Kleeneova věta. Algoritmická složitost úloh souvisejících s regulárními jazyky. (A4B01JAG)
+
+23\. Gramatiky, regulární gramatiky a bezkontextové gramatiky, bezkontextové jazyky. Zásobníkové automaty a jejich vztah k bezkontextovým jazykům. Vlastnosti bezkontextových gramatik, lemma o vkládání. (A4B01JAG)
 
 24\. Turingovy stroje. (A4B01JAG)

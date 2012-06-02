@@ -1144,5 +1144,28 @@ Visualni visualniObjekt = new VisualniKruznice();
 visualniObjekt = new VisualniCtverec(); 
 \end_layout
 
+\begin_layout Section
+Výčtové typy - enum
+\end_layout
+
+\begin_layout Standard
+Výčtové typy jsou speciální třídy zavedené pro větší bezpečí a pohodlí,
+ v nejjednodušší variantě se definují (příklad):
+\end_layout
+
+\begin_layout LyX-Code
+enum Den {SUN, MON, TUE, WED, THU, FRI, SAT;}
+\end_layout
+
+\begin_layout LyX-Code
+for ( Den d : Den.values( ) )
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+System.out.println( d.ordinal( )+ " " +d.name( ) );
+\end_layout
+
+\end_deeper
 \end_body
 \end_document

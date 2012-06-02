@@ -93,11 +93,12 @@ filename "spolecna/02/02.lyx"
 LatexCommand include
 filename "spolecna/03/03.lyx"
 
+\end_inset
+
+
 \begin_inset CommandInset include
 LatexCommand include
 filename "spolecna/04/04.lyx"
-
-\end_inset
 
 \end_inset
 
@@ -119,6 +120,13 @@ filename "spolecna/06/06.lyx"
 \begin_inset CommandInset include
 LatexCommand include
 filename "spolecna/07/07.lyx"
+
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand include
+filename "spolecna/12/12.lyx"
 
 \end_inset
 
@@ -155,7 +163,7 @@ filename "spolecna/22.lyx"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "spolecna/24.lyx"
+filename "spolecna/23/23.lyx"
 
 \end_inset
 
@@ -163,6 +171,12 @@ filename "spolecna/24.lyx"
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "spolecna/24.lyx"
+
+\end_inset
+
 
 \end_layout
 
