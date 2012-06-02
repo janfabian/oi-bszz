@@ -494,7 +494,7 @@ Lineární rekurentní rovnice
 
 \series bold
 \begin_inset Graphics
-	filename figures/lineární rekurentní rovnice.png
+	filename figures/linearni rekurentni rovnice.png
 	width 12cm
 
 \end_inset
@@ -510,7 +510,7 @@ Lineární rekurentní rovnice
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename figures/řešení.png
+	filename figures/reseni.png
 	width 12cm
 
 \end_inset
@@ -524,7 +524,7 @@ Charakteristická rovnice
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename figures/charakteristická rovnice.png
+	filename figures/charakteristicka rovnice.png
 	width 12cm
 
 \end_inset
