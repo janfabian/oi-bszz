@@ -26,6 +26,8 @@ Hotové otázky
 
 07\.  Spojové struktury (PRG1)
 
+12\.  JAVA události a výjimky (PRG2)
+
 14\.  Asymptotická časová a paměťová složitost algoritmů, řád růstu funkcí. (A4B36ALG)
 
 15\.  Základní algoritmy řazení (mergesort, quicksort, heapsort, radixsort) a vyhledávání půlením intervalu, jejich složitost. (A4B36ALG)
