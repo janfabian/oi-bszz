@@ -2,7 +2,7 @@
 \lyxformat 413
 \begin_document
 \begin_header
-\textclass article
+\textclass scrreprt
 \use_default_options true
 \maintain_unincluded_children false
 \language english
@@ -25,6 +25,7 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -59,8 +60,26 @@
 
 \begin_body
 
-\begin_layout Title
-Společná část: 4 - DMA
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{chapter}{3} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Kombinatorika (kombinatorická čísla, princip inkluze a exkluze); Využití
+ matematické indukce; rekurzivní vztahy (řešení rovnic, odhad náročnosti
+ algoritmů) (A4B01DMA)
 \end_layout
 
 \begin_layout Section
