@@ -93,6 +93,12 @@ filename "spolecna/02/02.lyx"
 LatexCommand include
 filename "spolecna/03/03.lyx"
 
+\begin_inset CommandInset include
+LatexCommand include
+filename "spolecna/04/04.lyx"
+
+\end_inset
+
 \end_inset
 
 

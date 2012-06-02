@@ -1,0 +1,667 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Společná část: 4 - DMA
+\end_layout
+
+\begin_layout Section
+Kombinatorika
+\end_layout
+
+\begin_layout Subsection
+
+\series bold
+Kombinační číslo
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/vzorce.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Úprava
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/vzorce1-5.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\series bold
+Kombinatorické případy
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\begin_inset Graphics
+	filename figures/vzorce2.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\series bold
+shrnutí
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/vzorce3.png
+	width 6cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+příklady
+\end_layout
+
+\begin_layout Paragraph
+Variace s opakováním
+\end_layout
+
+\begin_layout Standard
+Kolik je možno vytvořit osmimístných hesel (password) skládajících se z
+ písmen a číslic? Každý znak je nezávislý jev, který je možno udělat 26
+ + 10 = 36 způsoby, proto je možno vytvořit 
+\begin_inset Formula $36{}^{8}$
+\end_inset
+
+ hesel.
+\end_layout
+
+\begin_layout Paragraph
+Permutace
+\end_layout
+
+\begin_layout Standard
+Kolik permutací písmen ABCDEFGH obsahuje slovo DECH? Toto se udělá jednoduchým
+ trikem, prostě se DECH vezme jako jeden celek, který se spolu s ostatními
+ čtyřmi písmenky permutuje, takže celkem permutujeme pět věcí.
+ Možností je tedy 5! = 120.
+\end_layout
+
+\begin_layout Paragraph
+Kombinace
+\end_layout
+
+\begin_layout Standard
+Uvažujme binární řetězce o délce 8.
+ Kolik z nich obsahuje přesně tři jedničky? Zde vybíráme, na které pozice
+ jedničky dáme, a na pořadí výběru nezáleží (říct, že jedničky mají být
+ na pozicích 1, 2 a 6, vyjde nastejno jako říct, že mají být na pozicích
+ 2, 6 a 1).
+ Takže vybíráme z osmi míst, bez opakování a bez pořadí, tedy 
+\begin_inset Formula $\binom{8}{3}$
+\end_inset
+
+ = 56 řetězců.
+\end_layout
+
+\begin_layout Paragraph
+Kombinace s opakováním 
+\end_layout
+
+\begin_layout Standard
+Kolik různých balíčků bonbónů (ty jsou tam volně ložené) je možné vytvořit,
+ když do balíčku vybíráme 10 bonbónů ze tří druhů, přičemž od každého druhu
+ je k dispozici dostatek kusů? Vybíráme desetkrát z tříprvkové množiny,
+ výběr můžeme opakovat a na pořadí nezáleží, protože bonbóny se pak stejně
+ budou v balíčku volně míchat.
+ Je to ta nejobtížnější ze čtyř základních situací, proto si vzorec pamatujeme:
+ Je možné udělat 
+\begin_inset Formula $\binom{3+10-1}{10}$
+\end_inset
+
+ = 66 různých balíčků.
+\end_layout
+
+\begin_layout Subsection
+Princip inkluze a exkluze
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/exkluze.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+pro dvě množiny tedy: |A ∪ B| = | A | + | B | − |A ∩ B|
+\end_layout
+
+\begin_layout Subsection
+Binomická věta
+\end_layout
+
+\begin_layout Subsubsection
+Pascalova identita
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/pascal.png
+	width 10cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+grafické znázornění - Pascalův trojúhelník
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/pascaluv strom.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Binomický rozvoj
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/binomicka.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Matematická indukce
+\end_layout
+
+\begin_layout Standard
+= metoda dokazování matematických vět a tvrzení
+\end_layout
+
+\begin_layout Subsection
+Slabý princip matematické indukce 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/slaba indukce.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pokud tedy chceme dokázat univerzální platnost nějaké vlastnosti V, stačí
+ dokázat pravdivost tvrzení (0) a (1).
+\end_layout
+
+\begin_layout Subsubsection
+
+\series bold
+Demonstrace na příkladu žebříku
+\series default
+ 
+\end_layout
+
+\begin_layout Paragraph
+Obecně 
+\end_layout
+
+\begin_layout Standard
+Tzv.
+ základní krok (0) říká, že umíme vylézt na první příčku žebříku.
+ Tzv.
+ indukční krok (1) říká, že když už někde jsme, tak umíme vylézt o příčku
+ výš.
+ Podstatný je ten obecný kvantifikátor v (1), indukční krok je splněn pro
+ libovolné místo na žebříku.
+\end_layout
+
+\begin_layout Paragraph
+Matematicky 
+\end_layout
+
+\begin_layout Standard
+Vezmeme pro jednoduchost n0 = 1.
+ Podle základního kroku platí V (1).
+ Indukční krok dává pro volbu n = 1 pravdivou implikaci V (1) 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ V (2), my už ovšem ze základního kroku víme, že V (1) platí, tudíž podle
+ této implikace platí i V (2).
+ Pak zase můžeme použít indukční krok s n = 2, kde z pravdivosti V (2) dostaneme
+ pravdivost V (3).
+ Další použití indukčního kroku (s n = 3) dá pravdivost V (4), pak V (5)
+ a tak dále.
+\end_layout
+
+\begin_layout Subsubsection
+Příklad
+\end_layout
+
+\begin_layout Standard
+Dokažte indukcí: Pro n
+\begin_inset Formula $\in$
+\end_inset
+
+N je V (n) tvrzení, že 1 + 3 + 5 + · · · + (2n − 1) = 
+\begin_inset Formula $n^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+(0) Nechť n = 1.
+ Vlastnost V (1) zní 1 = 1, což je pravda.
+\end_layout
+
+\begin_layout Standard
+(1) Nechť n
+\begin_inset Formula $\in$
+\end_inset
+
+N je libovolné.
+ Předpokládejme, že 1 + 3 + 5 + · · · + (2n − 1) = 
+\begin_inset Formula $n^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+pro naše konkrétní n platí také 1+3+5+· · ·+(2(n+1)−1) = (n+1)
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $^{2}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+, tedy že 1 + 3 + 5 + · · · + (2n + 1) = (n + 1)
+\begin_inset Formula $^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+1 + 3 + 5 + · · · + (2n + 1) = 1 + 3 + 5 + · · · + (2n − 1) + (2n + 1) =
+ [1 + 3 + 5 + · · · + (2n − 1)] + (2n + 1) = 
+\begin_inset Formula $n^{2}$
+\end_inset
+
+ + (2n + 1) = (n + 1)
+\begin_inset Formula $^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Rekurzivní vztahy
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Definice:
+\series default
+ Rekurentní vztah či rekurzivní vztah pro posloupnost {
+\begin_inset Formula $a_{k}$
+\end_inset
+
+} je libovolná rovnice typu F(
+\begin_inset Formula $a_{n}$
+\end_inset
+
+, 
+\begin_inset Formula $a_{n-1}$
+\end_inset
+
+, 
+\begin_inset Formula $a_{n-2}$
+\end_inset
+
+, .
+ .
+ .
+ , 
+\begin_inset Formula $a_{0}$
+\end_inset
+
+ ) = 0, kde F je nějaká funkce.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Např.
+
+\series default
+ podstata problému Hanojských věží se dá vyjádřit vztahem Hn − 2H
+\begin_inset Formula $_{n-1}$
+\end_inset
+
+ − 1 = 0
+\end_layout
+
+\begin_layout Subsection
+Lineární rekurentní rovnice
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\begin_inset Graphics
+	filename figures/linearni rekurentni rovnice.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Řešení
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/reseni.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Charakteristická rovnice
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/charakteristicka rovnice.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+K získání charakteristických čísel potřebujeme vyřešit rovnici λ
+\begin_inset Formula $^{k}$
+\end_inset
+
+ + c
+\begin_inset Formula $^{k}$
+\end_inset
+
+−1λ
+\begin_inset Formula $^{k}$
+\end_inset
+
+−1 + .
+ .
+ .
+ + c
+\begin_inset Formula $_{1}$
+\end_inset
+
+λ + c
+\begin_inset Formula $_{0}$
+\end_inset
+
+ = 0, které se také říká charakteristická rovnice
+\end_layout
+
+\begin_layout Subsubsection
+Příklad
+\end_layout
+
+\begin_layout Standard
+Najdeme obecné řešení rovnice 
+\begin_inset Formula $a_{n}+3−a_{n}+2−a_{n}+1+a_{n}=0$
+\end_inset
+
+pro všechna n ≥ −2
+\end_layout
+
+\begin_layout Standard
+Charakteristický polynom je p(λ) =
+\begin_inset Formula $λ_{3}−λ_{2}−λ+1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+p(λ) = (λ − 1)(λ − 1)(λ + 1) = (λ − 1)
+\begin_inset Formula $^{2}$
+\end_inset
+
+(λ + 1).
+\end_layout
+
+\begin_layout Standard
+báze řešení:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/baze.png
+	height 1cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+obecné řešení pro pro u, v, w 
+\begin_inset Formula $\in$
+\end_inset
+
+ R: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/obecne reseni.png
+	width 10cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+z takového řešení lze odhadnout asymptotickou složitost alogritmu
+\end_layout
+
+\begin_layout Subsection
+Master theorem
+\end_layout
+
+\begin_layout Itemize
+= algoritmus pro určování asymptotické složitosti algoritmů 
+\end_layout
+
+\begin_layout Itemize
+zejména 
+\begin_inset Quotes eld
+\end_inset
+
+rozděl a panuj
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $f(n)=a·f(\frac{n}{b})+g(n).$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Algoritmus
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/master theorem.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
