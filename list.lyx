@@ -126,6 +126,16 @@ filename "spolecna/07/07.lyx"
 
 \begin_inset CommandInset include
 LatexCommand include
+filename "spolecna/08/08.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
 filename "spolecna/12/12.lyx"
 
 \end_inset
