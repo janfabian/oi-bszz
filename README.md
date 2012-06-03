@@ -28,7 +28,9 @@ Hotové otázky
 
 08\. Limita funkce a posloupnosti, zejména rychlosti růstu v nekonečnu a l'Hospitalovo pravidlo. Derivace a parciální derivace: výpočet a význam (rychlost změny, monotonie, extrémy, gradient). (A4B01MA2) 
 
-12\.  JAVA události a výjimky (PRG2)
+12\.  Programování v jazyce JAVA: struktura tříd a programu. Události, zdroj a posluchač události, šíření událostí, vlastní události, více zdrojů a posluchačů, rozlišení zdrojů. Výjimky a jejich zpracování, propagace výjimek, hierarchie výjimek, kontrolované a nekontrolované výjimky. (A0B36PR2) 
+
+13\.  Základy programovaní v C, charakteristika jazyka, model kompilace, struktura programu, makra, podmíněný překlad, syntaxe jazyka, struktury, uniony, výčtové typy, preprocesor, základní knihovny, základní vstup a výstup, pointery, dynamická správa paměti, pole a ukazatelé, funkce a pointery. (A0B36PR2) 
 
 14\.  Asymptotická časová a paměťová složitost algoritmů, řád růstu funkcí. (A4B36ALG)
 
