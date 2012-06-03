@@ -1,0 +1,5704 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass scrreprt
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{chapter}{9} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Syntaxe a sémantika výrokové a predikátové logiky.
+ Sémantický důsledek a tautologická ekvivalence.
+ Booleovský kalkul.
+ Rezoluční metoda (A0B01LGR)
+\end_layout
+
+\begin_layout Section
+Výroková logika
+\end_layout
+
+\begin_layout Subsection
+Výroky
+\end_layout
+
+\begin_layout Standard
+Máme danou neprázdnou množinu 
+\begin_inset Formula $A$
+\end_inset
+
+ tzv.
+ 
+\emph on
+atomických výroků
+\emph default
+ (též jim říkáme 
+\emph on
+logické proměnné
+\emph default
+).
+ Konečnou posloupnost prvků z množiny 
+\begin_inset Formula $A$
+\end_inset
+
+, logických spojek a závorek nazýváme 
+\emph on
+výroková formule
+\emph default
+ (zkráceně jen 
+\emph on
+formule
+\emph default
+), jestliže vznikla podle následujících pravidel:
+\end_layout
+
+\begin_layout Enumerate
+Každá logická proměnná (atomický výrok) 
+\begin_inset Formula $a\in A$
+\end_inset
+
+ je výroková formule.
+\end_layout
+
+\begin_layout Enumerate
+Jsou-li 
+\begin_inset Formula $\alpha,\beta$
+\end_inset
+
+ výrokové formule, pak 
+\begin_inset Formula $\neg\alpha$
+\end_inset
+
+, 
+\begin_inset Formula $\left(\alpha\wedge\beta\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\left(\alpha\vee\beta\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\left(\alpha\Rightarrow\beta\right)$
+\end_inset
+
+ a 
+\begin_inset Formula $\left(\alpha\Leftrightarrow\beta\right)$
+\end_inset
+
+ jsou také výrokové formule.
+\end_layout
+
+\begin_layout Enumerate
+Nic jiného než to, co vzniklo pomocí konečně mnoha použití bodů 1 a 2, není
+ výrokové formule.
+\end_layout
+
+\begin_layout Standard
+Všechny formule, které vznikly z logických proměnných množiny 
+\begin_inset Formula $A$
+\end_inset
+
+, značíme 
+\begin_inset Formula $P\left(A\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Poznámka
+\series default
+: Spojka 
+\begin_inset Formula $\neg$
+\end_inset
+
+ se nazývá 
+\emph on
+unární
+\emph default
+, protože vytváří novou formuli z jedné formule.
+ Ostatní zde zavedené spojky se nazývají 
+\emph on
+binární
+\emph default
+, protože vytvářejí novou formuli ze dvou formulí.
+\end_layout
+
+\begin_layout Standard
+V dalším textu logické proměnné označujeme malými písmeny např.
+ 
+\begin_inset Formula $a,b,c,\ldots$
+\end_inset
+
+ nebo 
+\begin_inset Formula $x,y,z,\ldots$
+\end_inset
+
+, výrokové formule označujeme malými řeckými písmeny např.
+ 
+\begin_inset Formula $\alpha,\beta,\gamma,\ldots$
+\end_inset
+
+ nebo 
+\begin_inset Formula $\varphi,\psi,\ldots$
+\end_inset
+
+.
+ Také většinou nebudeme ve formulích psát ty nejvíc vnější závorky - tj.
+ píšeme 
+\begin_inset Formula $a\vee\left(b\Rightarrow c\right)$
+\end_inset
+
+ místo 
+\begin_inset Formula $\left(a\vee\left(b\Rightarrow c\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Syntaktický strom formule
+\end_layout
+
+\begin_layout Standard
+To jak formule vznikla podle bodů 1 a 2, si můžeme znázornit na 
+\emph on
+syntaktickém stromu
+\emph default
+, též 
+\emph on
+derivačním stromu
+\emph default
+ dané formule.
+ Jedná se o kořenový strom, kde každý vrchol, který není listem je ohodnocen
+ logickou spojkou a jedná-li se o binární spojku, má vrchol dva následníky,
+ jedná-li se o unární spojku, má vrchol pouze jednoho následníka.
+ Přitom pro formule 
+\begin_inset Formula $\left(\alpha\wedge\beta\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\left(\alpha\vee\beta\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\left(\alpha\Rightarrow\beta\right)$
+\end_inset
+
+ odpovídá levý následník formuli 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, pravý následník formuli 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+ Listy stromu jsou ohodnoceny logickými proměnnými.
+\end_layout
+
+\begin_layout Subsection
+Podformule
+\end_layout
+
+\begin_layout Standard
+Ze syntaktického stromu formule 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ jednoduše poznáme všechny její podformule: 
+\emph on
+Podformule
+\emph default
+ formule 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ jsou všechny formule odpovídající podstromům syntaktického stromu formule
+ 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Pravdivostní ohodnocení
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Pravdivostní ohodnocení
+\emph default
+, též pouze 
+\emph on
+ohodnocení formulí
+\emph default
+, je zobrazení 
+\begin_inset Formula $u:P\left(A\right)\rightarrow\left\{ 0,1\right\} $
+\end_inset
+
+, které splňuje pravidla
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\neg\alpha$
+\end_inset
+
+ je pravdivá právě tehdy, když 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ je nepravdivá, tj.
+ 
+\begin_inset Formula $u\left(\neg\alpha\right)=1$
+\end_inset
+
+ právě tehdy, když 
+\begin_inset Formula $u\left(\alpha\right)=0$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\alpha\wedge\beta$
+\end_inset
+
+ je pravdivá právě tehdy, když 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ a 
+\begin_inset Formula $\beta$
+\end_inset
+
+ jsou obě pravdivá, tj.
+ 
+\begin_inset Formula $u\left(\alpha\wedge\beta\right)=1$
+\end_inset
+
+ právě tehdy, když 
+\begin_inset Formula $u\left(\alpha\right)=u\left(\beta\right)=1$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\alpha\vee\beta$
+\end_inset
+
+ je nepravdivá právě tehdy, když 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ a 
+\begin_inset Formula $\beta$
+\end_inset
+
+ jsou obě nepravdivé, tj.
+ 
+\begin_inset Formula $u\left(\alpha\vee\beta\right)=0$
+\end_inset
+
+ právě tehdy, když 
+\begin_inset Formula $u\left(\alpha\right)=u\left(\beta\right)=0$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\alpha\Rightarrow\beta$
+\end_inset
+
+ je nepravdivá právě tehdy, když 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ je pravdivá a 
+\begin_inset Formula $\beta$
+\end_inset
+
+ nepravdivá, tj.
+ 
+\begin_inset Formula $u\left(\alpha\Rightarrow\beta\right)=1$
+\end_inset
+
+ právě tehdy, když 
+\begin_inset Formula $u\left(\alpha\right)=1$
+\end_inset
+
+ a 
+\begin_inset Formula $u\left(\beta\right)=0$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\alpha\Leftrightarrow\beta$
+\end_inset
+
+ je pravdivá právě tehdy, když buď obě formule 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ a 
+\begin_inset Formula $\beta$
+\end_inset
+
+ jsou pravdivé nebo obě jsou nepravdivé, tj.
+ 
+\begin_inset Formula $u\left(\alpha\Leftrightarrow\beta\right)=1$
+\end_inset
+
+ právě tehdy, když 
+\begin_inset Formula $u\left(\alpha\right)=u\left(\beta\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Pravdivostní tabulky
+\end_layout
+
+\begin_layout Standard
+Vlastnosti, které ohodnocení formulí musí mít, znázorňujeme též pomocí tzv.
+ pravdivostních tabulek logických spojek.
+ Jsou to:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\neg\alpha$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\beta$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha\wedge\beta$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha\vee\beta$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha\Rightarrow\beta$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha\Leftrightarrow\beta$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Věta
+\end_layout
+
+\begin_layout Standard
+Každé zobrazení 
+\begin_inset Formula $u_{0}:A\rightarrow\left\{ 0,1\right\} $
+\end_inset
+
+ jednoznačně určuje ohodnocení 
+\begin_inset Formula $u:P\left(A\right)\rightarrow\left\{ 0,1\right\} $
+\end_inset
+
+ takové, že 
+\begin_inset Formula $u_{0}\left(a\right)=u\left(a\right)$
+\end_inset
+
+ pro všechna 
+\begin_inset Formula $a\in A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Důsledek
+\end_layout
+
+\begin_layout Standard
+Dvě ohodnocení 
+\begin_inset Formula $u,v:P\left(A\right)\rightarrow\left\{ 0,1\right\} $
+\end_inset
+
+ jsou shodná právě tehdy, když pro všechny logické proměnné 
+\begin_inset Formula $x\in A$
+\end_inset
+
+ platí 
+\begin_inset Formula $u\left(x\right)=v\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Tautologie, kontradikce, splnitelné formule
+\end_layout
+
+\begin_layout Standard
+Formule se nazývá 
+\emph on
+tautologie
+\emph default
+, jestliže je pravdivá ve všech ohodnoceních formulí; nazývá se 
+\emph on
+kontradikce
+\emph default
+, jestliže je nepravdivá ve všech ohodnoceních formulí.
+ Formule je 
+\emph on
+splnitelná
+\emph default
+, jestliže existuje aspoň jedno ohodnocení formulí, ve kterém je pravdivá.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Příklady
+\series default
+:
+\end_layout
+
+\begin_layout Enumerate
+Formule 
+\begin_inset Formula $\alpha\vee\neg\alpha$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha\Rightarrow\alpha$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha\Rightarrow\left(\beta\Rightarrow\alpha\right)$
+\end_inset
+
+ jsou tautologie.
+\end_layout
+
+\begin_layout Enumerate
+Formule 
+\begin_inset Formula $a\vee b$
+\end_inset
+
+, 
+\begin_inset Formula $\left(a\Rightarrow b\right)\Rightarrow a$
+\end_inset
+
+ jsou splnitelné, ale ne tautologie.
+\end_layout
+
+\begin_layout Enumerate
+Formule 
+\begin_inset Formula $\alpha\vee\neg\alpha$
+\end_inset
+
+ je kontradikce.
+ Kontradikce je také každá negace tautologie.
+\end_layout
+
+\begin_layout Subsection
+Tautologická ekvivalence formulí
+\end_layout
+
+\begin_layout Standard
+Řekneme, že formule 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ a 
+\begin_inset Formula $\psi$
+\end_inset
+
+ jsou 
+\emph on
+tautologicky ekvivalentní 
+\emph default
+(také 
+\emph on
+sémanticky ekvivalentní
+\emph default
+), jestliže pro každé ohodnocení 
+\begin_inset Formula $u$
+\end_inset
+
+ platí 
+\begin_inset Formula $u\left(\varphi\right)=u\left(\psi\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Tvrzení
+\series default
+: Pro každé formule 
+\begin_inset Formula $\alpha,\beta,\gamma$
+\end_inset
+
+ platí:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\alpha$
+\end_inset
+
+ |=| 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Itemize
+je-li 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ |=| 
+\begin_inset Formula $\beta$
+\end_inset
+
+, pak i 
+\begin_inset Formula $\beta$
+\end_inset
+
+ |=| 
+\begin_inset Formula $\alpha$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Itemize
+je-li 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ |=| 
+\begin_inset Formula $\beta$
+\end_inset
+
+ a 
+\begin_inset Formula $\beta$
+\end_inset
+
+ |=| 
+\begin_inset Formula $\gamma$
+\end_inset
+
+, pak i 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ |=| 
+\begin_inset Formula $\gamma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Jsou-li 
+\begin_inset Formula $\alpha,\beta,\gamma,\delta$
+\end_inset
+
+ formule splňující 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ |=| 
+\begin_inset Formula $\beta$
+\end_inset
+
+ a 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ |=| 
+\begin_inset Formula $\delta$
+\end_inset
+
+, pak platí
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\neg\alpha$
+\end_inset
+
+ |=| 
+\begin_inset Formula $\neg\beta$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left(\alpha\wedge\gamma\right)$
+\end_inset
+
+ |=| 
+\begin_inset Formula $\left(\beta\wedge\delta\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\left(\alpha\vee\gamma\right)$
+\end_inset
+
+ |=| 
+\begin_inset Formula $\left(\beta\vee\delta\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\left(\alpha\Rightarrow\gamma\right)$
+\end_inset
+
+ |=| 
+\begin_inset Formula $\left(\beta\Rightarrow\delta\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\left(\alpha\Leftrightarrow\gamma\right)$
+\end_inset
+
+ |=| 
+\begin_inset Formula $\left(\beta\Leftrightarrow\delta\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Příklad
+\series default
+: Pro každou formuli 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ je formule 
+\begin_inset Formula $\alpha\Rightarrow\left(\beta\Rightarrow\alpha\right)$
+\end_inset
+
+ tautologie.
+\end_layout
+
+\begin_layout Standard
+Ano, máme
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\alpha\Rightarrow\left(\beta\Rightarrow\alpha\right)\textrm{ |=| }\neg\alpha\vee\left(\neg\beta\vee\alpha\right)\textrm{ |=| }\left(\neg\alpha\vee\alpha\right)\vee\neg\beta,
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+kde poslední formule je tautologie.
+\end_layout
+
+\begin_layout Subsection
+Tvrzení
+\end_layout
+
+\begin_layout Standard
+Pro každé formule 
+\begin_inset Formula $\alpha,\beta,\gamma$
+\end_inset
+
+ platí
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\alpha\wedge\alpha$
+\end_inset
+
+ |=| 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha\vee\alpha$
+\end_inset
+
+ |=| 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ (idempotence 
+\begin_inset Formula $\wedge$
+\end_inset
+
+ a 
+\begin_inset Formula $\vee$
+\end_inset
+
+);
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\alpha\wedge\beta$
+\end_inset
+
+ |=| 
+\begin_inset Formula $\beta\wedge\alpha$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha\vee\beta$
+\end_inset
+
+ |=| 
+\begin_inset Formula $\beta\vee\alpha$
+\end_inset
+
+ (komutativita 
+\begin_inset Formula $\wedge$
+\end_inset
+
+ a 
+\begin_inset Formula $\vee$
+\end_inset
+
+);
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\alpha\wedge\left(\beta\wedge\gamma\right)$
+\end_inset
+
+ |=| 
+\begin_inset Formula $\left(\alpha\wedge\beta\right)\wedge\gamma$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha\vee\left(\beta\vee\gamma\right)$
+\end_inset
+
+ |=| 
+\begin_inset Formula $\left(\alpha\vee\beta\right)\vee\gamma$
+\end_inset
+
+ (asociativita 
+\begin_inset Formula $\wedge$
+\end_inset
+
+ a 
+\begin_inset Formula $\vee$
+\end_inset
+
+);
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\alpha\wedge\left(\beta\vee\alpha\right)$
+\end_inset
+
+ |=| 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha\vee\left(\beta\wedge\alpha\right)$
+\end_inset
+
+ |=| 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ (absorpce 
+\begin_inset Formula $\wedge$
+\end_inset
+
+ a 
+\begin_inset Formula $\vee$
+\end_inset
+
+);
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\neg\neg\alpha$
+\end_inset
+
+ |=| 
+\begin_inset Formula $\alpha$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left(\alpha\Rightarrow\beta\right)$
+\end_inset
+
+ |=| 
+\begin_inset Formula $\left(\neg\alpha\vee\beta\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Poznámka
+\series default
+: Platí 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ |=| 
+\begin_inset Formula $\beta$
+\end_inset
+
+ právě tehdy, když 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ 
+\begin_inset Formula $\Leftrightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $\beta$
+\end_inset
+
+ je tautologie.
+\end_layout
+
+\begin_layout Subsection
+Další spojky
+\end_layout
+
+\begin_layout Standard
+Každá formule s jednou (nebo žádnou) logickou proměnnou představuje zobrazení
+ z množiny 
+\begin_inset Formula $\left\{ 0,1\right\} $
+\end_inset
+
+ do množiny 
+\begin_inset Formula $\left\{ 0,1\right\} $
+\end_inset
+
+.
+ Existují čtyři taková zobrazení:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f_{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f_{4}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Funkce 
+\begin_inset Formula $f_{1}$
+\end_inset
+
+ je konstantní 0, jedná se o kontradikci a budeme ji značit 
+\series bold
+F
+\series default
+.
+ Podobně funkce 
+\begin_inset Formula $f_{4}$
+\end_inset
+
+ je tautologie (konstantní 1), značíme je 
+\series bold
+T
+\series default
+.
+ Funkce 
+\begin_inset Formula $f_{2}$
+\end_inset
+
+ je vlastně logická proměnná 
+\begin_inset Formula $x$
+\end_inset
+
+ a funkce 
+\begin_inset Formula $f_{3}$
+\end_inset
+
+ je 
+\begin_inset Formula $\neg x$
+\end_inset
+
+.
+ Tedy nemáme další unární spojky.
+\end_layout
+
+\begin_layout Subsection
+NAND
+\end_layout
+
+\begin_layout Standard
+Logická spojka |, nazývaná NAND (také Sheffův operátor), je definována
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+x\textrm{ | }y\textrm{ |=| }\left(x\wedge y\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+NOR
+\end_layout
+
+\begin_layout Standard
+Logická spojka ↓, nazývaná NOR (také Peiceova šipka), je definována
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+x\textrm{ ↓ }y\textrm{ |=| }\neg\left(x\vee y\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+XOR
+\end_layout
+
+\begin_layout Standard
+Lofická spojka 
+\begin_inset Formula $\bigoplus$
+\end_inset
+
+, nazývaná XOR (také vylučovací nebo), je definována
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+x\bigoplus y\textrm{ |=| }\neg\left(x\Leftrightarrow y\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+CNF a DNF
+\end_layout
+
+\begin_layout Standard
+Každé formuli o 
+\emph on
+n
+\emph default
+ logických proměnných odpovídá pravdivostní tabulka.
+ Na tuto tabulku se můžeme dívat jako na zobrazení, které každé 
+\emph on
+n
+\emph default
+-tici 0 a 1 přiřazuje 0 nebo 1.
+ Ano, řádek pravdivostní tabulky je popsán 
+\emph on
+n
+\emph default
+-ticí 0 a 1, hodnota je pak pravdivostní hodnota formule pro toto dosazení
+ za logické proměnné.
+ Zobrazení z množiny všech 
+\emph on
+n
+\emph default
+-tic 0 a 1 do množiny 
+\begin_inset Formula $\left\{ 0,1\right\} $
+\end_inset
+
+ se nazývá 
+\emph on
+Booleova funkce
+\emph default
+.
+ Naopak platí, že pro každou Booleovu funkci existuje formule, která této
+ funkci odpovídá.
+ Ukážeme v dalším, že dokonce můžeme volit formu ve speciálním tvaru, v
+ tzv.
+ 
+\emph on
+konjunktivním normálním tvaru
+\emph default
+ a 
+\emph on
+disjunktivním normálním tvaru
+\emph default
+.
+\end_layout
+
+\begin_layout Subsection
+Booleova funkce
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Booleovou funkcí n proměnných
+\emph default
+, kde 
+\emph on
+n
+\emph default
+ je přirozené číslo, rozumíme každé zobrazení 
+\begin_inset Formula $f:\left\{ 0,1\right\} ^{n}\rightarrow\left\{ 0,1\right\} $
+\end_inset
+
+, tj.
+ zobrazení, které každé 
+\emph on
+n
+\emph default
+-tici 
+\begin_inset Formula $\left(x_{1},x_{2},\ldots,x_{n}\right)$
+\end_inset
+
+ nul a jedniček přiřazuje nulu nebo jedničku (označenou 
+\begin_inset Formula $f\left(x_{1},x_{2},\ldots,x_{n}\right)$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection
+Disjunktivní normální tvar
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Literál
+\emph default
+ je logická proměnná nebo negace logické proměnné.
+ Řekneme, že formule je v 
+\emph on
+disjunktivním normálním tvaru
+\emph default
+, zkráceně v 
+\emph on
+DNF
+\emph default
+, jestliže je disjunkcí jedné nebo několika formulí, z nichž každá je literálem
+ nebo konjunkcí literálů.
+\end_layout
+
+\begin_layout Standard
+Poznamenejme, že literálu nebo konjunkci literálů se také říká 
+\emph on
+minterm
+\emph default
+.
+ Jestliže každý minterm obsahuje všechny proměnné, říkáme, že se jedná o
+ 
+\emph on
+úplnou DNF
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Věta
+\series default
+: Ke každé Booleově funkci 
+\emph on
+f
+\emph default
+ existuje formule v 
+\emph on
+DNF
+\emph default
+ odpovídající 
+\emph on
+f
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Důsledek
+\series default
+: Ke každé formuli 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ existuje formule 
+\begin_inset Formula $\beta$
+\end_inset
+
+, která je v DNF a navíc 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ |=| 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Konjunktivní normální tvar
+\end_layout
+
+\begin_layout Standard
+Řekneme, že formule je v 
+\emph on
+konjunktivním normálním tvaru
+\emph default
+, zkráceně v 
+\emph on
+CNF
+\emph default
+, jestliže je konjunkcí jedné nebo několika formulí, z nichž každá je literálem
+ nebo disjunkcí literálů.
+\end_layout
+
+\begin_layout Standard
+Poznamenejme, že literálu nebo disjunkci literálů se také říká 
+\emph on
+maxterm
+\emph default
+ nebo 
+\emph on
+klausule
+\emph default
+.
+ Jestliže každá klausule obsahuje všechny proměnné, říkáme, že se jedná
+ o 
+\emph on
+úplnou CNF
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Věta
+\series default
+: Ke každé Booleově funkci 
+\emph on
+f
+\emph default
+ existuje formule v 
+\emph on
+CNF
+\emph default
+ odpovídající 
+\emph on
+f
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Důsledek
+\series default
+: Ke každé formuli 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ existuje formule 
+\begin_inset Formula $\beta$
+\end_inset
+
+, která je v CNF a navíc 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ |=| 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Booleovský kalkul
+\end_layout
+
+\begin_layout Standard
+Víme, že pro pravdivostní ohodnocení formulí platí:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u\left(a\vee b\right)=\max\left\{ u\left(a\right).u\left(b\right)\right\} =\max\left\{ x,y\right\} ,
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u\left(a\wedge b\right)=\min\left\{ u\left(a\right),u\left(b\right)\right\} =\min\left\{ x,y\right\} ,
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u\left(\neg a\right)=1-u\left(a\right)=1-x.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+kde 
+\begin_inset Formula $x=u\left(a\right)$
+\end_inset
+
+, 
+\begin_inset Formula $y=u\left(b\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Booleovské operace
+\end_layout
+
+\begin_layout Standard
+To motivuje zavedení booleovských operací (pro hodnoty 0,1):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\textrm{součin}\qquad x\cdot y=\min\left\{ x,y\right\} ,
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\textrm{logický součet}\quad x+y=\max\left\{ x,y\right\} ,
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\textrm{doplněk}\qquad\bar{x}=1-x.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pro tyto operace platí řada rovností, tak, jak je známe z výrokové logiky:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Tvrzení
+\series default
+: Pro všechna 
+\begin_inset Formula $x,y,z\in\left\{ 0,1\right\} $
+\end_inset
+
+ platí:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $x\cdot x=x$
+\end_inset
+
+, 
+\begin_inset Formula $x+x=x$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $x\cdot y=y\cdot x$
+\end_inset
+
+, 
+\begin_inset Formula $x+y=y+x$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $x\cdot\left(y\cdot z\right)=\left(x\cdot y\right)\cdot z$
+\end_inset
+
+, 
+\begin_inset Formula $x+\left(y+z\right)=\left(x+y\right)+z$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $x\cdot\left(y+x\right)=x$
+\end_inset
+
+, 
+\begin_inset Formula $x+\left(y\cdot x\right)=x$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $x\cdot\left(y+z\right)=\left(x\cdot y\right)+\left(x\cdot z\right)$
+\end_inset
+
+, 
+\begin_inset Formula $x+\left(y\cdot z\right)=\left(x+y\right)\cdot\left(x+z\right)$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\overset{=}{x}=x$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\overline{x+y}=\bar{x}\cdot\bar{y}$
+\end_inset
+
+, 
+\begin_inset Formula $\overline{x\cdot y}=\bar{x}+\bar{y}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $x+\bar{x}=1$
+\end_inset
+
+, 
+\begin_inset Formula $x\cdot\bar{x}=0$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $x\cdot0=0$
+\end_inset
+
+, 
+\begin_inset Formula $x\cdot1=x$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $x+1=1$
+\end_inset
+
+, 
+\begin_inset Formula $x+0=x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Booleovy funkce v DNF a CNF
+\end_layout
+
+\begin_layout Standard
+Nyní můžeme pro Booleovu funkci psát pomocí výše uvedených operací, např.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+f\left(x,y,z\right)=\bar{x}\bar{y}\bar{z}+\bar{x}\bar{y}z+\bar{x}y\bar{z}+\bar{x}yz+x\bar{y}z
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+a říkat, že jsme Booleovu funkci napsali v 
+\emph on
+disjunktivní normální formě
+\emph default
+.
+ Rovnost opravdu platí; dosadíme-li za logické proměnné jakékoli hodnoty,
+ pak pravá strana rovnosti určuje hodnotu Booleovy funkce 
+\emph on
+f
+\emph default
+.
+ Obdobně jako jsme Booleovu funkci 
+\emph on
+f
+\emph default
+ napsali v disjunktivní normální formě, můžeme ji také napsat v 
+\emph on
+konjunktivní normální formě
+\emph default
+ a to takto:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+f\left(x,y,z\right)=\left(\bar{x}+y+z\right)\left(\bar{x}+\bar{y}+z\right)\left(\bar{x}+\bar{y}+\bar{z}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Věta
+\series default
+: Každou Booleovu funkci lze napsat v disjunktivní normální formě i v konjunktiv
+ní normální formě.
+\end_layout
+
+\begin_layout Subsection
+Sémantický důsledek
+\end_layout
+
+\begin_layout Subsubsection
+Množina formulí pravdivá v ohodnocení
+\end_layout
+
+\begin_layout Standard
+Řekneme, že množina formulí 
+\emph on
+S
+\emph default
+ je 
+\emph on
+pravdivá
+\emph default
+ v ohodnocení 
+\emph on
+u
+\emph default
+, jestliže každá formule z 
+\emph on
+S
+\emph default
+ je pravdivá v 
+\emph on
+u
+\emph default
+, tj.
+ je-li 
+\begin_inset Formula $u\left(\varphi\right)=1$
+\end_inset
+
+ pro všechna 
+\begin_inset Formula $\varphi\in S$
+\end_inset
+
+.
+ Jinými slovy, množina formulí 
+\emph on
+S
+\emph default
+ je nepravdivá v ohodnocení 
+\emph on
+u
+\emph default
+, jestliže existuje formule 
+\begin_inset Formula $\varphi\in S$
+\end_inset
+
+, která je nepravdivá v ohodnocení 
+\emph on
+u
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Fakt, že množina formulí 
+\emph on
+S
+\emph default
+ je pravdivá v ohodnocení 
+\emph on
+u
+\emph default
+ zapisujeme též 
+\begin_inset Formula $u\left(S\right)=1$
+\end_inset
+
+, fakt, že 
+\emph on
+S
+\emph default
+ je nepravdivá v 
+\emph on
+u
+\emph default
+, zapisujeme také 
+\begin_inset Formula $u\left(S\right)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Poznámka
+\series default
+: Prázdná množina formulí je pravdivá v každém ohodnocení.
+\end_layout
+
+\begin_layout Subsubsection
+Splnitelná množina formulí
+\end_layout
+
+\begin_layout Standard
+Řekneme, že množina formulí 
+\emph on
+S
+\emph default
+ je 
+\emph on
+splnitelná
+\emph default
+, jestliže existuje pravdivostní ohodnocení 
+\emph on
+u
+\emph default
+, v němž je 
+\emph on
+S
+\emph default
+ pravdivá.
+ V opačném případě se množina 
+\emph on
+S
+\emph default
+ nazývá 
+\emph on
+nesplnitelná
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Poznamenejme, že prázdná množina formulí je splnitelná.
+\end_layout
+
+\begin_layout Subsubsection
+Sémantický důsledek
+\end_layout
+
+\begin_layout Standard
+Řekneme, že formule 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ je 
+\emph on
+konsekventem
+\emph default
+, též 
+\emph on
+sémantickým
+\emph default
+ nebo 
+\emph on
+tautologickým
+\emph default
+ 
+\emph on
+důsledkem
+\emph default
+ množiny formulí 
+\emph on
+S
+\emph default
+, jestliže 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ je pravdivá v každém ohodnocení 
+\emph on
+u
+\emph default
+, v němž je pravdivá 
+\emph on
+S
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Fakt, že formule 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ je konsekventem množiny 
+\emph on
+S
+\emph default
+, označujeme 
+\emph on
+S
+\emph default
+ 
+\begin_inset Formula $\models$
+\end_inset
+
+ 
+\begin_inset Formula $\varphi$
+\end_inset
+
+.
+ Je-li množina 
+\emph on
+S
+\emph default
+ prázdná, píšeme 
+\begin_inset Formula $\models$
+\end_inset
+
+ 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ místo 
+\begin_inset Formula $\emptyset$
+\end_inset
+
+ 
+\begin_inset Formula $\models$
+\end_inset
+
+ 
+\begin_inset Formula $\varphi$
+\end_inset
+
+.
+ Je-li množina 
+\emph on
+S
+\emph default
+ jednoprvková, tj.
+ 
+\begin_inset Formula $S=\left\{ \alpha\right\} $
+\end_inset
+
+, píšeme 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ 
+\begin_inset Formula $\models$
+\end_inset
+
+ 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ místo 
+\begin_inset Formula $\left\{ \alpha\right\} \models$
+\end_inset
+
+ 
+\begin_inset Formula $\varphi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Příklady
+\end_layout
+
+\begin_layout Standard
+Pro každé tři formule 
+\begin_inset Formula $\alpha,\beta,\gamma$
+\end_inset
+
+ platí:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ \alpha,\alpha\Rightarrow\beta\right\} \models\beta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ \alpha\Rightarrow\beta,\beta\Rightarrow\gamma\right\} \models\left(\alpha\Rightarrow\gamma\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ \alpha\Rightarrow\beta,\neg\beta\right\} \models\neg\alpha$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\{ \alpha\vee\beta,\alpha\Rightarrow\gamma,\beta\Rightarrow\gamma\right\} \models\gamma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Tvrzení
+\end_layout
+
+\begin_layout Enumerate
+Je-li 
+\emph on
+S
+\emph default
+ množina formulí a 
+\begin_inset Formula $\varphi\in S$
+\end_inset
+
+, pak 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ je konsekventem 
+\emph on
+S
+\emph default
+, tj.
+ 
+\begin_inset Formula $S\models\varphi$
+\end_inset
+
+ pro každou 
+\begin_inset Formula $\varphi\in S$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Tautologie je konsekventem každé množiny formulí 
+\emph on
+S
+\emph default
+.
+\end_layout
+
+\begin_layout Enumerate
+Formule 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ je tautologie právě tehdy, když 
+\begin_inset Formula $\models\varphi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Každá formule je konsekventem nesplnitelné množiny formulí.
+\end_layout
+
+\begin_layout Subsubsection
+Poznámka
+\end_layout
+
+\begin_layout Standard
+Uvědomme si, že 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ =| 
+\begin_inset Formula $\beta$
+\end_inset
+
+ právě tehdy, když platí současně 
+\begin_inset Formula $\alpha\models\beta$
+\end_inset
+
+ a také 
+\begin_inset Formula $\beta\models\alpha$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Tvrzení
+\end_layout
+
+\begin_layout Standard
+Pro každé dvě formule 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ a 
+\begin_inset Formula $\beta$
+\end_inset
+
+ platí:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\alpha\models\beta$
+\end_inset
+
+ právě tehdy, když 
+\begin_inset Formula $\alpha\Rightarrow\beta$
+\end_inset
+
+ je tautologie.
+\end_layout
+
+\begin_layout Subsubsection
+Věta
+\end_layout
+
+\begin_layout Standard
+Pro množinu formulí 
+\begin_inset Formula $S$
+\end_inset
+
+ a formuli 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ platí:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $S\models\varphi$
+\end_inset
+
+ právě tehdy, když 
+\begin_inset Formula $S\cup\left\{ \neg\varphi\right\} $
+\end_inset
+
+ je nesplnitelná.
+\end_layout
+
+\begin_layout Subsubsection
+Věta o dedukci
+\end_layout
+
+\begin_layout Standard
+Pro množinu formulí 
+\begin_inset Formula $S$
+\end_inset
+
+ a formule 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ a 
+\begin_inset Formula $\psi$
+\end_inset
+
+ platí
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $S\cup\left\{ \varphi\right\} \models\psi$
+\end_inset
+
+ právě tehdy, když 
+\begin_inset Formula $S\models\left(\varphi\Rightarrow\psi\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Rezoluční metoda ve výrokové logice
+\end_layout
+
+\begin_layout Standard
+Rezoluční metoda rozhoduje, zda daná množina klausulí je splnitelná nebo
+ je nesplnitelná.
+ Tím je také ”universální metodou” pro řešení základních problémů ve výrokové
+ logice, neboť:
+\end_layout
+
+\begin_layout Enumerate
+Daná formule 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ je sémantickým důsledkem množiny formulí 
+\emph on
+S
+\emph default
+ právě tehdy, když množina 
+\begin_inset Formula $S\cup\left\{ \neg\varphi\right\} $
+\end_inset
+
+ je nesplnitelná.
+\end_layout
+
+\begin_layout Enumerate
+Ke každé formuli 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ existuje množina klausulí 
+\begin_inset Formula $S_{\alpha}$
+\end_inset
+
+ taková, že 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ je pravdivá v ohodnocení 
+\emph on
+u
+\emph default
+ právě tehdy, když v tomto ohodnocení je pravdivá množina 
+\begin_inset Formula $S_{\alpha}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Klausule
+\end_layout
+
+\begin_layout Standard
+Množinu všech logických proměnných označíme 
+\emph on
+A
+\emph default
+.
+ Připoměňme, že 
+\emph on
+literál
+\emph default
+ je buď logická proměnná (tzv.
+ 
+\emph on
+positivní literál
+\emph default
+) nebo negace logické proměnné (tzv.
+ 
+\emph on
+negativní literál
+\emph default
+).
+ 
+\emph on
+Komplementární literály
+\emph default
+ jsou literály 
+\emph on
+p
+\emph default
+ a 
+\begin_inset Formula $\neg p$
+\end_inset
+
+.
+ 
+\emph on
+Klausule
+\emph default
+ je literál nebo disjunkce konečně mnoha literálů (tedy i žádného).
+ Zvláštní místo mezi klausulemi zaujímá 
+\emph on
+prázdná klausule
+\emph default
+, tj.
+ klausule, která neobsahuje žádný literál a tudíž se jedná o kontradikci.
+ Proto ji budeme označovat 
+\emph on
+F
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Pro jednoduchost zavedeme následující konvenci: Máme dánu klausuli 
+\emph on
+C
+\emph default
+ a literál 
+\emph on
+p
+\emph default
+, který se v 
+\emph on
+C
+\emph default
+ vyskytuje.
+ Pak symbolem 
+\begin_inset Formula $C\setminus p$
+\end_inset
+
+ označujeme klausuli, která obsahuje všechny literály jako 
+\emph on
+C
+\emph default
+ kromě 
+\emph on
+p
+\emph default
+.
+ Tedy např.
+ je-li 
+\begin_inset Formula $C=\neg x\vee y\vee\neg z$
+\end_inset
+
+, pak
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C\setminus\neg z=\neg x\vee y.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Rezoloventa
+\end_layout
+
+\begin_layout Standard
+Řekneme, že klausule 
+\emph on
+D
+\emph default
+ je rezolventou klausulí 
+\begin_inset Formula $C_{1}$
+\end_inset
+
+ a 
+\begin_inset Formula $C_{2}$
+\end_inset
+
+ právě tehdy, když existuje literál 
+\emph on
+p
+\emph default
+ takový, že 
+\emph on
+p
+\emph default
+ se vyskytuje v klausuli 
+\begin_inset Formula $C_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $\neg p$
+\end_inset
+
+ se vyskytuje v klausuli 
+\begin_inset Formula $C_{2}$
+\end_inset
+
+ a
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+D=\left(C_{1}\setminus p\right)\vee\left(C_{2}\setminus\neg p\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Také říkáme, že klausule 
+\emph on
+D
+\emph default
+ je rezolventou 
+\begin_inset Formula $C_{1}$
+\end_inset
+
+ a 
+\begin_inset Formula $C_{2}$
+\end_inset
+
+ podle literálu 
+\emph on
+p
+\emph default
+ a značíme 
+\begin_inset Formula $D=res_{p}\left(C_{1},C_{2}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Tvrzení
+\end_layout
+
+\begin_layout Standard
+Máme dány dvě klausule 
+\begin_inset Formula $C_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $C_{2}$
+\end_inset
+
+ a označme 
+\emph on
+D
+\emph default
+ jejich rezolventu.
+ Pak 
+\emph on
+D
+\emph default
+ je sémantický důsledek množiny 
+\begin_inset Formula $\left\{ C_{1},C_{2}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Tvrzení
+\end_layout
+
+\begin_layout Standard
+Máme dánu množinu klausulí 
+\emph on
+S
+\emph default
+ a označme 
+\emph on
+D
+\emph default
+ rezolventu některých dvou klausulí z množiny 
+\emph on
+S
+\emph default
+.
+ Pak množiny 
+\emph on
+S
+\emph default
+ a 
+\begin_inset Formula $S\cup\left\{ D\right\} $
+\end_inset
+
+ jsou pravdivé ve stejných ohodnoceních.
+\end_layout
+
+\begin_layout Subsubsection
+Rezoluční princip
+\end_layout
+
+\begin_layout Standard
+Označme
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $R\left(S\right)=S\cup\left\{ D|D\textrm{ je rezoloventa některých klausulí z }S\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $R^{0}\left(S\right)=S$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $R^{i+1}\left(S\right)=R\left(R^{i}\left(S\right)\right)$
+\end_inset
+
+ pro 
+\begin_inset Formula $i\in N$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $R^{\star}\left(S\right)=\bigcup\left\{ R^{i}\left(S\right)|i\geq0\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Protože pro konečnou množinu logických proměnných existuje jen konečně mnoho
+ klausulí, musí existovat 
+\emph on
+n
+\emph default
+ takové, že 
+\begin_inset Formula $R^{n}\left(S\right)=R^{n+1}\left(S\right)$
+\end_inset
+
+.
+ Pro toto 
+\begin_inset Formula $n$
+\end_inset
+
+ platí 
+\begin_inset Formula $R^{n}\left(S\right)=R^{\star}\left(S\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Věta (Rezoluční princip)
+\end_layout
+
+\begin_layout Standard
+Množina klausulí 
+\emph on
+S
+\emph default
+ je splnitelná právě tehdy, když 
+\begin_inset Formula $R^{\star}\left(S\right)$
+\end_inset
+
+ neobsahuje prázdnou klausuli 
+\emph on
+F
+\emph default
+.
+\end_layout
+
+\begin_layout Subsubsection
+Základní postup
+\end_layout
+
+\begin_layout Standard
+Předchozí věta dává návod, jak zjistit, zda daná množina klausulí je spnitelná
+ nebo je nesplnitelná:
+\end_layout
+
+\begin_layout Enumerate
+Formule množiny 
+\emph on
+M
+\emph default
+ převedeme do CNF a 
+\emph on
+M
+\emph default
+ pak nahradíme množinou 
+\emph on
+S
+\emph default
+ všech klausulí vyskytujících se v některé formuli v CNF.
+ Klausule, které jsou tautologiemi, vynecháme.
+ Jestliže nám nezbyde žádná klausule, množina 
+\emph on
+M
+\emph default
+ se skládala z tautologií a je pravdivá v každém pravdivostním ohodnocení.
+\end_layout
+
+\begin_layout Enumerate
+Vytvoříme 
+\begin_inset Formula $R^{\star}\left(S\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Obsahuje-li 
+\begin_inset Formula $R^{\star}\left(S\right)$
+\end_inset
+
+ prázdnou klausuli, je množina 
+\emph on
+S
+\emph default
+ (a tedy i množina 
+\emph on
+M
+\emph default
+) nesplnitelná, v opačném případě je 
+\emph on
+M
+\emph default
+ splnitelná.
+\end_layout
+
+\begin_layout Standard
+Je zřejmé, že konstrukce celé množiny 
+\begin_inset Formula $R^{\star}\left(S\right)$
+\end_inset
+
+ může být zbytečná — stačí pouze zjistit, zda 
+\begin_inset Formula $R^{\star}\left(S\right)$
+\end_inset
+
+ obsahuje 
+\emph on
+F
+\emph default
+.
+\end_layout
+
+\begin_layout Subsubsection
+Výhodnější postup
+\end_layout
+
+\begin_layout Standard
+Existuje ještě jeden postup, který usnadní práci s použitím rezoluční metody.
+ Ten nejenom že nám odpoví na otázku, zda konečná množina klausulí 
+\emph on
+S
+\emph default
+ je splnitelná nebo nesplnitelná, ale dokonce nám umožní v případě splnitelnosti
+ sestrojit aspoň jedno pravdivostní ohodnocení, v němž je množina 
+\emph on
+S
+\emph default
+ pravdivá.
+\end_layout
+
+\begin_layout Standard
+Máme konečnou množinu klausulí 
+\emph on
+S
+\emph default
+, kde žádná klausule není tautologií.
+ Zvolíme jednu logickou proměnnou (označme ji 
+\emph on
+x
+\emph default
+), která se v některé z klausulí z 
+\emph on
+S
+\emph default
+ vyskytuje.
+ Najdeme množinu klausulí 
+\begin_inset Formula $S_{1}$
+\end_inset
+
+ s těmito vlastnostmi:
+\end_layout
+
+\begin_layout Enumerate
+Žádná klausule v 
+\begin_inset Formula $S_{1}$
+\end_inset
+
+ neobsahuje logickou proměnnou 
+\emph on
+x
+\emph default
+.
+\end_layout
+
+\begin_layout Enumerate
+Množina 
+\begin_inset Formula $S_{1}$
+\end_inset
+
+ je splnitelná právě tehdy, když je splnitelná původní množina 
+\emph on
+S
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Množinu 
+\begin_inset Formula $S_{1}$
+\end_inset
+
+ vytvoříme takto: Rozdělíme klausule množiny 
+\emph on
+S
+\emph default
+ do tří skupin: 
+\begin_inset Formula $M_{0}$
+\end_inset
+
+ se skládá ze všech klausulí množiny 
+\emph on
+S
+\emph default
+, které neobsahují logickou proměnnou 
+\emph on
+x
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $M_{x}$
+\end_inset
+
+ se skládá ze všech klausulí množiny 
+\emph on
+S
+\emph default
+, které obsahují positivní literál 
+\emph on
+x
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $M_{\neg x}$
+\end_inset
+
+ se skládá ze všech klausulí množiny 
+\emph on
+S
+\emph default
+, které obsahují negativní literál 
+\begin_inset Formula $\neg x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Označme 
+\emph on
+N
+\emph default
+ množinu všech rezolvent klausulí množiny 
+\emph on
+S
+\emph default
+ podle literálu 
+\emph on
+x
+\emph default
+; tj.
+ rezolvent vždy jedné klausule z množiny 
+\begin_inset Formula $M_{x}$
+\end_inset
+
+ s jednou klausulí z množiny 
+\begin_inset Formula $M_{\neg x}$
+\end_inset
+
+.
+ Všechny tautologie vyřadíme.
+\end_layout
+
+\begin_layout Standard
+Položíme 
+\begin_inset Formula $S_{1}=M_{0}\cup N$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Tvrzení
+\series default
+: Množina klausulí 
+\begin_inset Formula $S_{1}$
+\end_inset
+
+ zkonstruovaná výše je splnitelná právě tehdy, když je splnitelná množina
+ 
+\emph on
+S
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Dostali jsme tedy množinu klausulí 
+\begin_inset Formula $S_{1}$
+\end_inset
+
+, která již neobsahuje logickou proměnnou 
+\emph on
+x
+\emph default
+ a je splnitelná právě tehdy, když je splnitelná množina 
+\emph on
+S
+\emph default
+.
+ Navíc, množina 
+\begin_inset Formula $S_{1}$
+\end_inset
+
+ má o jednu logickou proměnnou méně než množina 
+\emph on
+S
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Nyní opakujeme postup pro množinu 
+\begin_inset Formula $S_{1}$
+\end_inset
+
+.
+ Postup skončí jedním ze dvou možných způsobů:
+\end_layout
+
+\begin_layout Enumerate
+Při vytváření rezolvent dostaneme prázdnou kalusuli 
+\emph on
+F
+\emph default
+.
+ Tedy 
+\emph on
+S
+\emph default
+ je nesplnitelná.
+\end_layout
+
+\begin_layout Enumerate
+Dostaneme prázdnou množinu klausulí.
+ V tomto případě je množina 
+\emph on
+S
+\emph default
+ splnitelná.
+\end_layout
+
+\begin_layout Section
+Predikátová logika
+\end_layout
+
+\begin_layout Subsection
+Syntaxe predikátové logiky
+\end_layout
+
+\begin_layout Standard
+Nejprve zavedeme syntaxi predikátové logiky, tj.
+ uvedeme pravidla, podle nichž se tvoří syntakticky správné formule predikátové
+ logiky.
+ Význam a pravdivostní hodnota nás bude zajímat až dále.
+\end_layout
+
+\begin_layout Standard
+Správně utvořené formule budou řetězce (posloupnosti) symbolů tzv.
+ 
+\emph on
+jazyka predikátové logiky
+\emph default
+.
+\end_layout
+
+\begin_layout Subsubsection
+Jazyk predikátové logiky 
+\begin_inset Formula $\mathcal{L}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Jazyk predikátové logiky
+\emph default
+ se skládá z
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+logických symbolů
+\emph default
+, tj.:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+spočetné množiny individuálních proměnných: 
+\begin_inset Formula $Var=\left\{ x,y,\ldots,x_{1},x_{2},\ldots\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+výrokových logických spojek: 
+\begin_inset Formula $\neg,\wedge,\vee,\Rightarrow,\Leftrightarrow$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+obecného kvantifikátoru 
+\begin_inset Formula $\forall$
+\end_inset
+
+ a existenčního kvantifikátoru 
+\begin_inset Formula $\exists$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\emph on
+speciálních symbolů
+\emph default
+, tj.:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+množiny 
+\begin_inset Formula $Pred$
+\end_inset
+
+ predikátových symbolů (nesmí být prázdná)
+\end_layout
+
+\begin_layout Enumerate
+množiny 
+\begin_inset Formula $Kons$
+\end_inset
+
+ konstantních symbolů (může být prázdná)
+\end_layout
+
+\begin_layout Enumerate
+množiny 
+\begin_inset Formula $Func$
+\end_inset
+
+ funkčních symbolů (může být prázdná)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+pomocných symbolů, jako jsou závorky 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $(,[,),]$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ a čárka 
+\begin_inset Quotes eld
+\end_inset
+
+,
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Pro každý predikátový i funkční symbol máme dáno přirozené číslo 
+\emph on
+n
+\emph default
+ kolika objektů se daný predikát týká, nebo kolika proměnných je daný funkční
+ symbol.
+ Tomuto číslu říkáme 
+\emph on
+arita
+\emph default
+ nebo též 
+\emph on
+četnost
+\emph default
+ predikátového symbolu nebo funkčního symbolu.
+ Funkční symboly mají aritu větší nebo rovnu 1, predikátové symboly připouštíme
+ i arity 0.
+\end_layout
+
+\begin_layout Subsubsection
+Poznámka
+\end_layout
+
+\begin_layout Standard
+Predikátové symboly budeme většinou značit velkými písmeny, tj.
+ např.
+ 
+\begin_inset Formula $P,Q,R,\ldots,P_{1},P_{2},\ldots$
+\end_inset
+
+; konstantní symboly malými písmeny ze začátku abecedy, tj.
+ 
+\begin_inset Formula $a,b,c,\ldots,a_{1},a_{2},\ldots$
+\end_inset
+
+, a funkční symboly většinou 
+\begin_inset Formula $f,g,h,\ldots,f_{1},f_{2},\ldots$
+\end_inset
+
+.
+ Formule predikátové logiky budeme označovat malými řeckými písmeny (obdobně,
+ jako jsme to dělali pro výrokové formule).
+ Kdykoli se od těchto konvencí odchýlíme, tak v textu na to upozorníme.
+\end_layout
+
+\begin_layout Standard
+Poznamejme, že přestože často budeme mluvit o 
+\emph on
+n
+\emph default
+-árních predikátových symbolech a 
+\emph on
+n
+\emph default
+-árních funkčních symbolech, v běžné praxi se setkáme jak s predikáty, tak
+ funkcemi arity nejvýše tři.
+ Nejběžnější jsou predikáty a funkční symboly arity 1, těm říkáme též 
+\emph on
+unární
+\emph default
+, nebo arity 2, těm říkáme též 
+\emph on
+binární
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Predikátové symboly arity 0 představují nestrukturované výroky (netýkají
+ se žádného objektu).
+ Tímto způsobem se v predikátové logice dá popsat i výrok: „Prší
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Termy
+\end_layout
+
+\begin_layout Standard
+Množina 
+\emph on
+termů
+\emph default
+ je definována těmito pravidly:
+\end_layout
+
+\begin_layout Enumerate
+Každá proměnná a každý konstantní symbol je term.
+\end_layout
+
+\begin_layout Enumerate
+Jestliže 
+\emph on
+f
+\emph default
+ je funkční symbol arity 
+\emph on
+n
+\emph default
+ a 
+\begin_inset Formula $t_{1},t_{2},\ldots,t_{n}$
+\end_inset
+
+ jsou termy, pak 
+\begin_inset Formula $f\left(t_{1},t_{2},\ldots,t_{n}\right)$
+\end_inset
+
+ je také term.
+\end_layout
+
+\begin_layout Enumerate
+Nic, co nevzniklo konečným použitím pravidel 1 a 2, není term.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Poznámka
+\series default
+: Term je zhruba řečeno objekt, pouze může být složitěji popsán než jen
+ proměnnou nebo konstantou.
+ V jazyce predikátové logiky termy vystupují jako „podstatná jména
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Atomické formule
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Atomická formule
+\emph default
+ je predikátový symbol 
+\emph on
+P
+\emph default
+ aplikovaný na tolik termů, kolik je jeho arita.
+ Jinými slovy, pro každý predikátový symbol 
+\begin_inset Formula $P\in Pred$
+\end_inset
+
+ arity 
+\emph on
+n
+\emph default
+ a pro každou 
+\emph on
+n
+\emph default
+-tici termů 
+\begin_inset Formula $t_{1},t_{2},\ldots,t_{n}$
+\end_inset
+
+ je 
+\begin_inset Formula $P\left(t_{1},t_{2},\ldots,t_{n}\right)$
+\end_inset
+
+ atomická formule.
+\end_layout
+
+\begin_layout Subsubsection
+Formule
+\end_layout
+
+\begin_layout Standard
+Množina 
+\emph on
+formulí
+\emph default
+ je definována těmito pravidly:
+\end_layout
+
+\begin_layout Enumerate
+Každá atomická formule je formule.
+\end_layout
+
+\begin_layout Enumerate
+Jsou-li 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ a 
+\begin_inset Formula $\psi$
+\end_inset
+
+ dvě formule, pak 
+\begin_inset Formula $\left(\neg\varphi\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\left(\varphi\wedge\psi\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\left(\varphi\vee\psi\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\left(\varphi\Rightarrow\psi\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\left(\varphi\Leftrightarrow\psi\right)$
+\end_inset
+
+ jsou opět formule.
+\end_layout
+
+\begin_layout Enumerate
+Je-li 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ formule a 
+\begin_inset Formula $x$
+\end_inset
+
+ proměnná, pak 
+\begin_inset Formula $\left(\forall x\varphi\right)$
+\end_inset
+
+ a 
+\begin_inset Formula $\left(\exists x\varphi\right)$
+\end_inset
+
+ jsou opět formule.
+\end_layout
+
+\begin_layout Enumerate
+Nic, co nevzniklo pomocí konečně mnoha použití bodů 1 až 3, není formule.
+\end_layout
+
+\begin_layout Subsubsection
+Konvence
+\end_layout
+
+\begin_layout Enumerate
+Úplně vnější závorky nepíšeme.
+ Píšeme tedy např.
+ 
+\begin_inset Formula $\left(\exists xP\left(x\right)\right)\vee R\left(a,b\right)$
+\end_inset
+
+ místo 
+\begin_inset Formula $\left(\left(\exists xP\left(x\right)\right)\vee R\left(a,b\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Spojka „negace
+\begin_inset Quotes erd
+\end_inset
+
+ má vždy přednost před výrokovými logickými spojkami a proto píšeme např.
+ 
+\begin_inset Formula $\forall x\left(\neg P\left(x\right)\Rightarrow Q\left(x\right)\right)$
+\end_inset
+
+ místo 
+\begin_inset Formula $\forall x\left(\left(\neg P\left(x\right)\right)\Rightarrow Q\left(x\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Syntaktický strom formule
+\end_layout
+
+\begin_layout Standard
+Ke každé formuli predikátové logiky můžeme přiřadit její 
+\emph on
+syntaktický strom
+\emph default
+ (též 
+\emph on
+derivační strom
+\emph default
+) podobným způsobem jako jsme to udělali v případě výrokových formulí.
+ Rozdíl je v tom, že kvantifikátory považujeme za unární (tj.
+ mají pouze jednoho následníka) a také pro termy vytváříme jejich syntaktický
+ strom.
+ Listy syntaktického stromu jsou vždy ohodnoceny buď proměnnou nebo konstantou.
+\end_layout
+
+\begin_layout Subsubsection
+Podformule
+\end_layout
+
+\begin_layout Standard
+Podformule formule 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ je libovolný podřetězec 
+\begin_inset Formula $\varphi$
+\end_inset
+
+, který je sám formulí.
+ Jinými slovy: Podformule formule 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ je každý řetězec odpovídající podstromu syntaktického stromu formule 
+\begin_inset Formula $\varphi$
+\end_inset
+
+, určenému vrcholem ohodnoceným predikátovým symbolem, logickou spojkou
+ nebo kvantifikátorem.
+\end_layout
+
+\begin_layout Subsubsection
+Volný a vázaný výskyt proměnné
+\end_layout
+
+\begin_layout Standard
+Máme formuli 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ a její syntaktický strom.
+ List syntaktického stromu obsazený proměnnou 
+\emph on
+x
+\emph default
+ je výskyt proměnné 
+\emph on
+x
+\emph default
+ ve formuli 
+\begin_inset Formula $\varphi$
+\end_inset
+
+.
+ Výskyt proměnné 
+\emph on
+x
+\emph default
+ je 
+\emph on
+vázaný
+\emph default
+ ve formuli 
+\begin_inset Formula $\varphi$
+\end_inset
+
+, jestliže při postupu od listu ohodnoceného tímto 
+\emph on
+x
+\emph default
+ ve směru ke kořeni syntaktického stromu narazíme na kvantifikátor s touto
+ proměnnou.
+ V opačném případě mluvíme o 
+\emph on
+volném
+\emph default
+ výskytu proměnné 
+\emph on
+x
+\emph default
+.
+\end_layout
+
+\begin_layout Subsubsection
+Sentence
+\end_layout
+
+\begin_layout Standard
+Formule, která má pouze vázané výskyty proměnné, se nazývá 
+\emph on
+sentence
+\emph default
+, též 
+\emph on
+uzavřená formule
+\emph default
+.
+ Formuli, která má pouze volné výskyty proměnné, se říká 
+\emph on
+otevřená formule
+\emph default
+.
+\end_layout
+
+\begin_layout Subsubsection
+Legální přejmenování proměnné
+\end_layout
+
+\begin_layout Standard
+Přejmenování výskytů proměnné 
+\emph on
+x
+\emph default
+ ve formuli 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ je legálním přejmenováním proměnné, jestliže
+\end_layout
+
+\begin_layout Itemize
+jedná se o výskyt vázané proměnné ve 
+\begin_inset Formula $\varphi$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+přejmenováváme všechny výskyty 
+\emph on
+x
+\emph default
+ vázané daným kvantifikátorem;
+\end_layout
+
+\begin_layout Itemize
+po přejmenování se žádný dříve volný výskyt proměnné nesmí stát vázaným
+ výskytem.
+\end_layout
+
+\begin_layout Subsubsection
+Rovnost formulí
+\end_layout
+
+\begin_layout Standard
+Dvě formule považujeme za 
+\emph on
+stejné
+\emph default
+, jestliže se liší pouze legálním přejmenováním vázaných proměnných.
+\end_layout
+
+\begin_layout Standard
+Každou formuli 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ lze napsat tak, že každá proměnná má ve formuli buď jen volné výskyty nebo
+ jen vázané výskyty.
+\end_layout
+
+\begin_layout Subsection
+Sémantika predikátové logiky
+\end_layout
+
+\begin_layout Standard
+Nyní se budeme zabývat sémantikou formulí, tj.
+ jejich významem a pravdivostí.
+\end_layout
+
+\begin_layout Subsubsection
+Intepretace jazyka predikátové logiky
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Interpretace
+\emph default
+ predikátové logiky s predikátovými symboly 
+\begin_inset Formula $Pred$
+\end_inset
+
+, konstantními symboly 
+\begin_inset Formula $Kons$
+\end_inset
+
+ a funkčními symboly 
+\begin_inset Formula $Func$
+\end_inset
+
+ je dvojice 
+\begin_inset Formula $\left\langle U,\left[-\right]\right\rangle $
+\end_inset
+
+, kde
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+U
+\emph default
+ je neprázdná množina nazývaná 
+\emph on
+universum
+\emph default
+;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left\langle \left[-\right]\right\rangle $
+\end_inset
+
+ je přiřazení, které
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+každému predikátovému symbolu 
+\begin_inset Formula $P\in Pred$
+\end_inset
+
+ arity 
+\emph on
+n
+\emph default
+ přiřazuje podmnožinu [
+\emph on
+P
+\emph default
+] množiny 
+\begin_inset Formula $U^{n}$
+\end_inset
+
+, tj.
+ 
+\emph on
+n
+\emph default
+-ární relaci na množině 
+\emph on
+U
+\emph default
+.
+\end_layout
+
+\begin_layout Enumerate
+každému konstantnímu symbolu 
+\begin_inset Formula $a\in Kons$
+\end_inset
+
+ přiřazuje prvek z 
+\emph on
+U
+\emph default
+, značíme jej [
+\emph on
+a
+\emph default
+],
+\end_layout
+
+\begin_layout Enumerate
+každému funkčnímu symbolu 
+\begin_inset Formula $f\in Func$
+\end_inset
+
+ arity 
+\emph on
+n
+\emph default
+ přiřazuje zobrazení množiny 
+\begin_inset Formula $U^{n}$
+\end_inset
+
+ do 
+\emph on
+U
+\emph default
+, značíme je [
+\emph on
+f
+\emph default
+],
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Množina 
+\emph on
+U
+\emph default
+ se někdy nazývá 
+\emph on
+domain
+\emph default
+ a označuje 
+\emph on
+D
+\emph default
+.
+\end_layout
+
+\begin_layout Subsubsection
+Kontext proměnných
+\end_layout
+
+\begin_layout Standard
+Je dána interpretace 
+\begin_inset Formula $\left\langle U,\left[-\right]\right\rangle $
+\end_inset
+
+.
+ Kontext proměnných je zobrazení 
+\begin_inset Formula $\rho$
+\end_inset
+
+, které každé proměnné 
+\begin_inset Formula $x\in Var$
+\end_inset
+
+ přiřadí prvek 
+\begin_inset Formula $\rho\left(x\right)\in U$
+\end_inset
+
+.
+ Je-li 
+\begin_inset Formula $\rho$
+\end_inset
+
+ kontext proměnných, 
+\begin_inset Formula $x\in Var$
+\end_inset
+
+ a 
+\begin_inset Formula $d\in U$
+\end_inset
+
+, pak
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+p\left[x:=d\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+označuje kontext proměnných, který má stejné hodnoty jako 
+\begin_inset Formula $\rho$
+\end_inset
+
+, a liší se pouze v proměnné 
+\emph on
+x
+\emph default
+, kde má hodnotu 
+\emph on
+d
+\emph default
+.
+ Kontextu proměnných 
+\begin_inset Formula $p\left[x:=d\right]$
+\end_inset
+
+ též říkáme 
+\emph on
+update
+\emph default
+ kontextu 
+\begin_inset Formula $\rho$
+\end_inset
+
+ o hodnotu 
+\emph on
+d
+\emph default
+ v 
+\emph on
+x
+\emph default
+.
+\end_layout
+
+\begin_layout Subsubsection
+Interpretace termů při daném kontextu proměnných
+\end_layout
+
+\begin_layout Standard
+Je dána interpretace 
+\begin_inset Formula $\left\langle U,\left[-\right]\right\rangle $
+\end_inset
+
+ a kontext proměnných 
+\begin_inset Formula $\rho$
+\end_inset
+
+.
+ Pak termy interpretujeme následujícím způsobem.
+\end_layout
+
+\begin_layout Enumerate
+Je-li term konstatní symbol 
+\begin_inset Formula $a\in Kons$
+\end_inset
+
+, pak jeho hodnota je prvek 
+\begin_inset Formula $\left[a\right]_{\rho}=\left[a\right]$
+\end_inset
+
+.
+ Je-li term proměnná 
+\emph on
+x
+\emph default
+, pak jeho hodnota je 
+\begin_inset Formula $\left[x\right]_{\rho}=\rho\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Je-li 
+\begin_inset Formula $f\left(t_{1},t_{2},\ldots,t_{n}\right)$
+\end_inset
+
+ term.
+ pak jeho hodnota je
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left[f\left(t_{1},t_{2},\ldots,t_{n}\right)\right]_{\rho}=\left[f\right]\left(\left[t_{1}\right]_{\rho},\ldots,\left[t_{n}\right]_{\rho}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Jinými slovy, hodnota termu 
+\begin_inset Formula $f\left(t_{1},t_{2},\ldots,t_{n}\right)$
+\end_inset
+
+ je funkční hodnota funkce [
+\emph on
+f
+\emph default
+] provedené na 
+\emph on
+n
+\emph default
+-tici prvků 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\left[t_{1}\right]_{\rho},\ldots,\left[t_{n}\right]_{\rho}$
+\end_inset
+
+ z 
+\begin_inset Formula $U$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Pravdivostní hodnota formule v dané interpretaci a daném kontextu
+\end_layout
+
+\begin_layout Standard
+Nejprve definujeme 
+\emph on
+pravdivost
+\emph default
+ formulí v dané interpretaci 
+\begin_inset Formula $\left\langle U,\left[-\right]\right\rangle $
+\end_inset
+
+ při daném kontextu proměnných 
+\begin_inset Formula $\rho$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Enumerate
+Nechť 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ je atomická formule.
+ Tj.
+ 
+\begin_inset Formula $\varphi=P\left(t_{1},t_{2},\ldots,t_{n}\right)$
+\end_inset
+
+, kde 
+\emph on
+P
+\emph default
+ je predikátový symbol arity 
+\emph on
+n
+\emph default
+ a 
+\begin_inset Formula $t_{1},t_{2},\ldots,t_{n}$
+\end_inset
+
+ jsou termy.
+ Pak 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ je pravdivá v interpretaci 
+\begin_inset Formula $\left\langle U,\left[-\right]\right\rangle $
+\end_inset
+
+ a kontextu 
+\begin_inset Formula $\rho$
+\end_inset
+
+ právě tehdy, když
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left(\left[t_{1}\right]_{\rho},\ldots,\left[t_{n}\right]_{\rho}\right)\in\left[P\right].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Jinými slovy: 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ je v naší interpretaci pravdivá právě tehdy, když 
+\emph on
+n
+\emph default
+-tice hodnot termů 
+\begin_inset Formula $\left(\left[t_{1}\right]_{\rho},\ldots,\left[t_{n}\right]_{\rho}\right)$
+\end_inset
+
+ má vlastnost [
+\emph on
+P
+\emph default
+ ].
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Jsou-li 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ a 
+\begin_inset Formula $\psi$
+\end_inset
+
+ formule, jejichž pravdivost v interpretaci 
+\begin_inset Formula $\left\langle U,\left[-\right]\right\rangle $
+\end_inset
+
+ a kontextu 
+\begin_inset Formula $\rho$
+\end_inset
+
+ již známe, pak
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\neg\varphi$
+\end_inset
+
+ je pravdivá právě tehdy, když 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ není pravdivá.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\varphi\wedge\psi$
+\end_inset
+
+ je pravdivá právě tehdy, když 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ a 
+\begin_inset Formula $\psi$
+\end_inset
+
+ jsou pravdivé.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\varphi\vee\psi$
+\end_inset
+
+ je nepravdivá právě tehdy, když 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ i 
+\begin_inset Formula $\psi$
+\end_inset
+
+ jsou nepravdivé.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\varphi\Rightarrow\psi$
+\end_inset
+
+ je nepravdivá právě tehdy, když 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ je pravdivá a 
+\begin_inset Formula $\psi$
+\end_inset
+
+ je nepravdivá.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\varphi\Leftrightarrow\psi$
+\end_inset
+
+ je pravdivá právě tehdy, když buď obě formule 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ a 
+\begin_inset Formula $\psi$
+\end_inset
+
+ jsou pravdivé, nebo obě formule 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ a 
+\begin_inset Formula $\psi$
+\end_inset
+
+ jsou nepravdivé.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Je-li 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ formule a 
+\begin_inset Formula $x$
+\end_inset
+
+ proměnná, pak
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\forall x\varphi\left(x\right)$
+\end_inset
+
+ je pravdivá právě tehdy, když fromule 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ je pravdivá 
+\emph on
+v
+\emph default
+ 
+\emph on
+každém
+\emph default
+ kontextu 
+\begin_inset Formula $p\left[x:=d\right]$
+\end_inset
+
+, kde 
+\emph on
+d
+\emph default
+ je prvek 
+\emph on
+U
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\exists x\varphi\left(x\right)$
+\end_inset
+
+ je pravdivá právě tehdy, když fromule 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ je pravdivá 
+\emph on
+v
+\emph default
+ 
+\emph on
+aspoň
+\emph default
+ 
+\emph on
+jednom
+\emph default
+ kontextu 
+\begin_inset Formula $p\left[x:=d\right]$
+\end_inset
+
+, kde 
+\emph on
+d
+\emph default
+ je prvek 
+\emph on
+U
+\emph default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Pravdivostní hodnota sentence
+\end_layout
+
+\begin_layout Standard
+Sentence 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ je 
+\emph on
+pravdivá
+\emph default
+ 
+\emph on
+v
+\emph default
+ 
+\emph on
+interpretaci
+\emph default
+ 
+\begin_inset Formula $\left\langle U,\left[-\right]\right\rangle $
+\end_inset
+
+ právě tehdy, když je pravdivá v každém kontextu proměnných 
+\begin_inset Formula $\rho$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Poznamenejme, že pro sentence v předchozí definici jsme mohli požadovat
+ pravdivost v alespoň jednom kontextu.
+\end_layout
+
+\begin_layout Subsubsection
+Model sentence
+\end_layout
+
+\begin_layout Standard
+Interpretace 
+\begin_inset Formula $\left\langle U,\left[-\right]\right\rangle $
+\end_inset
+
+, ve které je sentence 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ pravdivá, se nazývá 
+\emph on
+model
+\emph default
+ 
+\emph on
+sentence
+\emph default
+ 
+\begin_inset Formula $\varphi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Tautologie, kontradikce, splnitelná sentence
+\end_layout
+
+\begin_layout Standard
+Sentence 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ se nazývá 
+\emph on
+tautologie
+\emph default
+, jestliže je pravdivá v každé interpretaci.
+ Sentence se nazývá 
+\emph on
+kontradikce
+\emph default
+, jestliže je nepravdivá v každé interpretaci.
+ Nazývá se 
+\emph on
+splnitelná
+\emph default
+, jestliže je pravdivá v aspoň jedné interpretaci.
+\end_layout
+
+\begin_layout Standard
+Také jsme mohli formulovat předchozí definice pomocí pojmu „model
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Tautologie je sentence, pro kterou je každá interpretace jejím modelem;
+ sentence je splnitelná, má-li model; sentence je kontradikce, nemá-li model.
+\end_layout
+
+\begin_layout Standard
+Následující sentence jsou tautologie.
+ (
+\emph on
+P
+\emph default
+ je unární predikátový symbol, 
+\emph on
+Q
+\emph default
+ je binární predikátový symbol a 
+\emph on
+a
+\emph default
+ je konstantní symbol.)
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\forall xP\left(x\right)\right)\Rightarrow P\left(a\right)$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $P\left(a\right)\Rightarrow\left(\exists xP\left(x\right)\right)$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Standard
+Následující sentence jsou splnitelné formule:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\forall x\exists yQ\left(x,y\right)$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\forall x\forall y\left(x+y=y+x\right)$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+kde 
+\emph on
+Q
+\emph default
+ = jsou binární predikátové symboly, + je binární funkční symbol.
+ 
+\end_layout
+
+\begin_layout Standard
+Zvláštní příklady kontradikcí neuvádíme.
+ Kontradikce jsou přesně ty formule, jejichž negace je tautologie.
+ Tak např.
+ formule 
+\begin_inset Formula $\left(\forall xP\left(x\right)\wedge\neg\left(\forall xP\left(x\right)\right)\right)$
+\end_inset
+
+ je kontradikce.
+ Je dobré si uvědomit, že jde o „dosazení
+\begin_inset Quotes erd
+\end_inset
+
+ formule 
+\begin_inset Formula $\forall xP\left(x\right)$
+\end_inset
+
+ do výrokové kontradikce 
+\begin_inset Formula $p\wedge\neg p$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Splnitelné množiny sentencí
+\end_layout
+
+\begin_layout Standard
+Množina sentencí 
+\emph on
+M
+\emph default
+ je 
+\emph on
+splnitelná
+\emph default
+ právě tehdy, když existuje interpretace 
+\begin_inset Formula $\left\langle U,\left[-\right]\right\rangle $
+\end_inset
+
+, v níž jsou všechny sentence z 
+\emph on
+M
+\emph default
+ pravdivé.
+ Takové interpretaci pak říkáme 
+\emph on
+model
+\emph default
+ množiny sentencí 
+\emph on
+M
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Množina sentencí 
+\emph on
+M
+\emph default
+ je 
+\emph on
+nesplnitelná
+\emph default
+, jestliže ke každé interpretaci 
+\begin_inset Formula $\left\langle U,\left[-\right]\right\rangle $
+\end_inset
+
+ existuje formule z 
+\emph on
+M
+\emph default
+, která je v 
+\begin_inset Formula $\left\langle U,\left[-\right]\right\rangle $
+\end_inset
+
+ nepravdivá.
+\end_layout
+
+\begin_layout Standard
+Z poslední definice vyplývá, že prázdná množina sentencí je splnitelná.
+\end_layout
+
+\begin_layout Subsection
+Tautologická ekvivalence
+\end_layout
+
+\begin_layout Subsubsection
+Tautologická ekvivalence sentencí
+\end_layout
+
+\begin_layout Standard
+̌ekneme, že dvě sentence 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ a 
+\begin_inset Formula $\psi$
+\end_inset
+
+ jsou 
+\emph on
+tautologicky
+\emph default
+ 
+\emph on
+ekvivalentní
+\emph default
+ právě tehdy, když mají stejné modely, tj.
+ jsou pravdivé ve stejných interpretacích.
+ Jinými slovy, mají stejnou pravdivostní hodnotu ve všech interpretacích.
+\end_layout
+
+\begin_layout Standard
+Někdy se říká, že sentence jsou 
+\emph on
+sémanticky
+\emph default
+ ekvivalentní místo, že jsou tautologicky ekvivalentní.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Poznámka
+\series default
+: Dá se jednoduše dokázat, že tautologická ekvivalence je relace ekvivalence
+ na množině všech sentencí daného jazyka 
+\begin_inset Formula $\mathcal{L}$
+\end_inset
+
+ a že má podobné vlastnosti jako tautologická ekvivalence formulí výrokové
+ logiky.
+\end_layout
+
+\begin_layout Subsubsection
+Tvrzení
+\end_layout
+
+\begin_layout Standard
+Nechť 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ a 
+\begin_inset Formula $\psi$
+\end_inset
+
+ jsou sentence.
+ Pak platí:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\varphi$
+\end_inset
+
+ |=| 
+\begin_inset Formula $\psi$
+\end_inset
+
+ právě tehdy, když 
+\begin_inset Formula $\varphi\Leftrightarrow\psi$
+\end_inset
+
+ je tautologie.
+ 
+\end_layout
+
+\begin_layout Standard
+Tautologické ekvivalence: (
+\begin_inset Formula $P$
+\end_inset
+
+ a 
+\begin_inset Formula $Q$
+\end_inset
+
+ jsou unární predikátové symboly.)
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\neg\left(\forall xP\left(x\right)\right)$
+\end_inset
+
+ |=| 
+\begin_inset Formula $\left(\exists x\neg P\left(x\right)\right)$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\neg\left(\exists xP\left(x\right)\right)$
+\end_inset
+
+ |=| 
+\begin_inset Formula $\left(\forall x\neg P\left(x\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\forall xP\left(x\right)\right)\wedge\left(\forall xQ\left(x\right)\right)$
+\end_inset
+
+ |=| 
+\begin_inset Formula $\forall x\left(P\left(x\right)\wedge Q\left(x\right)\right)$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Subsection
+Sémantický důsledek
+\end_layout
+
+\begin_layout Subsubsection
+Sémantický důsledek
+\end_layout
+
+\begin_layout Standard
+Řekneme, že sentence 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ je 
+\emph on
+sémantickým
+\emph default
+ 
+\emph on
+důsledkem
+\emph default
+, též 
+\emph on
+konsekventem
+\emph default
+ množiny sentencí 
+\emph on
+S
+\emph default
+ právě tehdy, když každý model množiny 
+\emph on
+S
+\emph default
+ je také modelem sentence 
+\begin_inset Formula $\varphi$
+\end_inset
+
+.
+ Tento fakt značíme
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+S\models\varphi.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Můžeme též říci, že sentence 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ 
+\emph on
+není
+\emph default
+ konsekventem množiny sentencí 
+\emph on
+S
+\emph default
+, jestliže existuje model množiny 
+\emph on
+S
+\emph default
+, který není modelem sentence 
+\begin_inset Formula $\varphi$
+\end_inset
+
+.
+ To znamená, že existuje interpretace 
+\begin_inset Formula $\left\langle U,\left[-\right]\right\rangle $
+\end_inset
+
+, v níž je pravdivá každá sentence z množiny 
+\emph on
+S
+\emph default
+ a není pravdivá formule 
+\begin_inset Formula $\varphi$
+\end_inset
+
+.
+ Jedná se tedy o obdobný pojem jako ve výrokové logice, pouze místo o pravdivost
+ním ohodnocení mluvíme o interpretaci.
+\end_layout
+
+\begin_layout Subsubsection
+Konvence
+\end_layout
+
+\begin_layout Standard
+Jestliže množina sentencí 
+\emph on
+S
+\emph default
+ je jednoprvková, tj.
+ 
+\begin_inset Formula $S=\left\{ \psi\right\} $
+\end_inset
+
+, pak píšeme 
+\begin_inset Formula $\psi\models\varphi$
+\end_inset
+
+ místo 
+\begin_inset Formula $\left\{ \psi\right\} \models\varphi$
+\end_inset
+
+.
+ Je-li množina 
+\emph on
+S
+\emph default
+ prázdná, píšeme 
+\begin_inset Formula $\models\varphi$
+\end_inset
+
+ místo 
+\begin_inset Formula $\emptyset\models\varphi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Obdobně jako pro výrokovou logiku, dostáváme řadu jednoduchých pozorování.
+ Pro množiny sentencí 
+\emph on
+M
+\emph default
+, 
+\emph on
+N
+\emph default
+ a sentenci 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ platí:
+\end_layout
+
+\begin_layout Enumerate
+Je-li 
+\begin_inset Formula $\varphi\in M$
+\end_inset
+
+, je 
+\begin_inset Formula $M\models\varphi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Je-li 
+\begin_inset Formula $N\subseteq M$
+\end_inset
+
+ a 
+\begin_inset Formula $N\models\varphi$
+\end_inset
+
+, je i 
+\begin_inset Formula $M\models\varphi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Je-li 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ tautologie, pak 
+\begin_inset Formula $M\models\varphi$
+\end_inset
+
+ pro každou množinu sentencí 
+\begin_inset Formula $M$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Je-li 
+\begin_inset Formula $\models\varphi$
+\end_inset
+
+, pak 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ je tautologie.
+\end_layout
+
+\begin_layout Enumerate
+Je-li M nesplnitelná množina, pak 
+\begin_inset Formula $M\models\varphi$
+\end_inset
+
+ pro každou sentenci 
+\begin_inset Formula $\varphi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Tvrzení
+\end_layout
+
+\begin_layout Standard
+Nechť 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ a 
+\begin_inset Formula $\psi$
+\end_inset
+
+ jsou sentence.
+ Pak platí:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\varphi$
+\end_inset
+
+ |=| 
+\begin_inset Formula $\psi$
+\end_inset
+
+ právě tehdy, když 
+\begin_inset Formula $\varphi\models\psi$
+\end_inset
+
+ a 
+\begin_inset Formula $\psi\models\varphi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Tvrzení
+\end_layout
+
+\begin_layout Standard
+Nechť 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ a 
+\begin_inset Formula $\psi$
+\end_inset
+
+ jsou sentence.
+ Pak platí:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\varphi\models\psi$
+\end_inset
+
+ právě tehdy, když 
+\begin_inset Formula $\varphi\Rightarrow\psi$
+\end_inset
+
+ je tautologie.
+\end_layout
+
+\begin_layout Subsubsection
+Věta
+\end_layout
+
+\begin_layout Standard
+Pro každou množinu sentencí 
+\emph on
+S
+\emph default
+ a každou sentenci 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ platí:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $S\models\varphi$
+\end_inset
+
+ právě tehdy, když 
+\begin_inset Formula $S\cup\left\{ \neg\varphi\right\} $
+\end_inset
+
+ je nesplnitelná množina.
+\end_layout
+
+\begin_layout Subsection
+Rezoluční metoda v predikátové logice
+\end_layout
+
+\begin_layout Standard
+Rezoluční metoda v predikátové logice je obdobná stejnojmenné metodě ve
+ výrokové logice.
+ Ovšem vzhledem k bohatší vnitřní struktuře formulí predikátové logiky je
+ složitější.
+ Používá se v logickém programování a je základem programovacího jazyka
+ Prolog.
+\end_layout
+
+\begin_layout Standard
+Nejprve zavedeme literály a klausule v predikátové logice.
+\end_layout
+
+\begin_layout Subsubsection
+Literál
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Literál
+\emph default
+ je atomická formule (tzv.
+ 
+\emph on
+pozitivní
+\emph default
+ 
+\emph on
+literál
+\emph default
+), nebo negace atomické formule (tzv.
+ 
+\emph on
+negativní
+\emph default
+ 
+\emph on
+literál
+\emph default
+).
+ 
+\emph on
+Komplementární
+\emph default
+ 
+\emph on
+literály
+\emph default
+ jsou dva literály, z nichž jeden je negací druhého.
+\end_layout
+
+\begin_layout Subsubsection
+Klausule
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Klausule
+\emph default
+ je sentence taková, že všechny kvantifikátory jsou obecné a stojí na začátku
+ sentence (na jejich pořadí nezáleží) a za nimi následují literál nebo disjunkce
+ literálů.
+\end_layout
+
+\begin_layout Standard
+Ve výrokové logice jsme pro každou formuli 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ našli k ní tautologicky ekvivalentní množinu klausulí 
+\begin_inset Formula $S_{\alpha}$
+\end_inset
+
+ a to tak, že 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ i 
+\begin_inset Formula $S_{\alpha}$
+\end_inset
+
+ byly pravdivé ve stejných pravdivostních ohodnocení.
+ Takto jednoduchá situace v predikátové logice není.
+ Ukážeme si, jak k dané sentenci 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ najít množinu klausulí 
+\begin_inset Formula $S_{\varphi}$
+\end_inset
+
+ a to tak, že 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ je splnitelná právě tehdy, když množina 
+\begin_inset Formula $S_{\varphi}$
+\end_inset
+
+ je splnitelná.
+\end_layout
+
+\begin_layout Subsubsection
+Rezoloventy klausulí
+\end_layout
+
+\begin_layout Standard
+Ve výrokové logice jsme rezolventy vytvářeli tak, že jsme si vždy vzali
+ dvě klausule, které obsahovaly dvojici komplementárních literálů, a výsledná
+ rezolventa byla disjunkcí všech ostatních literálů z obou klausulí.
+ Situace v predikátové logice je složitější.
+ Postup, jak vytváříme rezolventy v predikátové logice, si ukážeme na příkladech.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Poznámka
+\series default
+: Ne vždy rezolventa existuje.
+\end_layout
+
+\begin_layout Subsubsection
+Příklad
+\end_layout
+
+\begin_layout Standard
+Najděme rezoloventu klausulí 
+\begin_inset Formula $K_{1}=\forall x\forall y\left(P\left(x\right)\vee\neg Q\left(x,y\right)\right)$
+\end_inset
+
+ a 
+\begin_inset Formula $K_{2}=\forall x\forall y\left(Q\left(x,y\right)\vee R\left(y\right)\right)$
+\end_inset
+
+, kde 
+\begin_inset Formula $P$
+\end_inset
+
+ a 
+\begin_inset Formula $R$
+\end_inset
+
+ jsou unární predikátové symboly a 
+\begin_inset Formula $Q$
+\end_inset
+
+ je binární predikátový symbol, 
+\begin_inset Formula $x,y$
+\end_inset
+
+ jsou proměnné.
+\end_layout
+
+\begin_layout Standard
+Klausule 
+\begin_inset Formula $K_{1}$
+\end_inset
+
+ a 
+\begin_inset Formula $K_{2}$
+\end_inset
+
+ obsahují dvojici komplementárních literálů, totiž 
+\begin_inset Formula $\neg Q\left(x,y\right)$
+\end_inset
+
+ je literál 
+\begin_inset Formula $K_{1}$
+\end_inset
+
+ a 
+\begin_inset Formula $Q\left(x,y\right)$
+\end_inset
+
+ je literál 
+\begin_inset Formula $K_{2}$
+\end_inset
+
+.
+ Rezoloventou klausulí 
+\begin_inset Formula $K_{1}$
+\end_inset
+
+ a 
+\begin_inset Formula $K_{2}$
+\end_inset
+
+ je tedy 
+\begin_inset Formula $K=\forall x\forall y\left(P\left(x\right)\vee R\left(y\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Unifikační algoritmus
+\end_layout
+
+\begin_layout Standard
+Vstup: Dva positivní literály 
+\begin_inset Formula $L_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+, které nemají společné proměnné.
+\end_layout
+
+\begin_layout Standard
+Výstup: Hlášení neexistuje v případě, že hledaná substituce neexistuje,
+ v opačném případě substituce ve tvaru množiny prvků tvaru 
+\begin_inset Formula $x/t$
+\end_inset
+
+, kde 
+\emph on
+x
+\emph default
+ je proměnná, za kterou se dosazuje, a 
+\emph on
+t
+\emph default
+ je term, který se za proměnnou 
+\emph on
+x
+\emph default
+ dosazuje.
+\end_layout
+
+\begin_layout Enumerate
+Položme 
+\begin_inset Formula $E_{1}:=L_{1},E_{2}:=L_{2},\theta:=\emptyset$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Jsou-li 
+\begin_inset Formula $E_{1},E_{2}$
+\end_inset
+
+ prázdné řetězce, stop.
+ Množina 
+\begin_inset Formula $\theta$
+\end_inset
+
+ určuje hledanou substituci.
+ V opačném případě položíme 
+\begin_inset Formula $E_{1}:=E_{1}\theta$
+\end_inset
+
+, 
+\begin_inset Formula $E_{2}:=E_{2}\theta$
+\end_inset
+
+ (tj.
+ na 
+\begin_inset Formula $E_{1},E_{2}$
+\end_inset
+
+ provedeme substituci 
+\begin_inset Formula $\theta$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Enumerate
+Označíme 
+\emph on
+X
+\emph default
+ první symbol řetězce 
+\begin_inset Formula $E_{1}$
+\end_inset
+
+, 
+\emph on
+Y
+\emph default
+ první symbol řetězce 
+\begin_inset Formula $E_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Je-li 
+\begin_inset Formula $X=Y$
+\end_inset
+
+, odstraníme 
+\emph on
+X
+\emph default
+ a 
+\emph on
+Y
+\emph default
+ z počátku 
+\begin_inset Formula $E_{1}$
+\end_inset
+
+ a 
+\begin_inset Formula $E_{2}$
+\end_inset
+
+.
+ Jsou-li 
+\emph on
+X
+\emph default
+ a 
+\emph on
+Y
+\emph default
+ predikátové nebo funkční symboly, odstraníme i jim příslušné závorky a
+ jdeme na krok 2.
+\end_layout
+
+\begin_layout Enumerate
+Je-li 
+\emph on
+X
+\emph default
+ proměnná, neděláme nic.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Je-li 
+\emph on
+Y
+\emph default
+ proměnná (a 
+\emph on
+X
+\emph default
+ nikoli), přehodíme 
+\begin_inset Formula $E_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $E_{2}$
+\end_inset
+
+ a 
+\emph on
+X
+\emph default
+, 
+\emph on
+Y
+\emph default
+ .
+\end_layout
+
+\begin_layout Standard
+Není-li ani 
+\emph on
+X
+\emph default
+ ani 
+\emph on
+Y
+\emph default
+ proměnná, stop.
+ Výstup neexistuje.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Je-li 
+\emph on
+Y
+\emph default
+ proměnná nebo konstanta, položíme 
+\begin_inset Formula $\theta:=\theta\cup\left\{ X/Y\right\} $
+\end_inset
+
+.
+ Odstraníme 
+\emph on
+X
+\emph default
+ a 
+\emph on
+Y
+\emph default
+ ze začátků řetězců 
+\begin_inset Formula $E_{1}$
+\end_inset
+
+ a 
+\begin_inset Formula $E_{2}$
+\end_inset
+
+ (spolu s čárkami, je-li třeba) a jdeme na krok 2.
+\end_layout
+
+\begin_layout Enumerate
+Je-li 
+\emph on
+Y
+\emph default
+ funkční symbol, označíme 
+\emph on
+Z
+\emph default
+ výraz skládající se z 
+\emph on
+Y
+\emph default
+ a všech jeho argumentů (včetně závorek a čárek).
+ Jestliže 
+\emph on
+Z
+\emph default
+ obsahuje 
+\emph on
+X
+\emph default
+, stop, výstup neexistuje.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+V opačném případě položíme 
+\begin_inset Formula $\theta:=\theta\cup\left\{ X/Z\right\} $
+\end_inset
+
+, odstraníme 
+\emph on
+X
+\emph default
+ a 
+\emph on
+Z
+\emph default
+ ze začátků 
+\begin_inset Formula $E_{1}$
+\end_inset
+
+ a 
+\begin_inset Formula $E_{2}$
+\end_inset
+
+ (odstraníme čárky, je-li třeba) a jdeme na krok 2.
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Rezoluční princip
+\end_layout
+
+\begin_layout Standard
+Je obdobný jako rezoluční princip ve výrokové logice:
+\end_layout
+
+\begin_layout Standard
+Je dána množina klausulí 
+\emph on
+S
+\emph default
+.
+ Označme
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $R\left(S\right)=S\cup\left\{ K|K\textrm{ je nejobecnější rezoloventa některých klausulí z }S\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $R^{0}\left(S\right)=S$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $R^{i+1}\left(S\right)=R\left(R^{i}\left(S\right)\right)$
+\end_inset
+
+ pro 
+\begin_inset Formula $i\in\mathbb{N}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $R^{\star}\left(S\right)=\bigcup\left\{ R^{i}\left(S\right)|i\geq0\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Množina klausulí 
+\emph on
+S
+\emph default
+ je splnitelná právě tehdy, když 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $R^{\star}\left(S\right)$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ neobsahuje prázdnou klausuli 
+\emph on
+F
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Jestliže je množina 
+\emph on
+S
+\emph default
+ konečná, existuje přirozené číslo 
+\begin_inset Formula $n_{0}$
+\end_inset
+
+ takové, že 
+\begin_inset Formula $R^{n_{0}}\left(S\right)=R^{n_{0}1}$
+\end_inset
+
+.
+ Pak 
+\begin_inset Formula $R^{\star}\left(S\right)=R^{n_{0}}\left(S\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document
