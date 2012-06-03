@@ -20,7 +20,7 @@ Hotové otázky
 
 04\. Kombinatorika (kombinatorická čísla, princip inkluze a exkluze); Využití matematické indukce; rekurzivní vztahy (řešení rovnic, odhad náročnosti algoritmů) (A4B01DMA) 
 
-05\.  Programovací jazyky, imperativní programování. (PRG1)
+05\.  Imperativní programování, software, překladač, interpret, vnitřní forma, programovací jazyky, syntaxe, sémantika, proměnné, výrazy, vstup, výstup, řídící struktury, jednoduché datové typy, přiřazení, funkce, procedury, parametry, rozklad problému na podproblémy, princip rekurze a iterace (A0B36PR1) 
 
 06\.  Objektové programování. (PRG1)
 
