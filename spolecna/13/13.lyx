@@ -1,0 +1,2465 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass scrreprt
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{chapter}{12} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Základy programovaní v C, charakteristika jazyka, model kompilace, struktura
+ programu, makra, podmíněný překlad, syntaxe jazyka, struktury, uniony,
+ výčtové typy, preprocesor, základní knihovny, základní vstup a výstup,
+ pointery, dynamická správa paměti, pole a ukazatelé, funkce a pointery.
+ (A0B36PR2)
+\end_layout
+
+\begin_layout Section
+C - Obecná charakteristika
+\end_layout
+
+\begin_layout Standard
+C je nízkoúrovňový, kompilovaný, relativně minimalistický programovací jazyk.
+ 
+\end_layout
+
+\begin_layout Itemize
+Univerzální programovací jazyk nižší až střední úrovně 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Strukturovaný (funkce + data)
+\end_layout
+
+\begin_layout Itemize
+Zdrojový kód přenositelný (portable), nutno ctít podmínky přenositelnosti,
+ překladač ne (je závislý na platformě)
+\end_layout
+
+\begin_layout Itemize
+Rychlý, efektivní, kompaktní kód, mnohdy nepřehledný 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Pružný a výkonný, ale nestabilní 
+\end_layout
+
+\begin_layout Itemize
+Podpora 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+konstrukcí jazyka vysoké úrovně (funkce, datové struktury) 
+\end_layout
+
+\begin_layout Itemize
+operací blízkých assembleru (ukazatele, bitové operace,…) 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Slabá typová kontrola 
+\end_layout
+
+\begin_layout Itemize
+Málo odolný programátorovým chybám 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Dává velkou volnost programátorovi v zápisu programu
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Výhoda: dobrý programátor vytvoří efektivní, rychlý a kompaktní kód 
+\end_layout
+
+\begin_layout Itemize
+Nevýhoda: špatný nebo unavený programátor, pak nepřehledný program náchylný
+ k chybám
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Nutná vlastní správa paměti
+\end_layout
+
+\begin_layout Itemize
+silná vazba na HW, využití jeho možností (inline assembler), špatná nebo
+ žádná podpora národních zvyklostí
+\end_layout
+
+\begin_layout Itemize
+Použití: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+operační systémy, 
+\end_layout
+
+\begin_layout Itemize
+řídicí systémy
+\end_layout
+
+\begin_layout Itemize
+grafika
+\end_layout
+
+\begin_layout Itemize
+databáze
+\end_layout
+
+\begin_layout Itemize
+programování ovladačů grafických, zvukových a dalších karet 
+\end_layout
+
+\begin_layout Itemize
+programování vestavěných - embeded systémů
+\end_layout
+
+\begin_layout Itemize
+číslicové zpracování signálů (DSP),
+\end_layout
+
+\begin_layout Itemize
+…
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Podobnost C a JAVA
+\end_layout
+
+\begin_layout Itemize
+Program začíná funkcí main(), je základní funkcí programu, každý program
+ musí obsahovat právě jednu tuto funkci
+\end_layout
+
+\begin_layout Itemize
+Stavba funkcí / metod, – Jméno funkce, formální parametry, návratová hodnota,
+ vymezení těla funkce, vymezení bloku, vlastnosti lokálních proměnných (jsou
+ v zásobníku), předávání primitivních typů parametrů hodnotou, return.
+ 
+\end_layout
+
+\begin_layout Itemize
+Množina znaků pro konstrukci identifikátorů
+\end_layout
+
+\begin_layout Itemize
+Primitivní typy proměnných se znaménkem (Java nezná proměnné bez znam.) 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+char, short, int, long, float, double 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Aritmetické, logické, relační, bitové operátory 
+\end_layout
+
+\begin_layout Itemize
+Podmíněný příkaz if() / if() else
+\end_layout
+
+\begin_layout Itemize
+Příkazy cyklů while() , do while(), for(;;), break, continue 
+\end_layout
+
+\begin_layout Itemize
+Programový přepínač switch(), case, default, break
+\end_layout
+
+\begin_layout LyX-Code
+int main (int argc, char** argv) { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+printf("I-copy-and-paste-all-the-time Policy 
+\backslash
+n"); 
+\end_layout
+
+\begin_layout LyX-Code
+return (0); 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout LyX-Code
+//
+\end_layout
+
+\begin_layout LyX-Code
+//
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+// delsi ukazka vseho mozneho, je syntakticky spravne, nektere veci pridany
+ jen pro ukazku moznosti...
+\end_layout
+
+\begin_layout LyX-Code
+// cyklus for, stdin, osetreni vstupu, konstanty...
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+#include <stdio.h>  /* hlavičkový soubor, přípona h */
+\end_layout
+
+\begin_layout LyX-Code
+#include <stdlib.h> 
+\end_layout
+
+\begin_layout LyX-Code
+#include “konstanty.h” // uživatelské soubory se vkládají takto
+\end_layout
+
+\begin_layout LyX-Code
+#define NASOBITEL 5 /* symbolicka konstanta */
+\end_layout
+
+\begin_layout LyX-Code
+#include <math.h> // obsahuje funkce jako sqrt()...
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+// Zpracovani posloupnosti
+\end_layout
+
+\begin_layout LyX-Code
+// argc     počet parametrů na příkazovém řádku
+\end_layout
+
+\begin_layout LyX-Code
+// *argv[]  pole ukazatelů na příkazy příkazového řádku
+\end_layout
+
+\begin_layout LyX-Code
+int main(int argc, char** argv) { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+int i, suma, dalsi; 
+\end_layout
+
+\begin_layout LyX-Code
+const double PI = 3.14; // unused, jen ukazka -> v math.h neni PI
+\end_layout
+
+\begin_layout LyX-Code
+printf("Zadejte 5 cisel 
+\backslash
+n"); 
+\end_layout
+
+\begin_layout LyX-Code
+suma = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+for(i = 1; i <= 5; i++){ 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+scanf("%d", &dalsi);
+\end_layout
+
+\begin_layout LyX-Code
+// osetreni vstupu 
+\end_layout
+
+\begin_layout LyX-Code
+if(dalsi < 1){
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+printf("
+\backslash
+n n = %d neni prirozene cislo 
+\backslash
+n
+\backslash
+n", n); 
+\end_layout
+
+\begin_layout LyX-Code
+exit(EXIT_FAILURE); 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout LyX-Code
+suma = suma + dalsi;
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout LyX-Code
+printf("suma = %d 
+\backslash
+n
+\backslash
+n", suma); 
+\end_layout
+
+\begin_layout LyX-Code
+return (EXIT_SUCCESS);
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Section
+Co C nemá
+\end_layout
+
+\begin_layout Itemize
+Interpret kódu (JVM) (C je kompilovaný) 
+\end_layout
+
+\begin_layout Itemize
+Objektovou podporu 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Třídy, objekty, zapouzdření, dědičnost, polymorfismus
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Jednotnou metodiku vytváření a použití strukturovaných proměnných 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+referenční proměnná, new()
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Automatickou správu paměti 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Garbage collector 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Velikost proměnných nezávislou na platformě
+\end_layout
+
+\begin_layout Itemize
+Způsob uložení proměnných nezávislý na OS (Little-endian, Big endian,...)
+\end_layout
+
+\begin_layout Itemize
+Ošetření výjimek metodikou chráněných bloků 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+try, catch, finally
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Standardní podporu grafického uživatelského rozhraní GUI 
+\end_layout
+
+\begin_layout Itemize
+Standardní podporu řízení událostí (events, listeners) 
+\end_layout
+
+\begin_layout Itemize
+Standardní podporu webovských aplikací (aplety, síťové připojení) 
+\end_layout
+
+\begin_layout Itemize
+Standardní podporu (semi)paralelního zpracování úloh 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+threads, multitasking, multithreading
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Co C nemá, nebo je jinak
+\end_layout
+
+\begin_layout Itemize
+C je kompilovaný jazyk 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Zdrojový kód je nezávislý (portable) na platformě (málo závislý) 
+\end_layout
+
+\begin_layout Itemize
+Spustitelný kód je závislý na platformě 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Členění programu na moduly, určení jejich vazeb (interface) 
+\end_layout
+
+\begin_layout Itemize
+Import knihoven (systémových i uživatelských) 
+\end_layout
+
+\begin_layout Itemize
+Určení doby života proměnných, vlastní správa paměti
+\end_layout
+
+\begin_layout Itemize
+Definování konstant a maker
+\end_layout
+
+\begin_layout Itemize
+Vytváření strukturovaných proměnných (mohou být i statické) 
+\end_layout
+
+\begin_layout Itemize
+Určení viditelnosti proměnných, modifikátory přístupu
+\end_layout
+
+\begin_layout Itemize
+Ošetření běhových chyb (run-time errors) 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+odpovědný programátor, překladač nevynucuje 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Správa paměti (heap management) 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+odpovědný programátor, malloc / free 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Práce s booleovskými proměnnými a řetězci (boolean a String není)
+\end_layout
+
+\begin_layout Section
+Co je v C navíc
+\end_layout
+
+\begin_layout Itemize
+Preprocessor 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Vkládání hlavičkových souborů (header file) do zdrojového kódu 
+\end_layout
+
+\begin_layout Itemize
+Podmíněný překlad 
+\end_layout
+
+\begin_layout Itemize
+Makra 
+\end_layout
+
+\begin_layout Itemize
+#pragma – doplňující příkazy závislé na platformě 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Linker – spojování přeložených modulů a knihoven do spustitelného kódu 
+\end_layout
+
+\begin_layout Itemize
+x ( už NEPLATÍ) enum – výčtové typy (množina číslovaných pojmenovaných konstant)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Ukazatele (pointer) jako prostředek nepřímého adresování proměnných
+\end_layout
+
+\begin_layout Itemize
+struct a bitová pole (strukturované proměnné z různých prvků) 
+\end_layout
+
+\begin_layout Itemize
+union – překrytí proměnných různého typu (sdílení společné paměti) 
+\end_layout
+
+\begin_layout Itemize
+typedef – zavedení nových typů pomocí již známých typů
+\end_layout
+
+\begin_layout Itemize
+sizeof – určení velikosti proměnné (i strukturovaného typu) 
+\end_layout
+
+\begin_layout Itemize
+Jiné názvy i parametry funkcí ze standardních knihoven (práce se soubory,
+ znaky, řetězci, matematické funkce, ….)
+\end_layout
+
+\begin_layout Itemize
+příkaz goto navesti;
+\end_layout
+
+\begin_layout LyX-Code
+int hledejMax(int *p) { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+for(.
+ .
+ .) {
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+for(.
+ .
+ .) { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+if(.
+ .
+ .) 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+goto error; // Ven z vnitrniho bloku 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout LyX-Code
+} 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+return(.
+ .
+ .); 
+\end_layout
+
+\begin_layout LyX-Code
+error: // Cil skoku uvnitr funkce
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+return(.
+ .
+ .);  
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Program C obsahuje
+\end_layout
+
+\begin_layout Itemize
+Příkazy preprocesoru (Preprocessor commands) 
+\end_layout
+
+\begin_layout Itemize
+Definice typů (type definitions) 
+\end_layout
+
+\begin_layout Itemize
+Prototypy funkcí (function prototypes) kde je uvedena deklarace: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Jména funkce 
+\end_layout
+
+\begin_layout Itemize
+Vstupních parametrů 
+\end_layout
+
+\begin_layout Itemize
+Návratové hodnoty funkce 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Proměnné (variables) 
+\end_layout
+
+\begin_layout Itemize
+Funkce (functions) (procedura v C je funkce bez návratové hodnoty nebo void)
+\end_layout
+
+\begin_layout Itemize
+Komentáře: //, /* */, nesmí být vnořené
+\end_layout
+
+\begin_layout Standard
+Uvnitř funkce nelze definovat lokální funkce (definice funkci nesmí být
+ vnořené).
+\end_layout
+
+\begin_layout Section
+C kompilace
+\end_layout
+
+\begin_layout Enumerate
+Preprocesor: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Čte zdrojový kód v C 
+\end_layout
+
+\begin_layout Enumerate
+Odstraní komentáře (nahradí každý komentář jednou mezerou, pozor: některé
+ překladače nepodporují // komentáře, pouze /* */)
+\end_layout
+
+\begin_layout Enumerate
+Upraví zdrojový text podle direktiv preprocesoru (řádky začínající #)
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Vloží do textu obsah jiného souboru #include ….
+ 
+\end_layout
+
+\begin_layout Enumerate
+Odebere text vymezený direktivami podmíněného překladu 
+\end_layout
+
+\begin_layout Enumerate
+Expanduje makra 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+Překladač C: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Čte výstup z preprocesoru 
+\end_layout
+
+\begin_layout Enumerate
+Kontroluje syntaktickou správnost textu 
+\end_layout
+
+\begin_layout Enumerate
+Hlásí chyby a varování 
+\end_layout
+
+\begin_layout Enumerate
+Generuje text v assembleru (když nejsou chyby)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Assembler: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Čte výstup z překladače C 
+\end_layout
+
+\begin_layout Enumerate
+Generuje relokovatelný object kód (kód s nevyřešenými odkazy mezi moduly)
+ 
+\end_layout
+
+\begin_layout Enumerate
+Přeloží případné moduly zapsané přímo v assembleru (mix programovacích jazyků)
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Linker (spojovací program): 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Čte object kód všech zúčastněných modulů programu 
+\end_layout
+
+\begin_layout Enumerate
+Připojí knihovní object moduly (přeložené dříve nebo dodané)
+\end_layout
+
+\begin_layout Enumerate
+Vyřeší odkazy mezi moduly 
+\end_layout
+
+\begin_layout Enumerate
+Generuje spustitelný kód (zjednodušené)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename images/Ckompilace.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Celočíselné typy
+\end_layout
+
+\begin_layout Itemize
+Rozsahy celočíselných typů v C nejsou dány normou, ale implementací (pro
+ 16ti a 64 bitové prostředí jsou jiné než je uvedeno v následující tabulce
+ - ta je pro 32 bitové prostředí)
+\end_layout
+
+\begin_layout Itemize
+limits.h, float.h 
+\end_layout
+
+\begin_layout Itemize
+Norma pouze garantuje 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+short <= int <= long unsigned short <= unsigned <= unsigned long 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Celočíselné literály (zápisy čísel): 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+dekadický 123 456789 
+\end_layout
+
+\begin_layout Itemize
+hexadecimální 0x12 0xFFFF (začíná 0x nebo 0X) 
+\end_layout
+
+\begin_layout Itemize
+oktalový 0123 0567 (začíná 0) 
+\end_layout
+
+\begin_layout Itemize
+unsigned 123456U (přípona U nebo u) 
+\end_layout
+
+\begin_layout Itemize
+long 123456L (přípona L nebo l) 
+\end_layout
+
+\begin_layout Itemize
+unsigned long 123456UL (přípona UL nebu ul) 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Není-li uvedena přípona, jde o literál typu int
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename images/celociselnetypy.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+C - racionální čísla (neceločíselné datové typy): 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Velikost reálných čísel určená implementací 
+\end_layout
+
+\begin_layout Itemize
+Většina překladačů se řídí standardem IEEE-754-1985, potom jsou rozsahy
+ reálných čísel dány následující tabulkou:
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename images/racionalniCisla.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+C - typ void: void značí prázdnou hodnotu nebo proměnnou bez typu (jen ukazatelé
+) 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+void funkce1 (….) - fukce bez návratové hodnoty (procedura) 
+\end_layout
+
+\begin_layout Itemize
+int funkce2 (void) - funkce bez vstupních parametrů 
+\end_layout
+
+\begin_layout Itemize
+void *ptr; - ukazatel bez určeného typu (viz dále)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+#define konstanta
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+#define CERVENA 0 /* Zde muze byt komentar */ 
+\end_layout
+
+\begin_layout Itemize
+je to makro bez parametrů, každé #define musí být na samostatné řádku)
+\end_layout
+
+\begin_layout Itemize
+Preprocesor provede textovou náhradu všech výskytů slova CERVENA znakem
+ 0
+\end_layout
+
+\begin_layout Itemize
+může být i vnořená: #define MAX_2 MAX_1+30
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Funkce
+\end_layout
+
+\begin_layout Standard
+C je modulární jazyk = funkce je jeho základním stavebním blokem.
+\end_layout
+
+\begin_layout Itemize
+Každý program v C obsahuje minimálně funkci main() 
+\end_layout
+
+\begin_layout LyX-Code
+int main(int argc, char** argv) { ...
+ }
+\end_layout
+
+\begin_layout Itemize
+Běh programu začíná na začátku funkce main() 
+\end_layout
+
+\begin_layout Itemize
+Definice funkce obsahuje hlavicku funkce a její tělo
+\end_layout
+
+\begin_layout Itemize
+C používá prototypu funkce k deklaraci informací nutných pro překladač,
+ aby mohl správně přeložit volání funkcí i v případě, že definice funkce
+ je umístěna dále v kódu modulu nebo je jiném modulu 
+\end_layout
+
+\begin_layout LyX-Code
+int max(int a,int b);
+\end_layout
+
+\begin_layout Itemize
+Deklarace se skládá pouze z hlavičky funkce, (odpovídá interface v Javě)
+\end_layout
+
+\begin_layout Itemize
+Parametry se do funkce předávají hodnotou (call by value), parametrem může
+ být i ukazatel (pointer).
+ Ten pak dovolí předávat parametry i odkazem.
+\end_layout
+
+\begin_layout Itemize
+C nepovoluje funkce vnořené do jiných funkcí (lokální funkce ve funkci)
+\end_layout
+
+\begin_layout Itemize
+Jména funkcí jsou implicitně extern, a mohou se exportovat do ostatních
+ modulů (samostatně překládaných souborů) 
+\end_layout
+
+\begin_layout Itemize
+Specifikátor static před jménem funkce omezí viditelnost jejího jména pouze
+ na daný modul (lokální funkce modulu)
+\end_layout
+
+\begin_layout Itemize
+Formální parametry funkce jsou lokální proměnné inicializované skutečnými
+ parametry při volání funkce 
+\end_layout
+
+\begin_layout Itemize
+C dovoluje rekurzi, lokální proměnné jsou pro každé jednotlivé volání zakládány
+ znovu (v zásobníku).
+ Kód funkce v C reentrantní (reentrant = Reentrantní provádění bloků znamená,
+ že je možné provádět několikanásobně volaný blok paralelně.
+ ).
+ 
+\end_layout
+
+\begin_layout Itemize
+Funkce nemusí mít žádné vstupní parametry, zapisuje se funkceX(void) 
+\end_layout
+
+\begin_layout Itemize
+Funkce nemusí vracet žádnou funkční hodnotu, pak je návratový typ void (je
+ to procedura)
+\end_layout
+
+\begin_layout Itemize
+Pokud v definici parametrů funkce je klíčové slovo const - tento parametr
+ (předaný odkazem, např.
+ pole) nelze uvnitř funkce měnit
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+př.
+ int fce (const char *src) { ...
+ } , z pole lze pouze číst, jeho prvky nelze uvnitř funkce měnit
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Specifikátory paměťové třídy
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename images/specifikatoryPametoveTridy.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+x JAVA: globální proměnné nejsou, obchází se také deklarací static (ale
+ je třeba si uvědomit odlišný význam, static v JAVE způsobí, že proměnná
+ existuje pouze jednou pro celou třídu, všechny instance ji sdílí (konstanty
+ v JAVE - final))
+\end_layout
+
+\begin_layout Subsection
+Stdin
+\end_layout
+
+\begin_layout Standard
+Načtení hodnoty ze stdin: scanf("%d", &x);
+\end_layout
+
+\begin_layout Itemize
+do funkce scanf vstupuje jako parametr adresa (resp.
+ reference) paměťového místa, kam se má načtená hodnota uložit 
+\end_layout
+
+\begin_layout Itemize
+jde o předání parametru odkazem, jde tedy o parametr, který může být využit
+ pro vstup i výstup hodnoty (x JAVA - parametry pouze hodnotou (primitivni
+ typy))
+\end_layout
+
+\begin_layout Itemize
+funkce v C může takto „vracet “ více hodnot
+\end_layout
+
+\begin_layout Subsubsection
+Bezpečné načtení double v C
+\end_layout
+
+\begin_layout LyX-Code
+#include <stdio.h> 
+\end_layout
+
+\begin_layout LyX-Code
+#include <stdlib.h> 
+\end_layout
+
+\begin_layout LyX-Code
+int nextDouble(double *cislo){ 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+// === Bezpecne pro libovolny zadany pocet znaku === 
+\end_layout
+
+\begin_layout LyX-Code
+// Navratova hodnota: 
+\end_layout
+
+\begin_layout LyX-Code
+// TRUE - zadano realne cislo 
+\end_layout
+
+\begin_layout LyX-Code
+// FALSE - neplatny vstup 
+\end_layout
+
+\begin_layout LyX-Code
+enum boolean {FALSE,TRUE}; // v ANSI C99 uz existuje true a false, zde výčty
+\end_layout
+
+\begin_layout LyX-Code
+const int BUF_SIZE = 80; 
+\end_layout
+
+\begin_layout LyX-Code
+char vstup[BUF_SIZE],smeti[BUF_SIZE];
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+// fgets precte az sizeof(vstup)-1 znaků ze stdin (standardní vstup) a pushne
+ je do vstup
+\end_layout
+
+\begin_layout LyX-Code
+fgets(vstup,sizeof(vstup),stdin);
+\end_layout
+
+\begin_layout LyX-Code
+// sscanf je jako scanf, ale cteno z bufferu
+\end_layout
+
+\begin_layout LyX-Code
+if(sscanf(vstup,"%lf%[^
+\backslash
+n]",cislo,smeti) != 1) 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+return(FALSE); // Input error 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+return(TRUE); 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Section
+Dynamická správa paměti - Alokace paměti
+\end_layout
+
+\begin_layout Standard
+Pole lze alokovat normálně staticky, musí se ale předem zadat jeho velikost.
+\end_layout
+
+\begin_layout Standard
+Způsob dynamické alokace:
+\end_layout
+
+\begin_layout LyX-Code
+(int*)malloc(count*sizeof(int)) //zde je typ proměnné int*, ne int !
+\end_layout
+
+\begin_layout Standard
+Komplexnější příklad použití:
+\end_layout
+
+\begin_layout LyX-Code
+int* ctiPole1 (int *delka, int max_delka){
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+// Navratovou hodnotou funkce je ukazatel na pridelene pole 
+\end_layout
+
+\begin_layout LyX-Code
+int i, *p; 
+\end_layout
+
+\begin_layout LyX-Code
+printf(" Zadejte pocet cisel = ");
+\end_layout
+
+\begin_layout LyX-Code
+// funkce nextInt je temer totozna, jako funkce nextDouble predstavena vyse
+\end_layout
+
+\begin_layout LyX-Code
+if (!nextInt(delka)) { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+printf("
+\backslash
+n Chyba - Zadany udaj neni cele cislo
+\backslash
+n
+\backslash
+n"); 
+\end_layout
+
+\begin_layout LyX-Code
+exit(EXIT_FAILURE); 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} 
+\end_layout
+
+\begin_layout LyX-Code
+if(*delka < 1 || *delka > max_delka){ 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+printf("
+\backslash
+n Chyba - pocet cisel = <1,%d> 
+\backslash
+n
+\backslash
+n",MAX_DELKA); 
+\end_layout
+
+\begin_layout LyX-Code
+exit(EXIT_FAILURE); 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} 
+\end_layout
+
+\begin_layout LyX-Code
+// Alokace pameti (prideleni pameti z "heapu")
+\end_layout
+
+\begin_layout LyX-Code
+if((p=(int*)malloc((*delka)*sizeof(int))) == NULL){ 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+printf("
+\backslash
+n Chyba - neni dostatek volne pameti 
+\backslash
+n
+\backslash
+n"); 
+\end_layout
+
+\begin_layout LyX-Code
+exit(EXIT_FAILURE); 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} 
+\end_layout
+
+\begin_layout LyX-Code
+printf("
+\backslash
+n Zadejte cela cisla (kazde ukoncit ENTER)
+\backslash
+n
+\backslash
+n"); 
+\end_layout
+
+\begin_layout LyX-Code
+for (i = 0; i < *delka; i++) { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+if (!nextInt(p+i)) { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+printf("
+\backslash
+n Chyba - Zadany udaj neni cele cislo
+\backslash
+n
+\backslash
+n"); 
+\end_layout
+
+\begin_layout LyX-Code
+exit(EXIT_FAILURE); 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} 
+\end_layout
+
+\begin_layout LyX-Code
+return(p); // p - ukazatel na pridelene a naplnene pole 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+Dealokace probíhá pomocí funkce free, předává se jí ukazatel na začátek
+ alokované paměti:
+\end_layout
+
+\begin_layout LyX-Code
+void free(void *ptr)
+\end_layout
+
+\begin_layout Section
+Operátory
+\end_layout
+
+\begin_layout Standard
+Jako JAVA.
+ Výraz může být operandem, výraz má typ a hodnotu (x void hodnotu nemá).
+ Priority operátorů:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename images/prioritaOperatoru.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Ve výrazu: funkce1() + funkce2(), není definováno, která funkce se provede
+ jako první.
+\end_layout
+
+\begin_layout Itemize
+Máme (2 příkazy): int a = 3; a+=a++ + ++a * a++;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+v JAVE: 31
+\end_layout
+
+\begin_layout Itemize
+v C: 26, 31, ...
+ není definováno pořadí, programátor není upozorněn, že jde o nejednoznačný
+ zápis
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Zkrácené vyhodnocování logických operátorů (viz JAVA)
+\end_layout
+
+\begin_layout Itemize
+Operandy musí být stejného aritmetického typu, nebo oba struct nebo union
+ stejného typu, nebo oba pointery stejného typu (pravý může být NULL)
+\end_layout
+
+\begin_layout Standard
+Přístup do paměti - operátory:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename images/pristupDoPameti.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Ukazatelé - Pointery
+\end_layout
+
+\begin_layout Itemize
+Motivace 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Predávání parametru odkazem 
+\end_layout
+
+\begin_layout Itemize
+Práce s poli, rízení pruchodem polem 
+\end_layout
+
+\begin_layout Itemize
+Pointer na funkci 
+\end_layout
+
+\begin_layout Itemize
+Využívání pole funkcí 
+\end_layout
+
+\begin_layout Itemize
+Vytvárení seznamových struktur 
+\end_layout
+
+\begin_layout Itemize
+Hešování 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Na rozdíl od Javy je možné s ukazatelem provádet aritmetické operace 
+\end_layout
+
+\begin_layout Itemize
+Ukazatel v C je prímo implementován pametí procesoru a je možné prímo adresovat,
+ vcetne požadavku na registry 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Mocný nástroj pro implementaci strojove orientovaných aplikací
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Ukazatel (pointer) je promenná jejíž hodnotou je „ukazatel“na jinou promennou
+ (analogie neprímé adresy ve strojovém kódu ci v assembleru) 
+\end_layout
+
+\begin_layout Itemize
+Ukazatel má též typ promenné na kterou muže ukazovat 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ukazatel na char, int,..
+ 
+\end_layout
+
+\begin_layout Itemize
+„ukazatel na pole“ 
+\end_layout
+
+\begin_layout Itemize
+ukazatel na funkci 
+\end_layout
+
+\begin_layout Itemize
+ukazatel na ukazatel
+\end_layout
+
+\begin_layout Itemize
+atd.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Ukazatel muže být též bez typu (void), pak muže obsahovat adresu libovolné
+ promenné.
+ Její velikost pak nelze z vlastností ukazatele urcit
+\end_layout
+
+\begin_layout Itemize
+Neplatná adresa, ale definovaná v ukazateli má hodnotu konstanty NULL (kterémuko
+liv pointeru lze přiřadit hodnotu NULL)
+\end_layout
+
+\begin_layout Itemize
+C za behu programu nekontroluje zda adresa v ukazateli je platná •
+\end_layout
+
+\begin_layout Itemize
+Specialitou C je pointer na funkci! 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ukazatel umožní, aby funkce byla parametrem funkce
+\end_layout
+
+\begin_layout Itemize
+ukázka:
+\end_layout
+
+\begin_layout LyX-Code
+void funkce1(int x); // Prototyp funkce 
+\end_layout
+
+\begin_layout LyX-Code
+void (*pFnc)(int x); // Ukazatel na funkci s parametrem int 
+\end_layout
+
+\begin_layout LyX-Code
+int max=200; 
+\end_layout
+
+\begin_layout LyX-Code
+pFnc=funkce1; // Adresa funkce1 do ukazatele pFnc
+\end_layout
+
+\begin_layout LyX-Code
+(*pFnc)(max); // volani funkce 
+\begin_inset Quotes eld
+\end_inset
+
+funkce1
+\begin_inset Quotes erd
+\end_inset
+
+ s parametrem max
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Pomocí ukazatele lze predávat parametry funkci odkazem (call by reference)
+ – základní využití
+\end_layout
+
+\begin_layout Itemize
+Adresa promenné se zjistí adresovým operátorem & (ampersand), tzv.
+ referencní operátor (promenná >>> adresa této promenné) int x;
+\end_layout
+
+\begin_layout Itemize
+K promenné na kterou ukazatel ukazuje se pristoupí operátorem neprímé adresy
+ * (hvezdicka), tzv.
+ dereferencní operátor (promenná ukazatel >> hodnota z adresy, kam ukazuje)
+ int *px; px=&x;
+\end_layout
+
+\begin_layout Subsection
+Ukázka pro lepší pochopení
+\end_layout
+
+\begin_layout LyX-Code
+int x=30; // promenná typu int,  &x - adresa promenné x 
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+int *px; // *px promenná typu int, px promenná typu pointer na int 
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+px=&x; // do promenné typu pointer na int se uloží adresa promenné x 
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+printf(" %d " " %d 
+\backslash
+n", x, px); // 30 2280564 
+\end_layout
+
+\begin_layout LyX-Code
+printf(" %d " " %d 
+\backslash
+n", &x, *px); // 2280564 30 
+\end_layout
+
+\begin_layout LyX-Code
+printf(" %d " " %d 
+\backslash
+n", *(&x), &(*px)); // 30 2280564
+\end_layout
+
+\begin_layout Subsection
+Další ukázka
+\end_layout
+
+\begin_layout LyX-Code
+int x;     
+\end_layout
+
+\begin_layout LyX-Code
+int *px;     
+\end_layout
+
+\begin_layout LyX-Code
+int **ppx;     
+\end_layout
+
+\begin_layout LyX-Code
+x=1;          
+\end_layout
+
+\begin_layout LyX-Code
+px=NULL;     
+\end_layout
+
+\begin_layout LyX-Code
+ppx=NULL;     
+\end_layout
+
+\begin_layout LyX-Code
+px=&x;     
+\end_layout
+
+\begin_layout LyX-Code
+ppx=&px;     
+\end_layout
+
+\begin_layout LyX-Code
+**ppx=6;     
+\end_layout
+
+\begin_layout LyX-Code
+*px=10;     
+\end_layout
+
+\begin_layout LyX-Code
+x = 55;
+\end_layout
+
+\begin_layout LyX-Code
+// *ppx = 20 // CHYBA, konverze int na int* nelze
+\end_layout
+
+\begin_layout LyX-Code
+// px = 20 // CHYBA, konverze int na int* nelze
+\end_layout
+
+\begin_layout LyX-Code
+        
+\end_layout
+
+\begin_layout LyX-Code
+printf(" %d " " %d " " %d" " 
+\backslash
+n", x, *px, **ppx); // 55  55  55
+\end_layout
+
+\begin_layout LyX-Code
+printf(" %d %d %d %d " , &x, px, ppx, *ppx); // 2293527  2293527  2293527
+  (pozn.
+ pointa: vsechny 4 hodnoty stejne, cislo bude mit kazdej jiny, kdyz si to
+ zkusite)
+\end_layout
+
+\begin_layout Subsection
+Operace s pointery
+\end_layout
+
+\begin_layout Itemize
+Povolené aritmetické operace s ukazateli: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+–pointer + integer 
+\end_layout
+
+\begin_layout Itemize
+pointer - integer 
+\end_layout
+
+\begin_layout Itemize
+pointer1 - pointer2 (musí být stejného typu) 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Povolené operandy relace: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+dva ukazatele (pointers) shodného typu nebo jeden z nich NULL nebo typu
+ void
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Jednoduché prirazení - povolené operandy 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+dva operandy typu - pointer (stejného typu) nebo pravý operand=NULL nebo
+ jeden pointer typu void 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Aritmetické operace jsou užitecné když ukazatel ukazuje na pole
+\end_layout
+
+\begin_layout Section
+Pole
+\end_layout
+
+\begin_layout Itemize
+Pole je množina prvku (promenných) stejného typu 
+\end_layout
+
+\begin_layout Itemize
+K prvkum pole se pristupuje pomocí poradového císla prvku (indexu) • 
+\end_layout
+
+\begin_layout Itemize
+Index musí být celé císlo (konstanta, promenná, výraz) 
+\end_layout
+
+\begin_layout Itemize
+Index prvního prvku je vždy roven 0 
+\end_layout
+
+\begin_layout Itemize
+Pole se funkcím předává odkazem: void funkcePole (int p[] )
+\end_layout
+
+\begin_layout Itemize
+Prvky pole mohou být promenné libovolného typu (i strukturované)
+\end_layout
+
+\begin_layout Itemize
+Pole muže být jednorozmerné i vícerozmerné (prvky pole jsou opet pole) 
+\end_layout
+
+\begin_layout Itemize
+Definice pole urcuje: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+jméno pole 
+\end_layout
+
+\begin_layout Itemize
+typ prvku pole 
+\end_layout
+
+\begin_layout Itemize
+pocet prvku pole 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Prvky pole je možné inicializovat 
+\end_layout
+
+\begin_layout Itemize
+Pocet prvku statického pole musí být znám v dobe prekladu
+\end_layout
+
+\begin_layout Itemize
+Prvky pole zabírají v pameti souvislou oblast! 
+\end_layout
+
+\begin_layout Itemize
+Velikost pole (byte) = pocet prvku pole * sizeof (prvek pole) 
+\end_layout
+
+\begin_layout Itemize
+C - nemá promennou typu String, nahrazuje se jednorozmerným polem z prvku
+ typu char.
+ Poslední prvek takového pole je vždy ‘
+\backslash
+0’ (null char)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+lze také zapsat char *c; c = 
+\begin_inset Quotes eld
+\end_inset
+
+ja jsem string
+\begin_inset Quotes erd
+\end_inset
+
+; // c je ukazatel na prvni prvek pole
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+C - nekontroluje za behu programu, zda vypocítaný index je platný!
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename images/pole1.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename images/pole2.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Hlavičkové soubory
+\end_layout
+
+\begin_layout Itemize
+Důvody: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Deklarace funkčního prototypy před použitím 
+\end_layout
+
+\begin_layout Itemize
+Prostředek pro zpřehlednění struktury programu
+\end_layout
+
+\begin_layout Itemize
+Ukrytí definice funkce, možnost vytváření knihoven 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Předání souboru .h + .obj 
+\end_layout
+
+\begin_layout Itemize
+Vlastní definice funkce v souborech s relativním kódem .obj 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Obsahují 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Hlavičky funkcí (funkční prototypy) 
+\end_layout
+
+\begin_layout Itemize
+deklarace funkce 
+\end_layout
+
+\begin_layout Itemize
+Deklarace globálních proměnných 
+\end_layout
+
+\begin_layout Itemize
+Definice datových typů
+\end_layout
+
+\begin_layout Itemize
+Definice symbolických konstant 
+\end_layout
+
+\begin_layout Itemize
+Definice make
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+„obdoba interface“
+\end_layout
+
+\begin_layout Itemize
+Příklad soubor xxx.h:
+\end_layout
+
+\begin_layout LyX-Code
+/* podmineny preklad proti opakovanemu vkládání „include“ */ 
+\end_layout
+
+\begin_layout LyX-Code
+#ifndef XXX  // čti: if not defined = proti duplicitě = podmíněný překlad
+ 
+\end_layout
+
+\begin_layout LyX-Code
+#define XXX 
+\end_layout
+
+\begin_layout LyX-Code
+/* definice symb.
+ konstant vyuzivanych i v jinych modulech */ 
+\end_layout
+
+\begin_layout LyX-Code
+#define CHYBA -1.0 
+\end_layout
+
+\begin_layout LyX-Code
+/* definice maker s parametry */ 
+\end_layout
+
+\begin_layout LyX-Code
+#define je_velke(c) ((c) >= ‘A’ && (c) <= ‘Z’) 
+\end_layout
+
+\begin_layout LyX-Code
+/* definice globalnich typu */ 
+\end_layout
+
+\begin_layout LyX-Code
+typedef struct{ 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+int vyska; 
+\end_layout
+
+\begin_layout LyX-Code
+int vaha;
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} MIRY; 
+\end_layout
+
+\begin_layout LyX-Code
+/* deklarace globalnich promennych modulu xxx.c */ 
+\end_layout
+
+\begin_layout LyX-Code
+extern MIRY m; // v jiném modulu bude definice MIRY m; 
+\end_layout
+
+\begin_layout LyX-Code
+/* uplne funkcni prototypy globalnich funkci modulu xxx.c */ 
+\end_layout
+
+\begin_layout LyX-Code
+extern double vstup_dat(void); 
+\end_layout
+
+\begin_layout LyX-Code
+extern void vystup_dat(double obsah);
+\end_layout
+
+\begin_layout LyX-Code
+#endif
+\end_layout
+
+\begin_layout Itemize
+Příklad soubor xxx.c (includuje xxx.h0
+\end_layout
+
+\begin_layout LyX-Code
+#include <stdio.h> /* standardni vklad*/ 
+\end_layout
+
+\begin_layout LyX-Code
+#include „xxx.h" /* natazeni konstant,prototypu funkci a globalnich typu
+ vlastniho modulu */ 
+\end_layout
+
+\begin_layout LyX-Code
+/* deklarace globalnich promennych */ 
+\end_layout
+
+\begin_layout LyX-Code
+extern int z; /*ktere nebyly definovány v hlavičkovém soubor */ 
+\end_layout
+
+\begin_layout LyX-Code
+/* definice globalnich promennych */ 
+\end_layout
+
+\begin_layout LyX-Code
+int y;/* které nejsou definovány v hlavičkovém soubor */
+\end_layout
+
+\begin_layout LyX-Code
+/* lokalni definice symbolickych konstant a maker */ 
+\end_layout
+
+\begin_layout LyX-Code
+#define kontrola(x) ( ((x) >= 0.0) ? (x) : CHYBA_DAT ) 
+\end_layout
+
+\begin_layout LyX-Code
+/* lokalni definice novych typu */
+\end_layout
+
+\begin_layout LyX-Code
+typedef struct{} OSOBA; 
+\end_layout
+
+\begin_layout LyX-Code
+/* definice statickych globalnich promennych */ 
+\end_layout
+
+\begin_layout LyX-Code
+static MIRY m;
+\end_layout
+
+\begin_layout LyX-Code
+/* uplne funkcni prototypy lokalnich funkci */ 
+\end_layout
+
+\begin_layout LyX-Code
+int nextDouble(double *cislo); 
+\end_layout
+
+\begin_layout LyX-Code
+/* funkce main() */ 
+\end_layout
+
+\begin_layout LyX-Code
+int main(int argc, char** argv){} 
+\end_layout
+
+\begin_layout LyX-Code
+/* definice globalnich funkci - to, ze je glob., bylo definovano v xxx.h */
+ 
+\end_layout
+
+\begin_layout LyX-Code
+double vstup_dat(void){ …return ();}
+\end_layout
+
+\begin_layout LyX-Code
+/*funkční prototypy v.h souboru*/ 
+\end_layout
+
+\begin_layout LyX-Code
+void vystup_dat(double obsah){ … }
+\end_layout
+
+\begin_layout LyX-Code
+/* definice lokalnich funkci */ 
+\end_layout
+
+\begin_layout LyX-Code
+int nextDouble(double *cislo){… }
+\end_layout
+
+\begin_layout Section
+Typedef
+\end_layout
+
+\begin_layout Standard
+Umožňuje vytvářet nové datové typy:
+\end_layout
+
+\begin_layout LyX-Code
+typedef double *PF;
+\end_layout
+
+\begin_layout LyX-Code
+typedef int CELE; 
+\end_layout
+
+\begin_layout LyX-Code
+PF x,y; 
+\end_layout
+
+\begin_layout LyX-Code
+CELE i,j;
+\end_layout
+
+\begin_layout Section
+Struktury
+\end_layout
+
+\begin_layout Itemize
+Struktura je konečná množina prvků (proměnných), které nemusí být stejného
+ typu 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Obdoba třídy bez metod v Javě 
+\end_layout
+
+\begin_layout Itemize
+Record v jiných jazycích
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Skladba struktury je definovaná uživatelem jako nový typ sestavený z již
+ definovaných typů 
+\end_layout
+
+\begin_layout Itemize
+K prvkům struktury se přistupuje tečkovou notací 
+\end_layout
+
+\begin_layout Itemize
+K prvkům struktury je možné přistupovat i pomocí ukazatele na strukturu
+ operátorem ->
+\end_layout
+
+\begin_layout Itemize
+Struktury mohou být vnořené (jak se to řeší v Javě? odpověď: Patrně kompozicí.)
+ 
+\end_layout
+
+\begin_layout Itemize
+Pro struktury stejného typu je definována operace přiřazení struct1=struct2
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+(pro proměnné typu pole přímé přiřazení není definováno, jen po prvcích)
+ – co z toho vyplývá??? 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Struktury (jako celek) nelze porovnávat relačním operátorem == 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+co z toho vyplývá???
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Struktura může být do funkce předávána hodnotou i odkazem 
+\end_layout
+
+\begin_layout Itemize
+Struktura může být návratovou hodnotou funkce
+\end_layout
+
+\begin_layout LyX-Code
+typedef struct {   // <==== Pomoci Typedef 
+\end_layout
+
+\begin_layout LyX-Code
+char jmeno[20];    // Prvky struktury, pole 
+\end_layout
+
+\begin_layout LyX-Code
+char adresa[50];   // - “ - pole 
+\end_layout
+
+\begin_layout LyX-Code
+int telefon;       // - “ - 
+\end_layout
+
+\begin_layout LyX-Code
+int }Tid,*Tidp; 
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+Tid sk1,skAvt[20]; // struktura, pole struktur 
+\end_layout
+
+\begin_layout LyX-Code
+Tidp pid; // ukazatel na strukturu 
+\end_layout
+
+\begin_layout LyX-Code
+sk1.jmeno=“Jan Novak”; // teckova notace 
+\end_layout
+
+\begin_layout LyX-Code
+sk1.telefon=123456; 
+\end_layout
+
+\begin_layout LyX-Code
+skAvt[0].jmeno=”Jan Novak”; // prvek pole 
+\end_layout
+
+\begin_layout LyX-Code
+skAvt[3].telefon=123456; 
+\end_layout
+
+\begin_layout LyX-Code
+pid=&sk1; // do pid adresa struktury 
+\end_layout
+
+\begin_layout LyX-Code
+pid->jmeno=“Jan Novak”; // odkaz pomoci -> 
+\end_layout
+
+\begin_layout LyX-Code
+pid->telefon=123456; 
+\end_layout
+
+\begin_layout LyX-Code
+(*pid).jmeno=“Jan Novak”; // odkaz pomoci * 
+\end_layout
+
+\begin_layout LyX-Code
+(*pid).telefon=123456;
+\end_layout
+
+\begin_layout Section
+Union
+\end_layout
+
+\begin_layout Itemize
+Union je množina prvků (proměnných), které nemusí být stejného typu 
+\end_layout
+
+\begin_layout Itemize
+Prvky unionu sdílejí společně stejná paměťová místa (překrývají se) •
+\end_layout
+
+\begin_layout Itemize
+Velikost unionu je dána velikostí největšího z jeho prvků 
+\end_layout
+
+\begin_layout Itemize
+Skladba unionu je definovaná uživatelem jako nový typ sestavený z již definovaný
+ch typů 
+\end_layout
+
+\begin_layout Itemize
+K prvkům unionu se přistupuje tečkovou notací
+\end_layout
+
+\begin_layout Itemize
+př: 
+\end_layout
+
+\begin_layout LyX-Code
+union Tnum{ // <==== Tnum=jmeno sablony (tag) 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+long n; 
+\end_layout
+
+\begin_layout LyX-Code
+double x; 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}; 
+\end_layout
+
+\begin_layout LyX-Code
+union Tnum nx; // nx - promenna typu union 
+\end_layout
+
+\begin_layout LyX-Code
+nx.n=123456789L; // do n hodnota long 
+\end_layout
+
+\begin_layout LyX-Code
+nx.x=2.1456; // do x hodnota double (prekryva n)
+\end_layout
+
+\begin_layout Section
+Podmíněný překlad
+\end_layout
+
+\begin_layout LyX-Code
+#if VERSE_CITACE == 1 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+do {
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+...
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} while(TRUE); 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+#endif
+\end_layout
+
+\begin_layout Section
+Definice vs.
+ deklarace
+\end_layout
+
+\begin_layout Enumerate
+Deklarace určuje interpretaci a vlastnosti identifikátoru(ů) 
+\end_layout
+
+\begin_layout Enumerate
+Definice je deklarace včetně přidělení paměti (memory allocation) proměnným,
+ konstantám nebo funkcím
+\end_layout
+
+\begin_layout Section
+Standardní knihovyny
+\end_layout
+
+\begin_layout Standard
+Vlastní jazyk C neobsahuje žádné prostředky pro vstup a výstup dat, složitější
+ matematické operace, práci s řetězci, třídění, blokové přesuny dat v paměti,
+ práci s datem a časem, komunikaci s operačním systémem,správu paměti pro
+ dynamické přidělování, vyhodnocení běhových chyb (run-time errors) apod..Tyto
+ a další funkce jsou však obsaženy ve standardních knihovnách (ANSI C Library)
+ dodávaných s překladači jazyka C.
+ Uživatel dostává k dispozici přeložený kód knihoven (který se připojuje
+ – linkuje k uživatelovu kódu) a hlavičkové soubory (headers) s prototypy
+ funkcí, novými typy, makry a konstantami.
+ Hlavičkové soubory (obdoba interface v Javě) se připojují k uživatelovu
+ kódu direktivou preprocesoru #include <…>.
+ Je zvykem, že hlavičkové soubory mají rozšíření *,h, např.
+ stdio.h.
+ 
+\end_layout
+
+\begin_layout Standard
+Příklad:
+\end_layout
+
+\begin_layout Itemize
+Vstup a výstup (formátovaný i neformátovaný) - stdin.h 
+\end_layout
+
+\begin_layout Itemize
+Rozsahy čísel jednotlivých typů - limits.h 
+\end_layout
+
+\begin_layout Itemize
+Matematické funkce - stdlib.h, math.h 
+\end_layout
+
+\begin_layout Itemize
+Zpracování běhových chyb (run-time errors) - errno.h, assert.h
+\end_layout
+
+\begin_layout Itemize
+Klasifikace znaků (typ char) - ctype.h 
+\end_layout
+
+\begin_layout Itemize
+Práce s řetězci (string handling) - string.h 
+\end_layout
+
+\begin_layout Itemize
+Internacionalizace (adaptace pro různé jazykové mutace) - locale.h 
+\end_layout
+
+\begin_layout Itemize
+Vyhledávání a třídění - stdlib.h 
+\end_layout
+
+\begin_layout Itemize
+Blokové přenosy dat v paměti - string.h
+\end_layout
+
+\begin_layout Itemize
+Správa paměti (Dynamic Memory Management) - stdlib.h 
+\end_layout
+
+\begin_layout Itemize
+Datum a čas - time.h
+\end_layout
+
+\begin_layout Itemize
+Komunikace s operačním systémem - stdlib.h, signal.h 
+\end_layout
+
+\begin_layout Itemize
+Nelokální skok (lokální je součástí jazyka, viz goto) - setjump.h
+\end_layout
+
+\end_body
+\end_document
