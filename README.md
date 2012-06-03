@@ -28,6 +28,8 @@ Hotové otázky
 
 08\. Limita funkce a posloupnosti, zejména rychlosti růstu v nekonečnu a l'Hospitalovo pravidlo. Derivace a parciální derivace: výpočet a význam (rychlost změny, monotonie, extrémy, gradient). (A4B01MA2) 
 
+10\. Syntaxe a sémantika výrokové a predikátové logiky. Sémantický důsledek a tautologická ekvivalence. Booleovský kalkul. Rezoluční metoda (A0B01LGR)
+
 12\.  JAVA události a výjimky (PRG2)
 
 14\.  Asymptotická časová a paměťová složitost algoritmů, řád růstu funkcí. (A4B36ALG)
