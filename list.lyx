@@ -205,6 +205,13 @@ filename "spolecna/24/24.lyx"
 \end_inset
 
 
+\begin_inset CommandInset include
+LatexCommand include
+filename "spolecna/30/30.lyx"
+
+\end_inset
+
+
 \end_layout
 
 \end_body
