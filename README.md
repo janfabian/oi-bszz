@@ -45,3 +45,5 @@ Hotové otázky
 23\. Gramatiky, regulární gramatiky a bezkontextové gramatiky, bezkontextové jazyky. Zásobníkové automaty a jejich vztah k bezkontextovým jazykům. Vlastnosti bezkontextových gramatik, lemma o vkládání. (A4B01JAG)
 
 24\. Turingovy stroje. (A4B01JAG)
+
+30\. Dynamika fyzikálních systémů - základní dělení dynamických systémů, fázový portrét, stracionární (pevné) body, dynamický tok. Vyšetřování stability lineárních systémů, topologická klasifikace lineárních systémů (sedlový bod, stavilní a nestabilní spirála, stabilní a nestabilní uzel, středový bod), atraktor. Vyšetřování stability nelineárních systémů, limitní cykly, bifurkace.

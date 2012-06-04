@@ -369,13 +369,17 @@ status open
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "quicksort_snippet01.java"
-lstparams "breaklines=true,language=Java"
+lstparams "breaklines=true,language=Java,numbers=left,numberstyle={\\footnotesize}"
 
 \end_inset
 
 
 \end_layout
 
+\end_inset
+
+
+\begin_inset Newpage clearpage
 \end_inset
 
 
@@ -383,6 +387,29 @@ lstparams "breaklines=true,language=Java"
 
 \begin_layout Subsection
 Heapsort
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Grafické zpracovaní heapsortu z předmětu A4B36ALG spolecna/15/heapsort.pdf
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -423,6 +450,112 @@ Halda je binární strom s rekurzivní vlastností býti haldou.
  (indexováno od 0).
  Z tohoto uspořádání plyne, že tvar haldy je pyramida s částečně useknutou
  pravou stranou základny.
+\end_layout
+
+\begin_layout Subsubsection
+Průběh algoritmu
+\end_layout
+
+\begin_layout Standard
+Budu se odkazovat na zdrojový kód na následující stránce.
+\end_layout
+
+\begin_layout Enumerate
+Postavme haldu nad zadaným polem.
+ To se děje ve 
+\family typewriter
+for-cyklu
+\family default
+ na řádku 7.
+ Je důležité povšimnout si, že cyklus probíhá od poloviny a jde pozpátku.
+ Proč? Protože seznam znázorňuje haldu, to znamená, že rodičem posledního
+ členu bude prostřední člen.
+ Tohle je potřeba pochopit, mrkněte na spolecna/15/heapsort.pdf.
+\end_layout
+
+\begin_layout Enumerate
+Z našeho neuspořádaného seznamu jsme udělali haldu.
+ Je to pořád seznam, array, ale splňuje charakteristiku haldy.
+ Na řádku 10 začíná řazení.
+\end_layout
+
+\begin_layout Enumerate
+Začneme tím, že prvek na vrcholu prohodíme s i-tým prvkem seznamu (řádek
+ 11).
+ Tím dosáváme na konci seznamu již seřazené prvky.
+\end_layout
+
+\begin_layout Enumerate
+Prohozením se ale na vrcholu haldy může ocitnout prvek, který tam nemá co
+ dělat.
+ Proto na řádku 12 dojde k opravení haldy.
+\end_layout
+
+\begin_layout Standard
+Hlavní část algoritmu je v metodě repairTop.
+ Ta zařadí vrchol haldy na správné místo (řádek 38, proměnná topIndex se
+ nastaví ve 
+\family typewriter
+while-cyklu
+\family default
+) a nahradí ho prvkem, který má být na vrcholu (řádek 31).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "heapsort_snippet01.java"
+lstparams "breaklines=true,language=Java,numbers=left,numberstyle={\\footnotesize}"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Radixsort
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Grafické zpracovaní radixsortu z předmětu A4B36ALG spolecna/15/radixsort.pdf
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
