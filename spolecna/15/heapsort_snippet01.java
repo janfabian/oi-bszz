@@ -37,15 +37,3 @@ private static void repairTop(Comparable[] array, int bottom, int topIndex, int 
     }
     array[topIndex] = tmp;
 }
-
-/**
- * Prohodi prvky haldy
- * @param array pole
- * @param left index prvniho prvku
- * @param right index druheho prvku
- */
-private static void swap(Comparable[] array, int left, int right) {
-    Comparable tmp = array[right];
-    array[right] = array[left];
-    array[left] = tmp;
-}
