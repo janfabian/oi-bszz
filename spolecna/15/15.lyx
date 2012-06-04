@@ -190,9 +190,10 @@ Ve vypsaném kódu je první
 \family typewriter
 while
 \family default
- cyklus porovnávání.
- Z následujících dvou cyklů se provede jen jeden a to ten, který zkopíruje
- do pomocného seznamu zbývající členy jednoho ze dvou iterovaných seznamů.
+ cyklus na řádku 13 porovnávání.
+ Z následujících dvou cyklů (21 a 25) se provede jen jeden a to ten, který
+ zkopíruje do pomocného seznamu zbývající členy jednoho ze dvou iterovaných
+ seznamů.
 \end_layout
 
 \begin_layout Standard
@@ -213,7 +214,7 @@ status open
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "mergesort_snippet01.java"
-lstparams "breaklines=true,language=Java"
+lstparams "breaklines=true,language=Java,numbers=left,numberstyle={\\footnotesize}"
 
 \end_inset
 
@@ -232,9 +233,9 @@ Průběh algoritmu
 \begin_layout Standard
 Algoritmu dodáme array, který postupným půlením rekurzivně rozdělíme do
  nejmenších skupin, tedy dvojic a připadně lichého členu.
- Aplikujeme proces merge na tyto malé jednotky, a ve stacku, který se nám
- během rekurze vytvořil, skočíme o úrověň výš, kde sléváme podseznamy délky
- 4, případně 3.
+ Na řádku 14 aplikujeme proces merge na tyto malé jednotky, a ve stacku,
+ který se nám během rekurze vytvořil, skočíme o úrověň výš, kde sléváme
+ podseznamy délky 4, případně 3.
  Takto skáčeme až do chvíle, kdy se ocitneme v hlavní smyčce programu a
  sléváme levou a pravou polovinu seznamu, který nám byl vložen na vstupu.
 \end_layout
@@ -257,7 +258,7 @@ status open
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "mergesort_snippet02.java"
-lstparams "breaklines=true,language=Java"
+lstparams "breaklines=true,language=Java,numbers=left,numberstyle={\\footnotesize}"
 
 \end_inset
 
@@ -552,6 +553,581 @@ status open
 \begin_layout Plain Layout
 Grafické zpracovaní radixsortu z předmětu A4B36ALG spolecna/15/radixsort.pdf
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Princip radix sortu vychází přímo z definice stabilního řazení – řadicí
+ algoritmus je stabilní, pokud zachovává pořadí klíčů, které mají stejnou
+ hodnotu (tj.
+ pokud stuktury seřadíme napřed dle klíče 
+\series bold
+A
+\series default
+, poté podle klíče 
+\series bold
+B
+\series default
+, tak jsou seřazeny podle 
+\series bold
+B
+\series default
+, a kde jsou si hodnoty 
+\series bold
+B
+\series default
+ rovny, tam jsou struktury v pořadí daném klíčem 
+\series bold
+A
+\series default
+).
+\end_layout
+
+\begin_layout Standard
+Popis algoritmu vychází z následujícího kusu kódu, který je ale zkrácen.
+ Celá kopie je v 
+\family typewriter
+spolecna/15/radixsort.java
+\family default
+.
+ Názvy proměnných vychází z označení v 
+\family typewriter
+spolecna/15/radixsort.pdf
+\family default
+, je proto dobré procházet si kód zároveň s tímto pdf.
+\end_layout
+
+\begin_layout Enumerate
+Vytvoříme pomocné tabulky
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+z
+\series default
+ - první výskyt znaků
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+k
+\series default
+ - poslední výskyt znaků
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+d
+\series default
+ - tabulka odkazů na další výskyt znaku
+\end_layout
+
+\begin_layout Standard
+a to z posledního znaku slova (poslední klíč při řazení, řádek 4).
+ Funkce 
+\family typewriter
+initStep
+\family default
+ projde pole všech slov na vstupu (15), zjistí poslední písmeno (16), pokud
+ ještě není v tabulce prvních výskytů znaků 
+\series bold
+z
+\series default
+, přidá ho do ní a zároveň do tabulky posledního výskytu znaku 
+\series bold
+k
+\series default
+ (18).
+ Pokud už nějaký záznam s klíčem 
+\series bold
+c
+\series default
+ existuje, algoritmus uloží na jeho pozici v tabulce 
+\series bold
+d
+\series default
+ odkaz na právě iterovaný prvek (20), tento prvek se stane i posledním výskytem
+ daného znaku (21).
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Poté začneme iterovat přes délku slov na vstupu (5) - to je důvod, proč
+ musí být všechny řetězce různé délky uvedeny na stejnou délku připojením
+ "nevýznamných znaků", např.
+ mezer.
+\end_layout
+
+\begin_layout Enumerate
+Funkce 
+\family typewriter
+radixStep
+\family default
+ se podívá na aktuální pomocné tabulky, které určují pořadí prvků podle
+ aktuálního klíče.
+ Při prvním průchodu funkcí to tedy bude podle posledního znaku.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Vlastní funkce 
+\family typewriter
+radixStep
+\family default
+ začíná iterací přes pole prvních výskytů znaků (28).
+ V ní je vnořen další cyklus určen pomocnou tabulkou 
+\series bold
+d
+\series default
+ a 
+\series bold
+k
+\series default
+.
+ Pokud se aktuální prvek rovná koncovému výskytu znaku (39), tento vnitřní
+ cyklus skončí.
+ Během tohoto cyklu se testuje to samé jako ve funkci 
+\family typewriter
+initStep
+\family default
+ s tím rozdílem, že tentokrát ukládáme informace do pomocných tabulek 
+\series bold
+z1
+\series default
+, 
+\series bold
+k1
+\series default
+, 
+\series bold
+d1
+\series default
+ (34, 36, 37), takže si nepřepíšeme aktuálně iterované 
+\series bold
+z
+\series default
+, 
+\series bold
+k
+\series default
+, 
+\series bold
+d
+\series default
+.
+ Přepsání proběhne až v hlavním cyklus programu (7, 8, 9).
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "radixsort_snippet01.java"
+lstparams "breaklines=true,language=Java,numbers=left,numberstyle={\\footnotesize}"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Vyhledávání půlením intervalu
+\end_layout
+
+\begin_layout Standard
+Metoda půlení intervalu (nebo také binární vyhledávání) je vyhledávací algoritmu
+s typu 
+\series bold
+rozděl a panuj
+\series default
+ na nalezení zadané hodnoty v 
+\series bold
+uspořádaném seznamu
+\series default
+ pomocí zkracování seznamu o polovinu v každém kroku.
+ 
+\end_layout
+
+\begin_layout Standard
+Binární vyhledávání najde medián, porovná s hledanou hodnotou a na základě
+ výsledku porovnání se rozhodne o pokračování v horní nebo dolní části seznamu
+ a rekurzivně pokračuje od začátku.
+ Binární vyhledávání je algoritmus s logaritmickou časovou složitostí 
+\begin_inset Formula $\text{Ο}(\log(n))$
+\end_inset
+
+.
+ Přesněji, je potřeba iterací na získání výsledku.
+ Je značně rychlejší než lineární vyhledávání, které má časovou složitost
+ 
+\begin_inset Formula $\text{Ο}(n)$
+\end_inset
+
+.
+ Nicméně vyžaduje, aby data byla setříděna, je tudíž vhodný jen pro určitou
+ množinu problémů.
+\end_layout
+
+\begin_layout Subsection
+Srovnání složitostí
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Grafické zpracovaní složitostí vypracované z předmětu A4B36ALG spolecna/15/bench
+mark.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nejhorší případ
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nejlepší případ
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Průměrný případ
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Stabilní
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Quick sort
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color red
+\begin_inset Formula $\text{Θ}(n^{2})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+\begin_inset Formula $\text{Θ}(nlog(n))$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+\begin_inset Formula $\text{Θ}(nlog(n))$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ne
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Merge sort
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+\begin_inset Formula $\text{Θ}(nlog(n))$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+\begin_inset Formula $\text{Θ}(nlog(n))$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+\begin_inset Formula $\text{Θ}(nlog(n))$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ano
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Heap sort
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+\begin_inset Formula $\text{Θ}(nlog(n))$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+\begin_inset Formula $\text{Θ}(nlog(n))$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+\begin_inset Formula $\text{Θ}(nlog(n))$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ne
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Radix sort
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color green
+\begin_inset Formula $\text{Θ}(n)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color green
+\begin_inset Formula $\text{Θ}(n)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color green
+\begin_inset Formula $\text{Θ}(n)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ano
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
 
 \end_inset
 
