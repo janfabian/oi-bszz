@@ -562,7 +562,7 @@ Gradient
 \begin_layout Standard
 \begin_inset Graphics
 	filename figures/gradient.png
-	scale 12
+	width 12cm
 
 \end_inset
 
@@ -572,7 +572,7 @@ Gradient
 \begin_layout Standard
 \begin_inset Graphics
 	filename figures/kriterium.png
-	scale 12
+	width 12cm
 
 \end_inset
 
