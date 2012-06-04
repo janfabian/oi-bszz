@@ -1,0 +1,871 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Společná část: 9 - MA2
+\end_layout
+
+\begin_layout Abstract
+Význam integrálu, základní metody výpočtu a nevlastní integrál; řady a jejich
+ konvergence (význam, příklady použití, geometrická řada), Taylorův polynom
+ a řada.
+\end_layout
+
+\begin_layout Section
+Integrál
+\end_layout
+
+\begin_layout Subsection
+Neurčitý integrál
+\end_layout
+
+\begin_layout Standard
+Poznámka: Habala ho ztotožňuje s Newtonovym (sou i jiný definice, ale držel
+ bych se jeho)
+\end_layout
+
+\begin_layout Standard
+= množina primitivních funkcí integrované funkce
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Primitivní funkce
+\series default
+: Nechť f je funkce na intervalu I.
+ Řekneme, že funkce F je primitivní funkce k f na I, jestliže je F spojitá
+ na I, diferencovatelná na jeho vnitřku 
+\begin_inset Formula $I^{O}$
+\end_inset
+
+ a 
+\begin_inset Formula $F′=f$
+\end_inset
+
+ na 
+\begin_inset Formula $I^{O}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Newtonův integrál:
+\series default
+ Nechť f je funkce, která má na intervalu I primitivní funkci.
+ Definujeme neurčitý integrál f na I jako množinu všech takových primitivních
+ funkcí.
+ Značení: 
+\begin_inset Formula $\int f(x)dx=$
+\end_inset
+
+ {F; F je primitivní funkce k f na I}.
+ Jestliže máme jednu takovou primitivní funkci F, pak nepřesně ale tradičně
+ píšeme 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\int f(x)dx=F(x)+C,x\in I$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+.
+\end_layout
+
+\begin_layout Subsection
+Určitý integrál
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Riemannův (určitý) integrál
+\series default
+ odpovídá matematickému obsahu oblasti pod grafem f, který je roven geometrickém
+u obsahu částí nad osou x mínus obsah částí pod osou x.
+\end_layout
+
+\begin_layout Standard
+Nekonečný součet nekonečně malých (úzkých) sloupců pod křivkou
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/riemann.jpg
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\int_{c}^{b}f(x)dx$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Výpočet určitého integrálu
+\end_layout
+
+\begin_layout Itemize
+Standardní způsob výpočtu určitého integrálu je založen na 
+\series bold
+základní větě integrálního počtu
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+Nejprve se najde primitivní funkce F k dané funkci f na daném intervalu
+ a,b a pak se použije Newton-Leibnizův vzorec: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/newton_liebnitz.gif
+	width 6cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/newton_liebnitz2.gif
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+funguje jen pro funkce f, které jsou spojité na uzavřeném intervalu <a,b>,
+ jinak řešíme jako 
+\series bold
+nevlastní integrál
+\end_layout
+
+\begin_layout Itemize
+při hledání primitivní funkce se používá metoda 
+\series bold
+substituce 
+\series default
+a 
+\series bold
+per-partes
+\end_layout
+
+\begin_layout Subsection
+Nevlastní integrál
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/nevlastni integral.gif
+	width 10cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Definice:
+\series default
+ Nechť a je reálné číslo, nechť b > a je reálné číslo nebo b = 
+\begin_inset Formula $\infty$
+\end_inset
+
+ .
+ Nechť f je funkce Riemannovsky integrovatelná na intervalech a, B pro všechna
+ B z (a, b).
+ Pak definujeme nevlastní Riemannův integrál z f od a do b jako:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+o nevlastní integrál se jedná pokud
+\series default
+:
+\end_layout
+
+\begin_layout Itemize
+jedna či obě integrační meze (koncové body integračního intervalu) jsou
+ nekonečné
+\end_layout
+
+\begin_layout Itemize
+integrovaná funkce není spojitá v některých bodech integračního intervalu
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/nevlastni_vzorec.gif
+	width 6cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/nevlastni2.gif
+	width 6cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Metody výpočtu
+\end_layout
+
+\begin_layout Subsubsection
+substituce
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+obecně
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/substituce.gif
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+příklad
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/substituce_priklad.gif
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+per-partes
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+obecně
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/perpartes.gif
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+příklad
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/perpartes_priklad.gif
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+parciální zlomky
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/parcialni.gif
+	width 10cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+tabulkové integrály
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/tabulky.gif
+	width 10cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Řady
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Definice:
+\series default
+ Nechť 
+\begin_inset Formula ${a_{k}}_{k\geqq n_{0}}$
+\end_inset
+
+ je posloupnost (reálných čísel).
+ Pojmem řada (reálných čísel) rozumíme abstraktní symbol 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\sum_{k=n_{0}}^{\infty}a_{k}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pro všechna celá čísla 
+\begin_inset Formula $N>n_{0}$
+\end_inset
+
+ definujeme její částečné součty řady vzorcem: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $s_{n}=\sum_{k=n_{0}}^{N}a_{k}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+řada konverguje k A, jestliže posloupnost 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula ${s_{n}}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ konverguje (k A).
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\sum_{k=n_{0}}^{\infty}a_{k}=a$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+řada diverguje, jestliže posloupnost 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula ${s_{n}}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ diverguje.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\sum_{k=n_{0}}^{\infty}a_{k}=\pm\infty$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+příklad:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/rada.gif
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/rada2.gif
+	width 6cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Testování konvergence řad
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Absolutní konvergence: 
+\series default
+Řada 
+\begin_inset Formula $\sum_{k=n_{0}}^{\infty}a_{k}$
+\end_inset
+
+ absolutně konverguje, pokud konverguje 
+\begin_inset Formula $\sum_{k=n_{0}}^{\infty}|a_{k}|$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+metody testování
+\series default
+ (
+\series medium
+všechny na http://math.feld.cvut.cz/mt/txte/2/txc3eb2.htm
+\series default
+)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/integralni_kriterium.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/srovnavaci.png
+	width 10cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/limitni_srovnavaci.png
+	width 10cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/odmocninove.png
+	width 10cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+pro alternující řady (
+\begin_inset Quotes eld
+\end_inset
+
+střídající 
+\begin_inset Formula $+,-+,...$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/liebnitz.png
+	scale 12
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Geometrická řada
+\end_layout
+
+\begin_layout Standard
+=součet členů geometrické posloupnosti (
+\begin_inset Formula $a_{n+1}=a_{n}\cdot q$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+definice: 
+\series default
+Nechť 
+\begin_inset Formula $a,q\in R$
+\end_inset
+
+.
+ Řada 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\sum_{k=n_{0}}^{\infty}a\cdot q^{k}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ se nazývá 
+\series bold
+geometrická řada
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+Součet geometrické řady je dán jako limita posloupnosti n-tých částečných
+ součtů:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/rada_soucet.png
+	width 6cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/rada_soucet2.png
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Aplikace řad
+\end_layout
+
+\begin_layout Subsubsection
+použití Fourierových řad pro frekvenční analýzu
+\end_layout
+
+\begin_layout Standard
+Slouží k zápisu jakéhokoliv periodického průběhu pomocí goniometrických
+ funkcí sinus a kosinus.
+\end_layout
+
+\begin_layout Standard
+Základní myšlenka Fourierových řad je, že danou funkci vyjádříme jako kombinaci
+ oscilací, počínaje tou, jejíž frekvence je dána zadanou funkcí (buď její
+ periodicitou nebo délkou omezeného intervalu, na kterém je zadána), a pak
+ se berou násobky této frekvence čili používáme dělených period.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+zvuková komprese: 
+\series default
+Když dostaneme zvukový vzorek, Fourierova transformace nám umožňuje jej
+ rozložit na základní vlny a uchovat v tomto tvaru.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+uchovávání obrazové informace 
+\series default
+(např.
+ databáze otisků)
+\end_layout
+
+\begin_layout Subsubsection
+
+\series bold
+Mocninná řada ve výpočtech
+\end_layout
+
+\begin_layout Itemize
+Před rozmachem kalkulačkek se při výpočtech všechny funkce nahrazovaly Taylorový
+mi řadami, popřípadě jejich konečnými částmi - polynomy.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+vyčíslení Pí: 
+\series default
+Pí je transcendentní číslo, což znamená, že jej nemůžeme vyjádřit pomocí
+ algebraických operací.
+ Jeden způsob jeho vyčíslení nabízí řady.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+výpočet složitých integrálů, 
+\series default
+které nelze vyjádřit pomocí elementárních funkcí a obvyklých operací (včetně
+ skládání)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Taylorův polynom
+\end_layout
+
+\begin_layout Subsection
+Taylorův polynom a řada
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Taylorův polynom
+\series default
+ aproximuje hodnoty funkce, která má v daném bodě derivaci, pomocí polynomu,
+ jehož koeficienty závisí na derivacích funkce v tomto bodě.
+ Čím vyšší stupeň tím vyšší přesnost pro vzdálenější body.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/taylorak.gif
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Taylorova řada 
+\series default
+se liší od polynomu tím, že se jedná o 
+\series bold
+nekonečný
+\series default
+ součet
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/taylorova řada.gif
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+důležité řady
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/rozvoje.gif
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
