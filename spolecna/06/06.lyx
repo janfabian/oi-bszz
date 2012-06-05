@@ -603,7 +603,7 @@ protected - lze volat ze stejného package nebo odovozené třídy
 
 \begin_layout Enumerate
 neurčený - lze volat ze stejného package; nelze volat z odvozené třídy ležící
- v jiném package
+ v jiném package 
 \end_layout
 
 \begin_layout Enumerate
