@@ -2,7 +2,7 @@
 \lyxformat 413
 \begin_document
 \begin_header
-\textclass article
+\textclass scrartcl
 \use_default_options true
 \maintain_unincluded_children false
 \language english
@@ -25,6 +25,7 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -645,7 +646,7 @@ střídající
 \begin_layout Standard
 \begin_inset Graphics
 	filename figures/liebnitz.png
-	scale 12
+	width 10cm
 
 \end_inset
 
@@ -846,7 +847,7 @@ nekonečný
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename figures/taylorova řada.gif
+	filename figures/taylorova rada.gif
 
 \end_inset
 
