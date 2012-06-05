@@ -48,4 +48,6 @@ Hotové otázky
 
 24\. Turingovy stroje. (A4B01JAG)
 
+29\. Mechanika - Newtonovy zákony. Kinematika a dynamika hmotného bodu. Pohybové rovnice pro inerciální a neinerciální vztažné soustavy. Práce a energie. Konzervativní silové pole, mechanické zákony zachování. I. a II. věta impulzová. Otáčivý pohyb tuhého tělesa (moment síly, hybnosti, moment setrvačnosti). Gravitační pole a příklady jeho působení (gravitační zákon, intenzita a potenciál gravitačního pole, intenzita gravitačního pole uvnitř a vně homogenní koule). Mechanické kmitavé soustavy. Netlumený a tlumený mechanický lineární oscilátor. Vynucené kmity, rezonance výchylky. (A4B02FYZ) 
+
 30\. Dynamika fyzikálních systémů - základní dělení dynamických systémů, fázový portrét, stracionární (pevné) body, dynamický tok. Vyšetřování stability lineárních systémů, topologická klasifikace lineárních systémů (sedlový bod, stavilní a nestabilní spirála, stabilní a nestabilní uzel, středový bod), atraktor. Vyšetřování stability nelineárních systémů, limitní cykly, bifurkace.

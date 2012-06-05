@@ -1,0 +1,1315 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options false
+\maintain_unincluded_children false
+\language czech
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 0
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\branch Newtonovy zákony
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+29.
+ A4B02FYZ
+\end_layout
+
+\begin_layout Section
+Kinematika hmotného bodu
+\end_layout
+
+\begin_layout Subsection
+Vztažný systém
+\end_layout
+
+\begin_layout Standard
+Pohyb je relativní, a proto je nutno zavést vztažný systém (vztažnou soustavu).
+ Se vztažným systémem spojíme pohyb tělesa.
+ Nejznámější vztažný systém je pravoúhlý souřadný systém (kartézský).
+\end_layout
+
+\begin_layout Subsection
+Polohový vektor
+\end_layout
+
+\begin_layout Standard
+Polohový vektor určuje polohu bodu.
+ Jeho počáteční bod leží v počátku souřadné soustavy a jeho koncový bod
+ splývá s polohou, kterou určuje.
+ Velikost polohového vektoru je: 
+\begin_inset Formula $|\vec{r}|=r=\sqrt{x^{2}+y^{2}+z^{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Jednotkový polohový vektor je definován poměrem: 
+\begin_inset Formula $\vec{r_{0}}=\frac{\vec{r}}{|\vec{r}|}$
+\end_inset
+
+, jeho velikost je jedna a je bezrozměrný.
+\end_layout
+
+\begin_layout Subsection
+Trajektorie
+\end_layout
+
+\begin_layout Standard
+Množina koncových bodů polohového vektoru 
+\begin_inset Formula $\vec{r}=\vec{r}(t)$
+\end_inset
+
+ je trajektorie.
+ Je to křivka, po které se hmotný bod pohybuje.
+\end_layout
+
+\begin_layout Subsubsection
+Parametrická rovnice trajektorie
+\end_layout
+
+\begin_layout Standard
+Časová závislost polohového vektoru je vektorová rovnice popisující křivku
+ v prostoru.
+ 
+\begin_inset Formula $\vec{r}=f(t)=[x(t);y(t);z(t)]$
+\end_inset
+
+.
+ Každá souřadnice vektorové funkce představuje jednu parametrickou rovnici
+ trajektorie.
+\end_layout
+
+\begin_layout Subsection
+Rychlost
+\end_layout
+
+\begin_layout Standard
+Okamžitá rychlost je dána změnou polohy za jednotku času.
+ Určuje ji rovnice 
+\begin_inset Formula $\vec{v}=\frac{d\vec{r}}{dt}$
+\end_inset
+
+, jednotka rychlosti je m.s
+\begin_inset Formula $^{-1}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Tato rovnice představuje tři složkové rovnice:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $v_{x}=\frac{dx}{dt}$
+\end_inset
+
+, 
+\begin_inset Formula $v_{y}=\frac{dy}{dt}$
+\end_inset
+
+, 
+\begin_inset Formula $v_{z}=\frac{dz}{dt}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Velikost rychlosti se zjišťuje jako velikost vektoru, tedy (kde s je délka
+ dráhy):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $v=|\vec{v}|=\sqrt{v_{x}^{2}+v_{y}^{2}+v_{z}^{2}}=\frac{\sqrt{dx^{2}+dy^{2}+dz^{2}}}{dt}=\frac{ds}{dt}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Zrychlení
+\end_layout
+
+\begin_layout Standard
+Okamžité zrychlení je dáno změnou vektoru rychlosti za jednotku času.
+ Určuje ho rovnice
+\begin_inset Formula $\vec{a}=\frac{d\vec{v}}{dt}$
+\end_inset
+
+ Jednotka zrychlení je m.s
+\begin_inset Formula $^{-2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Tečné a normálové zrychlení
+\end_layout
+
+\begin_layout Standard
+Zrychlení často rozkládáme na tečnou 
+\begin_inset Formula $\vec{a_{t}}$
+\end_inset
+
+a normálovou 
+\begin_inset Formula $\vec{a_{n}}$
+\end_inset
+
+složku zrychlení.
+ Platí, že 
+\begin_inset Formula $\vec{a}=\vec{a_{t}}+\vec{a_{n}}$
+\end_inset
+
+.
+ Tečná složka zrychlení má směr tečny a normálová směr normály (kolmice)
+ k trajektorii.
+ Velikost těchto složek je 
+\begin_inset Formula $a_{t}=\frac{dv}{dt}$
+\end_inset
+
+ a 
+\begin_inset Formula $a_{n}=\frac{v^{2}}{R}$
+\end_inset
+
+, kde v je velikost rychlosti a R je poloměr 
+\begin_inset Quotes eld
+\end_inset
+
+křivosti
+\begin_inset Quotes erd
+\end_inset
+
+ trajektorietrajektorie, obojí v místě rozkladu vektoru zrychlení.
+ Velikost zrychlení se zjišťuje jako velikost vektoru nebo z tečné a normálové
+ složky zrychlení, jako 
+\begin_inset Formula $a=|\vec{a|=\sqrt{a_{x}^{2}+a_{y}^{2}+a_{z}^{2}}=\sqrt{a_{t}^{2}+a_{n}^{2}}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Klasifikace pohybů
+\end_layout
+
+\begin_layout Subsubsection
+Přímočarý
+\end_layout
+
+\begin_layout Standard
+Vektor v má stále stejný směr, který splývá s přímkou, po níž se hmotný
+ bod pohybuje.
+\end_layout
+
+\begin_layout Standard
+Dráhou přímočarého pohybu je přímka.
+ Proto stačí popis v souřadné soustavě s jedinou osou x.
+ Pohyb tedy stačí popsat veličinami 
+\begin_inset Formula $x=s,\: v_{x}=v,\: a_{x}=a$
+\end_inset
+
+ .
+ Rychlost přímočarého pohybu odvodíme z definiční rovnice zrychleni (7),
+ stačí ji napsat pro směr x.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $a=\frac{dv}{dt}\Rightarrow dv=adt\Rightarrow_{v_{0}}\intop^{v}dv=_{0}\intop^{t}adt\Rightarrow v-v_{0}=_{0}\int^{t}adt$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pro pohyb rovnoměrně zrychlený, splňující podmínku a = konst dále platí:
+ Rychlost přímočarého pohybu rovnoměrně zrychleného je tedy dána rovnicí:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $v=_{0}\int^{t}adt+v_{0}=a\:_{0}\int^{t}dt+v_{0}=at+v_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Polohu přímočarého pohybu na ose x vypočítáme, jako:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $v=\frac{dx}{dt}\Rightarrow dx=vdt\Rightarrow_{x_{0}}\int^{x}dx=_{0}\int^{t}vdt=x-x_{0}=_{0}\int^{t}vdt$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pro pohyb rovnoměrně zrychlený, splňující podmínku a = konst dále platí:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x=_{0}\int^{t}(v_{0}+at)dt+x_{0}=v_{0}\:_{0}\int^{t}dt+_{0}\int^{t}tdt+x_{0}=x_{0}+v_{0}t+\frac{1}{2}at^{2}$
+\end_inset
+
+, tedy 
+\begin_inset Formula $s=x=x_{0}+v_{0}t+\frac{1}{2}at^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Křivočarý
+\end_layout
+
+\begin_layout Standard
+Vektor v r mění svůj směr, který je vždy tečný ke křivce, po níž se hmotný
+ bod pohybuje.
+ Speciálními křivočarými pohyby jsou kruhový pohyb a vrhy.
+\end_layout
+
+\begin_layout Standard
+Ke křivočarému pohybu už musíme obecně použít vektorový popis.
+ Bez odvození napišme, že pro popis obecného křivočarého pohybu v prostoru
+ platí analogické rovnice jako v předchozím odstavci s tím rozdílem, že
+ k popisu použijeme vektory.
+ Bude tedy platit následující sestava rovnic:
+\end_layout
+
+\begin_layout Standard
+Pro pohyb rovnoměrně zrychlený s konstantním zrychlením:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\vec{v}=\vec{v_{0}}+\vec{at}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\vec{r}=\vec{r_{0}}+\vec{v_{0}}t+\frac{1}{2}\vec{a}t^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Dynymika hmotného bodu
+\end_layout
+
+\begin_layout Standard
+Dynamika je část mechaniky, která se zabývá příčinami pohybu a příčinami
+ změn pohybu.
+\end_layout
+
+\begin_layout Subsection
+Základní veličiny dynamiky
+\end_layout
+
+\begin_layout Standard
+Základní veličiny dynamiky jsou hmotnost, hybnost a síla.
+\end_layout
+
+\begin_layout Subsubsection
+Hmotnost
+\end_layout
+
+\begin_layout Standard
+Hmotnost je skalární veličina, která vyjadřuje míru setrvačných a gravitačních
+ vlastností tělesa.
+ Je to jedna ze 7 základních veličin fyziky.
+ Základní jednotkou hmotnosti je kg.
+\end_layout
+
+\begin_layout Subsubsection
+Hybnost
+\end_layout
+
+\begin_layout Standard
+Hybnost 
+\begin_inset Formula $\vec{p}$
+\end_inset
+
+ je vektorová veličina, která vyjadřuje míru setrvačných účinků a míru gravitačn
+ích účinků tělesa dané hmotnosti 
+\begin_inset Formula $m$
+\end_inset
+
+ Hybnost závisí na hmotnosti 
+\begin_inset Formula $m$
+\end_inset
+
+ a rychlosti 
+\begin_inset Formula $\vec{v}$
+\end_inset
+
+ tělesa, směr hybnosti je stejný jako směr rychlosti.
+ Hybnost se vypočítá jako
+\begin_inset Formula $\vec{p}=m\vec{v}$
+\end_inset
+
+.
+ Jednotka hybnosti je kg.m.s
+\begin_inset Formula $^{-1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Síla
+\end_layout
+
+\begin_layout Standard
+Síla je vektorová fyzikální veličina, která vyjadřuje míru vzájemného působení
+ těles.
+ Síla má za následek buďto změnu pohybového stavu těles nebo jejich deformaci.
+ Pokud chceme sílu definovat obecně i pro relativistickou fyziku, musíme
+ sílu definovat jako časovou derivaci hybnosti tělesa 
+\begin_inset Formula $\vec{p}$
+\end_inset
+
+, tedy 
+\begin_inset Formula $\vec{F}=\frac{d\vec{p}}{dt}$
+\end_inset
+
+.
+ V klasické mechanice (v případech, kdy lze zanedbat změnu hmotnosti při
+ pohybu) přejde rovnice 
+\begin_inset Formula $\vec{F}=\frac{d\vec{p}}{dt}$
+\end_inset
+
+ na tvar 
+\begin_inset Formula $\vec{F}=\frac{d\vec{p}}{dt}=\frac{d(m\vec{v})}{dt}=m\vec{a}$
+\end_inset
+
+.
+ Tyto vztahy představují druhý Newtonův zákon, jednotka síly je Newton N=kg.m.s
+\begin_inset Formula $^{-2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Newtonovy zákony
+\end_layout
+
+\begin_layout Standard
+Existují tři Newtonovy pohybové zákony, které umožňují určit pohyb tělesa
+ v inerciální vztažné soustavě, jsou-li známé síly, které působí na dané
+ těleso.
+\end_layout
+
+\begin_layout Subsubsection
+první Newtonův zákon
+\end_layout
+
+\begin_layout Standard
+Jestliže na těleso nepůsobí žádné vnější síly nebo výslednice sil je nulová,
+ pak těleso setrvává v klidu nebo v rovnoměrném přímočarém pohybu.
+\end_layout
+
+\begin_layout Subsubsection
+druhý Newtonův zákon
+\end_layout
+
+\begin_layout Standard
+Jestliže na těleso působí síla, pak se těleso pohybuje se zrychlením, které
+ je přímo úměrné působící síle a nepřímo úměrné hmotnosti tělesa.
+\end_layout
+
+\begin_layout Standard
+Což je dáno vzorcem (kde F je vektor síly m hmotnost a a vektor zrychlení):
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\vec{F}=m\vec{a}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Obecněji se tento vztah dá zapsat, jako (kde p je vektor hybnosti, je čas
+ a v je vektor rychlosti):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\vec{F}=\frac{d\vec{p}}{dt}=\frac{d(m\vec{v})}{dt}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tento zákon lze dále použít k sestavení pohybové rovnice (kde r jevektorová
+ funkce, která určuje polohu hmotného bodu v závislosti na čase):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\vec{F}=m\frac{d^{2}\vec{r}}{dt^{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+třetí Newtonův zákon
+\end_layout
+
+\begin_layout Standard
+Proti každé akci vždy působí stejná reakce; jinak: vzájemná působení dvou
+ těles jsou vždy stejně velká a míří na opačné strany.
+\end_layout
+
+\begin_layout Standard
+To se dá zapsat, jako: (
+\begin_inset Formula $F_{1}$
+\end_inset
+
+je síla akce a 
+\begin_inset Formula $F_{2}$
+\end_inset
+
+je síla reakce)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $F_{1}=-F_{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Pohybové rovnice pro inerciální a neinerciální vztažné soustavy
+\end_layout
+
+\begin_layout Subsection
+Inerciální vztažná soustava
+\end_layout
+
+\begin_layout Standard
+Za inerciální vztažnou soustavu budeme považovat takovou, která se vzhledem
+ ke stálici (Slunci) buď nepohybuje (v = 0 ), nebo se všechny její pevné
+ body pohybují rovnoměrně přímočaře (
+\begin_inset Formula $\vec{v}$
+\end_inset
+
+ = konst.
+ r ).
+ Při takovém pohybu žádný pevný bod v této soustavě nebude zakřivovat svoji
+ trajektorii.
+ Platí, že každá další vztažná soustava, je-li vzhledem k inerciální soustavě
+ v klidu nebo pohybu rovnoměrném přímočarém, je rovněž inerciální.
+ Jako příklad můžeme uvést například stěny vagonu, který se pohybuje po
+ přímé trati stálou rychlostí.
+ V inerciálních vztažných soustavách platí 1.
+ Newtonův pohybový zákon - zákon setrvačnosti.
+\end_layout
+
+\begin_layout Subsection
+Neinerciální vztažná soustava
+\end_layout
+
+\begin_layout Standard
+Všechny ostatní vztažné soustavy jsou neinerciální.
+ V neinerciálních vztažných soustavách neplatí 1.
+ Newtonův pohybový zákon ani 3.
+ Newtonův pohybový zákon, tzn.
+ že těleso, ačkoliv na ně nepůsobí žádná síla nebo výslednice sil je nulová,
+ mění svůj pohybový stav (rychlost), tzn.
+ pohybuje se s nenulovým zrychlením.
+\end_layout
+
+\begin_layout Subsection
+Posouvající se neinerciální soustava
+\end_layout
+
+\begin_layout Standard
+Je to soustava, která se vzhledem k inerciální pohybuje přímočaře nerovnoměrně.
+ Zrychlení soustavy a všech bodů na osách je stejné a nenulové.
+ Za reprezentující bod budeme považovat počátek takové neinerciální vztažné
+ soustavy.
+\end_layout
+
+\begin_layout Standard
+Zrychlení definujeme:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\vec{a_{u}=\frac{dR}{dt}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pak platí, že v takto definované neinerciální soustavě vzniká setrvačná
+ zdánlivá síla:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\vec{F_{s}}=-m\vec{a_{u}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+kde m je hmotnost tělesa sledovaného v neinerciální soustavě.
+ Pokud chceme řešit pohybovou úlohu v neinerciální soustavě, musíme ke všem
+ skutečným silám připočítat síly zdánlivé.
+\end_layout
+
+\begin_layout Subsection
+Rotující neinerciální soustava
+\end_layout
+
+\begin_layout Standard
+Je to soustava, která vzhledem k inerciální rotuje.
+ Je výhodné zvolit si osu rotace za osu z obou soustav, inerciální i neinerciáln
+í, jak ukazuje obr.
+ 1.
+ V neinerciální soustavě takového typu pak vzniknou tři zdánlivé síly.
+\end_layout
+
+\begin_layout Subsubsection
+Síla Eulerova
+\end_layout
+
+\begin_layout Standard
+Eulerova síla je zdánlivá síla působící v rotující neinerciální soustavě,
+ která rotuje s proměnnou úhlovou rychlostí, e 
+\begin_inset Formula $\neq$
+\end_inset
+
+ 0.
+ Její vektorový výpočet je:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\vec{F_{E}}=-m\vec{\varepsilon}\times\vec{r}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+kde 
+\begin_inset Formula $\vec{r}$
+\end_inset
+
+ je polohový vektor tělesa o hmotnosti m, nacházejícího se v rotující neinerciál
+ní soustavě, která rotuje s úhlovým zrychlením 
+\begin_inset Formula $\vec{\varepsilon}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Síla Coriolisova
+\end_layout
+
+\begin_layout Standard
+Coriolisova síla je zdánlivá síla působící na tělesa pohybující se v rotující
+ neinerciální vztažné soustavě tak, že se mění jejich vzdálenost od osy
+ otáčení.
+ Coriolisova síla má směr kolmý ke spojnici těleso - osa otáčení a způsobuje
+ stáčení trajektorie tělesa proti směru otáčení soustavy.
+ 
+\end_layout
+
+\begin_layout Standard
+Její vektorový výpočet je dán rovnicí:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\vec{F_{c}}=-2m\vec{\omega\times\vec{v'}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+kde m je hmotnost tělesa, 
+\begin_inset Formula $\vec{v}$
+\end_inset
+
+ je rychlost tělesa v neinerciální vztažné soustavě, 
+\begin_inset Formula $\vec{\omega}$
+\end_inset
+
+ je vektor úhlové rychlosti otáčení neinerciální soustavy.
+\end_layout
+
+\begin_layout Standard
+Velikost Coriolisovy síly spočteme jako:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $F_{c}=-2m\omega v'sin\alpha$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula $\alpha$
+\end_inset
+
+je úhel sevřený mezi vektorem úhlové rychlosti a vektorem rychlosti.
+\end_layout
+
+\begin_layout Subsubsection
+Síla odstředivá
+\end_layout
+
+\begin_layout Standard
+Odstředivá síla je jedna ze zdánlivých sil, které působí na těleso v otáčející
+ se neinerciální vztažné soustavě.
+ V inerciálních vztažných soustavách odstředivé síly nepůsobí.
+ Důsledkem odstředivé síly je odstředivé zrychlení.
+ Odstředivá síla je dána rovnicí:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\vec{F_{o}}=-m\vec{\omega}\times\vec{\omega}\times\vec{r}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Kde m je hmotnost tělesa, 
+\begin_inset Formula $\vec{\omega}$
+\end_inset
+
+ je vektor úhlové rychlosti otáčející se neinerciální soustavy a 
+\begin_inset Formula $\vec{r}$
+\end_inset
+
+ je polohový vektor tělesa, jehož počátek leží na ose rotace.
+\end_layout
+
+\begin_layout Standard
+Velikost odstředivé síly je:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $F_{o}=m\omega^{2}r$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Práce a Energie
+\end_layout
+
+\begin_layout Subsection
+Energie
+\end_layout
+
+\begin_layout Standard
+Je schopnost vykonat práci.
+ Abychom mohli vykonat práci, musíme mít energii.
+ Celková mechanická energie objektu je součet jeho kinetické a potenciální
+ energie.
+ Jednotkou energie v soustavě SI je joule (J) = kgm
+\begin_inset Formula $^{2}$
+\end_inset
+
+ s
+\begin_inset Formula $^{-2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Kinetická energie
+\end_layout
+
+\begin_layout Standard
+Kinetická energie je energie pohybová.
+ Vyjadřuje skutečnost, že pohybující se těleso je schopné konat práci jako
+ důsledek svého pohybu, např.
+ nárazem na okolní objekt.
+ Kinetická energie hmotného bodu, těles zanedbatelných rozměrů nebo těles
+ pohybujících se bez rotace (takový pohyb se nazývá translační nebo posuvný)
+ je definována vztahem:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $E_{k}=\frac{1}{2}mv^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Potenciální energie
+\end_layout
+
+\begin_layout Standard
+Potenciální energie má svoji podstatu v poloze nebo konfiguraci.
+ Ne každý objekt je však schopen vykonat práci v důsledku své polohy.
+ V gravitačním poli Země se potencionální energie spočítá, jako:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $E_{p}=mgh$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Zákon zachování mechanické energie
+\end_layout
+
+\begin_layout Standard
+Jestliže těleso nebo hmotný systém nepodléhají účinkům okolí, pak součet
+ kinetické a potenciální energie částic, z nichž se skládá, zůstává stálý.
+ To znamená, že v soustavě se může měnit jeden druh energie v druhý.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $E=E_{p}+E_{k}=konst.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Práce
+\end_layout
+
+\begin_layout Subsubsection
+Posuvný pohyb
+\end_layout
+
+\begin_layout Standard
+Práce je definována následujícím vztahem:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $W=\vec{F}\cdot\vec{s}=F\cdot s\cdot cos\alpha$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Kde 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ je úhel mezi silou a trajektorií pohybu.
+\end_layout
+
+\begin_layout Standard
+Pokud je dráha zakřivena nebo je síla proměnná, použijeme pro výpočet integrál
+ tzv.
+ elementárních prací:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $dW=\vec{F}\cdot d\vec{s}$
+\end_inset
+
+, tedy 
+\begin_inset Formula $W=_{0}\int^{s}\vec{F}\cdot d\vec{s}=_{0}\int^{s}(F\cdot cos\alpha)d\vec{s}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Otáčivý pohyb
+\end_layout
+
+\begin_layout Standard
+Mechanická práce závisí na momentu síly, který na těleso působí, na úhlu,
+ o který se těleso otočí, a na úhlu, který svírá vektor momentu síly a osa
+ otáčení tělesa.
+\end_layout
+
+\begin_layout Standard
+Otočí-li se těleso kolem neměnné osy otáčení působením konstantního momentu
+ síly M rovnoběžného s osou otáčení tělesa o úhel 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, pak lze velikost práce zapsat ve tvaru:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $W=M\cdot\alpha$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pokud je moment síly proměnný, použijeme pro výpočet integrál tzv.
+ elementárních prací:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $dW=\vec{M}\cdot d\vec{\alpha}$
+\end_inset
+
+, tedy 
+\begin_inset Formula $W=_{0}\int^{s}\vec{M}\cdot d\vec{\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Otáčivý pohyb tuhého tělesa
+\end_layout
+
+\begin_layout Standard
+Rotace je takový pohyb tuhého tělesa, při kterém se všechny body tělesa
+ otáčejí kolem jedné společné osy otáčení se stejnou úhlovou rychlostí.
+ Trajektoriemi jednotlivých bodů tělesa jsou soustředné kružnice.
+ Úhlové rychlosti a úhlová zrychlení jednotlivých bodů tělesa jsou při otáčivém
+ pohybu stejné.
+\end_layout
+
+\begin_layout Subsection
+Osa otáčení
+\end_layout
+
+\begin_layout Standard
+Osa otáčení je přímka, kolem které se těleso při otáčivém pohybu otáčí.
+ Body tělesa, které na ose leží, zůstávají na svých místech, jejich rychlost
+ je nulová.
+\end_layout
+
+\begin_layout Subsection
+Moment setrvačnosti
+\end_layout
+
+\begin_layout Standard
+Moment setrvačnosti je definován vztahem:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $J=_{v}\int\rho r^{2}dV$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Jeho jednotka je kg.m
+\begin_inset Formula $^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Je-li tuhé těles homogení, tedy je-li jeho hustota 
+\begin_inset Formula $\rho=konst.$
+\end_inset
+
+, pak lze moment definovat následovně:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $J=\rho\:_{v}\int r^{2}dV$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Steinerova věta (Steinerův doplněk)
+\end_layout
+
+\begin_layout Standard
+Pro moment setrvačnosti tuhého tělesa vzhledem k ose otáčení jdoucí mimo
+ těžiště tělesa platí Steinerova věta:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $J=J_{T}+md^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Kde 
+\begin_inset Formula $J_{T}$
+\end_inset
+
+ je moment setrvačnosti vzhledem k ose jdoucí těžištěm tělesa, m je hmotnost
+ tělesa a d je kolmá vzdálenost těžiště od osy otáčení.
+\end_layout
+
+\begin_layout Subsection
+Kinetická energie při otáčivém pohybu tělesa
+\end_layout
+
+\begin_layout Standard
+Kinetická energie 
+\begin_inset Formula $E_{k}$
+\end_inset
+
+ tuhého tělesa při otáčivém pohybu je rovna 
+\begin_inset Formula $E_{k}=\frac{1}{2}J\omega^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Pohybová rovnice při otáčení tuhého tělesa
+\end_layout
+
+\begin_layout Standard
+Při otáčení tuhého tělesa lze odvodit jeho pohybovou rovnici ve tvaru:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\vec{M}=J\cdot\vec{\varepsilon}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Gravitační pole a příklady jeho působení
+\end_layout
+
+\begin_layout Subsection
+Newtonův Gravitační zákon
+\end_layout
+
+\begin_layout Standard
+Newtonův gravitační zákon je zákon, který je požitelný poze pro slabá gravitační
+ pole.
+ Je formulován tak, že každá dvě tělesa o hmotnostech 
+\begin_inset Formula $m_{1}$
+\end_inset
+
+a 
+\begin_inset Formula $m_{2}$
+\end_inset
+
+na sebe působí silou přímo úměrnou hmotnostem obou těles a silou nepřímo
+ úměrnou čtverci jejich vzdáleností, tedy:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $F_{g}=G\frac{m_{1}m_{2}}{r^{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Kde G je gravitační konstanta G=6,67
+\begin_inset Formula $\cdot$
+\end_inset
+
+
+\begin_inset Formula $10^{-11}$
+\end_inset
+
+
+\begin_inset Formula $m^{3}kg^{-1}s^{-2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Intenzita Gravitačního pole
+\end_layout
+
+\begin_layout Standard
+V okolí každého tělesa existuje gravitační pole, které působí na jiná tělesa.
+ Pro porovnání silového působení v různých místech gravitačního pole je
+ zavedena intenzita grav.
+ pole, která je definována následujícím vztahem:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\vec{K}=\frac{\vec{F_{g}}}{m}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Její jednotkou je N.kg
+\begin_inset Formula $^{-1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Velikost intenzity gravitačního pole 
+\begin_inset Formula $\vec{K}$
+\end_inset
+
+ v daném místě pole určíme ze vztahu pro velikost gravitační síly vyjádřenou
+ v gravitačním zákonu.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $K=G\frac{M}{r^{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Potenciál Gravitačního pole
+\end_layout
+
+\begin_layout Standard
+Gravitační potenciál hmotného bodu je v newtonovské fyzice vyjádřen vzorcem:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $V=-G\frac{M}{r}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Mechanické kmitavé soustavy
+\end_layout
+
+\begin_layout Standard
+Těleso připevněné k pružině, která je upevněná k boční pevné stěně, těleso
+ se pohybuje ve vodorovném směru bez tření, zvolený směr pohybu např.
+ ve směru souřadnicové osy x.
+ Pokud je těleso vychýleno z rovnovážné polohy, pak na něj působí síla F.
+\end_layout
+
+\begin_layout Standard
+F = -k x
+\end_layout
+
+\begin_layout Standard
+Kde k je tuhost pružiny.
+\end_layout
+
+\begin_layout Standard
+Na základě druhého Newtonova zákona je možné sestavit pohybovou rovnici:
+\end_layout
+
+\begin_layout Standard
+ma = -k x
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{d^{2}x}{dt^{2}}+\frac{k}{m}x=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Je možné zavédst 
+\begin_inset Formula $\omega_{0}^{2}=\frac{k}{m}$
+\end_inset
+
+, následně můžeme přepsat rovnici do tvaru:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{d^{2}x}{dt^{2}}+\omega_{0}^{2}x=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Lineární harmonický oscilátor
+\end_layout
+
+\begin_layout Standard
+Přes diferenciální rovnice se dojde ke vzorečku:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u(t)=u_{0}sin(\omega_{0}t+\psi)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u_{0}$
+\end_inset
+
+je amplituda harmonických kmitů, 
+\begin_inset Formula $\omega_{0}$
+\end_inset
+
+je úhlová rychlost 
+\begin_inset Formula $\psi$
+\end_inset
+
+je fázová konstanta.
+\end_layout
+
+\begin_layout Standard
+Rychlost a zrychlení kmitajícího hmotného bodu (tělesa) určíme na základě
+ následujících vztahů:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $v(t)=\frac{du(t)}{dt}=u_{0}\omega_{0}cos(\omega_{0}t+\psi)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $a(t)=\frac{dv(t)}{dt}=\frac{d^{2}u}{dt^{2}}=-u_{0}\omega_{0}^{2}sin(\omega_{0}t+\psi)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Tlumené kmitání
+\end_layout
+
+\begin_layout Standard
+Řešení je přes diferenciální rovnice
+\end_layout
+
+\begin_layout Subsubsection
+Chování systému při tlumených kmitech
+\end_layout
+
+\begin_layout Standard
+V závilosti na velikosti tlumení 
+\begin_inset Formula $\zeta$
+\end_inset
+
+lze rozlišit 3 situace:
+\end_layout
+
+\begin_layout Standard
+Pro
+\begin_inset Formula $\zeta$
+\end_inset
+
+<1 systém bude oscilovat okolo rovnovážné polohy, ale amplituda bude s časem
+ klesat.
+ Pro úhlovou frekvenci kmitů platí vztah:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\omega=\omega_{0}\sqrt{1-\zeta^{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pro 
+\begin_inset Formula $\zeta$
+\end_inset
+
+=1 nastane kritické tlumení, průběh oscilací je popsán rovnicí:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x(t)=\frac{1}{2}((x(0)+\frac{\dot{x_{0}}}{\omega_{0}}e^{\omega_{0}t}+(x(0)-\frac{\dot{x_{0}}}{\omega_{0}})e^{-\omega_{0}t})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pro 
+\begin_inset Formula $\zeta$
+\end_inset
+
+>1 Komplikovaný průběh, jde o velmi velké tlumení a oscilace proto nelze
+ pozorovat
+\end_layout
+
+\end_body
+\end_document
