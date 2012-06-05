@@ -28,6 +28,8 @@ Hotové otázky
 
 08\. Limita funkce a posloupnosti, zejména rychlosti růstu v nekonečnu a l'Hospitalovo pravidlo. Derivace a parciální derivace: výpočet a význam (rychlost změny, monotonie, extrémy, gradient). (A4B01MA2) 
 
+09\. Význam integrálu, základní metody výpočtu a nevlastní integrál; řady a jejich konvergence (význam, příklady použití, geometrická řada), Taylorův polynom a řada. (A4B01MA2) 
+
 10\. Syntaxe a sémantika výrokové a predikátové logiky. Sémantický důsledek a tautologická ekvivalence. Booleovský kalkul. Rezoluční metoda (A0B01LGR)
 
 12\.  Programování v jazyce JAVA: struktura tříd a programu. Události, zdroj a posluchač události, šíření událostí, vlastní události, více zdrojů a posluchačů, rozlišení zdrojů. Výjimky a jejich zpracování, propagace výjimek, hierarchie výjimek, kontrolované a nekontrolované výjimky. (A0B36PR2) 
@@ -45,5 +47,7 @@ Hotové otázky
 23\. Gramatiky, regulární gramatiky a bezkontextové gramatiky, bezkontextové jazyky. Zásobníkové automaty a jejich vztah k bezkontextovým jazykům. Vlastnosti bezkontextových gramatik, lemma o vkládání. (A4B01JAG)
 
 24\. Turingovy stroje. (A4B01JAG)
+
+29\. Mechanika - Newtonovy zákony. Kinematika a dynamika hmotného bodu. Pohybové rovnice pro inerciální a neinerciální vztažné soustavy. Práce a energie. Konzervativní silové pole, mechanické zákony zachování. I. a II. věta impulzová. Otáčivý pohyb tuhého tělesa (moment síly, hybnosti, moment setrvačnosti). Gravitační pole a příklady jeho působení (gravitační zákon, intenzita a potenciál gravitačního pole, intenzita gravitačního pole uvnitř a vně homogenní koule). Mechanické kmitavé soustavy. Netlumený a tlumený mechanický lineární oscilátor. Vynucené kmity, rezonance výchylky. (A4B02FYZ) 
 
 30\. Dynamika fyzikálních systémů - základní dělení dynamických systémů, fázový portrét, stracionární (pevné) body, dynamický tok. Vyšetřování stability lineárních systémů, topologická klasifikace lineárních systémů (sedlový bod, stavilní a nestabilní spirála, stabilní a nestabilní uzel, středový bod), atraktor. Vyšetřování stability nelineárních systémů, limitní cykly, bifurkace.
