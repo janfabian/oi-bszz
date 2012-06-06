@@ -1,0 +1,328 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass scrreprt
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{chapter}{27}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter*
+Zatím není kompletní
+\end_layout
+
+\begin_layout Subsection*
+Pevný a programovatelný řadič.
+ Mikroprogramový automat.
+ Klasická architektura počítače, von Neumannova a harvardská architektura.
+ Struktura CPU, datové a adresní registry, čítač instrukcí, ukazatel zásobníku,
+ typy instrukcí (A0B35SPS)
+\end_layout
+
+\begin_layout Section
+Řadiče
+\end_layout
+
+\begin_layout Itemize
+řadič anglicky control unit
+\end_layout
+
+\begin_layout Itemize
+jasně odlišitelná část systému, která řídí nějaký úkon
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+např.: řadiče displaye, jednotka řídící teplotu vody , atd..
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Programovatelný řadič
+\end_layout
+
+\begin_layout Itemize
+varianta sekvenčního obvodu ralizovaná přes paměť
+\end_layout
+
+\begin_layout Itemize
+flexibilní
+\end_layout
+
+\begin_layout Subsection
+Pevný řadič = Řadič klasický, též obvodově realizovaný, tedy tzv.
+ obvodový
+\end_layout
+
+\begin_layout Itemize
+rychlejší
+\end_layout
+
+\begin_layout Itemize
+automat realizovaný přes sekvenční obvody
+\end_layout
+
+\begin_layout Itemize
+ve velmi jednoduchých případech levnější
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename img/uprog_vs_klasik.emf
+	lyxscale 10
+	width 15page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Mikroprogramovatelný automat
+\end_layout
+
+\begin_layout Standard
+//TODO
+\end_layout
+
+\begin_layout Section
+Architektura počítače
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename img/neuman_harvard.emf
+	lyxscale 15
+	width 75page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Von_Neumanova jednodušší, pomalejší, možnost rodělit paměť data/instrukce
+ dle potřeby
+\end_layout
+
+\begin_layout Description
+Harvardská paměť pro instrukce a data fyzicky oddělena
+\end_layout
+
+\begin_layout Description
+Sběrnice propojující paměti se skládá ze tří sběrnic: adresní, datové, řídící
+\end_layout
+
+\begin_layout Section
+Struktura CPU
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename img/cpu.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+řídící_jednotka (řadič) zajišťuje součinost jednotlivých částí CPU
+\end_layout
+
+\begin_layout Description
+ALU aritmeticko-logická jednotka (může jich být i více) zajišťuje všechny
+ aritmetické a logické výpočty
+\end_layout
+
+\begin_layout Description
+PC program counter - čítač instrukcí - uchovává stav paměti, procesor má
+ vždy po resetu nastavenou určitou hodnotu
+\end_layout
+
+\begin_layout Description
+registry
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+datové
+\emph default
+ - ukládání hodnot
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+adresní
+\emph default
+ - uchovávají adresy odkud mají být dada načítána / kam ukládána
+\end_layout
+
+\begin_layout Itemize
+procesor může vykonávat aritmetické/logické operace pouze nad daty v registrech
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+ukazatel zásobníku - stack point - SP
+\end_layout
+
+\begin_layout Itemize
+uchováná adresu posledního záznamu uloženého na zásobníku
+\end_layout
+
+\begin_layout Itemize
+při push se 
+\emph on
+SP
+\emph default
+ zvětší, při pop se 
+\emph on
+SP
+\emph default
+ snižuje
+\end_layout
+
+\begin_layout Itemize
+na zásobníku jsou uloženy tzv.
+ 
+\emph on
+stack frames
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+nastavení prostředí
+\end_layout
+
+\begin_layout Itemize
+např.: návratová adresa, místo pro návratovou hodnotu, parametry, lokální
+ proměnné
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+typy instrukcí
+\end_layout
+
+\begin_layout Description
+CISC complex instruction set computer
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+instrukce se skládá z několika kroků 
+\begin_inset Formula $\longrightarrow$
+\end_inset
+
+zpomalování procesoru
+\end_layout
+
+\begin_layout Itemize
+různě dlouhé , různě trvající instrukce
+\end_layout
+
+\end_deeper
+\begin_layout Description
+RISC reduced instruction set computing
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+snížení počtu instrukcí, snaha dosáhnout 1takt=1instrukce
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+jeden cyklus cpu - asi není nezbytné
+\end_layout
+
+\begin_layout Standard
+nevím co znamená HP - potřeba doplnit
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename img/one_cpu_cycle.emf
+	lyxscale 20
+	width 40page%
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

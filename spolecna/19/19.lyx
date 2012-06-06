@@ -2,8 +2,13 @@
 \lyxformat 413
 \begin_document
 \begin_header
-\textclass article
+\textclass paper
 \use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package default
@@ -25,9 +30,10 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
-\use_geometry false
+\use_geometry true
 \use_amsmath 1
 \use_esint 1
 \use_mhchem 1
@@ -42,6 +48,10 @@
 \shortcut idx
 \color #008000
 \end_index
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -60,7 +70,683 @@
 \begin_body
 
 \begin_layout Title
+\noindent
 Společná část: 19 - PSI
+\end_layout
+
+\begin_layout Standard
+\noindent
+Náhodná veličina a náhodný vektor.
+ Distribuční funkce, hustota a pravděpodobnostní funkce náhodné veličiny.
+ Střední hodnota a rozptyl náhodné veličiny a jejich odhady.
+ Sdružené charakteristiky náhodného vektoru.
+ Korelace a nezávislost náhodných veličin.
+ Metoda maximální věrohodnosti.
+ Základní principy statistického testování hypotéz.
+ Markovské řetězce, klasifikace stavů.
+\end_layout
+
+\begin_layout Section
+\noindent
+Základní pojmy pravděpodobnosti
+\end_layout
+
+\begin_layout Subsection
+\noindent
+Laplaceova (klasická) pravděpodobnost	
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Náhodný pokus
+\series default
+ má 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ různých, vzájemně se vylučujících výsledků, které jsou stejně možné.
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Elementární jevy
+\series default
+ = výsledky nahodného pokusu
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Množina všech elementárńıch jev̊u
+\series default
+: 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Jev
+\series default
+ je podmnožina všech elementárních jevů (
+\begin_inset Formula $A\subseteq\Omega$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Pravděpodobnost jevu
+\series default
+ 
+\begin_inset Formula $A$
+\end_inset
+
+ : 
+\begin_inset Formula 
+\[
+P(A)=\frac{\mid A\mid}{\mid\Omega\mid}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Jevové pole
+\series default
+: všechny jevy pozorovatelné v náhodném pokusu, zde expΩ (=množina všech
+ podmnožin množiny Ω)
+\end_layout
+
+\begin_layout Subsection
+\noindent
+Kolmogorovova pravděpododobnost
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Elementárních jevů
+\series default
+ (=prvků množiny Ω) může být nekonečně mnoho, nemusí být stejně pravděpodobné
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Jevy
+\series default
+ jsou podmnožiny množiny Ω, ale ne nutně všechny.
+ Tvoří podmnožinu 
+\begin_inset Formula $\mathbf{\mathcal{A}}\subseteq exp\Omega$
+\end_inset
+
+, která splňuje podmínky σ-algebry (viz.
+ 1.3).
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Pravděpodobnost
+\series default
+ není určena strukturou jevů jako u Laplaceova modelu, je to funkce 
+\begin_inset Formula $P:\mathcal{\mathbf{\mathbf{\mathcal{A}}}}\rightarrow\langle0,1\rangle$
+\end_inset
+
+, splňující podmínky:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+(P1)	
+\begin_inset Formula $P(\mathbf{1})=1,$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+(P2)
+\begin_inset Formula $P\left(\underset{n\in\mathbb{N}}{\bigcup}A_{n}\right)=\underset{n\in\mathbb{N}}{\sum}P(A_{n})$
+\end_inset
+
+, pokud jsou množiny (=jevy) 
+\begin_inset Formula $A_{n}$
+\end_inset
+
+, 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+, po dvou neslučitelné
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\noindent
+
+\series bold
+Pravděpodobnostní prostor 
+\series default
+je trojice 
+\begin_inset Formula $(\Omega,\mathcal{A},P)$
+\end_inset
+
+, kde 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ je neprázdná množina, 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ je σ-algebra podmnožin množiny 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ a 
+\begin_inset Formula $P$
+\end_inset
+
+ je pravděpodobnost.
+\end_layout
+
+\begin_layout Subsection
+\noindent
+σ-algebra
+\end_layout
+
+\begin_layout Standard
+\noindent
+σ-algebra je teoretický koncept výběru jistých podmnožin dané množiny, který
+ splňuje pevně definované podmínky.
+ Koncept σ-algebry umožňuje například zavést míru, čehož se dále využívá
+ zejména v matematické analýze k budování pojmu integrál a právě v teorii
+ pravděpodobnosti [wikipedia].
+ Systém podmnožin 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ nějáké množiny 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ musí splňovat podmínky:
+\end_layout
+
+\begin_layout Enumerate
+\noindent
+\begin_inset Formula $\emptyset\in\mathcal{A}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\noindent
+\begin_inset Formula $A\in\mathcal{A\Rightarrow\bar{A}\in A\mathcal{}}$
+\end_inset
+
+ (uzavřenost vůči doplňku)
+\end_layout
+
+\begin_layout Enumerate
+\noindent
+\begin_inset Formula $(\forall n\in\mathbb{N}:A_{n}\in\mathcal{A})\Rightarrow\underset{n\in\mathbb{N}}{\bigcup}A_{n}\in\mathcal{A})$
+\end_inset
+
+ (uzavřenost vůči sjednocení)
+\end_layout
+
+\begin_layout Standard
+\noindent
+Nejmenší σ-algebra podmnožin 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+, která obsahuje všechny intervaly, se nazývá 
+\series bold
+Borelova σ-algebra
+\series default
+.
+ Obsahuje všechny intervaly otevřené, uzavřené i polouzavřené, i jejich
+ spočetná sjednocení, a některé další množiny, ale je menší ́než exp
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+.
+ Její prvky nazýváme borelovské množiny.
+\end_layout
+
+\begin_layout Section
+\noindent
+Náhodná veličina a náhodný vektor
+\end_layout
+
+\begin_layout Subsection
+\noindent
+Náhodná veličina 
+\end_layout
+
+\begin_layout Standard
+Je na pravděpodobnostním prostoru (
+\begin_inset Formula $\Omega,\mathcal{A},P$
+\end_inset
+
+) měřitelná funkce 
+\begin_inset Formula $X:\Omega\rightarrow\mathbb{R}$
+\end_inset
+
+ (přiřazuje každému jevu jevového pole reálné číslo [wikipedia]).
+\end_layout
+
+\begin_layout Standard
+\noindent
+Náhodné veličiny lze rozdělit na nespojité (diskrétní) a spojité.
+ Diskrétní veličiny mohou nabývat pouze spočetného počtu hodnot (konečného
+ i nekonečného), zatímco spojité veličiny nabývají hodnoty z nějakého intervalu
+ (konečného nebo nekonečného) [wikipedia].
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\series bold
+Příklad:
+\series default
+ Havárii auta označíme cenou škody.
+ Nebo strany hrací kostky označíme čísly 1 až 6.
+\end_layout
+
+\begin_layout Standard
+\noindent
+Pro každý interval 
+\begin_inset Formula $I$
+\end_inset
+
+ platí 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Formula 
+\[
+X^{-1}(I)=\{\omega\in\Omega\mid X(\omega)\in I\}\in\mathcal{A}
+\]
+
+\end_inset
+
+Je popsána 
+\series bold
+pravděpodobnostní funkcí
+\series default
+:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Formula 
+\[
+P_{X}(I)=P[X\in I]=P(\{\omega\in\Omega\mid X(\omega)\in I\})
+\]
+
+\end_inset
+
+Místo pravděpodobnostní funkce, můžeme použít úspornější 
+\series bold
+Distribuční funkci
+\series default
+ (
+\begin_inset Formula $F_{X}$
+\end_inset
+
+), která se omezuje na intervaly tvaru 
+\begin_inset Formula $ $
+\end_inset
+
+
+\begin_inset Formula $I=(-\infty,t\rangle,t\in\mathbb{R}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Formula 
+\[
+P[X\in(-\infty,t\rangle]=P[X\leq t]=P_{X}((-\infty,t\rangle)=F_{X}(t)
+\]
+
+\end_inset
+
+Různými kombinacemi distribuční funkce (
+\begin_inset Formula $F_{X}:\mathbb{R}\rightarrow\langle0,1\rangle$
+\end_inset
+
+) můžeme plně nahradit pravděpodobnostní funkci.
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\series bold
+Vlastnosti distribuční funkce: 
+\end_layout
+
+\begin_layout Itemize
+\noindent
+neklesající
+\end_layout
+
+\begin_layout Itemize
+\noindent
+zprava spojitá
+\end_layout
+
+\begin_layout Itemize
+\noindent
+\begin_inset Formula $\underset{t\rightarrow-\infty}{\lim}F_{x}(t)=0$
+\end_inset
+
+, 
+\begin_inset Formula $\underset{t\rightarrow\infty}{\lim}F_{x}(t)=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Graphics
+	filename images/distribucniFunkce.png
+	width 12cm
+	rotateOrigin leftTop
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\noindent
+Náhodný vektor (
+\series medium
+n
+\series default
+-rozměrná náhodná veličina)
+\end_layout
+
+\begin_layout Standard
+\noindent
+Je na pravděpodobnostním prostoru (
+\begin_inset Formula $\Omega,\mathcal{A},P$
+\end_inset
+
+) měřitelná funkce 
+\begin_inset Formula $\boldsymbol{X}:\Omega\rightarrow\mathbb{R}^{n}$
+\end_inset
+
+.
+ Používáme ho v případech, kdy je k popisu výsledku náhodného pokusu nutné
+ použít více čísel [wikipedia].
+\end_layout
+
+\begin_layout Standard
+\noindent
+Pro každý 
+\begin_inset Formula $n$
+\end_inset
+
+-rozměrný interval 
+\begin_inset Formula $I$
+\end_inset
+
+ platí 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Formula 
+\[
+\boldsymbol{X}^{-1}(I)=\{\omega\in\Omega\mid\boldsymbol{X}(\omega)\in I\}\in\mathcal{A}
+\]
+
+\end_inset
+
+Lze psát
+\begin_inset Formula 
+\[
+\boldsymbol{X}(\omega)=(X_{1}(\omega),\ldots,X_{n}(\omega)),
+\]
+
+\end_inset
+
+kde zobrazení 
+\begin_inset Formula $X_{k}:\Omega\rightarrow\mathbb{R},k=1,\ldots,n$
+\end_inset
+
+ jsou náhodné veličiny.
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+Náhodný vektor lze považovat za vektor náhodných veličin 
+\begin_inset Formula $ $
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\boldsymbol{X}=(X_{1},\ldots,X_{n})$
+\end_inset
+
+.
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+Je popsán 
+\series bold
+pravděpodobnostmi
+\series default
+:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Formula 
+\[
+P_{\boldsymbol{X}}(I_{1}\times\ldots\times I_{n})=P[X_{1}\in I_{1},\ldots,X_{n}\in I_{n}]=P(\{\omega\in\Omega\mid X_{1}(\omega)\in I_{1},\ldots,X_{n}(\omega)\in I_{n}\}),
+\]
+
+\end_inset
+
+kde 
+\begin_inset Formula $I_{1},\ldots,I_{n}$
+\end_inset
+
+ jsou intervaly v 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+.
+ Z toho výplývá pravděpodobnost pro libovolnou borelovskou množinu 
+\begin_inset Formula $I$
+\end_inset
+
+ v 
+\begin_inset Formula $\mathbb{\mathbb{R}}^{n}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Formula 
+\[
+P_{\boldsymbol{X}}(I)=P[\boldsymbol{X}\in I]=P(\{\omega\in\Omega\mid\boldsymbol{X}(\omega)\in I\})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Opět můžeme použít úspornější 
+\series bold
+distribuční funkci (
+\begin_inset Formula $F_{\boldsymbol{X}}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\series bold
+\begin_inset Formula 
+\[
+P[X_{1}\in(-\infty,t_{1}\rangle,\ldots,X_{n}\in(-\infty,t_{n}\rangle]=P[X_{1}\leq t_{1},\ldots,X_{n}\leq t_{n}]=P_{\boldsymbol{X}}((-\infty,t_{1}\rangle\times\ldots\times(-\infty,t_{n}\rangle)=F_{\boldsymbol{X}}(t_{1},\ldots,t_{n})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\series bold
+Vlastnosti distribuční funkce:
+\end_layout
+
+\begin_layout Itemize
+neklesající (ve všech proměnných)
+\end_layout
+
+\begin_layout Itemize
+zprava spojitá (ve všech proměnných)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\underset{t_{1}\rightarrow\infty,\ldots,t_{n}\rightarrow\infty}{\lim}F_{\boldsymbol{X}}(t_{1},\ldots,t_{n})=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\underset{t_{1}\rightarrow-\infty,\ldots,t_{n}\rightarrow-\infty}{\lim}F_{\boldsymbol{X}}(t_{1},\ldots,t_{n})=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Obecné náhodné veličiny
+\end_layout
+
+\begin_layout Standard
+Náhodné veličiny nemusí být reprezentovány pouze reálným čísly, ale třeba
+ i čísly komplexními.
+ V některých případech se používájí i jiné něž numerické hodnoty, například
+ 
+\begin_inset Quotes eld
+\end_inset
+
+rub
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+líc
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes erd
+\end_inset
+
+kámen
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes erd
+\end_inset
+
+papír
+\begin_inset Quotes erd
+\end_inset
+
+ atp.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
 \end_layout
 
 \end_body
