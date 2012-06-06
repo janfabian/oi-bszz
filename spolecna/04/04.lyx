@@ -584,7 +584,7 @@ Příklad
 
 \begin_layout Standard
 Najdeme obecné řešení rovnice 
-\begin_inset Formula $a_{n}+3−a_{n}+2−a_{n}+1+a_{n}=0$
+\begin_inset Formula $a_{n+3}−a_{n+2}−a_{n+1}+a_{n}=0$
 \end_inset
 
 pro všechna n ≥ −2
