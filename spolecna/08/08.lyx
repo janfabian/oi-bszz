@@ -134,6 +134,16 @@ Definice:
  
 \end_layout
 
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/limita.png
+	width 6cm
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
 Pokud najdeme limitu L, která je 
 \series bold
