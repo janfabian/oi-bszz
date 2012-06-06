@@ -598,11 +598,12 @@ public - lze je volat odkudkoli
 \end_layout
 
 \begin_layout Enumerate
-neurčený - lze volat ze stejného package
+protected - lze volat ze stejného package nebo odovozené třídy 
 \end_layout
 
 \begin_layout Enumerate
-protected - lze je volat pouze z metod stejné či odovozené třídy 
+neurčený - lze volat ze stejného package; nelze volat z odvozené třídy ležící
+ v jiném package
 \end_layout
 
 \begin_layout Enumerate

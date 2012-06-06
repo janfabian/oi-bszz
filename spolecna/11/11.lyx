@@ -1,0 +1,870 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass scrreprt
+\use_default_options false
+\maintain_unincluded_children false
+\language czech
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 0
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Orientované a neorientované grafy, souvislost, silná souvislost, stromy
+ a kostry, Eulerovy grafy, Hamiltonovy grafy, nezávislé množiny, barvení
+ grafu.
+ (A0B01LGR) 
+\end_layout
+
+\begin_layout Section
+Definice orientovaného grafu
+\end_layout
+
+\begin_layout Standard
+Orientovaný graf je trojice G=(V,E,
+\begin_inset Formula $\epsilon)$
+\end_inset
+
+, kde V je konečná množina vrcholů (též zvaných uzlů), E je konečná množina
+ jmen hran (též nazývaných orientovaných hran) a 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\backslash
+epsilon)
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang czech
+ je přiřazení, které každé hraně e 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\backslash
+epsilon
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang czech
+ E přiřazuje uspořádanou dvojici vrcholů a nazývá se vztah incidence.
+ 
+\end_layout
+
+\begin_layout Standard
+Jestliže ε(e)=(u,v) pro u,v є V, říkáme, že vrchol u je počáteční vrchol
+ hrany e a vrchol v je koncový vrchol hrany e; značíme PV(e)=u a KV(e)=v.
+ O vrcholech u,v říkáme, že jsou krajní vrcholy hrany e, též že jsou incidentní
+ s hranou e.
+ Jestliže počátční vrchol a koncový vrchol jsou stejné, říkáme, že hrana
+ e je orientovaná smyčka.
+ 
+\end_layout
+
+\begin_layout Section
+Definice neorientovaného grafu 
+\end_layout
+
+\begin_layout Standard
+Nerientovaný graf je trojice G=(V,E,ε), kde V je konečná množina vrcholů
+ (též zvaných uzlů), E je konečná množina jmen hran a ε je přiřazení, které
+ každé hraně e є E přiřazuje množinu {u,v} pro vrcholy u,v є V a nazývá
+ se vztah incidence.
+ Jestliže ε(e)={u,v} pro u,v є V, říkáme, že u,v jsou krajní vrcholy hrany
+ e, též že jsou incidentní s hranou e.
+ Je-li u=v, říkáme že e je (neorientovaná) smyčka.
+ 
+\end_layout
+
+\begin_layout Section
+Stromy
+\end_layout
+
+\begin_layout Standard
+Orientovaný nebo neorientovaný graf se nazývá strom, je-li souvislý a neobsahuje
+-li kružnici
+\end_layout
+
+\begin_layout Standard
+V každém stromu s alespoň dvěma vrcholy existuje vrchol stupně 1.
+\end_layout
+
+\begin_layout Standard
+Každý strom o n vrcholech má n-1 hran.
+\end_layout
+
+\begin_layout Description
+Poznámka Mějme souvislý graf G.
+ Přidáme-li k němu hranu (aniž bychom zvětšili množinu vrcholů), zůstane
+ graf souvislý.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Mějme graf G bez kružnic.
+ Odebereme-li v grafu G hranu, vzniklý graf opět nebude obsahovat kružnici.
+\end_layout
+
+\begin_layout Standard
+Strom je graf, který má nejmenší počet hran aby mohl být souvislý a současně
+ největší počet hran aby v něm neexistovala kružnice.
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Tvrzení Je dán graf G, pak následující je ekvivalentní
+\end_layout
+
+\begin_layout Enumerate
+G je strom
+\end_layout
+
+\begin_layout Enumerate
+Graf G nemá kružnice a přidáme-li ke grafu libovolnou hranu uzavřeme přesně
+ jednu kružnici.
+\end_layout
+
+\begin_layout Enumerate
+Graf G je souvislý a odebráním libovolné hrany přestane být souvislý.
+\end_layout
+
+\begin_layout Standard
+Poznamenejme, že přidáním hrany zde rozumíme přidání hrany mezi již existující
+ vrcholy (další vrcholy nepřidáváme)
+\end_layout
+
+\begin_layout Subsubsection*
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+//see also: podgrafy
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Souvislost
+\end_layout
+
+\begin_layout Subsection
+Souvislé grafy
+\end_layout
+
+\begin_layout Standard
+Řekneme, že graf je souvislý, jestliže pro každé dva vrcholy u, v grafu
+ existuje neorientovaná cesta z u do v.
+ Poznamenejme, že vždy existuje cesta z vrcholu u do sebe, totiž triviální
+ cesta.
+ Také platí, že neorientovaná cesta z vrcholu u do vrcholu v je také neorientova
+nou cestou z v do u.
+ 
+\end_layout
+
+\begin_layout Subsection
+Komponenty souvislosti
+\end_layout
+
+\begin_layout Standard
+Máme dán graf G.
+ Komponenta souvislosti (někdy též komponenta slabé souvislosti) je maximální
+ množina vrcholů A taková, že indukovaný podgraf určený A je souvislý.
+ 
+\end_layout
+
+\begin_layout Standard
+Maximální množinou zde rozumíme takovou množinu A, pro kterou platí, že
+ přidáme-li k množině A libovolný vrchol, podgraf indukovaný touto větší
+ množinou už souvislý nebude.
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+//see also: paralelní hrany, prostý graf, stupně vrcholů, matice incidence,
+ sled, tah a cesta
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Silná souvislost
+\end_layout
+
+\begin_layout Subsection
+Silně souvislé grafy
+\end_layout
+
+\begin_layout Standard
+Řekneme, že orientovaný graf G je silně souvislý, jestliže pro každé dva
+ vrcholy u, v existuje orientovaná cesta z vrcholu u do vrcholu v a orientovaná
+ cesta z vrcholu v do vrcholu u.
+\end_layout
+
+\begin_layout Description
+Poznámka V definici silně souvislého grafu jsme mohli požadovat pouze existenci
+ orientované cesty z vrcholu u do vrcholu v.
+ Je to proto, že existenci takové cesty vyžadujeme pro všechny dvojice vrcholů,
+ tedy i pro dvojici v, u.
+ Dále si uvědomte, že vždy existuje orientovaná cesta z vrcholu do sebe
+ – je to triviální cesta.
+\end_layout
+
+\begin_layout Standard
+Souvislý graf je silně souvislý právě tehdy, když každá hrana leží v nějakém
+ cyklu.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+//See also: Silně souvislé komponenty, kondenzace grafu, hledání silně souvislýc
+h komponent, Tarjanův algoritmus pro nalezení silně souvislých komponent
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Minimální kostra
+\end_layout
+
+\begin_layout Subsection
+Kostra grafu
+\end_layout
+
+\begin_layout Standard
+Je dán souvislý graf G.
+ Faktor grafu G, který je stromem, se nazývá kostra grafu G.
+ Připomeňme, že faktor grafu G je podgraf grafu G, který má stejnou množinu
+ vrcholů jako G.
+ 
+\end_layout
+
+\begin_layout Subsection
+Minimální kostra
+\end_layout
+
+\begin_layout Standard
+Je dán souvislý graf G spolu s ohodnocením hran c, tj.
+ pro každou hranu eєE(G) je dáno číslo c(e) (číslo c(e) nazýváme cenou hrany
+ e).
+ 
+\end_layout
+
+\begin_layout Standard
+Minimální kostra grafu G=(V,E) je taková kostra grafu K=(V,L), že ∑eєL c(e)
+ je nejmenší (mezi všemi kostrami grafu G).
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Tvrzení
+\end_layout
+
+\begin_layout Standard
+V každém souvislém ohodnoceném grafu existuje minimální kostra.
+ Nemusí však být jediná.
+ Obecný postup pro hledání minimální kostry 
+\end_layout
+
+\begin_layout Subsection
+Obecný postup pro hledání minimální kostry
+\end_layout
+
+\begin_layout Standard
+Je dán souvislý graf G=(V,E) a ohodnocení hran c.
+\end_layout
+
+\begin_layout Enumerate
+Na začátku máme L=0.
+ Označíme S množinu všech komponent souvislosti grafu K=(V,L); tj.
+ na začátku je s={{v};vєV}.
+\end_layout
+
+\begin_layout Enumerate
+Dokud není graf K=(V,L) souvislý (tj.
+ dokud S se neskládá z jediné množiny), vybereme hranu e podle následujících
+ pravidel:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+E spojuje dvě různé komponenty souvislosti S,S‘ grafu K (tj.
+ dvě množiny z S)
+\end_layout
+
+\begin_layout Enumerate
+A pro S nebo S‘ je nejlevnější hranou která vede z komponenty ven
+\end_layout
+
+\begin_layout Standard
+Hranu e přidáme do množiny L a množiny S a S‘ nahradíme jejich sjednocením.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Postup ukončíme, jestliže jsme přidali n-1 hran (tj.
+ jestliže se S skládá z jediné množiny).
+\end_layout
+
+\begin_layout Subsection
+Kruskalův algoritmus
+\end_layout
+
+\begin_layout Standard
+Jedná se o modifikaci obecného postupu pro hledání minimální kostry:
+\end_layout
+
+\begin_layout Enumerate
+Setřídíme hrany podle ceny do neklesající posloupnosti, tj.
+ 
+\begin_inset Formula $c(e1)\text{≤}c(e2)\text{≤}\text{…}..\text{≤}c(em)$
+\end_inset
+
+.
+ Položíme L=0, S={{v};vєV}.
+\end_layout
+
+\begin_layout Enumerate
+Probíráme hrany v daném pořadí.
+ Hranu ei přidáme do L, jestliže má oba krajní vrcholy v různých množinách
+ S, S‘ є S.
+ V S množiny S a S‘ nahradíme jejich sjednocením.
+ V opačném případě hranu přeskočíme.
+\end_layout
+
+\begin_layout Enumerate
+Algoritmus končí, jestliže jsme přidali n-1 hran (tj.
+ S se skládá z jediné množiny).
+\end_layout
+
+\begin_layout Subsection
+Primův algoritmus
+\end_layout
+
+\begin_layout Standard
+Jedná se o modifikaci obecného postupu pro hledání minimální kostry:
+\end_layout
+
+\begin_layout Enumerate
+Vybereme libovolný vrchol v.
+ Položíme L=0, S={v}.
+\end_layout
+
+\begin_layout Enumerate
+Vybereme nejlevnější hranu e, která spojuje některý vrchol x z množiny S
+ s vrcholem y, který v S neleží.
+ Vrchol y přidáme do množiny S a hranu e přidáme do L.
+\end_layout
+
+\begin_layout Enumerate
+Opakujeme krok 2 dokud nejsou všechny vrcholy v množině S.
+\end_layout
+
+\begin_layout Subsection
+Jádro grafu
+\end_layout
+
+\begin_layout Standard
+Podmnožina vrcholů K orientovaného grafu G se nazývá jádro grafu, jestliže
+ splňuje následující podmínky:
+\end_layout
+
+\begin_layout Enumerate
+Pro každou hranu e s počátečním vrcholem PV(e) є K platí KV(e) (NENÍ)є K.
+ (Neexistuje hrana, která by vedla z množiny K do sebe)
+\end_layout
+
+\begin_layout Enumerate
+Pro každý vrchol v, který neleží v K, existuje hrana e s PV(e)=v a KV(e)
+ є K.
+ (z každého vrcholu, který leží mimo K, se můžeme dostat po hraně zpět do
+ K)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+//See also: Kořenové stromy, kořen, následník, předchůdce a list, výška
+ kořenového stromu, binární kořenové stromy, halda 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Eulerovy grafy
+\end_layout
+
+\begin_layout Standard
+Tah je sled, ve kterém se neopakují hrany.
+ Jinými slovy, tah obsahuje grany grafu vždy nejvýše jedenkrát.
+\end_layout
+
+\begin_layout Subsection
+Eulerovské tahy
+\end_layout
+
+\begin_layout Standard
+Tah v grafu se nazývá eulerovský, jestliže prochází každou hranou; jinými
+ slovy, obsahuje-li každou hranu přesně jedenkrát.
+ Eulerovské tahy se dělí na uzavřené a otevřené, orientované a neorientované.
+\end_layout
+
+\begin_layout Subsection
+Eulerův graf
+\end_layout
+
+\begin_layout Standard
+Graf G se nazývá eulerovský graf, jestliže v něm existuje uzavřený eulerovský
+ tah.
+ V případě, že graf G je orientovaný, požadujeme existenci orientovaného
+ uzavřeného eulerovského tahu.
+\end_layout
+
+\begin_layout Standard
+Aplikace eulerovských tahů
+\end_layout
+
+\begin_layout Itemize
+Kreslení s co nejmenším počtem tahů
+\end_layout
+
+\begin_layout Itemize
+Úloha čínského pošťáka 
+\end_layout
+
+\begin_layout Itemize
+De Bruijnova posloupnost 
+\end_layout
+
+\begin_layout Standard
+V silně souvisém orientovaném grafu existuje uzavřený orientovaný eulerovský
+ tah právě tehdy, když pro každý vrchol v grafu platí 
+\begin_inset Formula $d-(v)=d+(v)$
+\end_inset
+
+ (Tj.
+ v každém vrcholu končí stejný počet hran jako v něm začíná).
+\end_layout
+
+\begin_layout Standard
+V souvislém grafu existuje uzavřený neorientovaný eulerovský tah právě tehdy,
+ když každý vrchol má sudý stupeň.
+\end_layout
+
+\begin_layout Subsection
+Postup na hledání uzavřeného orientovaného eulerovského tahu
+\end_layout
+
+\begin_layout Standard
+Vybereme libovolný vrchol v grafu.
+ Protože graf je souvislý, v každém vrcholu začíná i končí alespoň jedna
+ hrana.
+ Z vrcholu v vytváříme náhodně orientovaný tah; tj.
+ procházíme hrany tak, abychom žádnou hranou neprošli dvakrát.
+ Takto pokračujeme, dokud je to možné, tj.
+ dokud se nevrátíme do výchozího vrcholu v a ve vrcholu v již nezačíná žádná
+ dosud nepoužitá hrana.
+ Tím jsme dostali uzavřený tah.
+ Jestliže tento tah obsahuje všechny hrany, je to hledaný uzavřený eulerovský
+ tah.
+ Neobsahuje-li takto zkonstruovaný tah všechny hrany, pak na tahu existuje
+ vrchol w takový, že v něm začíná nepoužitý hrana.
+ (To vyplývá ze souvislosti grafu.) Získaný tah ve vrcholu w rozpojíme a
+ náhodně konstruujeme uzavřený tah (z dosud nepoužitých hran) začínající
+ a končící ve vrcholu w.
+ Tento postup opakujeme, dokud nedostaneme tah obsahující všechny hrany.
+ 
+\end_layout
+
+\begin_layout Description
+Tvrzení V souvislém orientovaném grafu existuje otevřený orientovaný eulerovský
+ tah právě tehdy, když existují vrcholy u1, u2 takové, že 
+\begin_inset Formula $d-(u1)=d+(u1)+1,d-(u2)=d+(u2)-1$
+\end_inset
+
+, a pro každý jiný vrchol v grafu platí 
+\begin_inset Formula $d-(v)=d+(v)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+V souvislém grafu existuje otevřený neorientovaný eulerovský tah právě tehdy,
+ když v grafu existují přesně dva vrcholy lichého stupně.
+\end_layout
+
+\begin_layout Description
+Tvrzení Je dán souvislý neorientovaný graf G s 2k vrcholy lichého stupně.
+ Pak existuje k hranově disjunktních otevřených tahů takových, že každá
+ hrana grafu G leží v právě jednom z těchto tahů.
+ Ke grafu G přidáme k hran a to tak, že každá nově přidaná hrana spojuje
+ vždy dva vrcholy lichého stupně.
+ Tím dostaneme eulerovský graf G'' (ano, každý vrchol má již sudý stupeň).
+ V grafu G‘‘ najdeme eulerovský uzavřený tah.
+ Jestliže z něj odstraníme všechny přidané vrcholy, rozpadne se na k hranově
+ disjunktních tahů.
+ Tyto tahy splňují podmínky tvrzení.
+ 
+\end_layout
+
+\begin_layout Section
+Hamiltonovské grafy
+\end_layout
+
+\begin_layout Standard
+Připomeňme, že cesta je tah, ve kterém se neopakují vrcholy (s výjimkou
+ uzavřené cesty, kdy se první vrchol rovná poslednímu).
+\end_layout
+
+\begin_layout Subsection
+Hamiltonovské cesty, kružnice, cykly
+\end_layout
+
+\begin_layout Standard
+Je dán graf G.
+ Otevřená cesta se nazývá hamiltonovská cesta, obsahuje-li všechny vrcholy
+ (a tudíž všechny vrcholy přesně jedenkrát).
+ Obdobně hamiltonovská kružnice je kružnice, která obsahuje každý vrchol
+ grafu; hamiltonovský cyklus je cyklus, který obsahuje každý vrchol v grafu.
+\end_layout
+
+\begin_layout Standard
+Úlohy dělíme na existenční a optimalizační.
+ V existenční úloze jde o to, zjistit zda v daném grafu existuje hamiltonovská
+ cesta, kružnice nebo cyklus.
+ V optimalizačních úlohách máme hrany grafu navíc ohodnoceny délkami a požaduje
+ se nalezení hamiltonovské cesty, kružnice nebo cyklu s co nejmenším součtem
+ délek jednotlivých hran tvořících cestu, kružnici nebo cyklus.
+\end_layout
+
+\begin_layout Standard
+Na rozdíl od hledání eulerovských tahů, je hledání hamiltonovských cest,
+ kružnic nebo cyklů velmi obtížná úloha.
+ Přesněji, zjištění, zda v daném grafu existuje hamiltonovská cesta, kružnice
+ nebo cyklus je tzv.
+ NP-úplná úloha.
+ Přesto, nebo právě proto, jsou úlohy tohoto typu v praxi rozšířené.
+\end_layout
+
+\begin_layout Standard
+Aplikace
+\end_layout
+
+\begin_layout Itemize
+Problém obchodného cestujícího 
+\end_layout
+
+\begin_layout Itemize
+Dopravní úlohy 
+\end_layout
+
+\begin_layout Itemize
+Plánování procesů 
+\end_layout
+
+\begin_layout Standard
+Jednoduché nutné podmínky pro existenci hamiltonovské cesty, kružnice nebo
+ cyklu
+\end_layout
+
+\begin_layout Itemize
+Existuje-li v grafu hamiltonovská cesta, musí být graf souvislý
+\end_layout
+
+\begin_layout Itemize
+Existuje-li v grafu hamiltonovská kružnice, musí mít každý vrchol stupeň
+ alespoň 2 
+\end_layout
+
+\begin_layout Itemize
+Existuje-li v grafu G hamiltonovský cyklus, musí být graf silně souvislý
+ 
+\end_layout
+
+\begin_layout Standard
+Netriviální nutná a postačující podmínka pro zjištění, zda daný graf obsahuje
+ hamiltonovskou cestu, kružnici nebo cyklus, není známa.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+//See also: Metoda větví a mezí 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Nezávislé množiny
+\end_layout
+
+\begin_layout Standard
+Je dán neorientovaný (orientovaný) graf G.
+ Množina vrcholů A se nazývá nezávislá množina vrcholů, jestliže žádná hrana
+ grafu G nemá oba krajní vrcholy v množině A.
+ Jinými slovy, podgraf indukovaný množinou A je diskrétní.
+\end_layout
+
+\begin_layout Subsection
+Maximální nezávislá množina
+\end_layout
+
+\begin_layout Standard
+Je dán graf G.
+ Nezávislá množina N se nazývá maximální nezávislá množina, jestliže jakákoli
+ její nadmnožina už není nezávislá.
+ Jinými slovy, N je maximální nezávislá množina, jestliže pro každý vrchol
+ v, který neleží v N, existuje vrchol w є N takový, že v G existuje hrana
+ mezi v a w.
+\end_layout
+
+\begin_layout Subsection
+Nezávislost grafu
+\end_layout
+
+\begin_layout Standard
+Je dán neorientovaný nebo orientovaný graf G.
+ Počet vrcholů v nejpočetnější nezávislé množině grafu G se nazývá nezávislost
+ grafu G a značíme jej α(G).
+ 
+\end_layout
+
+\begin_layout Standard
+Nejpočetnější nezávislá množina je jistě také maximální, ale ne každá maximální
+ nezávislá množina je současně nejpočetnější.
+ 
+\end_layout
+
+\begin_layout Description
+Poznámka Jádro orientovaného grafu G je nezávislá množina grafu G; to vyplývá
+ z první podmínky, kterou jádro musí splňovat.
+ Ovšem ne každá nezávislá množina orientovaného grafu G je současně jádrem
+ grafu G; jádro musí splňovat obě podmínky (viz výše).
+\end_layout
+
+\begin_layout Standard
+Úplný neorientovaný graf G nazýváme úplným grafem, jestliže je prostý, nemá
+ smyčky a každé dva různé vrcholy jsou spojené hranou.
+ Úplný neorientovaný graf G s n vrcholy má (n(n-1))/2 hran.
+ 
+\end_layout
+
+\begin_layout Section
+Obarvení grafu
+\end_layout
+
+\begin_layout Standard
+Je dán neorientovaný graf G bez smyček.
+ Barevnost grafu G (též chromatické číslo grafu G) je nejmenší k takové,
+ že G je k-barevný.
+ Barevnost grafu G značíme χ(G).
+ 
+\end_layout
+
+\begin_layout Standard
+Množina vrcholů obarvená stejnou barvou tvoří nezávislou množinu grafu.
+ Graf je jednobarevný právě tehdy, když nemá žádnou hranu.
+ 
+\end_layout
+
+\begin_layout Standard
+Graf G je dvoubarevný právě tehdy, když neobsahuje kružnici liché délky.
+\end_layout
+
+\begin_layout Subsection
+Dvoubarevné grafy
+\end_layout
+
+\begin_layout Standard
+Zjistit, zda je daný graf dvoubarevný, se dá jednoduchou modifikací prohledávání
+ do šířky: Provedeme prohledání grafu do šířky.
+ Vrcholům, které ležely v sudých hladinách, přiřadíme barvu 1; vrcholům,
+ které ležely v lichých hladinách, přiřadíme barvu 2.
+ 
+\end_layout
+
+\begin_layout Standard
+Jestliže graf neobsahoval kružnici liché délky, jedná se o obarvení grafu
+ a graf je tedy dvoubarevný.
+ Vede-li hrana mezi dvěma vrcholy v hladinách stejné parity, obsahuje graf
+ kružnici liché délky a není proto dvoubarevný.
+\end_layout
+
+\begin_layout Description
+Poznámka Zjistit, zda daný graf je tříbarevný, je těžký problém (obecně
+ NP-úplný problém).
+ Pro každý graf G, který mý m hran platí 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $\text{χ}(G)\text{≤}\frac{1}{2}+\sqrt{\text{2m+}\frac{1}{4}}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Tvrzení označíme ∆ největší stupeň vrcholu grafu G.
+ Pak χ(G)<=∆+1 Sekvenční barvení 
+\end_layout
+
+\begin_layout Standard
+Následující postup obarví graf ∆+1 barvami.
+ Označíme množinu barev B={1,…., ∆+1}.
+\end_layout
+
+\begin_layout Enumerate
+Seřadíme vrcholy do posloupnosti (libovolně).
+ Např.
+ v1,v2,….,vn
+\end_layout
+
+\begin_layout Enumerate
+Probíráme vrcholy v tomto pořadí a vrcholu vi přiřadíme vždy tu nejmenší
+ barvu, kterou nemá žádný jeho soused vrcholu.
+\end_layout
+
+\begin_layout Standard
+Tento algoritmus dává horní odhad pro barevnost grafu.
+ Jedná se ovšem o odhad, který může být velmi vzdálen od barevnosti grafu.
+ Přesněji, existují dvoubarevné grafy, které při nevhodném uspořádání vrcholů
+ v kroku 1, algoritmus obarví n/2 barvami (kde n je počet vrcholů grafu)
+\end_layout
+
+\begin_layout Description
+Tvrzení Pro každý neorientovaný graf G bez smyček platí: 
+\begin_inset Formula $α(G)+χ(G)\text{≤}n+1$
+\end_inset
+
+.
+ Kde n je počet vrcholů grafu G.
+ 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+//See also: Biparitní grafy, klika v grafu, doplňkový graf 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

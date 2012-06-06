@@ -1,0 +1,466 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass scrreprt
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Sofwarové systémy- otázka č.
+ 9
+\end_layout
+
+\begin_layout Subtitle
+Webové služby a service-oriented architektury, asynchronní architektury
+ komunikace, producer-consumer model, aktivní objekty a agentní systémy.
+ (A4B77ASS) 
+\end_layout
+
+\begin_layout Chapter
+Webové služby
+\end_layout
+
+\begin_layout Standard
+Software navržen tak aby podporoval výpočty mezi stroji za použití sítě.
+ Používá WSDL (Web Service Definition Language) pro specifikaci rozhraní.
+ Komunikuje s ostatními službami za pomoci zpráv popsaných formátem SOAP.
+ Typické použití protokolu HTTP za použití XML serializace dat.
+ Použití UDDI (Universal Description, Discovery and Integration) pro nalezení
+ služeb.
+\end_layout
+
+\begin_layout Section*
+Webové služby typy
+\end_layout
+
+\begin_layout Standard
+RESTfull Web Services
+\end_layout
+
+\begin_layout Itemize
+Hlavním cílem je manipulovat s XML reprezentací webových zdrojů
+\end_layout
+
+\begin_layout Itemize
+Jednotný soubor operací nezávyslý na žadateli
+\end_layout
+
+\begin_layout Standard
+"Big" Web Services
+\end_layout
+
+\begin_layout Itemize
+Výstava libovolného souboru operací
+\end_layout
+
+\begin_layout Itemize
+Může být stavový
+\end_layout
+
+\begin_layout Section*
+Realné příklady
+\end_layout
+
+\begin_layout Description
+Google analytics, blogger, books, calendar, custom search, latitude, maps,
+ translate API, calendar...
+\end_layout
+
+\begin_layout Description
+E-bay API pro obchochodování
+\end_layout
+
+\begin_layout Description
+Amazon reklamní API
+\end_layout
+
+\begin_layout Description
+Busines-to-Busines nejvýznamější prostor pro užívání webových služeb a service-o
+riented architekture
+\end_layout
+
+\begin_layout Section*
+Vývoj webovývh služeb
+\end_layout
+
+\begin_layout Description
+Client-Server Jeden centrální server, který obdržuje požadavky od klientů.
+ Například web.
+\end_layout
+
+\begin_layout Description
+RPC/DCE Framework pro softwarový vývoj, uveden v letech 1990.
+ Microsoft vytvořil svou vlastní alternativu MSRPC.
+ První distribuované objektové systémy byly založeny na RPC/DCE (CORBA,
+ Microsoft DCOM, RMI).
+ Beží taktéž na client-server architektuře (klient pošlo požadavek obdrží
+ výsledek)
+\end_layout
+
+\begin_layout Description
+XML-RPC objeveno v letech 1990, podpora pro základní datové typy, zprávava
+ byla kódována v XML.
+\end_layout
+
+\begin_layout Chapter
+Service-oriented architektury (SOA)
+\end_layout
+
+\begin_layout Standard
+Jedná se o soubor zásad a metodiku pro návrh a vývoj softwaru v podobě spoluprac
+ujících služeb.
+ Tyto služby jsou přesně definované obchodní funkce, které jsou postaveny
+ jako softwarové komponenty.
+ Mohou být opakovaně použity pro různé účely.
+ SOA principy platí při fázi návrhu a integraci.
+\end_layout
+
+\begin_layout Standard
+Služby jsou strukturováný jako třídy (kombinace informací, zakrývají vnitřní
+ funkčnost, poskytují jednoduché rozhraní pro zbytek aplikace).
+ Služby mohou tvořit hierarchii.
+\end_layout
+
+\begin_layout Itemize
+Poskytuje sadu služeb, která může být použita v rámci více obchodních záměrů.
+\end_layout
+
+\begin_layout Itemize
+Definuje, jak integrovat nesourodé aplikace distribuované na vice systémech
+\end_layout
+
+\begin_layout Itemize
+Definuje rozhraní z pohledu funkcí a protokolů
+\end_layout
+
+\begin_layout Itemize
+Vyžaduje volné spojení se systémem a dalšími technologiemi, které jsou základem
+ aplikace
+\end_layout
+
+\begin_layout Itemize
+Separuje funkce do různých jednotek, nebo služeb, které poskytuje vývojářům
+ po síti
+\end_layout
+
+\begin_layout Section*
+Proč SOA
+\end_layout
+
+\begin_layout Itemize
+Znovupoužití
+\end_layout
+
+\begin_layout Itemize
+Zjednodušené používání starších aplikací
+\end_layout
+
+\begin_layout Itemize
+Platformová nezávyslost
+\end_layout
+
+\begin_layout Itemize
+Vysoká škálovatelnost
+\end_layout
+
+\begin_layout Section*
+Proč ne SOA
+\end_layout
+
+\begin_layout Itemize
+Pokud je důležitý skutečný čas výpočtu
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename assets/soap.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Asynchronní architektury komunikace
+\end_layout
+
+\begin_layout Standard
+Asynchorní primitiva:
+\end_layout
+
+\begin_layout Description
+send vrátí kontrolu procesu ihned bez čekání na odeslání zprávy.
+ Výhodou tohoto schématu je vyšší stupeň paralelismu.
+ Proces může pokračovat ve svých výpočtech i po dobu přenosu zprávy.
+ Během přenosu zprávy však proces nesmí používat buffer, ze kterého je zpráva
+ odesílána.
+ To lze vyřešit dvěma způsoby: 
+\end_layout
+
+\begin_layout Enumerate
+Jádro systému si okopíruje zprávu do svých vnitřních bufferů, čímž umožní
+ procesu další volný běh.
+\end_layout
+
+\begin_layout Enumerate
+Po odeslání zprávy je proces přerušen.
+\end_layout
+
+\begin_layout Description
+receive pouze říká jádru, kam má umístit došlou zprávu.
+ I zde můžeme využít např.
+ tzv.
+ primitiva wait, které pozastaví proces do té doby, než zpráva dorazí.
+ Druhou možností je zavedení primitiva test, které otestuje, zda je nějaká
+ zpráva připravena nebo conditional_retrieve, které buď vybere došlou zprávu
+ nebo se vrátí s informací, že žádná zpráva není k dispozici.
+ Poslední možností je zavedení uživatelského přerušení, které bude informovat
+ o došlé zprávě.
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset Graphics
+	filename assets/asynchron.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+producer-consumer problém
+\end_layout
+
+\begin_layout Standard
+Jedná se o typický problém multiprocesové synchronizace.
+ Problém popisuje 2 procesy, producentů a konzumentů, kteří používají jeden
+ buffer používaný jako frontu s pevnou velikostí.
+ Producent generuje data, ukládá je do bufferu a začíná je znovu generovat.
+ Ve stejný čas konzument používá data z bufferu.
+ Problém je, že producent nemůže ukládat data do bufferu, pokud je plný
+ a konzument nemůže brát data, pokud je buffer prázdný.
+\end_layout
+
+\begin_layout Standard
+Řešením tohoto problému je, uspat producenta, pokud je zásobník plný a probudit
+ ho, když se uvolní místo.
+ Zároveň pak uspat konzumenta pokud je zásobník prázdný a probudit ho, pokud
+ je v zásobníku něco vloženo.
+\end_layout
+
+\begin_layout Itemize
+Řešení přes standartní sleep, wakeup, kdy se při každé iteraci kontroluje
+ stav zásobníku.
+ Může docházet k deadlocku
+\end_layout
+
+\begin_layout Itemize
+Řešení přes semafory.
+ Procesy si dávají navzájem přednost podle toho v jakém stavu je semafor.
+ 
+\end_layout
+
+\begin_layout Itemize
+Řešení přes monitory.
+ Synchornizaci provádí akce add a remove nad zásobníkem.
+ Pokud je zásobník prázdný zamknou konzumenta...
+\end_layout
+
+\begin_layout Chapter
+Aktivní objekty
+\end_layout
+
+\begin_layout Standard
+Jedná se o návrhový vzor, který odděluje metody provádění výpočtu a volání.
+ Zlepšuje souběžnost a snižuje problémy se synchronizací.
+ Na těchto objektech bývají velmi často založeny Agentní a Multiagentní
+ systémy.
+\end_layout
+
+\begin_layout Standard
+Princip activního objektu je založen na tom, že je vyvolán asynchroní výpočet,
+ kterému jsou předány vstupní parametry a návratová funkce.
+ Objekt který vyvolá asynchroní akci, zahodí na výpočet referenci, a pracuje
+ dál bez ohledu na externím výpočtu (ne tak so slova, pokud je výpočet nezbytný,
+ čeká na něj).
+ Externí výpočet se sám ozve na referenci kterou v sobě uchovává.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename assets/active-object.png
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Agentní systémy
+\end_layout
+
+\begin_layout Standard
+Speciální podmnožina umělých inteligencí.
+ Zkoumá koncept automatického rozhodování, komunikace a koordinace, distribuovan
+ého plánování a učení.
+ Herni aspekty jako chování soutěžícího, nebo logickou formalizaci vyšších
+ struktur na úrovni znalostí.
+ 
+\end_layout
+
+\begin_layout Description
+Agent je zapouzdřený výpočetní systém, který se nachází v nějákém prostředí,
+ a je schopen pružného, samostatného chování za účelem splnění svého cíle.
+ Agent může existovat samostatně, ale často je součástí multi-agentního
+ systému.
+\end_layout
+
+\begin_layout Description
+Technologie Agentů poskytuje sadu nástrojů, algoritmů a metod pro vývoj
+ a distribuovaných a asynchronních inteligentních softwarových aplikací.
+\end_layout
+
+\begin_layout Standard
+Klíčové vlastnsoti:
+\end_layout
+
+\begin_layout Itemize
+Samostatnost - Agent rozhoduje sám za sebe a nemá žádný dozor z venčí.
+\end_layout
+
+\begin_layout Itemize
+Reaktivita - Schopnost reagovat na změny prosředí.
+\end_layout
+
+\begin_layout Itemize
+Intencionalita - Schopnost uvažovat o dlouhodobých cílech.
+\end_layout
+
+\begin_layout Itemize
+Sociální schopnossti -Je schopen komunikovat a spolupracovat s ostatními
+ agenty.
+\end_layout
+
+\begin_layout Standard
+Modely užití agenta:
+\end_layout
+
+\begin_layout Itemize
+agent jako metafora - pomáhá vývojářum vývoj ohledně samostatnosti v komunikaci
+\end_layout
+
+\begin_layout Itemize
+zdoj technologii
+\end_layout
+
+\begin_layout Itemize
+simulační - poskytuje simulaci problému realného světa
+\end_layout
+
+\begin_layout Standard
+Úrovně návrhu agenta:
+\end_layout
+
+\begin_layout Itemize
+Organizační úroveň 
+\end_layout
+
+\begin_layout Itemize
+Interakční úroveň - komunikace mezi agenty
+\end_layout
+
+\begin_layout Itemize
+Agentní úroveň - týká se samotného agenta (učení...)
+\end_layout
+
+\begin_layout Standard
+Užití agentů:
+\end_layout
+
+\begin_layout Itemize
+Zeměplošné rozložení
+\end_layout
+
+\begin_layout Itemize
+Konkurenční domény
+\end_layout
+
+\begin_layout Itemize
+Časově kritické odevy a vysoká odolnost
+\end_layout
+
+\begin_layout Itemize
+Simulace a modelování scénářů
+\end_layout
+
+\begin_layout Itemize
+Open system scénáře
+\end_layout
+
+\begin_layout Itemize
+Complex system scénáře
+\end_layout
+
+\begin_layout Itemize
+Samostatnostně orientované aspekty
+\end_layout
+
+\end_body
+\end_document

@@ -93,6 +93,10 @@ Binární strom - každý prvek (uzel) má nanejvýš dva následníky
 \end_layout
 
 \begin_layout Standard
+ADT jsou nezávislé na vlastní implementaci
+\end_layout
+
+\begin_layout Standard
 Počet složek: 
 \end_layout
 

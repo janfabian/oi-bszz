@@ -22,15 +22,17 @@ Hotové otázky
 
 05\.  Imperativní programování, software, překladač, interpret, vnitřní forma, programovací jazyky, syntaxe, sémantika, proměnné, výrazy, vstup, výstup, řídící struktury, jednoduché datové typy, přiřazení, funkce, procedury, parametry, rozklad problému na podproblémy, princip rekurze a iterace (A0B36PR1) 
 
-06\.  Objektové programování. (PRG1)
+06\.  Principy objektového přístupu, třída jako: programová jednotka, zdroj funkcí, datový typ; struktura objektu, konstruktory, přetěžování, instance třídy, hierarchie tříd, dědění, kompozice; abstraktní třídy, polymorfismus, rozhraní, rozhraní jako typ proměnné, typ interface. (A0B36PR1) 
 
-07\.  Spojové struktury (PRG1)
+07\.  Principy objektového přístupu, třída jako: programová jednotka, zdroj funkcí, datový typ; struktura objektu, konstruktory, přetěžování, instance třídy, hierarchie tříd, dědění, kompozice; abstraktní třídy, polymorfismus, rozhraní, rozhraní jako typ proměnné, typ interface. (A0B36PR1) 
 
 08\. Limita funkce a posloupnosti, zejména rychlosti růstu v nekonečnu a l'Hospitalovo pravidlo. Derivace a parciální derivace: výpočet a význam (rychlost změny, monotonie, extrémy, gradient). (A4B01MA2) 
 
 09\. Význam integrálu, základní metody výpočtu a nevlastní integrál; řady a jejich konvergence (význam, příklady použití, geometrická řada), Taylorův polynom a řada. (A4B01MA2) 
 
 10\. Syntaxe a sémantika výrokové a predikátové logiky. Sémantický důsledek a tautologická ekvivalence. Booleovský kalkul. Rezoluční metoda (A0B01LGR)
+
+11\. Orientované a neorientované grafy, souvislost, silná souvislost, stromy a kostry, Eulerovy grafy, Hamiltonovy grafy, nezávislé množiny, barvení grafu. (A0B01LGR) 
 
 12\.  Programování v jazyce JAVA: struktura tříd a programu. Události, zdroj a posluchač události, šíření událostí, vlastní události, více zdrojů a posluchačů, rozlišení zdrojů. Výjimky a jejich zpracování, propagace výjimek, hierarchie výjimek, kontrolované a nekontrolované výjimky. (A0B36PR2) 
 

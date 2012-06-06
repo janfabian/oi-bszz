@@ -719,7 +719,6 @@ Velikost Coriolisovy síly spočteme jako:
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset Formula $\alpha$
 \end_inset
 
@@ -789,7 +788,8 @@ Je schopnost vykonat práci.
 \begin_inset Formula $^{-2}$
 \end_inset
 
-
+ (1 Joule je definován jako práce, kterou koná síla 1 N působící po dráze
+ 1 m.)
 \end_layout
 
 \begin_layout Subsubsection
@@ -849,6 +849,12 @@ Jestliže těleso nebo hmotný systém nepodléhají účinkům okolí, pak sou�
 
 \begin_layout Subsection
 Práce
+\end_layout
+
+\begin_layout Standard
+Působení síly na fyzikální těleso nebo na silové pole, při kterém dochází
+ k posouvání nebo deformaci tohoto tělesa resp.
+ ke změně rozložení potenciální energie v silovém poli.
 \end_layout
 
 \begin_layout Subsubsection
@@ -933,6 +939,131 @@ Pokud je moment síly proměnný, použijeme pro výpočet integrál tzv.
 
 \end_layout
 
+\begin_layout Subsubsection
+Moment síly
+\end_layout
+
+\begin_layout Standard
+Moment síly je vektorová fyzikální veličina, která vyjadřuje míru otáčivého
+ účinku síly.
+ Otáčivý účinek síly se vztahuje vzhledem k danému bodu nebo přímce.
+ Bod, ke kterému se moment síly určuje, se nazývá momentovým bodem.
+ Kolmá vzdálenost p síly od její osy k bodu je tzv.
+ rameno síly.
+\end_layout
+
+\begin_layout Standard
+Moment síly je definován jako součin síly a kolmé vzdálenosti osy síly od
+ daného bodu.
+ Velikost momentu síly tedy závisí na velikosti síly a na vzdálenosti od
+ osy otáčení (čím dále, tím větší moment síly).
+\end_layout
+
+\begin_layout Subsubsection
+Konzervativní silové pole
+\end_layout
+
+\begin_layout Standard
+Konzervativní silové pole je silové pole, které může konat práci, ale v
+ izolovaném systému na uzavřené křivce je celková vykonaná práce nulová.
+ Konzervativní síly lze vyjádřit jako záporný gradient potenciální energie:
+ F = -
+\begin_inset Formula $\nabla$
+\end_inset
+
+ V, proto se též nazývají potenciálové.
+ Mezi konzervativní síly patří např.
+ gravitační síla a elektrostatická síla.
+\end_layout
+
+\begin_layout Subsubsection
+Moment hybnosti
+\end_layout
+
+\begin_layout Standard
+Moment hybnosti je vektorová fyzikální veličina, která popisuje rotační
+ pohyb tělesa.
+ Moment hybnosti má při rotačním pohybu stejný význam jako hybnost při pohybu
+ přímočarém.
+ Pojem momentu hybnosti je analogický pojmu hybnosti: tak jako je hybnost
+ součinem hmotnosti a rychlosti v případě translačního pohybu, tak je moment
+ hybnosti součinem momentu setrvačnosti a úhlové rychlosti v případě rotačního
+ pohybu.
+\end_layout
+
+\begin_layout Standard
+Moment hybnosti L je určen vektorovým součinem jako
+\end_layout
+
+\begin_layout Standard
+L = r * p;
+\end_layout
+
+\begin_layout Standard
+kde r je polohový vektor a p je hybnost.
+\end_layout
+
+\begin_layout Standard
+Jednotka SI: kilogram krát metr na druhou za sekundu, značka jednotky: kg.m2.s-1
+\end_layout
+
+\begin_layout Subsubsection
+I.
+ impulsová věta
+\end_layout
+
+\begin_layout Standard
+Časová změna celkového momentu hybnosti je rovna výslednici všech vnějších
+ sil, které na soustavu působí.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename images/impulsovaVeta1.emf
+	width 3cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To také znamená, že vnitřní síly nemohou změnit pohybový stav soustavy jako
+ celku.
+ Je-li výslednice všech vnějších sil nulová, nemění se výsledná hybnost
+ soustavy.
+ V tomto případě se výsledná hybnost zachovává.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+II.
+ impulsová věta
+\end_layout
+
+\begin_layout Standard
+Časová změna výsledného momentu hybnosti je rovna celkovému momentu vnějších
+ sil.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename images/impulsovaVeta2.emf
+	width 3cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Je-li výsledný moment vnějších sil nulový, zachovává se celkový moment hybnosti
+ soustavy.
+ 
+\end_layout
+
 \begin_layout Section
 Otáčivý pohyb tuhého tělesa
 \end_layout
@@ -957,6 +1088,14 @@ Osa otáčení je přímka, kolem které se těleso při otáčivém pohybu otá
 
 \begin_layout Subsection
 Moment setrvačnosti
+\end_layout
+
+\begin_layout Standard
+Moment setrvačnosti je fyzikální veličina, která vyjadřuje míru setrvačnosti
+ tělesa při otáčivém pohybu.
+ Její velikost závisí na rozložení hmoty v tělese vzhledem k ose otáčení.
+ Body (části) tělesa s větší hmotností a umístěné dál od osy mají větší
+ moment setrvačnosti.
 \end_layout
 
 \begin_layout Standard
@@ -1058,8 +1197,8 @@ Newtonův Gravitační zákon
 \end_layout
 
 \begin_layout Standard
-Newtonův gravitační zákon je zákon, který je požitelný poze pro slabá gravitační
- pole.
+Newtonův gravitační zákon je zákon, který je použitelný pouze pro slabá
+ gravitační pole.
  Je formulován tak, že každá dvě tělesa o hmotnostech 
 \begin_inset Formula $m_{1}$
 \end_inset
@@ -1118,7 +1257,12 @@ Její jednotkou je N.kg
 \begin_inset Formula $^{-1}$
 \end_inset
 
-
+ (kde 
+\backslash
+mathbf{F}_g je gravitační síla a m je hmotnost hmotného bodu, na nějž těleso
+ s intenzitou gravitačního pole 
+\backslash
+mathbf{K} působí.)
 \end_layout
 
 \begin_layout Standard
