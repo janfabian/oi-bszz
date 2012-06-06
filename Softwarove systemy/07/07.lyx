@@ -1,0 +1,887 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass scrreprt
+\begin_preamble
+
+
+\usepackage[english,czech]{babel}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language czech
+\language_package default
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 0
+\use_mathdots 0
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language german
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{chapter}{6}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Chapter
+Koncept jazyka na bázi virtuálniho stroje, JVM memory management, datové
+ struktury, výjimky, objektové programování, vlákna a synchronizace.
+ (A4B77ASS)
+\end_layout
+
+\begin_layout Section
+Typy programovacích jazyků
+\end_layout
+
+\begin_layout Standard
+Z hlediska vykonávání zdrojového kódu lze programovací jazyky dělit do dvou
+ kategorií.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Interpretované
+\series default
+ - přímo zdrojový kód (skript či překompilovaný byte-code) je interpretován
+ virtuálním strojem, který běží na cílovém zařízení 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Kompilované
+\series default
+ - zdrojový kód je nutné zkompilovat do strojového kódu cílového zařízení
+ a poté lze program spustit přímo 
+\end_layout
+
+\begin_layout Paragraph*
+Vlastnosti interpretovaných jazyků:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\oplus$
+\end_inset
+
+ nezávislost na platformě - architektura (RISC/CISC), operační systém 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\oplus$
+\end_inset
+
+ reflexe - sledování a modifikace kódu za běhu 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\oplus$
+\end_inset
+
+ dynamické typování 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\oplus$
+\end_inset
+
+ malá velikost zdrojových souborů 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\ominus$
+\end_inset
+
+ pomalejší vykonávání kódu v interpretovaném módu 
+\end_layout
+
+\begin_layout Section
+Java Virtual Machine (JVM)
+\end_layout
+
+\begin_layout Standard
+Je zásobníkově orientovaný virtuální stroj Javy, který interpretuje Java
+ byte-code.
+ Zdrojové kódy (
+\family typewriter
+.java
+\family default
+) je proto nutné zkompilovat do byte-code (
+\family typewriter
+.class
+\family default
+), při kompilaci nedochází k žádným optimalizacím kódu.
+ Před spuštěním je byte-code verifikován (skoky jsou pouze na validní umístění,
+ správná inicializace dat, type-safe reference, kontrola private a protected
+ přístupů).
+ Při běhu se používá JIT.
+\end_layout
+
+\begin_layout Paragraph*
+Zásobníkový způsob předávání parametrů:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $(2+3)\times11+1$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename img/jvm_stack.png
+	scale 50
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsection
+Just-in-time compiler (JIT)
+\end_layout
+
+\begin_layout Standard
+Za běhu konvertuje byte-code na nativní strojový kód.
+ Existují různé verze pro serverové a klientské aplikace (různý stupeň optimaliz
+ace).
+ Některé prováděné optimalizace: inlining of functions, loop unrolling,
+ dead code elimination, loop invariant hoisting, common subexpression eliminatio
+n, constant propagation, optimize branches.
+\end_layout
+
+\begin_layout Section
+JVM memory management
+\end_layout
+
+\begin_layout Standard
+V JVM je použita automatická správa paměti pomocí 
+\series bold
+Garbage Collectoru (GC)
+\series default
+ - živé (dosažitelné) objekty jsou ponechány v paměti a mrtvé (nedosažitelné)
+ jsou smazány.
+ Halda (
+\series bold
+Heap
+\series default
+) je oblast pro dynamickou alokaci paměti pro všechny objekty a je rozdělena
+ do secí, tzv.
+ generací - Young a Old.
+\end_layout
+
+\begin_layout Paragraph*
+Generační koncept
+\end_layout
+
+\begin_layout Standard
+Objekty jsou v haldě rozděleny do generací podle svého stáří, zpočátku jsou
+ alokovány v Young generaci, pokud přežijí několik cyklů GC jsou povýšeny
+ (Tenuring) do Old generace.
+ Koncept je postaven na hypotéze, že většina objektů je krátko-žijících,
+ tj.
+ nedostanou se do Old generace.
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename img/jvm_generations.png
+	scale 50
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Description
+Young malá velikost, časté a rychlé cykly GC 
+\end_layout
+
+\begin_layout Description
+Old velká velikost, málo časté a pomalé cykly GC 
+\end_layout
+
+\begin_layout Description
+Eden místo pro alokaci nových objektů 
+\end_layout
+
+\begin_layout Description
+From/To místo kam jsou zkopírovány přeživší objekty po běhu GC 
+\end_layout
+
+\begin_layout Description
+Permanent je mimo haldu, obsahuje data pro JVM jako definice tříd, metod
+ a další 
+\end_layout
+
+\begin_layout Subsection
+Druhy Garbage Collectorů
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Sériový collector
+\series default
+ - používá algoritmus 
+\emph on
+mark-sweep-compact
+\emph default
+ způsobem 
+\emph on
+stop-the-world
+\emph default
+, výchozí pro klientské aplikace, efektivní na 64MB haldě 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename img/gc_serial.png
+	scale 50
+
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Paralelní collector
+\series default
+ - pro Old generaci obyčejný sériový collector, pro Young generaci navíc
+ využívá více vláken/CPU, výchozí pro serverové aplikace a na více-jádrových
+ systémech 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename img/gc_parallel.png
+	scale 60
+
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Souběžný (Concurrent) collector
+\series default
+ - pro Young generaci jako paralelní collector, pro Old generaci běží souběžně
+ s aplikací, má nízkou latenci a snižuje počet zastavení aplikace, vyžaduje
+ ale větší haldu 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename img/gc_concurrent.png
+	scale 75
+
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Java datové struktury
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+primitiva
+\series default
+ - bez implicitní alokace, uložené na zásobníku, typy: 
+\family sans
+boolean
+\family default
+, 
+\family sans
+byte
+\family default
+, 
+\family sans
+char
+\family default
+, 
+\family sans
+int
+\family default
+, 
+\family sans
+long
+\family default
+, 
+\family sans
+float
+\family default
+, 
+\family sans
+double
+\family default
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+objekty
+\series default
+ - každý je potomek třídy 
+\family sans
+Object
+\family default
+, uloženy na haldě, existují objekty pro primitiva: 
+\family sans
+Boolean
+\family default
+, 
+\family sans
+Byte
+\family default
+, 
+\family sans
+Char
+\family default
+, 
+\family sans
+Integer
+\family default
+, 
+\family sans
+Long
+\family default
+, 
+\family sans
+Float
+\family default
+, 
+\family sans
+Double
+\family default
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+pole (arrays)
+\series default
+ - speciální datová struktura pro uchovávání více primitiv/objektů stejného
+ typu v lineárním pořadí, mají definovaný limit, který je automaticky za
+ běhu kontrolován, jsou uložené na haldě, více-dimenzionální pole = pole
+ polí 
+\end_layout
+
+\begin_layout Subsection
+Autoboxing, Unboxing, Widening
+\end_layout
+
+\begin_layout Description
+Autoboxing automatická konverze primitivních datových typů na jejich objektové
+ reprezentace 
+\end_layout
+
+\begin_layout Description
+Unboxing opačný postup, objekty na primitiva 
+\end_layout
+
+\begin_layout Description
+Widening automatická konverze menších primitiv na větší: 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\family sans
+byte
+\family default
+ 
+\begin_inset Formula $\prec$
+\end_inset
+
+ 
+\family sans
+char
+\family default
+ 
+\begin_inset Formula $\prec$
+\end_inset
+
+ 
+\family sans
+int
+\family default
+ 
+\begin_inset Formula $\prec$
+\end_inset
+
+ 
+\family sans
+long
+\family default
+ a 
+\family sans
+float
+\family default
+ 
+\begin_inset Formula $\prec$
+\end_inset
+
+ 
+\family sans
+double
+\family default
+ 
+\end_layout
+
+\begin_layout Standard
+Používání boxingu a unboxingu přináší neefektivitu.
+ V případě více možností má widening přednost před autoboxingem.
+ Při volání přetížených metod Java vybere tu s nejvíce specifickými typy
+ parametrů.
+\end_layout
+
+\begin_layout Subsection
+Výjimky
+\end_layout
+
+\begin_layout Standard
+Všechny extendují třídu 
+\family sans
+Throwable
+\family default
+ (
+\family sans
+Error
+\family default
+, 
+\family sans
+Exception
+\family default
+) a slouží k reprezentaci různých chybových stavů aplikace.
+ Výjimky lze dělit do dvou kategorií - kontrolované (
+\family sans
+Exception
+\family default
+) a nekontrolované (
+\family sans
+Error
+\family default
+ a 
+\family sans
+RuntimeException
+\family default
+).
+ Kontrolované výjimky je nutné odchytávat pomocí 
+\series bold
+try-catch
+\series default
+ bloku.
+ Pro vyhození vlastní výjimky v programu souží příkaz 
+\series bold
+throw
+\series default
+.
+ Výjimky také obsahují záznam obsahu zásobníku ve chvíli kdy byla tato výjimka
+ vyhozena a případně další informace o vzniklé chybě.
+\end_layout
+
+\begin_layout Section
+Vlákna a synchronizace - Java
+\end_layout
+
+\begin_layout Subsection
+Vlákna (Threads)
+\end_layout
+
+\begin_layout Standard
+Vlákna umožňují souběžné vykonávání více úkolů najednou, vytváří se buď
+ extendováním třídy 
+\family sans
+Thread
+\family default
+ nebo implementací rozhraní 
+\family sans
+Runnable
+\family default
+.
+ Hlavní je metoda 
+\series bold
+run()
+\series default
+ obsahující kód, který vlákno vykonává.
+ Jeden proces může mít více vláken, která sdílí společný adresní prostor,
+ ale všechny mají vlastní zásobník a lokální proměnné.
+ Každé vlákno má: ID, jméno, prioritu, thread group, uncaught exception
+ handler, deamon flag, class loader, interrupted flag, status.
+\end_layout
+
+\begin_layout Subsection
+Synchronizace
+\end_layout
+
+\begin_layout Standard
+Při práci s více vlákny je často nutná jejich synchronizace a umožnění bezpečnéh
+o přístupu ke sdíleným prostředkům.
+ K tomu existuje několik technik.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Synchronized
+\series default
+ - S každým objektem je asociován tzv.
+ 
+\emph on
+monitor
+\emph default
+, který umožňuje synchronizaci vláken nad tímto objektem použitím bloku
+ 
+\series bold
+synchronized
+\series default
+.
+ Pro vstup do tohoto bloku je nutné aby příslušné vlákno vlastnilo tento
+ monitor, v jednu chvíli ale může monitor vlastnit pouze jedno vlákno.
+ Pokud není monitor pro vlákno dostupný, jeho běh je zastaven dokud se monitor
+ neuvolní.
+ Pro synchronizaci celé metody je možné použít klíčové slovo 
+\series bold
+synchronized
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Reentrant Locks
+\series default
+ - Obdoba předchozí synchronizační techniky s manuálním získáváním a uvolňováním
+ zámků - metody: 
+\series bold
+lock()
+\series default
+, 
+\series bold
+unlock()
+\series default
+, 
+\series bold
+tryLock()
+\series default
+.
+ Zámky je nutné manuálně vytvářet jako objekty 
+\family sans
+ReentrantLock
+\family default
+, zámky je možné vytvořit 
+\emph on
+fair
+\emph default
+, tj.
+ první čekající vlákno bude první kdo získá zámek.
+ Používání Reentrant zámků je v praxi efektivnější než použití synchronized,
+ ale zámky jsou běžné objekty na haldě.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}lock.lock();
+\end_layout
+
+\begin_layout Plain Layout
+
+try {
+\end_layout
+
+\begin_layout Plain Layout
+
+    // do some staff ...
+\end_layout
+
+\begin_layout Plain Layout
+
+} finally {
+\end_layout
+
+\begin_layout Plain Layout
+
+    lock.unlock()
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Volatile proměnné
+\series default
+ - Jsou obyčejné proměnné, které ale mají zaručen atomický read/write přístup.
+ Tyto proměnné nejsou nikdy uloženy lokálně pro jednotlivá vlákna, ale je
+ vždy přistupováno přímo do hlavní paměti.
+ Nevhodné pro 
+\emph on
+read-update-write
+\emph default
+ operace.
+ Použití pomocí klíčového slova 
+\series bold
+volatile
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Atomické proměnné
+\series default
+ - Umožňují atomický read/write přístup i 
+\emph on
+read-update-write
+\emph default
+ operace.
+ Používají se speciální atomické instrukce procesoru - 
+\series bold
+CMPXCHG
+\series default
+ (compare and exchange) nebo 
+\series bold
+CAS
+\series default
+ (compare and swap).
+ Pro základní datové typy existují 
+\family sans
+AtomicBoolean
+\family default
+, 
+\family sans
+AtomicInteger
+\family default
+, 
+\family sans
+AtomicLong
+\family default
+ a 
+\family sans
+AtomicReference
+\family default
+ s operacemi 
+\series bold
+get()
+\series default
+, 
+\series bold
+set()
+\series default
+, 
+\series bold
+compareAndSet()
+\series default
+, 
+\series bold
+addAndGet()
+\series default
+, 
+\series bold
+incrementAndGet()
+\series default
+, 
+\series bold
+decrementAndGet()
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Neblokující algoritmy
+\series default
+ - Synchronizační algoritmy, které nepoužívají zámky ani čekání vláken,
+ ale jsou postavené na atomických CAS operacích.
+ Princip je, že se v nekonečné smyčce kontroluje stav atomické proměnné,
+ dokud není možné bezpečně pokračovat dále.
+ Tento princip výkonnostně převyšuje blokující algoritmy protože většina
+ CAS operací uspěje na první pokus.
+ Další výhodou je, že odstraňuje nadbytečné uspávání vláken a přepínání
+ kontextu.
+ 
+\end_layout
+
+\begin_layout Section
+Návrhové vzory pro objektové programování
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Immutable object
+\series default
+ - objekt, který po dobu svého života nemění žádné své vlastnosti, all fields
+ are final, no setters 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Factory method, Abstract factory
+\series default
+ - k vytváření objektů se používají speciální metody či tovární třídy 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Lazy initialization
+\series default
+ - k výpočtům, inicializacím objektů a dalších dat dochází až v případě
+ prvního použití 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Singleton
+\series default
+ - pro danou třídu existuje pouze jedna instance v rámci celé aplikace 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Multiton
+\series default
+ - pro danou třídu existuje několik instancí s různými parametry v rámci
+ celé aplikace 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Strategy
+\series default
+ - definice společného rozhraní pro skupinu podobných algoritmů, umožňuje
+ zaměňovat různé implementace 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Composite
+\series default
+ - skládání objektů do stromových struktur, ke skupině objektů je přistupováno
+ jako k jediné instanci (Nodes and Leafs) 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Iterator
+\series default
+ - umožňuje sekvenční procházení kolekce po jednotlivých prvcích bez odhalení
+ vnitřní struktury této kolekce 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Command
+\series default
+ - zastřešuje veškeré informace potřebné pro volání metod později - client,
+ invoker, receiver 
+\end_layout
+
+\end_body
+\end_document
