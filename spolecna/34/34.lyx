@@ -1,0 +1,590 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Part*
+34 (A4B33OPT) 
+\end_layout
+
+\begin_layout Section
+Metoda nejmenších čtverců
+\end_layout
+
+\begin_layout Standard
+Metoda nejmenších čtverců je matematicko-statistická metoda používaná zejména
+ při zpracování nepřesných dat (typicky experimentálních empirických dat
+ získaných například měřením).
+ Metoda je v základní podobě určená pro řešení nekompatibilních soustav
+ lineárních rovnic (v obecnější podobě hovoříme o nelineární metodě nejmenších
+ čtverců), díky čemuž je fakticky ekvivalentní tzv.
+ lineární regresi.
+\end_layout
+
+\begin_layout Standard
+Řešme nehomogenn soustavu linearnch rovnic Ax = b
+\end_layout
+
+\begin_layout Standard
+A je matice o rozměrech m
+\begin_inset Formula $\times$
+\end_inset
+
+n a soustava má řešení právě tehdy, když b
+\begin_inset Formula $\in$
+\end_inset
+
+rngA, jinak je soustava přeurčená (typicky, když m>n, víc rovnic než neznámých)
+\end_layout
+
+\begin_layout Standard
+V našem případě řešíme přeurčenou soustavu, tedy hledáme takové x, že vzdálenost
+ mezi body Ax a b je co nejmenší, tedy:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $min\{||Ax-b||\:|\: x\in R^{n}\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Místo normy klidně můžeme minimalizovat její čtverec: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $||Ax-b||^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Použití na regresi:
+\end_layout
+
+\begin_layout Standard
+Regrese je modelování zavislosti proměnné y
+\begin_inset Formula $\in$
+\end_inset
+
+R na proměnné t
+\begin_inset Formula $\in$
+\end_inset
+
+T regresn funkcí y = f(t, x), která je známá, až na parametry 
+\begin_inset Formula $x\in R^{n}$
+\end_inset
+
+ Je dán soubor dvojic 
+\begin_inset Formula $(t_{i},y_{i})$
+\end_inset
+
+, i = 1, ...
+ ,m, kde měření 
+\begin_inset Formula $y_{i}\in R$
+\end_inset
+
+ jsou zatížena chybou.
+ Úkolem je najít parametry x, aby 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ f(t
+\begin_inset Formula $_{i}$
+\end_inset
+
+, x).
+ Podle metody nejmensch ctvercu tedy resme.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\underset{x\in R^{n}}{min}\underset{i=1}{\overset{m}{\sum}}(f(t_{i},x)-y_{i})^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Analytické podmínky na lokální extrémy
+\end_layout
+
+\begin_layout Subsection
+Volné extrémy
+\end_layout
+
+\begin_layout Standard
+V tomto případě hledáme lokální extrémy funkce.
+\end_layout
+
+\begin_layout Standard
+Máme dva důležité typy bodů:
+\end_layout
+
+\begin_layout Enumerate
+stacionární bod - bod, kde je funkce diferencovatelná a všechny parciální
+ derivace jsou nulové.
+\end_layout
+
+\begin_layout Enumerate
+kritický bod - bod, který je buď stacionární nebo v něm není funkce diferencovat
+elná.
+\end_layout
+
+\begin_layout Subsubsection
+Podmínka prvního řádu
+\end_layout
+
+\begin_layout Standard
+Všechny kritické body jsou podezřelé z volného lokálního extrému.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Když počítáme příklad nejdříve uděláme všechny parciální derivace, následně
+ je položíme rovny nule a vyřešíme soustavu rovnic => kritické body
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Podmínky druhého řádu
+\end_layout
+
+\begin_layout Itemize
+f má v bodě x ostré lokální minimum [maximum] na X právě tehdy, když Hessova
+ matice druhých derivací f''(x) je pozitivně
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+V příkladech hledáme vlastní čísla matice, když jsou všechna > 0, pak je
+ poz.
+ def.
+\end_layout
+
+\end_inset
+
+ [negativně
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+V příkladech hledáme vlastní čísla matice, když jsou všechna < 0, pak je
+ neg.
+ def.
+\end_layout
+
+\end_inset
+
+] definitní.
+\end_layout
+
+\begin_layout Itemize
+Je-li f''(x) indefinitní
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+V příkladech hledáme vlastní čísla matice, když existuje vlastní číslo,
+ které < 0 a zároveň existuje vlastní číslo, které >0, pak je matice indefinitní
+\end_layout
+
+\end_inset
+
+, nemá f v x lokální minimum ani lokální maximum na X.
+\end_layout
+
+\begin_layout Itemize
+Je-li f''(x) pozitivně [negativně] semidefinitní, nevíme o tomto bodě jestli
+ je minimem, maximem nebo ani jedno z toho.
+\end_layout
+
+\begin_layout Subsection
+Vázané extrémy
+\end_layout
+
+\begin_layout Standard
+V tomto případě hledáme lokální extrémy funkce za určité podmínky dané nejčastěj
+i jinou funkcí nebo funkcemi.
+\end_layout
+
+\begin_layout Subsubsection
+postup
+\end_layout
+
+\begin_layout Standard
+Extrémy hledáme za pomoci lagrangeových multiplikátorů 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, řešíme rovnici:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f'(x)+\lambda g'(x)=0^{T}$
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Tedy v praxi si napíšeme zadání a podmínky si převedeme do tvaru, kdy je
+ na jedné straně rovnice nula a roznásobíme je 
+\begin_inset Formula $\lambda_{1}\: až\:\lambda_{n}$
+\end_inset
+
+, tento výraz se nazývá Lagrangeova funkce, ze které spočítáme první derivace
+ a vyřešíme soustavu rovnic, z níchž dostaneme body podezřelé z extrémů.
+ (zjištění druhu extrému je podle skript i wernera složité a v OPT vůbec
+ nebylo)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Numerické metody pro optimalizaci bez omezení
+\end_layout
+
+\begin_layout Standard
+U všech dále zmíněných případů se jedná o iterační numerické metody pro
+ nalezení volného lokálního minima diferencovatelných funkcí na množině
+ 
+\begin_inset Formula $R^{n}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Gradientní metoda
+\end_layout
+
+\begin_layout Standard
+Metoda volí směr sestupu jako záporný gradient funkce f v bode 
+\begin_inset Formula $x_{k}$
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+tj.
+ vždy jdeme nejstrmějším směrem dolů
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Tedy 
+\begin_inset Formula $x_{k+1}=x_{k}-\alpha_{k}(A^{T}A)^{-1}f'(x_{k})^{T}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Rychlost konvergence bývá často pomalá, kvůli cik-cak chování.
+\end_layout
+
+\begin_layout Subsection
+Newtonova metoda
+\end_layout
+
+\begin_layout Standard
+Newtonova metoda je iteracn algoritmus na resen soustav nelinearnch rovnic.
+ Lze ho pouzt i na minimalizaci funkce tak, ze hledame nulovy gradient.
+\end_layout
+
+\begin_layout Subsubsection
+Použití na soustavy nelineárních rovnic
+\end_layout
+
+\begin_layout Standard
+Zobrazení g aproximujeme v okolí bodu 
+\begin_inset Formula $x_{k}$
+\end_inset
+
+ taylorovým polynomem prvního řádu 
+\begin_inset Formula $g(x)=g(x_{k})+g'(x_{k})(x-x_{k})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename newton.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Při řešení soustavy rovnic najdeme další krok, jako 
+\begin_inset Formula $x_{k+1}=x_{k}-g'(x_{k})^{-1}g(x_{k})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Použití na hledání lokálního minima
+\end_layout
+
+\begin_layout Standard
+V tomto případě aproximujeme funkci f taylorovým polynomem druhého řádu.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename newton2.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tedy newtonovu metodu lze použít pro hledání lokálního extremu dvakrát diferenco
+vatelné funkce, když položíme 
+\begin_inset Formula $g(x)=f'(x)^{T}$
+\end_inset
+
+, z toho dostaneme, že iterace:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{k+1}=x_{k}-f''(x_{k})^{-1}f'(x_{k})^{T}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Gaussova-Newtonova metoda
+\end_layout
+
+\begin_layout Standard
+Snažíme se najít přibližné řešení ve smyslu nejmenších čtverců, což vede
+ na minimalizaci funkce:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f(x)=||g(x)||^{2}=g(x)^{T}g(x)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Další krok hledáme následovně:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{k+1}=x_{k}-(g'(x_{k})^{T}g'(x_{k}))^{-1}g'(x_{k})^{T}g(x_{k})$
+\end_inset
+
+, což se dá v případě, že 
+\begin_inset Formula $g'(x_{k})$
+\end_inset
+
+ má plnou hodnost napsat, jako 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $x_{k+1}=x_{k}-g'(x_{k})^{+}g(x_{k})$
+\end_inset
+
+ , kde 
+\begin_inset Formula $g'(x_{k})^{+}$
+\end_inset
+
+je pseudoinverze.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Výhody: Vyhneme se počítání druhých derivací (hesiánů)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Nevýhody: Metoda má horší konvergenční chování než Newtonova metoda
+\end_layout
+
+\begin_layout Subsection
+Levenberg-Marquardtova metoda
+\end_layout
+
+\begin_layout Standard
+Levenbergova-Marquardtova metoda je široce používané vylepšení Gaussovy-Newtonov
+y metody, které matici 
+\begin_inset Formula $g'(x_{k})^{T}g'(x_{k})$
+\end_inset
+
+ nahrazuje maticí 
+\begin_inset Formula $g'(x_{k})^{T}g'(x_{k})+\mu_{k}I$
+\end_inset
+
+, kde 
+\begin_inset Formula $\mu_{k}$
+\end_inset
+
+>0
+\end_layout
+
+\begin_layout Standard
+Tedy další krok hledáme následovně:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{k+1}=x_{k}-(g'(x_{k})^{T}g'(x_{k})+\mu_{k}I)^{-1}g'(x_{k})^{T}g(x_{k})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Zajímavosti: 
+\end_layout
+
+\begin_layout Itemize
+Pro malé 
+\begin_inset Formula $\mu_{k}$
+\end_inset
+
+ se Levenbergova-Marquardtova metoda blíží Gauss-Newtonově metodě.
+\end_layout
+
+\begin_layout Itemize
+Pro velké 
+\begin_inset Formula $\mu_{k}$
+\end_inset
+
+ se Levenbergova-Marquardtova metoda blíží Gradientní metodě s délkou kroku
+ 
+\begin_inset Formula $\mu_{k}$
+\end_inset
+
+
+\begin_inset Formula $^{-1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Parametr 
+\begin_inset Formula $\mu_{k}$
+\end_inset
+
+ měníme po každé iteraci.
+ 
+\end_layout
+
+\begin_layout Itemize
+Pokud iterace snížila účelovou funkci, pak iteraci přijmeme a 
+\begin_inset Formula $\mu_{k}$
+\end_inset
+
+ zmenšíme
+\end_layout
+
+\begin_layout Itemize
+Pokud iterace nesnížila účelovou funkci iteraci zamítneme a 
+\begin_inset Formula $\mu_{k}$
+\end_inset
+
+ zvětšíme
+\end_layout
+
+\begin_layout Standard
+Zmenšování azvětšování 
+\begin_inset Formula $\mu_{k}$
+\end_inset
+
+ děláme násobením a dělením konstantou.
+\end_layout
+
+\end_body
+\end_document
