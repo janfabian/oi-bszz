@@ -1,0 +1,409 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass scrreprt
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{chapter}{27} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Struktury a hierarchie pamětí.
+ Způsoby adresace.
+ Různá šíře adres generovaných CPU (logických adres) a fyzických adres paměti.
+ Mapování, stránkování, segmentace.
+ Přerušení a výjimky.
+ Zdroje přerušení, přerušovací vektory.
+ DMA přenosy.
+ (A0B35SPS)
+\end_layout
+
+\begin_layout Standard
+(pozn.
+ autora: V předmětu SPS toto není.
+ Čerpal jsem z přednášek OSS a APO.)
+\end_layout
+
+\begin_layout Section
+Struktury a hierarchie pamětí
+\end_layout
+
+\begin_layout Itemize
+Rychlé a malé paměti jsou umístěny blízko CPU.
+\end_layout
+
+\begin_layout Itemize
+Větší a pomalejší paměti js
+\begin_inset Formula $ $
+\end_inset
+
+ou dále od CPU.
+\end_layout
+
+\begin_layout Itemize
+Princip cachování nejčastěji používaných dat v rychlých pamětech - zrychlení
+ přístupu k datům.
+\end_layout
+
+\begin_layout Itemize
+od nejrychlejší a nejmenší po největší a nejpomalejší:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+on-chip L1 caches
+\end_layout
+
+\begin_layout Itemize
+off-chip L2 caches (SRAM)
+\end_layout
+
+\begin_layout Itemize
+hlavní paměť (DRAM)
+\end_layout
+
+\begin_layout Itemize
+vedlejší paměť (pevný disk)
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Způsoby adresace
+\end_layout
+
+\begin_layout Standard
+Máme 2 typy adres.
+ Logickou a fyzickou adresu.
+ Logická adresa je adresa, se kterou pracuje CPU.
+ Tato adresa je překládána na fyzickou adresu, což je konkrétní adresa v
+ dané paměti.
+ Výhody - CPU vidí unifikované adresy - pro přístup do hlavní paměti i k
+ IO zařízením.
+ Data v hlavní paměti nejsou poskládána tak jak jdou za sebou, mohou být
+ zpřeházena - optimalizace využití prostoru paměti a fragmentace.
+ Přes logickou adresu se nechá přistupovat k datům sekvenčně, tak jak jdou
+ za sebou.
+\end_layout
+
+\begin_layout Standard
+Velikost logického adresního prostoru je dána architekturou procesoru -
+ kolik adres je procesor schopen generovat.
+ Např.
+ 32 bitový procesor generuje
+\begin_inset Formula $2^{32}$
+\end_inset
+
+adres.
+ Velikost fyyického adresního prostoru je dána nainstalovaným hardware počítače
+ - fyzicky dostupnou pamětí.
+\end_layout
+
+\begin_layout Paragraph
+Stránkování
+\end_layout
+
+\begin_layout Standard
+Souvislý LAP (Logický Adresní Prostor) není zobrazován jako jediná souvislá
+ oblat FAP.
+ FAP se dělí na úseky zvané rámce, LAP se dělí na úseky dané stránky.
+\end_layout
+
+\begin_layout Paragraph
+Struktura logické adresy
+\end_layout
+
+\begin_layout Standard
+Logická adresa se zkládá ze dvou částí.
+ První část je index v tabulce stránek - díky němu se v tabulce stránek
+ vyhledá fyzická adresa stránky.
+ Druhá část je offset - posunutí ve stránce.
+\end_layout
+
+\begin_layout Paragraph
+Převod logické adresy na fyzickou
+\end_layout
+
+\begin_layout Itemize
+K logické adrese je v tabulce stránek nalezena fyzická adresa dané stránky/rámce.
+\end_layout
+
+\begin_layout Itemize
+K adrese rámce je přičten offset a výsledek je požadovaná fyzická adresa.
+\end_layout
+
+\begin_layout Section
+Různá šíře logických a fyzických adres
+\end_layout
+
+\begin_layout Standard
+CPU může mít menší datovou sběrnici, než je šíře fyzické adresy.
+ Např.
+ fyzická adresa má 20 bitů, ale datová sběrnice CPU je jen 16 bitů.
+ Zbývající 4 bity jsou offset segmentu a jsou uloženy ve 4 segmentových
+ registrech CPU.
+ FA = (segment << 4)+offset.
+\end_layout
+
+\begin_layout Standard
+Opačný případ - CPU generuje více logických adres (např.
+ 64 bitový procesor generuje 
+\begin_inset Formula $2^{64}$
+\end_inset
+
+adres) než je fyzických adres (LA je větší než FA).
+ Tento problém se řeší virtualizací paměti.
+ Virtualizace zpočívá v tom, že FAP se rozšiřuje o úseky na vnější paměti
+ (např.
+ na pevném disku).
+ 
+\end_layout
+
+\begin_layout Section
+Mapování, stránkování, segmentace
+\end_layout
+
+\begin_layout Paragraph
+Stránkování
+\end_layout
+
+\begin_layout Standard
+LAP je rozdělen do úseků, které na sebe navazují - stránky.
+ Logická adresa odkazuje na adresu stránky, která odkazuje na adresu rámce
+ FAP.
+ Rámce v FAP na sebe nemusí navazovat.
+\end_layout
+
+\begin_layout Paragraph
+Segmentace
+\end_layout
+
+\begin_layout Standard
+LAP je rozdělena na segmenty.
+ Segmenty jsou části programu - mají logický význam (hlavní program, procedura,
+ funkce,...), jsou různě dlouhé - nízká vnitřní fragmentace.
+ Výhody - lze určit přístup do nepovolené části paměti (segmentation fault),
+ se segmenty v paměti lze libovolně hýbat, lze nastavovat práva k přístupu
+ do segmentu.
+ Nevýhoda - externí fragmentace.
+\end_layout
+
+\begin_layout Paragraph
+Stránkování a segmentace najednou
+\end_layout
+
+\begin_layout Standard
+Výše uvedené metody lze kombinovat.
+ Segmentace vybírá části LAP, stránkování zobrazuje LAP do FAP - LAP je
+ dělena na segmenty, které jsou stránkovány.
+\end_layout
+
+\begin_layout Section
+Přerušení a výjimky
+\end_layout
+
+\begin_layout Paragraph
+Přerušení
+\end_layout
+
+\begin_layout Itemize
+cílem je zlepšení účinnosti systému
+\end_layout
+
+\begin_layout Itemize
+je potřeba provést jinou posloupnost příkazů jako reakci na nějakou „neobvyklou”
+ událost 
+\end_layout
+
+\begin_layout Itemize
+přerušující událost způsobí, že se pozastaví běh procesu v CPU takovým způsobem,
+ aby ho bylo možné později znovu obnovit, aniž by to přerušený proces „poznal“
+\end_layout
+
+\begin_layout Itemize
+využití např.
+ při IO operacích
+\end_layout
+
+\begin_layout Itemize
+testování, zda je voláno přerušení alespoň po dokončení každé instrukce
+\end_layout
+
+\begin_layout Itemize
+přerušení bývá často voláno programem
+\end_layout
+
+\begin_layout Itemize
+Maskovatelná, lze je zakazat v stavovem řídícím slovu CPU, případně řízení
+ priorit (periferie, čítače, časovače)
+\end_layout
+
+\begin_layout Itemize
+Nemaskovatelná - ošetření HW chyb, hlídací obvod (Watch Dog)
+\end_layout
+
+\begin_layout Paragraph
+Výjimka
+\end_layout
+
+\begin_layout Itemize
+Výjimka – ošetření zvláštních situací, které brání dalšímu vykonávání instrukcí
+ (exception)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Matematické přetečení (výsledek instrukce s kontrolou saturace přetekl)
+ 
+\end_layout
+
+\begin_layout Itemize
+Načtena nedefinovaná instrukce (neznámý operační kód instrukce typu IR,
+ nebo neznámá funkce instrukce typu R) 
+\end_layout
+
+\begin_layout Itemize
+Systémové volání (instrukce syscall)
+\end_layout
+
+\end_deeper
+\begin_layout Section*
+Zdroje přerušení, přerušovací vektory
+\end_layout
+
+\begin_layout Paragraph
+Určení zdroje výjimky přerušení
+\end_layout
+
+\begin_layout Standard
+Softwarové vyhledání (polled exception handling) 
+\end_layout
+
+\begin_layout Itemize
+Veškerá přerušení a výjimky spouštějí rutinu od stejné adresy – např.
+ standardní MIPS, adresa 0x00000004 
+\end_layout
+
+\begin_layout Itemize
+Rutina zjistí důvod ze stavového registru (MIPS: cause registr) 
+\end_layout
+
+\begin_layout Standard
+Vektorová obsluha přerušení
+\end_layout
+
+\begin_layout Itemize
+Již hardware CPU zjistí příčinu/číslo zdroje 
+\end_layout
+
+\begin_layout Itemize
+V paměti se nachází na pevné/řídicím registrem specifikované (VBR) adrese
+ tabulka vektorů přerušení 
+\end_layout
+
+\begin_layout Itemize
+Procesor převede číslo zdroje na index do tabulky 
+\end_layout
+
+\begin_layout Itemize
+Z daného indexu načte slovo a vloží ho do PC ● 
+\end_layout
+
+\begin_layout Standard
+Nevektorová obsluha více pevně určených adres podle priorit/důvodu 
+\end_layout
+
+\begin_layout Itemize
+Často jsou přístupy kombinované, např.
+ výjimky mají oddělené cílové adresy skoků, využívá tabulku atd.
+ ale veškerá vnější přerušení končí pouze na jednom z vektorů
+\end_layout
+
+\begin_layout Section
+DMA přenosy
+\end_layout
+
+\begin_layout Standard
+Direct Memory Access - přímý přístup do paměti.
+ Využívá se při přenosu velkého množství dat - data nemusí jít přes procesor
+ a nevytěsňují tak data z cache.
+\end_layout
+
+\begin_layout Itemize
+Program/OS nastaví parametry přenosu
+\end_layout
+
+\begin_layout Itemize
+Procesor nastaví adresy do DMA řadiče, ten na konci přenosu vyvolá přerušení
+\end_layout
+
+\end_body
+\end_document
