@@ -42,6 +42,8 @@ Hotové otázky
 
 15\.  Základní algoritmy řazení (mergesort, quicksort, heapsort, radixsort) a vyhledávání půlením intervalu, jejich složitost. (A4B36ALG)
 
+16\.  Datové typy, seznam, zásobník, fronta, operace s nimi, jejich složitost. Vyhledávací a rozhodovací stromy (binární, AVL, B) jejich specifika a využití, efektivita operací, volba rozptylovací funkce pro specifické typy dat. (A4B36ALG)
+
 21\. Deterministický konečný automat, jazyk přijímaný konečným automatem. (A4B01JAG)
 
 22\. Regulární výrazy a regulární jazyky, Kleeneova věta. Algoritmická složitost úloh souvisejících s regulárními jazyky. (A4B01JAG)
