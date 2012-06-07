@@ -82,56 +82,44 @@ funkce
 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/limita_vzorec.png
+	width 12cm
 
-\series bold
-Definice:
-\series default
- Nechť f je funkce, nechť a je reálné číslo, 
-\begin_inset Formula $\infty$
-\end_inset
-
- nebo 
-\begin_inset Formula $-\infty$
-\end_inset
-
-.
- Předpokládejme, že f je definovaná na nějakém prstencovém okolí bodu a.
- Nechť L je reálné číslo, nebo 
-\begin_inset Formula $\infty$
-\end_inset
-
- nebo 
-\begin_inset Formula $-\infty$
-\end_inset
-
-.
- Řekneme, že L je limita funkce f pro x jdoucí k a, jestliže pro každé 
-\begin_inset Formula $\varepsilon$
 \end_inset
 
 
-\begin_inset Formula $>0$
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/limita.png
+	width 6cm
+
 \end_inset
 
- existuje nějaké 
-\begin_inset Formula $\delta>0$
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/prstencove okoli.png
+	width 12cm
+
 \end_inset
 
- tak, aby pro všechna 
-\begin_inset Formula $x\in D(f)$
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/jednostranne.png
+	width 12cm
+
 \end_inset
 
- splňující 
-\begin_inset Formula $x\in U_{\delta}(a)−{a}$
-\end_inset
 
- platilo 
-\begin_inset Formula $f(x)\in U_{\varepsilon}(L)$
-\end_inset
-
-.
- 
 \end_layout
 
 \begin_layout Itemize
@@ -158,6 +146,16 @@ nevlastní limita
  existuje.
  Jinak řekneme, že limita neexistuje.
  
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/supremum.png
+	width 10cm
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -254,6 +252,16 @@ Rychlost růstu
 
 \begin_layout Standard
 \begin_inset Graphics
+	filename figures/skala.png
+	width 10cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
 	filename figures/scala.gif
 	width 5cm
 
@@ -323,18 +331,9 @@ Derivace
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-Definice: 
-\series default
-Nechť f je funkce definovaná na nějakém okolí bodu a.
- Definujeme derivaci f v a vzorcem 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Graphics
-	filename figures/derivacevzorec.gif
-	width 4cm
+	filename figures/derivace_definice.png
+	width 12cm
 
 \end_inset
 
@@ -342,8 +341,81 @@ Nechť f je funkce definovaná na nějakém okolí bodu a.
 \end_layout
 
 \begin_layout Standard
-Jestliže konverguje, řekneme, že funkce je diferencovatelná v a.
+\begin_inset Graphics
+	filename figures/skladani.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/derivace_stranna.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+vlastnosti derivace
+\end_layout
+
+\begin_layout Itemize
+jestliže je f diferencovatelná v a a 
+\begin_inset Formula $f′(a)$
+\end_inset
+
  
+\begin_inset Formula $\neq$
+\end_inset
+
+ 0, pak je i příslušná inverzní funkce 
+\begin_inset Formula $f_{−1}$
+\end_inset
+
+diferencovatelná v b
+\end_layout
+
+\begin_layout Itemize
+Jestliže je funkce f diferencovatelná v bodě a, pak je f spojitá v a.
+\end_layout
+
+\begin_layout Itemize
+Nechť a < b jsou reálná čísla.
+ Nechť f je funkce spojitá na intervalu a,b a diferencovatelná na (a,b).
+ Jestliže f(a) = f(b), pak existuje c z (a,b) takové, že 
+\begin_inset Formula $f′(c)=0$
+\end_inset
+
+ (věta o střední hodnotě - 
+\series bold
+Rolleova věta
+\series default
+)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Graphics
+	filename figures/rolleova.gif
+	width 6cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Graphics
+	filename figures/lagrange.png
+	width 8cm
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -543,6 +615,49 @@ Jestliže existuje pravé okolí c, na kterém je f klesající, a levé okolí
  a, na kterém je f rostoucí, pak má f lokální maximum v c
 \end_layout
 
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/konkavni.png
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+inflexní bod
+\series default
+ - f přechází z konvexní na konkávní nebo naopak a je tam dvakrát diferencovatel
+ná
+\end_layout
+
+\begin_layout Subsection
+Asymptoty
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/asymptoty.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/asymptoty2.png
+	width 10cm
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Parciální derivace 
 \end_layout
@@ -558,6 +673,10 @@ k jedné z proměnných
 
 \begin_layout Subsection
 Gradient
+\end_layout
+
+\begin_layout Standard
+= diferenciální operátor udávající směr růstu
 \end_layout
 
 \begin_layout Standard
