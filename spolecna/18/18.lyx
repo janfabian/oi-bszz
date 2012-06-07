@@ -60,14 +60,45 @@
 
 \begin_body
 
-\begin_layout Chapter*
-18.
- Rekurze, základní schéma, základní vlastnosti, souvislost rekurze a iterace,
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+setcounter{chapter}{17}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Rekurze, základní schéma, základní vlastnosti, souvislost rekurze a iterace,
  vlastnosti implementace, efektivita.
  (A4B36ALG)
 \end_layout
 
-\begin_layout Section*
+\begin_layout Standard
+7.června 2012, Václav Burda
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Co říci na začátek:
+\end_layout
+
+\begin_layout Standard
+Rekurze nám dáva možnost definice něčeho nekonečného konečným algoritmem.
+ Rekurzivní volání funkce je tedy takové volání, ke kterému dojde ve chvíli,
+ kdy funkce samotná ještě nedokončila svou činnost.
+\end_layout
+
+\begin_layout Section
 Základní schéma
 \end_layout
 
@@ -103,25 +134,20 @@ sestavení výsledku
 vrácení vypočtené hodnoty
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Základní vlastnosti
 \end_layout
 
 \begin_layout Standard
-Rekurzivní volání funkce je tedy takové volání, ke kterému dojde ve chvíli,
- kdy funkce samotná ještě nedokončila svou činnost.
-\begin_inset Newline newline
-\end_inset
-
 Dělení rekurze 1:
 \end_layout
 
 \begin_layout Itemize
-Lineární - v každé iteraci dojde k pouze jednomu zavolání sebe sama
+Lineární - v každé iteraci dojde k pouze jednomu zavolání sebe sama.
 \end_layout
 
 \begin_layout Itemize
-Stromová - v každé iteraci dochází k více dělení na podprogramy
+Stromová - v každé iteraci dochází k více dělení na podprogramy.
 \end_layout
 
 \begin_layout Standard
@@ -129,23 +155,23 @@ Dělení rekuzre 2:
 \end_layout
 
 \begin_layout Itemize
-Přímá - v dáné rekurzivní funkci dojde k volání téže funkce
+Přímá - v dáné rekurzivní funkci dojde k volání téže funkce.
 \end_layout
 
 \begin_layout Itemize
 Nepřímá - rekurzivní volání, ke kterému dochází přes další funkci (např.
- A volá B a B volá A)
+ A volá B a B volá A).
 \end_layout
 
 \begin_layout Standard
-vé volání, ke kterému dojde ve chvíli, kdy funkce samotná ještě nedokončila
- svou činnost.
- Volání může probíhat přímo nebo nepřímo.
+Volání může probíhat přímo nebo nepřímo.
  Každá rekurze se nechá přepsat na nerekurzivní tvar například pomocí zásobníku
+ (udržujeme si datovou strukturu, která nahrazuje implicitní hardwarový
+ zásobník použitý při rekurzivním volání).
 \end_layout
 
-\begin_layout Section*
-Souvislost rekurze a iterace
+\begin_layout Section
+Vlastnosti implementace
 \end_layout
 
 \begin_layout Standard
@@ -154,17 +180,38 @@ Rekurzí lze dosáhnout zjednodušení řešené úlohy, ale je nutné brát v �
 \end_layout
 
 \begin_layout Itemize
-každé další volání rekurzívní funkce prohlubuje zapouzdření a tedy zabírá
- paměťový prostor a procesorový čas
+Každé další volání rekurzívní funkce prohlubuje zapouzdření a tedy zabírá
+ paměťový prostor a procesorový čas.
 \end_layout
 
 \begin_layout Itemize
-v případě chybně ošetřeného ukončení rekurze dochází k vučerpání veškérých
- volných prostředků a k havárii programu
+V případě chybně ošetřeného ukončení rekurze dochází k vučerpání veškérých
+ volných prostředků a k havárii programu.
 \end_layout
 
 \begin_layout Itemize
-použití může vést ke zvýšení složitosti výpočtu
+Použití může vést ke zvýšení složitosti výpočtu.
+\end_layout
+
+\begin_layout Standard
+Rekurze musí obsahovat:
+\end_layout
+
+\begin_layout Itemize
+Ukončovací podmínku.
+\end_layout
+
+\begin_layout Itemize
+V každém kroku rekurze musí dojít ke zjednodušení problému.
+\end_layout
+
+\begin_layout Itemize
+V algoritmu se nejprve musí ověřit, zda nenastala koncová situace.
+ Když ne, provede se rekurzivní krok.
+\end_layout
+
+\begin_layout Section
+Souvislost rekurze a iterace
 \end_layout
 
 \begin_layout Standard
@@ -184,7 +231,7 @@ function Faktorial ( integer X )
 \end_layout
 
 \begin_layout LyX-Code
-   return Faktorial(X-1) * X 
+   return Faktorial(X-1) * X 
 \end_layout
 
 \begin_layout LyX-Code
@@ -231,20 +278,36 @@ function Faktorial (integer X)
 end function
 \end_layout
 
-\begin_layout Section*
-Vlastnosti implementace
-\end_layout
-
-\begin_layout Standard
-aa
-\end_layout
-
-\begin_layout Section*
+\begin_layout Section
 Efektivita
 \end_layout
 
 \begin_layout Standard
-aa
+Hlavní nevýhodou rekurze je u stromové struktury několikanásobné počítání
+ stejných výpočtů (v případě Fibonacciho posloupnosti jde o exponenciální
+ složitost).
+ Tento nedostatek lze vyřešit zavedením tabulky (pole), do které ukládáme
+ již spočítané výsledky (ale potřebujeme další paměť pro tuto tabulku).
+\end_layout
+
+\begin_layout Section
+Zdroje
+\end_layout
+
+\begin_layout Itemize
+http://cs.wikipedia.org/wiki/Rekurze#Efektivita_rekurzivn.C3.ADch_algoritm.C5.AF
+\end_layout
+
+\begin_layout Itemize
+http://cs.wikipedia.org/wiki/Rekurzivní_funkce_(programování)
+\end_layout
+
+\begin_layout Itemize
+http://service.felk.cvut.cz/courses/Y36ALG/balik/Alg5Balik2008.pdf
+\end_layout
+
+\begin_layout Itemize
+http://www.algoritmy.net/article/23275/Rekurze-11
 \end_layout
 
 \end_body
