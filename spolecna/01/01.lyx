@@ -68,6 +68,307 @@ Lineární závislost a nezávislost, báze, dimenze.
 \end_layout
 
 \begin_layout Section
+Lineární prostor
+\end_layout
+
+\begin_layout Standard
+Neprázdná množina 
+\begin_inset Formula $\mathcal{L}$
+\end_inset
+
+ se nazývá lineární vektorový prostor nad tělesem 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+, jestliže je splněno následujících deset podmínek.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Pro každé dva prvky 
+\begin_inset Formula $u,v\in\mathcal{L}$
+\end_inset
+
+ je jednoznačně určen prvek 
+\begin_inset Formula $u+v\in\mathcal{L}$
+\end_inset
+
+ nazývaný součet prvků 
+\begin_inset Formula $u$
+\end_inset
+
+ a 
+\begin_inset Formula $v$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Pro každý prvek 
+\begin_inset Formula $u\in\mathcal{L}$
+\end_inset
+
+ a pro každý prvek 
+\begin_inset Formula $\lambda\in\mathbb{R}$
+\end_inset
+
+ je jednoznačně určen prvek 
+\begin_inset Formula $\lambda u\in\mathcal{L}$
+\end_inset
+
+ nazývaný násobek prvku 
+\begin_inset Formula $u$
+\end_inset
+
+ prvkem 
+\begin_inset Formula $\lambda$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $u+v=v+u$
+\end_inset
+
+ pro každé dva prvky 
+\begin_inset Formula $u,v\in\mathcal{L}$
+\end_inset
+
+ (komutativita)
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $(u+v)+w=u+(v+w)$
+\end_inset
+
+ pro každé tři prvky 
+\begin_inset Formula $u,v,w\in\mathcal{L}$
+\end_inset
+
+ (asociativita) 
+\end_layout
+
+\begin_layout Enumerate
+Existuje prvek 
+\begin_inset Formula $0\in\mathcal{L}$
+\end_inset
+
+.
+ takový, že pro každý prvek 
+\begin_inset Formula $u\in\mathcal{L}$
+\end_inset
+
+ platí 
+\begin_inset Formula $u+0=0+u=u$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Pro každý prvek 
+\begin_inset Formula $u\in\mathcal{L}$
+\end_inset
+
+ existuje prvek 
+\begin_inset Formula $-u\in\mathcal{L}$
+\end_inset
+
+ takový, že 
+\begin_inset Formula $u+(-u)=(-u)+u=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\lambda(u+v)=\lambda u+\lambda v$
+\end_inset
+
+ pro každé dva prvky 
+\begin_inset Formula $u,v\in\mathcal{L}$
+\end_inset
+
+ a pro každý prvek 
+\begin_inset Formula $\lambda\in\mathbb{R}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $(\lambda+\alpha)u=\lambda u+\alpha u$
+\end_inset
+
+ pro každý prvek 
+\begin_inset Formula $u\in\mathcal{L}$
+\end_inset
+
+ a pro každé dva prvky 
+\begin_inset Formula $\alpha,\lambda\in\mathbb{R}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $(\lambda\alpha)u=\lambda(\alpha u)$
+\end_inset
+
+ pro každý prvek 
+\begin_inset Formula $u\in\mathcal{L}$
+\end_inset
+
+ a pro každé dva prvky 
+\begin_inset Formula $\alpha,\lambda\in\mathbb{R}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $1u=u$
+\end_inset
+
+ pro každý prvek 
+\begin_inset Formula $u\in\mathcal{L}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Section
+Lineární podprostor
+\end_layout
+
+\begin_layout Standard
+Neprázdná podmnožina 
+\begin_inset Formula $W$
+\end_inset
+
+ vektorového prostoru 
+\begin_inset Formula $V$
+\end_inset
+
+ nad tělesem 
+\begin_inset Formula $T$
+\end_inset
+
+ se nazývá podprostorem 
+\begin_inset Formula $V$
+\end_inset
+
+, pokud pro libovolné vektory 
+\begin_inset Formula $u,v\in W$
+\end_inset
+
+ a libovolný skalár 
+\begin_inset Formula $\lambda\in T$
+\end_inset
+
+ platí:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $a+b\in W$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\lambda a\in W$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Množina 
+\begin_inset Formula $W$
+\end_inset
+
+ je tedy uzavřená vzhledem k operacím sčítání vektorů a násobení vektoru
+ skalárem.
+\end_layout
+
+\begin_layout Section
+Lineární kombinace
+\end_layout
+
+\begin_layout Standard
+Nechť 
+\begin_inset Formula $\mathcal{L}$
+\end_inset
+
+ je lineární prostor, 
+\begin_inset Formula $v_{1},v_{2},...,v_{n}\in\mathcal{L}$
+\end_inset
+
+ a 
+\begin_inset Formula $\lambda_{1},\lambda_{2},...,\lambda_{n}\in\mathbb{R}$
+\end_inset
+
+ .
+ Prvek 
+\begin_inset Formula $\lambda_{1}v_{1}+\lambda_{2}v_{2}+...+\lambda_{n}v_{n}\in\mathcal{L}$
+\end_inset
+
+ se nazývá lineární kombinace prvků 
+\begin_inset Formula $v_{1},v_{2},...,v_{n}$
+\end_inset
+
+ s koeficienty 
+\begin_inset Formula $\lambda_{1},\lambda_{2},...,\lambda_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Lineární kombinace 
+\begin_inset Formula $\lambda_{1}v_{1}+\lambda_{2}v_{2}+...+\lambda_{n}v_{n}$
+\end_inset
+
+ se nazývá 
+\series bold
+netriviální
+\series default
+, pokud existuje 
+\begin_inset Formula $i\in\left\{ 1,2,...,n\right\} $
+\end_inset
+
+ takové, že 
+\begin_inset Formula $\lambda_{i}\neq0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Lineární kombinace 
+\begin_inset Formula $\lambda_{1}v_{1}+\lambda_{2}v_{2}+...+\lambda_{n}v_{n}$
+\end_inset
+
+ se nazývá 
+\series bold
+triviální
+\series default
+, jestliže 
+\begin_inset Formula $\lambda_{i}=0$
+\end_inset
+
+ pro každé 
+\begin_inset Formula $i=1,2,...,n$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Section
 Lineární závislost a nezávislost
 \end_layout
 
@@ -358,11 +659,11 @@ lineární zobrazení
 \series default
  (lineární transformace) se v matematice označuje takové zobrazení mezi
  vektorovými prostory 
-\begin_inset Formula $X$
+\begin_inset Formula $U$
 \end_inset
 
  a 
-\begin_inset Formula $Y$
+\begin_inset Formula $V$
 \end_inset
 
 , které zachovává vektorové operace sčítání a násobení skalárem.
@@ -373,7 +674,7 @@ lineární zobrazení
 \begin_layout Standard
 \begin_inset Formula 
 \[
-L\left(x+y\right)=L(x)+L(y)
+L\left(u+v\right)=L(u)+L(v)\; u\in U,v\in V
 \]
 
 \end_inset
@@ -381,7 +682,7 @@ L\left(x+y\right)=L(x)+L(y)
 
 \begin_inset Formula 
 \[
-L(\alpha x)=\alpha L(x)
+L(\alpha u)=\alpha L(u)\; u\in U
 \]
 
 \end_inset
@@ -389,20 +690,273 @@ L(\alpha x)=\alpha L(x)
 
 \end_layout
 
+\begin_layout Subsection
+Matice linárního zobrazení
+\end_layout
+
+\begin_layout Standard
+Nechť 
+\begin_inset Formula $U$
+\end_inset
+
+ a 
+\begin_inset Formula $V$
+\end_inset
+
+ jsou lineární vektorové prostory konečné dimenze nad tělesem R, 
+\begin_inset Formula $L:U\rightarrow V$
+\end_inset
+
+ je lineární zobrazení.
+ Mějme 
+\begin_inset Formula $u_{1},u_{2},...,u_{k}$
+\end_inset
+
+ bázi prostoru 
+\begin_inset Formula $U$
+\end_inset
+
+, 
+\begin_inset Formula $dimU=k$
+\end_inset
+
+ a 
+\begin_inset Formula $v_{1},v_{2},...,v_{n}$
+\end_inset
+
+ bázi prostoru 
+\begin_inset Formula $V$
+\end_inset
+
+, 
+\begin_inset Formula $dimV=n$
+\end_inset
+
+.
+ Pro libovolný prvek 
+\begin_inset Formula $x\in U$
+\end_inset
+
+ lze psát 
+\begin_inset Formula $x=\lambda_{1}u_{1}+\lambda_{2}u_{2}+...+\lambda_{k}u_{k}$
+\end_inset
+
+, tedy 
+\begin_inset Formula $\hat{x}=\left[\lambda_{1},\lambda_{2},...,\lambda_{k}\right]^{T}$
+\end_inset
+
+ je vektor koeficientů prvku 
+\begin_inset Formula $x$
+\end_inset
+
+ v bázi 
+\begin_inset Formula $u_{1},u_{2},...,u_{k}$
+\end_inset
+
+ prostoru 
+\begin_inset Formula $U$
+\end_inset
+
+.
+ Zobrazením prvku 
+\begin_inset Formula $x$
+\end_inset
+
+ získáme prvek 
+\begin_inset Formula $y=L(x)$
+\end_inset
+
+, který lze opět vyjádřit jako lineární kombinaci bázových vektorů 
+\begin_inset Formula $y=\eta_{1}v_{1}+\eta_{2}v_{2}+...+\eta_{k}v_{n}$
+\end_inset
+
+, tedy 
+\begin_inset Formula $\hat{y}=\left[\eta_{1},\eta_{2},...,\eta_{n}\right]^{T}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Zobrazení L je lineární, proto platí 
+\begin_inset Formula 
+\[
+L(x)=L(\lambda_{1}u_{1}+\lambda_{2}u_{2}+...+\lambda_{k}u_{k})=\lambda_{1}L(u_{1})+\lambda_{2}L(u_{2})+...+\lambda_{k}L(u_{k})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+L(x)=y=\left[v_{1},v_{2},...,v_{n}\right]\cdot\hat{y}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+L(u_{i})=\left[v_{1},v_{2},...,v_{n}\right]\cdot\left[\alpha_{1i},\alpha_{2i},...,\alpha_{ni}\right]^{T}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left[v_{1},v_{2},...,v_{n}\right]\cdot\hat{y}=\lambda_{1}\left[v_{1},v_{2},...,v_{n}\right]\cdot\left[\alpha_{11},\alpha_{21},...,\alpha_{n1}\right]^{T}+...+\lambda_{k}\left[v_{1k},v_{2k},...,v_{nk}\right]\cdot\left[\alpha_{1k},\alpha_{2k},...,\alpha_{nk}\right]^{T}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+po zkrácení
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+\hat{y}=\lambda_{1}\cdot\left[\alpha_{11},\alpha_{21},...,\alpha_{n1}\right]^{T}+...+\lambda_{k}\cdot\left[\alpha_{1k},\alpha_{2k},...,\alpha_{nk}\right]^{T}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\hat{y}=\left[\begin{array}{cccc}
+\alpha_{11} & \alpha_{12} & \cdots & \alpha_{1k}\\
+\alpha_{21} & \alpha_{22} & \cdots & \alpha_{2k}\\
+\vdots & \vdots & \ddots & \vdots\\
+\alpha_{k1} & \alpha_{k2} & \cdots & \alpha_{nk}
+\end{array}\right]\cdot\left[\begin{array}{c}
+\lambda_{1}\\
+\lambda_{2}\\
+\vdots\\
+\lambda_{k}
+\end{array}\right]=\mathbf{A}\hat{x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{A=}\left[\begin{array}{cccc}
+\alpha_{11} & \alpha_{12} & \cdots & \alpha_{1k}\\
+\alpha_{21} & \alpha_{22} & \cdots & \alpha_{2k}\\
+\vdots & \vdots & \ddots & \vdots\\
+\alpha_{k1} & \alpha_{k2} & \cdots & \alpha_{nk}
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+kde 
+\begin_inset Formula $\mathbf{A}$
+\end_inset
+
+ je 
+\series bold
+matice lineárního zobrazení
+\series default
+ 
+\begin_inset Formula $L$
+\end_inset
+
+ v bázích 
+\begin_inset Formula $u_{1},u_{2},...,u_{k}$
+\end_inset
+
+ prostoru 
+\begin_inset Formula $U$
+\end_inset
+
+ a 
+\begin_inset Formula $v_{1},v_{2},...,v_{n}$
+\end_inset
+
+ prostoru 
+\begin_inset Formula $V$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Vyjádřeno méně formálně: každý vektor z 
+\begin_inset Formula $U$
+\end_inset
+
+ si můžeme vyjádřit jako kombinaci bázových vektorů 
+\begin_inset Formula $U$
+\end_inset
+
+.
+ Pak se podíváme na koeficienty, kterými násobíme tyto bázové vektory, a
+ chceme z nich dostat koeficienty bázových vektorů v prostoru 
+\begin_inset Formula $V$
+\end_inset
+
+.
+ Pokud těmito koeficienty vynásobíme bázové vektory 
+\begin_inset Formula $V$
+\end_inset
+
+, dostaneme lineární zobrazení původního vektoru do prostoru 
+\begin_inset Formula $V$
+\end_inset
+
+.
+ Díky matici lineárního zobrazení můžeme tyto koeficienty získat.
+\end_layout
+
 \begin_layout Section
 Jádro a obor hodnot
 \end_layout
 
 \begin_layout Standard
-Mějme matici 
-\begin_inset Formula $A$
-\end_inset
-
-, která je zároveň maticí lineárního zobrazení 
+Mějme lineárního zobrazení 
 \begin_inset Formula $L:U\rightarrow V$
 \end_inset
 
-, tak že 
+, které je vyjádřeno jako 
 \begin_inset Formula $\left\{ A\bullet x=y\mid x\in U,y\in V,A\in\mathbb{R^{\mathbf{\mathsf{m\times n}}}}\right\} $
 \end_inset
 
@@ -635,18 +1189,6 @@ u^{T}\bullet w=0,\; v^{T}\bullet w=0
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section
-TODO
-\end_layout
-
-\begin_layout Standard
-lin.
- prostor, lin.
- podprostor, (netrivialni) lin.
- kombinace, matice lin.
- zobrazeni ...
 \end_layout
 
 \end_body
