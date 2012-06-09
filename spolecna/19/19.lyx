@@ -76,11 +76,51 @@ Společná část: 19 - PSI
 
 \begin_layout Standard
 \noindent
-Náhodná veličina a náhodný vektor.
- Distribuční funkce, hustota a pravděpodobnostní funkce náhodné veličiny.
- Střední hodnota a rozptyl náhodné veličiny a jejich odhady.
- Sdružené charakteristiky náhodného vektoru.
- Korelace a nezávislost náhodných veličin.
+
+\bar under
+Náhodná veličina 
+\bar default
+a
+\bar under
+ náhodný vektor
+\bar default
+.
+ 
+\bar under
+Distribuční funkce
+\bar default
+, 
+\bar under
+hustota
+\bar default
+ a 
+\bar under
+pravděpodobnostní funkce náhodné veličiny
+\bar default
+.
+ 
+\bar under
+Střední hodnota
+\bar default
+ a r
+\bar under
+ozptyl náhodné veličiny
+\bar default
+ a jejich odhady.
+ 
+\bar under
+Sdružené charakteristiky náhodného vektoru
+\bar default
+.
+ 
+\bar under
+Korelace
+\bar default
+ a 
+\bar under
+nezávislost náhodných veličin
+\bar default
+.
  Metoda maximální věrohodnosti.
  Základní principy statistického testování hypotéz.
  Markovské řetězce, klasifikace stavů.
@@ -377,8 +417,9 @@ Náhodné veličiny lze rozdělit na nespojité (diskrétní) a spojité.
 \series bold
 Příklad:
 \series default
- Havárii auta označíme cenou škody.
- Nebo strany hrací kostky označíme čísly 1 až 6.
+ Havárie aut označíme cenou škody a můžeme se ptát, jak je pravděpodobné,
+ že havárie dosáhne určité škody.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -399,11 +440,23 @@ X^{-1}(I)=\{\omega\in\Omega\mid X(\omega)\in I\}\in\mathcal{A}
 
 \end_inset
 
-Je popsána 
+Popisuje ji 
 \series bold
-pravděpodobnostní funkcí
+Rozdělení pravděpodobnosti 
+\series default
+náhodné veličiny 
+\series bold
+
+\begin_inset Formula $X$
+\end_inset
+
+
 \series default
 :
+\begin_inset VSpace smallskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -415,6 +468,27 @@ P_{X}(I)=P[X\in I]=P(\{\omega\in\Omega\mid X(\omega)\in I\})
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+to je funkce, která učuje pravděpodobnost toho, že náhodná veličina nabyde
+ určité hodnoty.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename images/pravdepodobnostFunkce.png
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
 Místo pravděpodobnostní funkce, můžeme použít úspornější 
 \series bold
 Distribuční funkci
@@ -429,6 +503,10 @@ Distribuční funkci
 
 
 \begin_inset Formula $I=(-\infty,t\rangle,t\in\mathbb{R}$
+\end_inset
+
+
+\begin_inset VSpace smallskip
 \end_inset
 
 
@@ -485,7 +563,81 @@ zprava spojitá
 \begin_inset Graphics
 	filename images/distribucniFunkce.png
 	width 12cm
-	rotateOrigin leftTop
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Distribuční funkce pro absolutně spojitou veličinu:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+F_{X}(t)=\underset{-\infty}{\overset{t}{\intop}}f_{X}(u)du,
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+kde 
+\begin_inset Formula $f_{X}$
+\end_inset
+
+ je tzv.
+ 
+\series bold
+hustota náhodné veličiny
+\series default
+.
+ Je to nezáporná funkce (
+\begin_inset Formula $f_{X}:\mathbb{R\rightarrow}\langle0,\infty)$
+\end_inset
+
+) a splňuje 
+\begin_inset Formula $ $
+\end_inset
+
+
+\begin_inset Formula $\underset{-\infty}{\overset{\infty}{\intop}}f_{X}(u)du=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Náhodné veličiny 
+\begin_inset Formula $X_{1},\ldots,X_{n}$
+\end_inset
+
+ jsou 
+\series bold
+nezávislé
+\series default
+, pokud pro všechny intervaly 
+\begin_inset Formula $I_{1},\ldots,I_{n}$
+\end_inset
+
+ jsou jevy 
+\begin_inset Formula $X_{1}\in I_{1},\ldots,X_{n}\in I_{n}$
+\end_inset
+
+ nezávislé, tj.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P\left[X_{1}\in I_{1},\ldots,X_{n}\in I_{n}\right]=\overset{n}{\underset{i=1}{\prod}}P\left[X_{i}\in I_{i}\right]
+\]
 
 \end_inset
 
@@ -514,6 +666,17 @@ Je na pravděpodobnostním prostoru (
 .
  Používáme ho v případech, kdy je k popisu výsledku náhodného pokusu nutné
  použít více čísel [wikipedia].
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\series bold
+Příklad: 
+\series default
+Chceme popsat vztah např.
+ mezi výškou a váhou osob.
+ K tomu potřebujeme více informací nežjen popis jednotlivých náhodných veličin.
 \end_layout
 
 \begin_layout Standard
@@ -596,9 +759,13 @@ Náhodný vektor lze považovat za vektor náhodných veličin
 \noindent
 Je popsán 
 \series bold
-pravděpodobnostmi
+Sdruženým rozdělením pravděpodobnosti
 \series default
 :
+\begin_inset VSpace smallskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -628,6 +795,10 @@ kde
 \end_inset
 
 
+\begin_inset VSpace smallskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -646,11 +817,17 @@ P_{\boldsymbol{X}}(I)=P[\boldsymbol{X}\in I]=P(\{\omega\in\Omega\mid\boldsymbol{
 \noindent
 Opět můžeme použít úspornější 
 \series bold
-distribuční funkci (
+Sdruženou distribuční funkci (
 \begin_inset Formula $F_{\boldsymbol{X}}$
 \end_inset
 
 )
+\series default
+
+\begin_inset VSpace smallskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -739,9 +916,414 @@ papír
  atp.
 \end_layout
 
+\begin_layout Section
+Základní charakteristiky náhodných veličin a náhodných vektorů
+\end_layout
+
+\begin_layout Subsection
+Střední hodnota
+\end_layout
+
+\begin_layout Standard
+Značení E nebo μ.
+ Jedná se o tzv.
+ charakteristiku polohy (angl.
+ measures of central tendency)
+\end_layout
+
+\begin_layout Subsubsection
+Střední hodnota náhodné veličiny
+\end_layout
+
+\begin_layout Standard
+Je definována zvlášť pro:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+diskrétní
+\series default
+ náhodnou veličinu U s oborem hodnot 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+EU=\mu_{U}=\underset{t\in\mathbb{R}}{\sum}t\cdot p_{U}(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+spojitou
+\series default
+ náhodnou veličinu V:
+\begin_inset Formula 
+\[
+EV=\mu_{V}=\overset{\infty}{\underset{-\infty}{\int}}t\cdot f_{V}(t)dt
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Střední hodnota náhodného vektoru 
+\end_layout
+
 \begin_layout Standard
 \begin_inset Formula 
 \[
+E\boldsymbol{X}=(EX_{1},\ldots,EX_{n})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Rozptyl (disperze)
+\end_layout
+
+\begin_layout Standard
+Značení 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ , 
+\begin_inset Formula $D$
+\end_inset
+
+ , 
+\begin_inset Formula $var$
+\end_inset
+
+.
+ Jedná se o charakteristiku variability (angl.
+ measures of central tendency).
+\end_layout
+
+\begin_layout Subsubsection
+Rozptyl náhodné veličiny
+\end_layout
+
+\begin_layout Standard
+Je to vlastně střední hodnota kvadrátu odchylky od střední hodnoty.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+DX=E\left(\left(X-EX\right)^{2}\right)=E\left(X^{2}\right)-\left(EX\right)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Rozptyl náhodného vektory
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+D\boldsymbol{X}=(DX_{1},\ldots,DX_{n})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Další číselné charakteristiky náhodného vektoru
+\end_layout
+
+\begin_layout Standard
+Pro jednorozměrné náhodné veličiny 
+\bar under
+střední hodnota
+\bar default
+ a 
+\bar under
+rozpty
+\bar default
+l dávají 
+\series bold
+dostatečnou
+\series default
+ informaci pro výpočet rozptylu jeho lineárních funkcí (lineární kombinace
+ různých náhodných veličin):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+E(X+Y)=EX+EY
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+E(X-Y)=EX-EY
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+D(X+Y)=DX+DY
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+D(X-Y)=DX+DY
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Pro náhodný vektor to ale nestačí, a proto zavádíme další charakteristiky:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+E(X+Y)=EX+EY
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+D(X+Y)=DX+DY+2cov(X,Y),
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+kde 
+\begin_inset Formula $cov(X,Y)$
+\end_inset
+
+ je kovariance náhodných veličin 
+\begin_inset Formula $X,Y.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Kovariace a korelace
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Kavariace
+\series default
+ určuje míru statistické závislosti mezi náhodnými veličinami.
+ Je definována jako střední hodnota součinu odchylek obou náhodných veličin
+ 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ od jejich středních hodnot (druhý vzorec není tak srozumitelný, ale je
+ jednodušší pro výpočet)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+cov(X,Y)=E((X-EX)(Y-EY))=E(XY)-EXEY
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Vlastnosti kovariace:
+\begin_inset Formula 
+\[
+cov(X,X)=DX,
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+cov(Y,X)=cov(X,Y)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+cov(aX+b,cY+d)=a\, c\, cov(X,Y)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+cov(X,Y)=0-pro\; nezávislé\; veličiny
+\]
+
+\end_inset
+
+ Při výpočtech je místo kovariace výhodnější používat 
+\series bold
+korelaci
+\series default
+ (což je kovariace pro normované náhodné veličiny)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\varrho(X,Y)=cov(norm\, X,norm\, Y)=\frac{cov(X,Y)}{\sigma_{X}\sigma_{Y}}=E(norm\, X\cdot norm\, Y)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Korelace nabývá hodnot 
+\begin_inset Formula $\text{\langle-1,-1\rangle}$
+\end_inset
+
+, pro 
+\begin_inset Formula $\varrho=1$
+\end_inset
+
+ je mezi 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ přímá lineární závislost, pro 
+\begin_inset Formula $\varrho=-1$
+\end_inset
+
+ nepřímá lineární závislost.
+ Pro 
+\begin_inset Formula $\varrho=0$
+\end_inset
+
+ říkáme, že jsou veličiny 
+\series bold
+nekorelované
+\series default
+.
+ Zároveň to znamená, že jsou lineárně nezávislé, nikoliv obecně nezávislé
+ (je to nutná podmínka pro obecnou nezávislost, ale nikoliv postačující).
+\end_layout
+
+\begin_layout Standard
+\noindent
+Pro náhodný vektor 
+\begin_inset Formula $\boldsymbol{X}=(X_{1},\ldots,X_{2})$
+\end_inset
+
+ definujeme
+\series bold
+ kovariační matici:
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Sigma_{\boldsymbol{X}}=\left[\begin{array}{cccc}
+cov(X_{1},X_{1}) & cov(X_{1},X_{2}) & \ldots & cov(X_{1},X_{n})\\
+cov(X_{2},X_{1}) & cov(X_{2},X_{2}) & \ldots & cov(X_{2},X_{n})\\
+\vdots & \vdots & \ddots & \vdots\\
+cov(X_{n},X_{1}) & cov(X_{n},X_{2}) & \ldots & cov(X_{n},X_{n})
+\end{array}\right]=\left[\begin{array}{cccc}
+DX_{1} & cov(X_{1},X_{2}) & \ldots & cov(X_{1},X_{n})\\
+cov(X_{2},X_{1}) & DX_{2} & \ldots & cov(X_{2},X_{n})\\
+\vdots & \vdots & \ddots & \vdots\\
+cov(X_{n},X_{1}) & cov(X_{n},X_{2}) & \ldots & DX_{n}
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+a 
+\series bold
+korelační matici:
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+\varrho_{\boldsymbol{X}}=\left[\begin{array}{cccc}
+1 & \varrho(X_{1},X_{2}) & \ldots & \varrho(X_{1},X_{n})\\
+\varrho(X_{2},X_{1}) & 1 & \ldots & \varrho(X_{2},X_{n})\\
+\vdots & \vdots & \ddots & \vdots\\
+\varrho(X_{n},X_{1}) & \varrho(X_{n},X_{2}) & \ldots & 1
+\end{array}\right]
 \]
 
 \end_inset
