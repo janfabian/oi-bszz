@@ -1,0 +1,251 @@
+\documentclass[10pt]{article}
+\usepackage{a4wide}
+\usepackage{amsmath, amssymb}
+\usepackage{amsthm}
+
+\newenvironment{myenumerate}{%
+  \edef\backupindent{\the\parindent}%
+  \itemize%
+  \setlength{\parindent}{\backupindent}%
+}{\endenumerate}
+
+
+\parindent 0pt
+\begin{document}
+
+\begin{center}
+\begin{LARGE}
+\textbf{\#31 APO-1}\\
+\end{LARGE}
+Petr Svec
+\end{center}
+
+\section*{Architektura pocitace}
+Klasickty von Neumanovsky pocitac:
+\begin{itemize}
+\item Procesor \begin{itemize}
+				\item Radic
+				\item ALU (Arithetic-Logical Unit)
+				\end{itemize}
+\item Pamet
+\item I/O System
+\end{itemize}
+Radic se dal sestava z casti datove a vlastni ridici casti. Datovou lze navic rozdelit na registry a dalsi obvody.\\
+Dulezite registry:
+\begin{itemize}
+\item Program Counter (PC)
+\item Instruction Register (IR)
+\item Stack Pointer (SP)
+\end{itemize}
+
+Zakladni cyklus pocitace (predchazi mu inicializace registru apod.):
+\begin{enumerate}
+\item Cteni instrukce \begin{itemize}
+					\item PC $\rightarrow$ adresa Hlavni Pameti (HP)
+					\item Cteni obsahu
+					\item Prectena data se ulozi do IR
+					\item Inkrementace PC o delku intrukce
+						\end{itemize}
+\item precteni opcode(kod instrukce - typicky nekolik prvnich bitu v zavilsti na velikosti instrukcni sady)
+\item provedeni instrukce - zahrnuje i dalsi veci jako je cteni operandu
+\item Pokud doslo k preruseni, tak se zpracuje.
+\item skok na bod 1.
+\end{enumerate}
+
+Preruseni jsou dva druhy a u obou dochazi k preruseni sekvence vykonavaneho kodu a prechazi se na obsluhu.
+\begin{itemize}
+\item \textbf{Vnejsi preruseni} - asynchroni obsluha vnejsi udalosti, napr. reakce OS na event ze vstupni periferie.
+\item \textbf{Vnitrni preruseni}(Vyjimka) - primo od CPU, ktere takto reaguje na problem pri zpracovani instrukce napr. deleni nulou
+\item \textbf{Synchronni soft. preruseni} - zamerne preruseni vznikle vlozenim patricne instrukce na misto v kodu.
+\end{itemize}
+
+Kazda instrukce se sklada z opcode a operandu. Operandy muzou byt registry(resp. jejich "indexy"), adresa (napr. pro skoky)
+
+\section*{RISC/CISC}
+\begin{itemize}
+\item \textbf{RISC}(Reduced Instruction Set Computer) je architektura CPU, ve ktere je velice omezena intrukcni sada (IS) napr. jen na scitani, bitove posuny, nejake cteni/ukladani atd. Zbytek se realizuje softwarove. Vsechny instrukce maji pevny format a delku a take stejnou dobu vykonani. Velikost IS taky implikuje potrebu mnohem mensiho poctu tranzistoru, coz je mimo jine duvod proc treba ARMy moc nezerou. Zastupci: ARM, MIPS, PowerPC
+
+\item \textbf{CISC}(Complex Instruction Set Computer) je architektura (prozatim) vetsiny uzivatelskych CPU. Instrukcni sada byva casto pomerne velka, instrukce nemusi byt stejne dlouhe a jejich vykonani muze trvat ruzne dlouho. Zastupci: x86, amd64
+\end{itemize}
+
+\section*{Site procesoru a paralelni architektury}
+existuji 4 typy struktur procesoru:
+\begin{enumerate}
+\item \textbf{SISD} - Klasicky procesor tj. jednoduchy tok instrukci i dat
+\item \textbf{SIMD} - Procesorove pole - jed. tok instrukci, vicenasobny tok dat. napr. GPU
+\item \textbf{MISD} - Piplene
+\item \textbf{MIMD} - Multiprocesorove pole
+\end{enumerate}
+
+\textbf{Propojovaci site}\\
+Zajistuji propojeni a komunikaci mezi procesory, deli se na staticke a dynamicke, pricemz ve statickych jsou spoje nemenne a v dynamickych naopak. U dynamickych jsou spojovaci spinace rizeny bud lokalne, kdy ma kazda skupina svuj radic, nebo centralne, kdy existuje jen jeden.\\
+Staticke prop. site jsou: linearni, stromova, kruhova, mrizova, hvezdicova, krychlova a polygonalni(uplny graf)\\
+
+- procesory mohou byt skalarni nebo vektorove\\
+- skalarni procesory jsou bezne procesory\\
+- vektorove p. provadi jednu operaci nad nekolika operandy $\rightarrow$ odstranuje se tim rezije spojena indexovanim jednolivych prvku vektoru.\\
+
+\renewcommand{\labelitemi}{$-$}
+\textbf{Paralelizovane SISD}
+\begin{itemize}
+	\item samotne SISD je vetsina pocitacu zalozena na von Neumanove architekture
+	\item palarelizovane SISD jsou systemy postavene na architekture VLIW(= very long instruction word), zalohovane systemy a systemy pouzivajici pipelining
+\end{itemize}
+
+\textbf{Architektura VLIW}
+\begin{itemize}
+\item velice dlouhe instrukce, ktere jsou rozdelene na nekolik casti/useku, ktere jsou zpracovavany paralelne
+\item jednotlive exekucni jednotky(EJ) jsou propojeny
+\item operacni pamet je rozdelena podle usporadani EJ tj. kazdy blok pameti odpovida jedne EJ
+\end{itemize}
+
+
+\textbf{Zalohovane systemy} - systemy, ve kterych bezi paralelne nekolik SISD tj. vsechny provadi stejny vypocet nad stejnou sadou dat ,pricemz vysledek ze vsech jednotlivych procesoru/pocitacu je porovnavan v komparatoru. Cilem je zvyseni spolehlivosti a bezpecnosti.\\
+
+\textbf{Paralelni systemy SIMD}\\
+SIMD systemy jsou ty, ve kterych se zpracovavaji dobre rozdelitelna data. Idealnim prikladem jsou matice, ktere jsou takovym gr\'{o} tohoto oboru, jelikoz se s nimi numericky pocitaji diferencialni rovnice, pouzivaji se k reprezentaci obrazu apod. Konkretni aplikace z toho plynouci: pocitani aerodynamiky, meteorologie, temer cokoliv co se tyka zpracovani obrazu.\\[10pt]
+Princip prace spociva v soucasnem zpracovani nekolika prvku napr. nekolik prvku z pole, kdy procesory z procesoroveho pole(PP) provadeji synchronne stejnou operaci(instrukci). Procesory jsou rizene spolecnym radicem.\\
+
+\begin{enumerate}
+\item SIMD s lokalni pameti\begin{itemize}
+	\item PP je rizeno univerzalnim pocitacem/procesorem, ktery zpracovava nadrizeny program $\rightarrow$ rozhoduje o maticovych ulohach a zabezpecuje prenos dat na procesory v poli
+	\item radic PP sam zpracovava skalarni a ridici instrukce, zatimco vektorove nechava zpracovat PP
+	\item kazdy procesor ma svou vlastni pamet operandu
+	\item procesory si mezi sebou posilaji data pres propojovaci sit
+	\end{itemize}
+	
+\item SIMD se sdilenou pameti \begin{itemize}
+	\item narozdil od SIMD s lok. pameti je v tomto pripade pamet od procesoru oddelena a komunikace probiha pres propojovaci sit
+	\item pridelovani pameti do procesoru zajistuje radic
+	\item pocet pametovych modulu muze byt jiny nez pocet procesoru
+	\end{itemize}
+\end{enumerate}
+
+\textbf{Paralelni systemy MIMD}\\
+- kazdy procesor zpracovava instrukce a data sveho vlasntiho programu\\
+- deli se na tesne vazane a volne vazane
+\begin{enumerate}
+\item tesne vazane \begin{itemize}
+	\item kazdy procesor ma malou vyrovnavaci pamet pro data
+	\item procesory maji sdilenou operacni pamet, ktera je oddelena od procesoru a pripojena spolu s periferiemi na propojovaci sit, pres kterou komunikuji s CPU
+	\item periferie maji malou autonomii
+	\item propojovaci sit umoznuje lib. propojeni
+	\end{itemize}
+\item volne vazane \begin{itemize}
+	\item procesory maji vlastni (lokalni)pamet a vlastni periferie, pricemz lokalni pamet obsahuje jak program, tak data
+	\item propojovaci sit byva staticka \begin{itemize}
+		\item[$\bullet$] Hierarchicka organizace sbernic - procesory nejnizsi urovne spolu s pametmi seskupeny do clusteru, ktere jsou pripojeny komunikacnimi moduly na sbernice vyssi hierarchie
+		\item[$\bullet$] Organizace do n-rozmerne krychle(nebo mrize) - kazdy proc. modul ma ma 8(4) komunikacnich procesoru pro pripojeni. Casti krychle lze dynamicky pridelovat pro ruzne ulohy. Je vyzadovan nadrizeny pocitac.
+		\end{itemize}
+	\item rizeni je slozitejsi nez u volne vazanych, ale na druhou stranu jsou tyto systemy odolnejsi vuci porucham a vypocty lze navic znekolikanasobit podle potreby. Jsou pouzivany tam, kde je treba vysoka spolehlivost
+	\end{itemize}
+\end{enumerate}
+
+\textbf{NUMA}(Non-Uniform Memory Access)\\
+- pouziva se u MIMD systemu, kde ma zajistit kratsi cekani na zapis nebo cteni do pameti tim, ze kazdemu procesoru je poskytnuta samostatna pamet\\
+- pouziva tesnejsi vazbu vice CPU v uzlu, ktere jsou dale propojene do vetsich celku\\
+
+
+\renewcommand{\labelitemi}{$\bullet$}
+
+\section*{Hierarchie pameti}
+- duvod hierarchizace - rychlejsi pamet je drazsi, hierarchizaci dostaneme system rychlosti se blizici tomu, ktery by pouzival vyhradne tu nejrychlejsi z pameti z hierarchie.\\
+- hlavni myslenka - bezici programy pouzivaji v dany okamzik ke svemu behu jen cast adresoveho prostoru
+Kterou cast bude program pouzivat se rozhoduje podle nasledujicich dvou faktoru:
+\begin{itemize}
+\item Casova lokalita - co se pouzilo nedavno se brzo pouzije znova ( soft. cykly, promenne)
+\item Prostorova lokalita - polozky blizko aktualne pouzivanych budou brzo treba (sekvenci provadeni kodu)
+\end{itemize}
+- pametova hierarchie se bezne sklada (smerem od te nejblize procesoru) z nekolika cache (L1,L2 a cim dal casteji i L3), operacni pameti a pevneho disku.\\
+- data v pameti se hledaji smerem od CPU
+\\[10pt]
+\begin{large}
+Virtualizace pameti
+\end{large}\\[10pt]
+- virtualni pamet (VP) je uroven abstrakce postavena nad vsemi zdroji dostupne pameti\\
+- umoznuje procesu/programu dotazovat se pouze na logicke adresy (LA) a nezabyvat se jestli to je napr. v RAM nebo na HDD. VP prostor tedy muze byt mnohem vetsi nez je velikost fyzicke pameti.\\
+- prevod mezi VA a fyzickou adresou casto zajistuje procesor (hardwarove)\\
+- bezne implementovano pomoci strankovani, kde je strankovana jak operacni pamet, tak misto na HDD\\
+- jednotka LA prostoru je stranka u fyzickeho adr. prostoru (FAP) to je ramec
+-kazdemu procesu je prideleno urcite mnozstvi stranek. ty si kazdy proces drzi ve sve Tabulce stranek\\
+- nekolik prvnich bitu logicke adresy je indexem do tabulky stranek, na kterem lezi hledana fyzicka adresa (FA). Zbytek tvori offset jak ve strance, tak v ramci (za predpokladu, ze jsou stejne velke). Spolu s FA je na stejnem indexu take nekolik priznaku - validity bit (pritomnost stranky ve FAP), dirty(obsah modifikovan), access rights\\
+- v pripade, ze je ramec prazdny, tak se hledana stranka pomoci DMA nacte do onoho ramce.\\
+- pokud je nedostatek pameti, tak se odebere nejaky (nejake) ramec (ramce) na zaklade nektereho z algoritmu na vyber "obeti" (nejspise LRU - Last recently used). V pripade, ze byt aktivni dirty bit, tak se puvodni data nejprve zapisi na disk. Nakonec se aktualizuje page table.
+
+\section*{Prerusovaci a I/O podsystem}
+\textbf{I/O podsystem}\\
+Druhy periferii:
+\begin{enumerate}
+\item vystupni
+\item vstupni
+\item obousmerne - napr. HDD
+\end{enumerate}
+
+Metody prenosu z/na periferie:
+\begin{enumerate}
+\item Programovy kanal - pooling(= cekani ve smycce), nejhloupejsi reseni
+\item Programovy kanal s prerusenim. IO operace je zahajena na zadost programu pomoci OS. Existuji dve varianty: \begin{itemize}
+	\item synchronni - program ceka na dokonceni IO operace
+	\item asynchronni - p. neceka na dokonceni IO a muze bezet soubezne s ni. Jakmile jsou data dostupna perif. vyvola preruseni a dojde k jejich. precteni
+	\end{itemize}
+	
+\item Direct memory access (DMA)
+\item Autonomni kanal
+\end{enumerate}
+
+\textbf{DMA}\\
+- prenos je realizovany specialni jednotkou bez prime ucasti OS. Ten jen nastavi parametry prenosu = kolik bytu a do jakeho bufferu a na jake adrese. Nasledne radic periferie inicializuje DMA prenos, ktery probiha dokud neni precten pozadovany pocet bytu definovany OS. Po ukonceni prenosu je vygenerovano preruseni.\\
+- vyhodou je, ze velke datove prenosy nevytesnuji data z cache\\
+- DMA radic nemusi mit jen disky, ale napr. i sitove rozhrani\\
+
+\textbf{Autonomni kanal}(Bus Master DMA)
+(Pozn. to co je ve slidech k BM DMA je temer totozny s beznym DMA, presto to uvadim. na wiki jsem nasel ale neco navic. )\\
+- inteligence presunuta do zarizeni\\
+- periferie je doplnena o vlastni radic\\
+- prubeh prenosu \begin{enumerate}
+	\item nadrizeny procesor vlozi sekvenci datovych bloku do pameti
+	\item nakonfiguruje nebo primo naprogramuje radic periferie. ta provede sekveni prenosu
+	\item po uplnem nebo castecnem preruseni je informovan procesor
+	\end{enumerate}
+	- - - - - -\\
+Dle wikipedie se Bus Master DMA od klasickeho lisi tim, ze periferie muze dostat kontrolu nad pametovou sbernici a zapsat tak primo do pameti bez jakehokoliv zapojeni ze strany CPU.\\
+
+\textbf{Vyjimky a preruseni}\\
+\begin{itemize}
+\item Vyjimky \begin{itemize}
+	\item pro MIPS napr. mat. preteceni, nactena neznama instr., systemove volani
+	\item nedostupnost dat nebo selhani zapisu
+	\end{itemize}
+\item Preruseni \begin{itemize}
+	\item maskovatelna - lze zakazat ve stavovem slovu CPU
+	\item nemaskovatelna - casto osetreni HW chyb, hlidaci obvod
+	\end{itemize}
+\end{itemize}
+
+Vyjimky jsou prijaty temer vzdy, preruseni jen pokud jsou nemaskovatelna nebo povolena.\\
+
+Zpracovani vyjimky/preruseni:
+\begin{enumerate}
+\item stavove slovo(PSW) a PC se ulozi bud na zasobnik nebo do spec. registru
+\item PC se nastavi na adresu obsluzne rutiny pripadajici dane vyjimce pripadne i cislu zdroje preruseni, ktera je nasledne vykonana
+\item V zavislosti na typu vyjimky/preruseni doje ke specifickemu zpracovani
+\item provede se instrukce CPU pro uvedeni do stavu pred zpracovanim vyjimky/preruseni (instrukce navratu z preruseni) a obnovi se puvodni registry (PC a PSW)
+\end{enumerate}
+Pri spravnem obslouzeni vyjimky by puvodni program nemel primo poznat, ze k preruseni doslo.\\
+
+\textbf{Urceni zdroje vyjimky/preruseni}\\
+\begin{itemize}
+\item soft. hledani \begin{itemize}
+	\item veskera preruseni a vyj. spousteji rutinu od stejne adresy. rutina zjisti duvod preruseni ze stavoveho registru (!= PSW)
+	\end{itemize}
+\item vektorova obsluha preruseni \begin{itemize}
+	\item cislo zdroje zjisti CPU
+	\item v pameti se nachazi na pevnem miste (specifikovane ridicim registrem VBR) tabulka vektoru preruseni, CPU prevede cislo zdroje na index a z nej nacte v poli slovo, kt. vlozi do PC
+	\end{itemize}
+\item nevektorova obsluha vice pevne urcenych adres podle priorit
+\item casto i kombinovane
+\end{itemize}
+
+Async vs. sync preruseni: async. nejsou vazane na instrukci, zatimco sync ano
+
+\end{document}
