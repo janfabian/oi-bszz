@@ -435,7 +435,7 @@ Každá úloha LP má svojí duální úlohu, kterou lze dostat následující k
 \[
 \begin{array}{cccc}
 \min & \sum_{j}c_{j}x_{j} & \max & \sum_{i}y_{i}b_{i}\\
-z.p. & \sum_{j}a_{ij}x_{j}\geq b_{i} & z.p. & y_{i}\geq\mathbb{R}\\
+z.p. & \sum_{j}a_{ij}x_{j}\geq b_{i} & z.p. & y_{i}\geq0\\
  & x_{j}\geq0 &  & \sum_{i}y_{i}a_{ij}\leq c_{j}
 \end{array}
 \]
@@ -454,7 +454,7 @@ přehledněji:
 \[
 \begin{array}{cccc}
 \min & c^{T}x & \max & y^{T}b\\
-z.p. & Ax\geq b & z.p. & y_{i}\geq\mathbb{R}\\
+z.p. & Ax\geq b & z.p. & y_{i}\geq0\\
  & x\geq0 &  & y^{T}A\leq c^{T}
 \end{array}
 \]
