@@ -1,0 +1,249 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Psychologické a ergonomické aspekty používání uživatelských rozhraní.
+ Speciální uživatelská rozhraní a jejich testování (A4B39TUR) 
+\end_layout
+
+\begin_layout Section
+Psychologické a ergonomické aspekty UI
+\end_layout
+
+\begin_layout Standard
+Zejména při testování v usability labu je nutné o uživatele pečovat – musí
+ se cítit pohodlně, chovat se „normálně“, musíme ho ujistit, že pokud najde
+ chybu/něco mu nepůjde, je to správné = proto testujeme.
+\end_layout
+
+\begin_layout Subsection
+Průběh testování:
+\end_layout
+
+\begin_layout Enumerate
+Ice breaking – překonat jeho počáteční stres, představit se (2-5minut)
+\end_layout
+
+\begin_layout Enumerate
+Briefing, focusing – říct, co chceme, netestujeme jeho ale program, aby
+ „myslel nahlas“ (z důvodu záznamu), uzavření smlouvy, ochrana soukromí,
+ … (3-8minut)
+\end_layout
+
+\begin_layout Enumerate
+Předtestové interview – dotazník, … (2-5minut)
+\end_layout
+
+\begin_layout Enumerate
+Sběr dat – testování, připomenutí myšlení nahlas (30-60minut)
+\end_layout
+
+\begin_layout Enumerate
+Potestové interview – dotazník, často chtějí povídat co a proč udělali,
+ … (5-15minut) 
+\end_layout
+
+\begin_layout Enumerate
+Debriefing – rozloučení, poděkování, ujištění, že byl výborný, … (2-5minut)
+ 
+\end_layout
+
+\begin_layout Standard
+Verbální předávání informací zhruba 20%, neverbální pak 50% a více (jak
+ se tváří, hýbe, atp.)
+\end_layout
+
+\begin_layout Subsection
+Typy uživatelů
+\end_layout
+
+\begin_layout Enumerate
+Problémový participant
+\end_layout
+
+\begin_layout Enumerate
+Dominantní – test vede moderátor, ne on!,obvykle za toto chování může úzkost/str
+ach 
+\end_layout
+
+\begin_layout Enumerate
+Expert – stres z vlastní zkušenosti (neselhat), neměli by se účastnit testů
+ 
+\end_layout
+
+\begin_layout Enumerate
+Insecure – nejistý, mluví málo a potichu (ujistit ho, že vše dělá správně)
+ 
+\end_layout
+
+\begin_layout Enumerate
+Inadequate – nedostatečný participant 
+\end_layout
+
+\begin_layout Standard
+musí se cítit při testu pohodlně, rozhodně nesmí odejít se špatným pocitem/nálad
+ou, … 
+\end_layout
+
+\begin_layout Section
+Speciální uživatelská rozhraní a jejich testování
+\end_layout
+
+\begin_layout Standard
+Testování – nutnost odhalit správnost převodu rozpoznání, subjektivní a
+ objektivní pocity rychlosti, procento porozumnění
+\end_layout
+
+\begin_layout Subsection
+Hlasový vstup a výstup
+\end_layout
+
+\begin_layout Itemize
+ASR (automated speech recognition) – převod WAV do TXT
+\end_layout
+
+\begin_layout Itemize
+TTS (text to speech) – text -> slova -> hlášky -> hlasová řeč (v současnosti
+ několik jazyků a řečníků/přízvuků)
+\end_layout
+
+\begin_layout Itemize
+Speech to text – opačně (nejasnosti řeči – problémy s krátkou (rychlejší)
+ výslovností, řešení kontextu, rozpoznání gramatiky)
+\end_layout
+
+\begin_layout Itemize
+vhodné pro postižené lidi (slepé, bez rukou), řízení auta, …
+\end_layout
+
+\begin_layout Subsection
+Rozhlasy (nádraží)
+\end_layout
+
+\begin_layout Itemize
+limitováno kapacitou kanálu – množství informací x omezený čas na sdělení
+\end_layout
+
+\begin_layout Itemize
+pouze pasivní příjem bez možnosti zopakování (nezáleží na uživateli)
+\end_layout
+
+\begin_layout Itemize
+dilema mezi kompletností informace a užitečností (hlášení vlaku: řada minulých
+ stanic a až poté cílové)
+\end_layout
+
+\begin_layout Subsection
+Telefonní služby
+\end_layout
+
+\begin_layout Itemize
+technická podpora, reklamy, … - většinou dočasné využívání
+\end_layout
+
+\begin_layout Itemize
+poskytováno lidmi/automatem
+\end_layout
+
+\begin_layout Subsection
+Multimediální vstup
+\end_layout
+
+\begin_layout Itemize
+kombinace několika vstupů a výstupů a jejich případné zahození v případě
+ postižených
+\end_layout
+
+\begin_layout Itemize
+umožňuje přístupnost systému co nejvíce lidem
+\end_layout
+
+\begin_layout Itemize
+asistivní technologie: rozpoznání hlasu, sledování očí, čtečky obrazovek
+\end_layout
+
+\begin_layout Itemize
+upravení použitelnosti pro staré lidi – větší text, písmena, minimalizace
+ kliknutí a scrollování, méně barev
+\end_layout
+
+\begin_layout Itemize
+poruchy zraku – (částečná) barvoslepost, šedoslepost
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+splynutí 2 normálně odlišných tras metra v jednu (problém například v londýně,
+ NY, …)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+kognitivní znevýhodnění – problémy s pamětí, čtení, pozornost
+\end_layout
+
+\begin_layout Itemize
+WEB – zákon o přístupnosti – pomocné/alternativní texty, vhodný kontrast,
+ možnost nastavit přiblížení, atd.
+\end_layout
+
+\end_body
+\end_document
