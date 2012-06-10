@@ -44,6 +44,15 @@ Hotové otázky
 
 16\.  Datové typy, seznam, zásobník, fronta, operace s nimi, jejich složitost. Vyhledávací a rozhodovací stromy (binární, AVL, B) jejich specifika a využití, efektivita operací, volba rozptylovací funkce pro specifické typy dat. (A4B36ALG)
 
+
+17\. Otevřené a zřetězené rozptylovací tabulky, efektivita operací, volba rozptylovací funkce pro specifické typy dat. (A4B36ALG)
+
+18\. Rekurze, základní schéma, základní vlastnosti, souvislost rekurze a iterace, vlastnosti implementace, efektivita (A4B36ALG)
+
+19\. Náhodná veličina a náhodný vektor. Distribuční funkce, hustota a pravděpodobnostní funkce náhodné veličiny. Střední hodnota a rozptyl náhodné veličiny a jejich odhady. Sdružené charakteristiky náhodného vektoru. Korelace a nezávislost náhodných veličin. Metoda maximální věrohodnosti. Základní principy statistického testování hypotéz. Markovské řetězce, klasifikace stavů. (A0B01PSI)
+
+20\. Entropie, vzájemná entropie a podmíněná entropie diskrétních a spojitých rozdělení, základní vlastnosti a význam. Kódování zpráv, Kraftova-MacMillanova nerovnost. Souvislost entropie a střední délky kódového slova. Kódy s optimální střední délkou. Informační kanál a jeho kapacita. Shannonova věta o kódování. (A0B01PSI) 
+
 21\. Deterministický konečný automat, jazyk přijímaný konečným automatem. (A4B01JAG)
 
 22\. Regulární výrazy a regulární jazyky, Kleeneova věta. Algoritmická složitost úloh souvisejících s regulárními jazyky. (A4B01JAG)
@@ -52,6 +61,40 @@ Hotové otázky
 
 24\. Turingovy stroje. (A4B01JAG)
 
+26\. Konečný automat a jeho minimalizace. Syntéza asynchronních sekvenčních logických obvodů jako kombinačních obvodů se zpětnou vazbou. Struktura základních synchronních klopných obvodů. Syntéza sekvenčních logických obvodů používaných v počítačích. (A0B35SPS)
+
+27\. Pevný a programovatelný řadič. Mikroprogramový automat. Klasická architektura počítače, von Neumannova a harvardská architektura. Struktura CPU, datové a adresní registry, čítač instrukcí, ukazatel zásobníku, typy instrukcí (A0B35SPS)
+
+28\. Struktury a hierarchie pamětí. Způsoby adresace. Různá šíře adres generovaných CPU (logických adres) a fyzických adres paměti. Mapování, stránkování, segmentace. Přerušení a výjimky. Zdroje přerušení, přerušovací vektory. DMA přenosy. (A0B35SPS) 
+
 29\. Mechanika - Newtonovy zákony. Kinematika a dynamika hmotného bodu. Pohybové rovnice pro inerciální a neinerciální vztažné soustavy. Práce a energie. Konzervativní silové pole, mechanické zákony zachování. I. a II. věta impulzová. Otáčivý pohyb tuhého tělesa (moment síly, hybnosti, moment setrvačnosti). Gravitační pole a příklady jeho působení (gravitační zákon, intenzita a potenciál gravitačního pole, intenzita gravitačního pole uvnitř a vně homogenní koule). Mechanické kmitavé soustavy. Netlumený a tlumený mechanický lineární oscilátor. Vynucené kmity, rezonance výchylky. (A4B02FYZ) 
 
-30\. Dynamika fyzikálních systémů - základní dělení dynamických systémů, fázový portrét, stracionární (pevné) body, dynamický tok. Vyšetřování stability lineárních systémů, topologická klasifikace lineárních systémů (sedlový bod, stavilní a nestabilní spirála, stabilní a nestabilní uzel, středový bod), atraktor. Vyšetřování stability nelineárních systémů, limitní cykly, bifurkace.
+30\. Dynamika fyzikálních systémů - základní dělení dynamických systémů, fázový portrét, stracionární (pevné) body, dynamický tok. Vyšetřování stability lineárních systémů, topologická klasifikace lineárních systémů (sedlový bod, stavilní a nestabilní spirála, stabilní a nestabilní uzel, středový bod), atraktor. Vyšetřování stability nelineárních systémů, limitní cykly, bifurkace. (A4B02FYZ) 
+
+31\. Architektura počítače. Koncepce a techniky CPU. Porovnaní přístupů RISC a CISC procesorů. Sítě procesorů a paralelní architektury. Hierarchický koncept pamětí. Přerušovací a vstupně-výstupní podsystém počítače, řízení vstupů a výstupů. (A0B36APO) 
+
+33\.     Lineární programování (LP). Transformace různých forem LP mezi sebou. Aplikace LP. Simplexová metoda. Dualita. Konvexní množiny a polyedry, konvexní funkce, konvexní optimalizační úlohy. (A4B33OPT)
+
+34\. Metoda nejmenších čtverců. Analytické podmínky na lokální optima diferencovatelných funkcí, volných i vázaných rovnostmi (metoda Lagrangeových multiplikátorů). Numerické metody pro optimalizaci bez omezení (gradientní, Newtonova, Gaussova-Newtonova, Levenberg-Marquardtova metoda). (A4B33OPT)
+
+
+
+### Informatika a počítačové vědy
+
+12\. Bayesovská rozhodovací úloha, tj. minimalizace střední ztráty. Nebayesovské rozhodovací úlohy (Neyman-Pearson, minimax). (A4B33RPZ)
+
+13\. Lineární klasifikátory, jejich výhody. Perceptronový algoritmus učení. (A4B33RPZ)
+
+14\. Metody učení Adaboost a SVM (Support Vector Machine). (A4B33RPZ) 
+
+### Softwarové systémy
+
+7\. Koncept jazyka na bázi virtuálniho stroje, JVM memory management, datové struktury, výjimky, objektové programování, vlákna a synchronizace. (A4B77ASS)
+
+8\. Architektury softwarových systémů, komponentové architektury, vzdálená invokace, distribuované komponentové architektury (CORBA), redundance a návrh spolehlivých systémů. (A4B77ASS)
+
+9\. Webové služby a service-oriented architektury, asynchronní architektury komunikace, producer-consumer model, aktivní objekty a agentní systémy. (A4B77ASS)
+
+10\. Testování uživatelských rozhraní. Definice pojmu použitelnosti (usability), modely úloh, prototypování uživatelských rozhraní. Testování použitelnosti (organizace a vyhodnocování testů). (A4B39TUR)
+
+11\. Psychologické a ergonomické aspekty používání uživatelských rozhraní. Speciální uživatelská rozhraní a jejich testování. (A4B39TUR) 
