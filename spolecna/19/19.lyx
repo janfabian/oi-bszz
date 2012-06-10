@@ -106,7 +106,11 @@ Střední hodnota
 \bar under
 ozptyl náhodné veličiny
 \bar default
- a jejich odhady.
+ a 
+\bar under
+jejich odhady
+\bar default
+.
  
 \bar under
 Sdružené charakteristiky náhodného vektoru
@@ -121,7 +125,11 @@ Korelace
 nezávislost náhodných veličin
 \bar default
 .
- Metoda maximální věrohodnosti.
+ 
+\bar under
+Metoda maximální věrohodnosti
+\bar default
+.
  Základní principy statistického testování hypotéz.
  Markovské řetězce, klasifikace stavů.
 \end_layout
@@ -1329,6 +1337,263 @@ korelační matici:
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Odhady základních číselných charakteristik
+\end_layout
+
+\begin_layout Standard
+Typicky jsou číselné parametry rozdělení skryté a nebývají přímo měřitelné
+ (kvůli velikosti celého souboru).
+\end_layout
+
+\begin_layout Standard
+\noindent
+Výběrový soubor rozsahu 
+\begin_inset Formula $n$
+\end_inset
+
+ označujeme jako 
+\series bold
+náhodný výběr 
+\begin_inset Formula $\boldsymbol{X}=(X_{1},\ldots,X_{n})$
+\end_inset
+
+ 
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\series bold
+Statistika 
+\series default
+je každá měřitelná funkce, definovaná na náhodném výběru libovolného rozsahu.
+ Následující statistiky se používají pro odhady číselných parametrů.
+\end_layout
+
+\begin_layout Subsection
+Výběrový průměr
+\end_layout
+
+\begin_layout Standard
+z náhodného výběru 
+\series bold
+
+\begin_inset Formula $\boldsymbol{X}=(X_{1},\ldots,X_{n})$
+\end_inset
+
+ 
+\series default
+je nestranný konzistentní odhad střední hodnoty:
+\begin_inset Formula 
+\[
+\bar{X}_{n}=\frac{1}{n}\overset{n}{\underset{j=1}{\sum}X_{j}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Výběrový rozptyl
+\end_layout
+
+\begin_layout Standard
+náhodného výběru 
+\series bold
+
+\begin_inset Formula $\boldsymbol{X}=(X_{1},\ldots,X_{n})$
+\end_inset
+
+ 
+\series default
+je nestranný konzistentní odhad střední rozptylu:
+\begin_inset Formula 
+\[
+S_{X}^{2}=\frac{1}{n-1}\overset{}{\underset{j=1}{\overset{n}{\sum}}\left(X_{j}-\bar{X}_{n}\right)^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Metoda maximální věrohodnosti
+\end_layout
+
+\begin_layout Standard
+Často nechceme odhadnout jen střední hodnotu či rozptyl, ale i jiné parametry
+ rozdělení.
+ Rozdělení náhodné veličiny 
+\begin_inset Formula $X$
+\end_inset
+
+ závisí na vektoru parametrů 
+\begin_inset Formula $\boldsymbol{\vartheta}=(\vartheta_{1},\ldots,\vartheta_{k})\in\Pi$
+\end_inset
+
+, kde 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\Pi\subseteq\mathbb{R}^{k}$
+\end_inset
+
+ je 
+\family default
+\series bold
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+parametrický prostor, 
+\series default
+tj.
+ množina všech přípustných hodnot parametrů.
+ Myšlenkou této metody je, že hledáme takové hodnoty parametrů, které by
+ nejlépe vysvětlovali realizaci náhodného výběru, tj.
+ při kterých by pozorované výsledky byly 
+\begin_inset Quotes eld
+\end_inset
+
+nejméně nepravděpodobné
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Metoda maximální věrohodnosti pro diskrétní rozdělení
+\end_layout
+
+\begin_layout Standard
+Nechť 
+\begin_inset Formula $\boldsymbol{x}=(x_{1},\ldots,x_{n})$
+\end_inset
+
+ je realizace náhodného výběru z diskrétního rozdělení s pravděpodobnostní
+ funkcí 
+\begin_inset Formula $p_{X}(.;\boldsymbol{\vartheta})$
+\end_inset
+
+ závislou na vektoru parametrů 
+\begin_inset Formula $\boldsymbol{\vartheta}\in\Pi$
+\end_inset
+
+.
+ Pak definujeme věrohodnost realizace diskrétního rozdělení (angl.
+ likelihood) 
+\begin_inset Formula $L:\Pi\rightarrow\langle0,1\rangle$
+\end_inset
+
+ vztahem
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+L(\boldsymbol{\vartheta})=p_{\boldsymbol{X}}(\boldsymbol{x};\boldsymbol{\vartheta})=\overset{}{\underset{j=1}{\overset{n}{\prod}}p_{X}(x_{j};\boldsymbol{\vartheta})}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Je třeba rozlišovat mezi pravděpodobností a věrohodností! Pravděpodobnost
+ je určena pro předpovídání výsledků budoucího pokusu při známém pravděpodobnost
+ním modelu a tudíž má definiční obor jevy z nějáké σ-algebry.
+ Naopak věrohodnost vyhodnocuje sérii pokusů již realizovaných a dovoluje
+ jim přizpůsobit neznámé parametry pravděpodobnostního modelu, a proto je
+ definována na prostoru 
+\begin_inset Formula $\Pi$
+\end_inset
+
+ všech možných hodnot parametrů rozdělení.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\begin_inset VSpace bigskip
+\end_inset
+
+Metoda maximální věrohodnosti 
+\series default
+považuje za správný odhad parametrů takové hodnoty, které maximalizují věrohodno
+st.
+ Protože výpočet skoro vždy vede na hledání nulové derivace, často se maximalizu
+jeme logaritmus věrohodnosti (je to jednodušší na derivování).
+\end_layout
+
+\begin_layout Subsection
+Metoda maximální věrohodnosti pro spojité rozdělení
+\end_layout
+
+\begin_layout Standard
+Nechť 
+\begin_inset Formula $\boldsymbol{x}=(x_{1},\ldots,x_{n})$
+\end_inset
+
+ je realizace náhodného výběru ze spojitého rozdělení se spojitou hustotou
+ 
+\begin_inset Formula $f_{X}(.;\boldsymbol{\vartheta})$
+\end_inset
+
+ závislou na vektoru parametrů 
+\begin_inset Formula $\boldsymbol{\vartheta}\in\Pi$
+\end_inset
+
+.
+ Pak definujeme věrohodnost realizace spojitého rozdělení 
+\begin_inset Formula $\Lambda:\Pi\rightarrow\langle0,\infty\rangle$
+\end_inset
+
+ vztahem
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Lambda(\boldsymbol{\vartheta})=f_{\boldsymbol{X}}(\boldsymbol{x};\boldsymbol{\vartheta})=\overset{}{\underset{j=1}{\overset{n}{\prod}}f_{X}(x_{j};\boldsymbol{\vartheta})}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\series bold
+Metoda maximální věrohodnosti 
+\series default
+opět považuje za správný odhad parametrů takové hodnoty, které maximalizují
+ věrohodnost.
 \end_layout
 
 \end_body
