@@ -76,10 +76,6 @@ setcounter{chapter}{27}
 
 \end_layout
 
-\begin_layout Chapter*
-Zatím není kompletní
-\end_layout
-
 \begin_layout Subsection*
 Pevný a programovatelný řadič.
  Mikroprogramový automat.
@@ -106,6 +102,11 @@ např.: řadiče displaye, jednotka řídící teplotu vody , atd..
 \end_layout
 
 \end_deeper
+\begin_layout Itemize
+v CPU se stará o řízení toku dat a o řízení práce všech jednotek, zejména
+ ALU, a to v závislosti na právě vykonávané instrukci
+\end_layout
+
 \begin_layout Subsection
 Programovatelný řadič
 \end_layout
@@ -150,8 +151,67 @@ ve velmi jednoduchých případech levnější
 Mikroprogramovatelný automat
 \end_layout
 
-\begin_layout Standard
-//TODO
+\begin_layout Itemize
+řadič, který nefunguje s fixní konfigurací, ale používá tzv.
+ mikrokód
+\end_layout
+
+\begin_layout Itemize
+použití v CPU -> instrukce z instrukční sady se překládá na sekvenci mikroinstru
+kcí, nahrazuje rozsáhlou logiku pevného řadiče
+\end_layout
+
+\begin_layout Itemize
+mikroinstrukce definují, které hardwarové části je potřeba propojit, aby
+ byla vykonána samotná instrukce
+\end_layout
+
+\begin_layout Itemize
+oproti fixní konfiguraci má výhodu v možnosti opravy chyb procesoru pomocí
+ aktualizace tabulky překladu instrukce -> mikroprogram
+\end_layout
+
+\begin_layout Itemize
+mikroinstrukce se provádějí velmi rychle a lze je paralelizovat
+\end_layout
+
+\begin_layout Itemize
+příklad mikroprogramu jedné instrukce přičítání např.:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+přiveď registr AX k ALU jako první operand
+\end_layout
+
+\begin_layout Itemize
+přiveď dočasný registr k ALU jako druhý operand
+\end_layout
+
+\begin_layout Itemize
+nastav ALU do režimu sčítání
+\end_layout
+
+\begin_layout Itemize
+nastav carry na 0
+\end_layout
+
+\begin_layout Itemize
+ulož výsledek do regstru AX
+\end_layout
+
+\begin_layout Itemize
+nastav příznaky
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Tato sekvence je částí vykonávání jedné instrukce.
+ V kontrastu, pevný řadič by operandy ALU dekódoval a logickým součinem
+ povoloval / zakazoval přímo z operačního znaku instrukce.
+ Stejně tak by podle operačního kódu řídil režim činnosti ALU a umístění
+ výsledku.
+ Pro větší počet instrukcí narůstá velikost potřebné logiky.
 \end_layout
 
 \begin_layout Section
@@ -236,7 +296,7 @@ procesor může vykonávat aritmetické/logické operace pouze nad daty v regist
 
 \end_deeper
 \begin_layout Subsection
-ukazatel zásobníku - stack point - SP
+ukazatel zásobníku - stack pointer - SP
 \end_layout
 
 \begin_layout Itemize
@@ -244,7 +304,15 @@ uchováná adresu posledního záznamu uloženého na zásobníku
 \end_layout
 
 \begin_layout Itemize
-při push se 
+obvykle 
+\begin_inset Quotes eld
+\end_inset
+
+růst dolů
+\begin_inset Quotes erd
+\end_inset
+
+: při push se 
 \emph on
 SP
 \emph default
@@ -256,23 +324,19 @@ SP
 \end_layout
 
 \begin_layout Itemize
-na zásobníku jsou uloženy tzv.
- 
-\emph on
-stack frames
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-nastavení prostředí
+zásobník pracuje na principu LIFO (last in, first out)
 \end_layout
 
 \begin_layout Itemize
-např.: návratová adresa, místo pro návratovou hodnotu, parametry, lokální
- proměnné
+používá se pro uchování návratové adresy při volání funkcí, nebo zároveň
+ pro ukládání parametrů pro volanou funkci
 \end_layout
 
-\end_deeper
+\begin_layout Itemize
+sekundární využití je pro ukládání proměnných programu, ke kterým nepřistupujeme
+ instrukcemi PUSH a POP, ale běžnými ukazateli
+\end_layout
+
 \begin_layout Subsection
 typy instrukcí
 \end_layout
@@ -310,7 +374,26 @@ jeden cyklus cpu - asi není nezbytné
 \end_layout
 
 \begin_layout Standard
-nevím co znamená HP - potřeba doplnit
+nevíme co znamená HP.
+\end_layout
+
+\begin_layout Standard
+Tak jako tak, prvním krokem je načtení obsahu paměti na adrese PC, tak jestli
+ tím nemysleli adresu v hlavní paměti?? Tohle je detail.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+/newline
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

@@ -1,0 +1,402 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass scrreprt
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{chapter}{25}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Kombinační logické obvody, hazardy.
+ Minimalizace logických funkcí.
+ Kombinační obvody výpočetní techniky: multiplexory, demultiplexory, dekodéry,
+ komparátory, sčítačky, obvody zrychleného přenosu.
+ Programovatelné logické obvody.
+ (A0B35SPS)
+\end_layout
+
+\begin_layout Section
+Kombinační logické obvody
+\end_layout
+
+\begin_layout Itemize
+jejich výstupní stav je dán pouze kombinací vstupních stavů
+\end_layout
+
+\begin_layout Itemize
+nejjednodušší jsou základní logické funkce AND, NAND, OR, XOR, NOT
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename hradla.jpg
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Hazardy
+\end_layout
+
+\begin_layout Itemize
+hazard = chybový stav, kombinační obvod má na výstupu chybnou hodnotu
+\end_layout
+
+\begin_layout Itemize
+nežádoucí
+\end_layout
+
+\begin_layout Itemize
+rozdělujeme na
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+statický hazard:
+\series default
+ může dojít k jednorázové chybě na výstupu, vzniká často nestejně dlouhou
+ cestou signálu.
+ Každé logické hradlo má v reálných podmínkách určitou dobu zpoždění, jsou-li
+ tedy na vstup nějakého hradla přivedeny signály každý s odlišným zpožděním,
+ v jednu chvíli hradlo rozhoduje např.
+ na základě jednoho aktuálního vstupu a jednoho 
+\begin_inset Quotes eld
+\end_inset
+
+zastaralého
+\begin_inset Quotes erd
+\end_inset
+
+, který ještě nestačil přes cestu s dlouhým zpožděním dorazit.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+dynamický hazard:
+\series default
+ může dojít k opakovaným chybám, obvod může oscilovat mezi stavy 0 a 1 na
+ předem nedefinované frekvenci.
+ K tomuto jevu dochází např.
+ u neplatných vstupů přivedených na některé klopné obvody, nebo zavedením
+ zpětné vazby.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Minimalizace logických funkcí
+\end_layout
+
+\begin_layout Standard
+Snaha o snížení počtu potřebných operací (a při realizaci tedy logických
+ hradel) k vykonání funkce.
+\end_layout
+
+\begin_layout Standard
+K minimalizaci lze využít:
+\end_layout
+
+\begin_layout Itemize
+úpravy pomocí booleovy algebry s využitím pravidel:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename bool_algebra.jpg
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+minimalizaci pomocí Karnaughovy mapy:
+\begin_inset Newline newline
+\end_inset
+
+pravdivostní tabulku funkce přepíšeme do Karnaughovy mapy, skupiny shodných
+ hodnot lze potom použít k definici funkce jednodušším zápisem.
+ Karnaughova mapa pro zápis funkce 4 proměnných, čára u proměnné popisuje
+ stav, kdy je proměnná rovna 1.
+ (např.
+ pozice označená 0 - všechny proměnné jsou v 0, pozice označená 5 - proměnné
+ a a c jsou v 1)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename karmap.jpg
+	width 40line%
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+přílkad pro funkci f = ab¬c¬d + abc¬d + abcd + ab¬cd + ¬a¬bc¬d:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename karmap_ex.jpg
+	width 40line%
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+z mapy je vidět, že nám k popisu funkce stačí jednodušší výraz (získaný
+ vytvořením smyček)
+\begin_inset Newline newline
+\end_inset
+
+f = ab + ¬a¬bc¬d
+\end_layout
+
+\begin_layout Section
+Kombinační obvody výpočetní techniky
+\end_layout
+
+\begin_layout Description
+Multiplexor
+\end_layout
+
+\begin_layout Standard
+je obvod, který má n vstupů, adresní vstupy a jeden výstup.
+ Adresa určuje, který ze vstupů se přepošle na výstup.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename mux.jpg
+	height 5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Demultiplexor
+\end_layout
+
+\begin_layout Standard
+je opak multiplexoru, obvod má jeden vstup, adresní vstupy a n výstupů.
+ Adresa určuje, na který výstup se přepošle vstup.
+\end_layout
+
+\begin_layout Description
+Dekodér
+\end_layout
+
+\begin_layout Standard
+je totéž jako demultiplexor, pouze má místo vstupu konstantu.
+\end_layout
+
+\begin_layout Description
+Komparátor
+\end_layout
+
+\begin_layout Standard
+je obvod, který zkoumá dvě binární čísla přivedená na jeho vstupy A a B
+ na rovnost či nerovnost.
+ Má zpravidla 3 výstupy, těm je přiřazena funkcionalita A == B, A > B, A
+ < B.
+\end_layout
+
+\begin_layout Description
+Poloviční
+\begin_inset space ~
+\end_inset
+
+jednobitová
+\begin_inset space ~
+\end_inset
+
+binární
+\begin_inset space ~
+\end_inset
+
+sčítačka
+\end_layout
+
+\begin_layout Standard
+je obvod, který zvládne sečíst dvě jednobitová čísla.
+ Na jeho výstupu je součet čísel a přetečení do vyššího řádu (binárně 1
+ + 0 = 1, ale 1 + 1 = 10, výstup 0, přetečení 1).
+\end_layout
+
+\begin_layout Description
+Úplná
+\begin_inset space ~
+\end_inset
+
+jednobitová
+\begin_inset space ~
+\end_inset
+
+binární
+\begin_inset space ~
+\end_inset
+
+sčítačka
+\end_layout
+
+\begin_layout Standard
+se od poloviční liší tím, že má jako další vstup také přetečení z nižšího
+ řádu, je tedy možné sčítačky řetězit a počítat s n-bitovými čísly (a ne
+ pouze s jednobitovými).
+\end_layout
+
+\begin_layout Description
+Obvody
+\begin_inset space ~
+\end_inset
+
+zrychleného
+\begin_inset space ~
+\end_inset
+
+přenosu
+\end_layout
+
+\begin_layout Standard
+Jelikož přenosy u zřetězeného sčítání 
+\begin_inset Quotes eld
+\end_inset
+
+probublávají
+\begin_inset Quotes erd
+\end_inset
+
+ postupně do vyšších řádů, sčítání je omezeno prodlevou jednotlivých hradel.
+ To má negativní vliv na rychlost sčítání větších čísel, kdy celková prodleva
+ narůstá s bitovou velikostí čísel lineárně.
+ Proto se používají sčítačky s tzv.
+ Carry Look-Ahead, kdy přenosy mezi řády nejsou propojeny přímo, ale obsluhuje
+ je vnější logika, která se zároveň snaží i predikovat stavy přetečení paralelní
+m sčítáním na několika řádech najednou.
+\end_layout
+
+\begin_layout Section
+Programovatelné logické obvody
+\end_layout
+
+\begin_layout Standard
+Jedná se o obvody, které nemají předem určenou funkcionalitu, tu lze programovat.
+ V principu takový obvod obsahuje veliké množství různých hradel a programováním
+ se pak myslí vytvoření spojů mezi jednotlivými hradly.
+ Tato spojení pak definují, jakou logickou funkci bude daný obvod vykonávat.
+ Mezi nejznámější druhy patří (C)PLD ((Complex) Programmable logic device)
+ a dnes rozšířené obvody FPGA (tzv.
+ hradlová pole).
+\end_layout
+
+\begin_layout Standard
+Hlavním rozdílem obvodů FPGA oproti PLD je jejich využívání Look-Up tabulek,
+ čili místo toho, aby byla logika realizována ze základních hradel, ukládají
+ obvody FPGA pravdivostní tabulky.
+\end_layout
+
+\begin_layout Standard
+Samotné nastavení propojů mezi hradly může být buď jednorázové, nebo ukládáno
+ do paměti.
+ Tato paměť může být permanentní, není to ale podmínkou, často se nastavení
+ hradlových polí rekonfigurují při spuštění systému.
+\end_layout
+
+\begin_layout Standard
+Výhody oproti klasické logice jsou zřejmé - zrychlení a snížení nákladů
+ na vývoj aplikací a možnost změnit realizovaný obvod (a to i za běhu).
+\end_layout
+
+\end_body
+\end_document
