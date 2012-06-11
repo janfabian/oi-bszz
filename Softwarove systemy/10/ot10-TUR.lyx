@@ -1,0 +1,576 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Testování uživatelských rozhraní.
+ Definice pojmu použitelnosti (usability), modely úloh, prototypování uživatelsk
+ých rozhraní.
+ Testování použitelnosti (organizace a vyhodnocování testů) (A4B39TUR) 
+\end_layout
+
+\begin_layout Standard
+Ověření, jak systém budou používat reální uživatelé, pochopení jak ho budou
+ používat, identifikace problémů.
+\end_layout
+
+\begin_layout Section
+Usability (použitelnost)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+jednoduchost použití
+\series default
+ – podobné systémy lze ovládat lépe (naučit se rychleji)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+recall
+\series default
+ – rozpomenutí se, jak se taková situace řeší
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+efektivita
+\series default
+ – zvládnout úkol rychle a snadno
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+minimum chyb
+\series default
+ – v případě chyby korektně informovat a říci další postup
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+spokojenost uživatele
+\series default
+ – přesvědčit uživatele, že úkol dokončil
+\end_layout
+
+\begin_layout Section
+Návrh UI – 3 fáze v cyklu
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+design
+\series default
+ – návrh dle psychologie a toho, co uživatel potřebuje 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+evaluation
+\series default
+ – prototyp a vyhodnocení s uživateli 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+implementace
+\series default
+ – vytvoření prototypu a návrhu 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename E:/Skola/Statnice/ot10-TUR/img.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+pro vyhodnocování je nutné zavést „přesnou“ metriku hodnocení tak, aby návrháři
+ pochopili problém a mohli ho vylepšit
+\end_layout
+
+\begin_layout Itemize
+záleží na cílové skupině a jejich schopnostech
+\end_layout
+
+\begin_layout Section
+Testování bez uživatelů
+\end_layout
+
+\begin_layout Subsection
+Kognitivní průchod
+\end_layout
+
+\begin_layout Itemize
+Nejprve musíme znát všechny funkce a jak systém funguje.
+ Poté se vrátíme na začátek a postupujeme jako nezkušený uživatel
+\end_layout
+
+\begin_layout Itemize
+vhodné pro ověřování „klasického“ UI, levné a rychlé testování (ale málo
+ vypovídající)
+\end_layout
+
+\begin_layout Subsubsection
+Vstup
+\end_layout
+
+\begin_layout Itemize
+identifikace uživatelů (cílové skupiny) – jejich zkušenosti a znalosti
+\end_layout
+
+\begin_layout Itemize
+stanovení úkolů a cílů, čeho chceme dosáhnout (Např.
+ automat -> chceme koupit jízdenku)
+\end_layout
+
+\begin_layout Itemize
+stanovení postupů, jak dané akce chceme dosáhnout (Např.
+ vybrat destinaci -> vybrat slevu -> vhodit mince -> vzít jízdenku …)
+\end_layout
+
+\begin_layout Itemize
+stanovení, co by se mohlo stát (Např.
+ zjištění, že nemáme dostatek peněz -¬> storno -> vrácení peněz)
+\end_layout
+
+\begin_layout Subsubsection
+Výstup
+\end_layout
+
+\begin_layout Itemize
+seznam nálezů a jejich hodnocení
+\end_layout
+
+\begin_layout Itemize
+ve výsledném reportu popíšeme záporné výsledky, ale nenavrhujeme správné
+ řešení (to je na vývojářích -> poté další testování)
+\end_layout
+
+\begin_layout Standard
+Na začátku úkolu zodpovídáme nultou otázku 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Q0: Ví uživatel, co chce udělat, čeho chce dosáhnout?
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+V každém kroku úkolu zodpovídáme otázky: 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Q1: Ví uživatel, co má v tomto kroku udělat? 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Q2: Propojí si uživatel nadpis, obrázek, vzhled s danou akcí? 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Q3: Dostane uživatel rozumnou, jasnou zpětnou vazbu? 
+\end_layout
+
+\begin_layout Subsection
+Heuristická evaluace
+\end_layout
+
+\begin_layout Itemize
+identifikace problému a návrhu UI, obecná doporučení pro správný design
+\end_layout
+
+\begin_layout Itemize
+vyhodnocováno 3-5 lidmi -> každý může daný problém vidět jinak – ujistí
+ se, že neporušuje žádné heuristiky (=teorie řešení), jinak jsou sepsány
+ do zprávy podle nálezů v porušení heuristiky
+\end_layout
+
+\begin_layout Itemize
+je méně formální 
+\end_layout
+
+\begin_layout Subsubsection
+Nielsenova heuristika (1994)
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Viditelnost stavu systému 
+\series default
+- uživatel musí být informován informován o stavu (co se právě děje) 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Vztah mezi systémem a skutečným světem
+\series default
+ – systém musí „mluvit“ jako uživatel v reálném světě 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Uživatelská kontrola a svoboda
+\series default
+ – musí mít na výběr, možnost proces přerušit 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Konzistence a standardy
+\series default
+ – dvě stejná označení musí dělat to samé 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Prevence chyb
+\series default
+ – varování jestli to opravdu chce (Format c: Yes - No) 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Lépe připomenout než vzpomínat 
+\series default
+– nezatěžovat uživatele zadáváním toho, co mu mohu nabídnout/napovědět 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Flexibilita a efektivita využití
+\series default
+ – podpora zkušených uživatelů pro urychlení práce – zkratky 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Minimalistický design 
+\series default
+– podávat jen informace, které jsou nutné 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Pomoc při diagnostice a zotavení z chyb
+\series default
+ – chybové hlášky v lidské řeči (ne kus kódu), navrhnout řešení 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Pomoc a dokumentace
+\series default
+ – v případě problému poskytnout dokumentaci a přesný postup 
+\end_layout
+
+\begin_layout Subsubsection
+Postup při heurestické evaluaci
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Tutorial
+\series default
+ – seznámení testu s aplikací (není vždy nutné) 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Evaluace
+\series default
+ – alespoň 2 průchody – 1.
+ Projít systém, 2.
+ Zaměřit se na specifické problémy 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+hlášení chyb jednotlivě a od každého testu odděleně 
+\end_layout
+
+\begin_layout Itemize
+jakou heuristiku porušuje a lehké doporučení (náznak) řešení, případný komentář
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Stanovení priorit
+\series default
+ – označení nálezu podle závažnosti (alespoň 5úrovní) 
+\end_layout
+
+\begin_layout Itemize
+1 test nalezne cca 35% problémů, 5 testů zhruba 75% problémů
+\end_layout
+
+\begin_layout Subsection
+Kognitivní průchod vs.
+ Heuristická evaluace
+\end_layout
+
+\begin_layout Subsubsection
+Kognitivní průchod
+\end_layout
+
+\begin_layout Itemize
+informace podle psychologie 
+\end_layout
+
+\begin_layout Itemize
+jeden tester/odborník 
+\end_layout
+
+\begin_layout Itemize
+více formální 
+\end_layout
+
+\begin_layout Itemize
+lepší pro hodně strukturované úkoly 
+\end_layout
+
+\begin_layout Subsubsection
+Heuristická evaluace 
+\end_layout
+
+\begin_layout Itemize
+informace podle návrhových zvyků (praktice) 
+\end_layout
+
+\begin_layout Itemize
+více testerů 
+\end_layout
+
+\begin_layout Itemize
+méně formální 
+\end_layout
+
+\begin_layout Itemize
+vhodný pro jednodušší úkoly 
+\end_layout
+
+\begin_layout Subsection
+KLM (keystroke level model)
+\end_layout
+
+\begin_layout Itemize
+Pro měření časové náročnosti, metoda pro ohodnocení UI
+\end_layout
+
+\begin_layout Itemize
+vstupem je popis úkolů
+\end_layout
+
+\begin_layout Itemize
+založeno na ideálním průchodu, stanoveny časové údaje pro akce (i dle zkušeností
+)
+\end_layout
+
+\begin_layout Subsubsection
+KPHMR 
+\end_layout
+
+\begin_layout Standard
+K-stisk tlačítka
+\end_layout
+
+\begin_layout Standard
+\noindent
+P-zaměření cíle myši 
+\end_layout
+
+\begin_layout Standard
+\noindent
+H-přehmat z klávesnice-myš 
+\end_layout
+
+\begin_layout Standard
+\noindent
+M-mentální příprava (myšlení) 
+\end_layout
+
+\begin_layout Standard
+\noindent
+R-reakce systému 
+\end_layout
+
+\begin_layout Standard
+Příklad - uložení souboru: 
+\end_layout
+
+\begin_layout Standard
+zaměření menu -> klik -> zaměření uložit -> klik… 
+\end_layout
+
+\begin_layout Standard
+total time = P+K+P+K…..+mentální příprava před provedením akce 
+\end_layout
+
+\begin_layout Section
+Testování s uživateli
+\end_layout
+
+\begin_layout Itemize
+sledování je v jejich prostředí (zvyklost a „pohodlné prostředí“) – těžké
+ na organizaci, časově náročnější
+\end_layout
+
+\begin_layout Itemize
+kontrolovaný test v usability labu (riziko stresu, atp.) – soustředění jen
+ na test, možnost opakování
+\end_layout
+
+\begin_layout Itemize
+problémem je vybrat správné lidi (nejlépe pomocí screeneru) 
+\end_layout
+
+\begin_layout Itemize
+vhodný počet participantů (často 5-10) 
+\end_layout
+
+\begin_layout Itemize
+před prvním testem nejlépe vše vyzkoušet sami na sobě (vyvarování se chyb
+ a nedostatků v popisu – 
+\series bold
+Pilot test
+\series default
+)
+\end_layout
+
+\begin_layout Subsection
+Fáze testování:
+\end_layout
+
+\begin_layout Itemize
+výběr na základě „
+\series bold
+screeneru
+\series default
+“ – vhodná cílová skupina, zkušenosti – oslovení k testu 
+\end_layout
+
+\begin_layout Itemize
+„
+\series bold
+pre-test
+\series default
+“ dotazník (veřejná a neveřejná část) + instrukce k testování – nechat čas
+ na přečtení, …
+\end_layout
+
+\begin_layout Itemize
+samotný test (procházení úkolů)
+\end_layout
+
+\begin_layout Itemize
+„
+\series bold
+post-test
+\series default
+“ dotazník 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+odpovědi tak, aby se daly vyhodnotit (ano, ne, ohodnocení, ….) 
+\end_layout
+
+\begin_layout Itemize
+otevřené otázky – možnost vyjádřit se 
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #LyX 2.0 created this file. For more info see http://www.lyx.org/
 \lyxformat 413
 \begin_document
@@ -807,3 +808,814 @@ Konvexní optimalizační úlohu řešíme tehdy, když je účelová funkce kon
 
 \end_body
 \end_document
+=======
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Otázka číslo 33 (A4B33OPT)
+\end_layout
+
+\begin_layout Author
+Martin Stránský
+\end_layout
+
+\begin_layout Standard
+\begin_inset Quotes eld
+\end_inset
+
+Snažili jsme se udělat to co nejlépe, ale dopadlo to jako vždycky.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Lineární programování
+\end_layout
+
+\begin_layout Standard
+Linieární programování znamená řešení úlohy minimalizace lineární funkce
+ 
+\begin_inset Formula $f=c^{T}x$
+\end_inset
+
+ (
+\begin_inset Formula $+d)$
+\end_inset
+
+ za podmínek affinních funkcí 
+\begin_inset Formula $g_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $h_{i}$
+\end_inset
+
+ (affinita viz níže).
+\end_layout
+
+\begin_layout Standard
+Slouží například k řešení úloh (viz skripta):
+\end_layout
+
+\begin_layout Itemize
+optimální výrobní program (z různých druhů surovin vyrábíme různé druhy
+ zboží s různou cenou)
+\end_layout
+
+\begin_layout Itemize
+směšovací problém (kuchařka má uvařit oběd, aby v něm bylo 
+\begin_inset Formula $b_{1}$
+\end_inset
+
+ vitamínů, 
+\begin_inset Formula $b_{2}$
+\end_inset
+
+ bílkovin a 
+\begin_inset Formula $b_{3}$
+\end_inset
+
+ tuků)
+\end_layout
+
+\begin_layout Itemize
+distribuční problém
+\end_layout
+
+\begin_layout Itemize
+dopravní problém
+\end_layout
+
+\begin_layout Itemize
+hledání rovnovážných stavů u lineárních systémů a pod.
+\end_layout
+
+\begin_layout Standard
+Obecná formulace úlohy LP:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{ccc}
+\min\:(\max) & c_{1}x_{1}+c_{2}x_{2}+\ldots c_{1}x_{n}\\
+z.p. & a_{i1}x_{1}+\ldots+a_{in}x_{n}\geq b_{i} & i\in I_{+}\\
+ & a_{i1}x_{1}+\ldots+a_{in}x_{n}\leq b_{i} & i\in I_{-}\\
+ & a_{i1}x_{1}+\ldots+a_{in}x_{n}=b_{i} & i\in I_{0}\\
+ & x_{j}\geq0 & j\in J_{+}\\
+ & x_{j}\leq0 & j\in J_{-}\\
+ & x_{j}\in\mathbb{R} & j\in J_{0}
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Obecnou formulaci převádíme na standardní tvar
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{ccc}
+\min & c_{1}x_{1}+c_{2}x_{2}+\ldots c_{1}x_{n}\\
+z.p. & a_{i1}x_{1}+\ldots+a_{in}x_{n}=b_{i} & i=1,\ldots,m\\
+ & x_{j}\geq0 & j=1,\ldots,n
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+zkráceně
+\begin_inset Formula 
+\[
+\min\{c^{T}x\mid Ax=b,\: x>0\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+a zpět následovně:
+\end_layout
+
+\begin_layout Itemize
+Maximalizaci nahradíme minimalizací podle 
+\begin_inset Formula $\min_{x\in X}f(x)=-\max_{x\in X}(-f(x)).$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+(
+\begin_inset Formula $a_{i1}x_{1}+\ldots+a_{in}x_{n}=b_{i}$
+\end_inset
+
+ nahradíme 
+\begin_inset Formula $ $
+\end_inset
+
+
+\begin_inset Formula $a_{i1}x_{1}+\ldots+a_{in}x_{n}\leq b_{i}$
+\end_inset
+
+ a 
+\begin_inset Formula $a_{i1}x_{1}+\ldots+a_{in}x_{n}\geq b_{i}$
+\end_inset
+
+.)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $a_{i1}x_{1}+\ldots+a_{in}x_{n}\leq b_{i}$
+\end_inset
+
+ doplníme slackovou proměnnou 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $u_{i}\geq0$
+\end_inset
+
+,
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $a_{i1}x_{1}+\ldots+a_{in}x_{n}+u_{i}=b_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $a_{i1}x_{1}+\ldots+a_{in}x_{n}\geq b_{i}$
+\end_inset
+
+ vynásobíme 
+\begin_inset Formula $-1$
+\end_inset
+
+ a doplníme slackovou proměnnou 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $u_{i}\geq0$
+\end_inset
+
+,
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $-a_{i1}x_{1}-\ldots-a_{in}x_{n}+u_{i}=-b_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x_{i}\in\mathbb{R}$
+\end_inset
+
+ převedeme na 
+\begin_inset Formula $x_{i}^{+}\geq0$
+\end_inset
+
+, 
+\begin_inset Formula $x_{i}^{-}\geq0$
+\end_inset
+
+, 
+\begin_inset Formula $x_{i}=x_{i}^{+}-x_{i}^{-}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Příklad (vlastní): převedení z obecného tvaru na standardní.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{cc}
+\max & c^{T}x\\
+z.p. & a_{11}x_{1}+\ldots+a_{2n}x_{n}\geq b_{i}\\
+ & a_{21}x_{1}+\ldots+a_{2n}x_{n}\leq b_{i}\\
+ & a_{i1}x_{1}+\ldots+a_{in}x_{n}=b_{i}\\
+ & x_{1},\ldots,x_{n}\geq0
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+se převede na
+\begin_inset Formula 
+\[
+\begin{array}{ccc}
+-\min & -c_{1}x_{1}\ldots-c_{n}x_{n}\\
+z.p. & -a_{11}x_{1}-\ldots-a_{2n}x_{n}+u_{1}=-b_{i}\\
+ & a_{21}x_{1}+\ldots+a_{2n}x_{n}+u_{2}=b_{i}\\
+ & a_{i1}x_{1}+\ldots+a_{in}x_{n}=b_{i} & i\in\left[3,m\right]\\
+ & x_{1},\ldots,x_{n},u_{1},u_{2}\geq0
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ještě poznámka k řešení přeurčených rovnic 
+\begin_inset Formula $Ax=b$
+\end_inset
+
+, 
+\begin_inset Formula $A\in\mathbb{R}^{m\times n}$
+\end_inset
+
+ (
+\begin_inset Formula $m>n$
+\end_inset
+
+).
+ Řeší se taková úloha:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\min\{||Ax-b||_{p}\mid x\in\mathbb{R}\}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Dualita
+\end_layout
+
+\begin_layout Standard
+Každá úloha LP má svojí duální úlohu, kterou lze dostat následující konstrukcí.
+ Z duální úlohy lze poté tím samým postupem dostat primární.
+ Popíšu jenom konstukci ze speciálního tvaru, více ve skriptech (s.
+ 95):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{cccc}
+\min & \sum_{j}c_{j}x_{j} & \max & \sum_{i}y_{i}b_{i}\\
+z.p. & \sum_{j}a_{ij}x_{j}\geq b_{i} & z.p. & y_{i}\geq0\\
+ & x_{j}\geq0 &  & \sum_{i}y_{i}a_{ij}\leq c_{j}
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+přehledněji:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{cccc}
+\min & c^{T}x & \max & y^{T}b\\
+z.p. & Ax\geq b & z.p. & y_{i}\geq0\\
+ & x\geq0 &  & y^{T}A\leq c^{T}
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+U vět budeme postupovat přesně opačně, než jak je tomu ve skriptech:
+\end_layout
+
+\begin_layout Standard
+Důležitá je zejména silná věta o dualitě která říká, že když se 
+\begin_inset Formula $c^{T}x=y^{T}b$
+\end_inset
+
+ (kritéria) pro přípustná 
+\begin_inset Formula $x$
+\end_inset
+
+, 
+\begin_inset Formula $y$
+\end_inset
+
+ (
+\begin_inset Formula $Ax\geq b$
+\end_inset
+
+ atd.), pak jsou 
+\begin_inset Formula $x$
+\end_inset
+
+ i 
+\begin_inset Formula $y$
+\end_inset
+
+ optimálními řešeními obou úloh.
+\end_layout
+
+\begin_layout Standard
+Přitom platí (věta o slabé dualitě), že 
+\begin_inset Formula $c^{T}x\geq y^{T}b$
+\end_inset
+
+ pro jakékoli přípustné 
+\begin_inset Formula $x$
+\end_inset
+
+, 
+\begin_inset Formula $y$
+\end_inset
+
+; protože 
+\begin_inset Formula $y^{T}A\leq c^{T}$
+\end_inset
+
+ vynásobeno zprava 
+\begin_inset Formula $x\geq0$
+\end_inset
+
+ rovná se 
+\begin_inset Formula $y^{T}Ax\leq c^{T}x$
+\end_inset
+
+ (a stejně tak pro x), takže napsáno v řadě 
+\begin_inset Formula $c^{T}x\geq y^{T}Ax\geq y^{T}b$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Věta o komplementaritě udává podmínky, kdy (
+\begin_inset Formula $\Leftrightarrow$
+\end_inset
+
+) se 
+\begin_inset Formula $c^{T}x=y^{T}b$
+\end_inset
+
+, více ve skriptech na s.
+ 96.
+\end_layout
+
+\begin_layout Standard
+Dualita je dobrá k:
+\end_layout
+
+\begin_layout Itemize
+lepšímu pochopení problému
+\end_layout
+
+\begin_layout Itemize
+ověření optimality
+\end_layout
+
+\begin_layout Itemize
+někdy lze jednodušeji spočítat duální úlohu a z ní řešení primární, než
+ rovnou primární.
+\end_layout
+
+\begin_layout Standard
+Takhle shrnuto to snad stačí.
+\end_layout
+
+\begin_layout Section
+Simplexový algoritmus
+\end_layout
+
+\begin_layout Standard
+Řeší úlohu lineárnho programování ve standatdním tvaru 
+\begin_inset Formula $\min\{c^{T}x-d\mid Ax=b,\: x>0\}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Části algoritmu
+\end_layout
+
+\begin_layout Subsubsection
+Přechod k sousední bázi
+\end_layout
+
+\begin_layout Standard
+Co nejjednodušeji: máme soustavu 
+\begin_inset Formula $[A\mid b]$
+\end_inset
+
+ tak, že v 
+\begin_inset Formula $m$
+\end_inset
+
+ 
+\emph on
+bázových
+\emph default
+ sloupcích jedna jednička a samé nuly a na každém řádku je alepoň jedna
+ jednička.
+\begin_inset Formula 
+\[
+\begin{array}{ccccccc}
+5 & 0 & 0 & -1 & 1 & \mid & 3\\
+3 & 0 & 1 & 2 & 0 & \mid & 5\\
+-1 & 1 & 0 & 2 & 0 & \mid & -2
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Chceme přejít k sousední bázi, která bude mít jeden jiný bázový sloupec,
+ to znamená, že jestliže jsou teď báze sloupce 2, 3, 5, pak příště to bude
+ například 1, 3, 5 nebo 2, 3, 4.
+\end_layout
+
+\begin_layout Standard
+Zvolme pivot 
+\begin_inset Formula $a_{ij}$
+\end_inset
+
+ (níže) a vydělme řádek 
+\begin_inset Formula $i$
+\end_inset
+
+ 
+\begin_inset Formula $a_{ij}$
+\end_inset
+
+ (dostaneme na místo pivotu jedničku).
+ Dále pomocí násobků ostatních řádků vynulujeme prvky ve sloupcích s bázemi
+ (jako v GEM).
+ Zbylé báze mají ve sloupci jedničku, takže to jde dobře.
+\end_layout
+
+\begin_layout Subsubsection
+Přípustné bázové řešení
+\end_layout
+
+\begin_layout Standard
+Protože nenulové složky bázového řešení jsou rovny složkám vektoru 
+\begin_inset Formula $b$
+\end_inset
+
+, je bázové řešení přípustné tehdy, když 
+\begin_inset Formula $b\geq0$
+\end_inset
+
+.
+ Pakliže teď máme přípustné řešení, k tomuto nedojde když 
+\begin_inset Formula $a_{ij}\geq0$
+\end_inset
+
+ kde 
+\begin_inset Formula $a_{ij}$
+\end_inset
+
+ je pivot a pro každé 
+\begin_inset Formula $i'\neq i$
+\end_inset
+
+ platí 
+\begin_inset Formula $a_{i'j}\leq0$
+\end_inset
+
+ nebo 
+\begin_inset Formula $b_{i}/a_{ij}\leq b_{i'}/a_{i'j}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Nekladný sloupec
+\end_layout
+
+\begin_layout Standard
+Pakliže jeden z nebázových sloupců obsahuje jen nekladné prvky, leží optimum
+ v 
+\begin_inset Formula $-\infty$
+\end_inset
+
+ - úloha je neomezená.
+\end_layout
+
+\begin_layout Subsubsection
+Úpravy účelového řádku
+\end_layout
+
+\begin_layout Standard
+Simplexová tabulka:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left[\begin{array}{cc}
+c & d\\
+A & b
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Přičtení jakékoli lineární kombinace z 
+\begin_inset Formula $[A\: d]$
+\end_inset
+
+ k 
+\begin_inset Formula $[c\: d]$
+\end_inset
+
+ zachová hodnotu účelové funkce.
+\end_layout
+
+\begin_layout Subsection
+Algoritmus
+\end_layout
+
+\begin_layout Enumerate
+Vyber pivot (kde výběrem 
+\begin_inset Formula $j\in\mathrm{argmin}\: c_{j}$
+\end_inset
+
+ se zajistí, že účelová funkce nestoupne).
+ 
+\begin_inset Formula $i$
+\end_inset
+
+ se vybírá například 
+\begin_inset Formula $\mathrm{argmin}\: b_{i}/a_{ij}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Udělej ekvivalentní úpravu.
+\end_layout
+
+\begin_layout Enumerate
+Vynuluj 
+\begin_inset Formula $c_{j}$
+\end_inset
+
+ pro bázová 
+\begin_inset Formula $j$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Končíme, když všechny koeficienty 
+\begin_inset Formula $c_{j}$
+\end_inset
+
+ jsou nezáporné (optimum) nebo když máme nekladný sloupec (neomezená úloha).
+\end_layout
+
+\begin_layout Section
+Něco o tom zbytku
+\end_layout
+
+\begin_layout Standard
+Konvexní množinu tvoří konvexní kombinace vektorů (je definována tak, že
+ je uzavřená na konvexní kombinace).
+ Konvexní kombinace je současně affinní a nezáporná kombinace: 
+\begin_inset Formula $\sum_{k}\alpha\geq1\wedge\forall k[\alpha_{k}\geq0]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Konvexní polyedr je definován jako průnik konečně mnoha poloprostorů (H-reprezen
+tace (half-space)).
+ Extrémní body jsou vrcholy polyedru a jejich specifikem je to, že je lze
+ dostat právě jednou konvexní kombinací.
+ Reprezentovat jde ještě jako konvexní obal konečně mnoha vektorů (V-reprezentac
+e (vertex)).
+\end_layout
+
+\begin_layout Standard
+Funkce je konvexní právě tehdy, když 
+\begin_inset Formula $f(\alpha x+(1-\alpha y))=\alpha f(x)-(1-\alpha)f(y)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Konvexní optimalizační úlohu řešíme tehdy, když je účelová funkce konvexní.
+ Nejdůležitější je, že nalezené (lokální) minimum je vždy zároveň globální.
+ Například u simplexové metody postupujeme po vrcholech konvexního polyedru
+ k tomu nejnižšímu.
+ K konvexním optimalizačním úlohám patří LP a QP (qudratic, také vytváří
+ konvexní množiny).
+\end_layout
+
+\end_body
+\end_document
+>>>>>>> upstream/master

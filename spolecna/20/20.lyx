@@ -1,0 +1,1325 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass scrreprt
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{chapter}{19} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Entropie, vzájemná entropie a podmíněná entropie diskrétních a spojitých
+ rozdělení, základní vlastnosti a význam.
+ Kódování zpráv, Kraftova-MacMillanova nerovnost.
+ Souvislost entropie a střední délky kódového slova.
+ Kódy s optimální střední délkou.
+ Informační kanál a jeho kapacita.
+ Shannonova věta o kódování.
+ (A0B01PSI) 
+\end_layout
+
+\begin_layout Section
+Entropie
+\end_layout
+
+\begin_layout Subsection
+Entropie diskrétního rozdělení
+\end_layout
+
+\begin_layout Standard
+Za předpokladu, že 
+\emph on
+X
+\emph default
+ je diskrétní náhodná veličina s pravděpodobnostní funkcí 
+\begin_inset Formula $p_{X}$
+\end_inset
+
+, je entropie diskrétní náhodné veličiny X rovna:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\overset{}{H(X)=-\sum_{x\in X}\, p_{x}(x)\,\log_{2}\, p_{x}(x)}.\;\;\;\;\;\;\;\;\;\;(1.1)
+\]
+
+\end_inset
+
+Funkce H se nazývá Shannonova entropie nebo pouze entropie.
+\end_layout
+
+\begin_layout Standard
+Příspěvek výsledku s pravděpodobností 
+\emph on
+p 
+\emph default
+je dán funkcí 
+\emph on
+
+\begin_inset Formula $\iota(p)=-p\,\log_{2}\, p$
+\end_inset
+
+.
+ 
+\emph default
+Ta je nezáporná a má nulové limity v 0 a 1.
+ Důsledkem je, že entropie 
+\emph on
+diskrétního 
+\emph default
+náhodného pokusu je vždy nezáporná.
+\end_layout
+
+\begin_layout Subsection
+Vzájemná entropie diskrétního rozdělení
+\end_layout
+
+\begin_layout Standard
+Dána vzorcem
+\begin_inset Formula 
+\[
+\overset{}{H(X,Y)=-\sum_{x\in X}\,\sum_{y\in Y}\, p_{XY}(x,y)\,\log_{2}\, p_{XY}(x,y)}.
+\]
+
+\end_inset
+
+Platí nerovnost
+\begin_inset Formula 
+\[
+\overset{}{H(X,Y)\leq H(X)+H(Y)}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Podmíněná entropie diskrétního rozdělení
+\end_layout
+
+\begin_layout Standard
+Dána vzorcem
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\overset{}{H(Y\,|\, X=x)=-\sum_{y\in Y}\, p_{Y|X}(y|x)\,\log_{2}\, p_{Y|X}(y|x).}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Entropie spojitého rozdělení
+\end_layout
+
+\begin_layout Standard
+Entropie spojité náhodné veličiny X s hustotou pravděpodobnosti 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ je definována takto:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\overset{}{H(X)=\intop_{-\infty}^{\,\,\infty}f(x)\,\log_{2}\, f(x)dx.}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Zatímco entropie diskrétního veličiny je 
+\series bold
+absolutní 
+\series default
+mírou neurčitosti, ve spojité verzi je entropie 
+\series bold
+relativní 
+\series default
+mírou neurčitosti vzhledem ke zvolenému sytému souřadnic.
+\end_layout
+
+\begin_layout Subsection
+Vzájemná entropie spojitého rozdělení
+\end_layout
+
+\begin_layout Standard
+Dána vzorcem
+\begin_inset Formula 
+\[
+\overset{}{H(X,Y)=-\intop_{-\infty}^{\,\,\infty}\intop_{-\infty}^{\,\,\infty}\, f(x,y)\,\log_{2}\, f(x,y)dxdy}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Podmíněná entropie spojitého rozdělení
+\end_layout
+
+\begin_layout Standard
+Dány vzorci
+\begin_inset Formula 
+\[
+\overset{}{H(Y\,|\, X)=\intop_{-\infty}^{\,\,\infty}\intop_{-\infty}^{\,\,\infty}\, f(x,y)\,\log_{2}\,\frac{f(x,y)}{g(x)}dxdy}
+\]
+
+\end_inset
+
+a
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\overset{}{H(X\,|\, Y)=\intop_{-\infty}^{\,\,\infty}\intop_{-\infty}^{\,\,\infty}\, f(x,y)\,\log_{2}\,\frac{f(x,y)}{h(x)}dxdy,}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+kde 
+\begin_inset Formula $f(x,y)$
+\end_inset
+
+ je sdružená hustota pravděpodobnosti veličin
+\emph on
+ x 
+\emph default
+a 
+\emph on
+y
+\emph default
+ a
+\emph on
+ g(x), h(x) 
+\emph default
+jsou marginální hustoty pravděpodobnosti veličin 
+\emph on
+x
+\emph default
+ a
+\emph on
+ y
+\emph default
+, pro které platí:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\overset{}{g(x)=\intop_{-\infty}^{\,\,\infty}\, f(x,y)dy}
+\]
+
+\end_inset
+
+a
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\overset{}{h(y)=\intop_{-\infty}^{\,\,\infty}\, f(x,y)dx.}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Význam a vlastnosti entropie
+\end_layout
+
+\begin_layout Standard
+Entropie je střední hodnota informace, kterou dostaneme, pokud se dovíme,
+ který z 
+\emph on
+k 
+\emph default
+disjunktnch jevů nastal, jestliže jejich pravděpodobnosti byly 
+\begin_inset Formula $p_{1}$
+\end_inset
+
+,..., 
+\begin_inset Formula $p_{k}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Shannonova entropie H:
+\begin_inset Formula $D_{h}\rightarrow\left\langle 0,\infty\right\rangle $
+\end_inset
+
+daná vzorcem (1.1) je jediná reálná funkce na 
+\begin_inset Formula $D_{h}$
+\end_inset
+
+ následujících vlastností:
+\end_layout
+
+\begin_layout Enumerate
+H nezávisí na permutaci argumentů,
+\end_layout
+
+\begin_layout Enumerate
+funkce 
+\begin_inset Formula $p\mapsto H(p,1-p)$
+\end_inset
+
+ je spojitá,
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $H(1/2,1/2)=1,$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $H(p_{1},p_{2},p_{3},...,p_{n})=H(p_{1}+p_{2},p_{3},...,p_{n})+(p_{1}+p_{2})H(\frac{p_{1}}{p_{1}+p_{2}},\frac{p_{2}}{p_{1}+p_{2}}).$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Entropie 
+\begin_inset Formula $H(X)=0$
+\end_inset
+
+ tehdy a jen tehdy, jsou-li všechy pravděpodobnosti kromě jedné rovny nule
+ a jedna pravděpodobnost rovna jedné.
+ Entropie dosahuje svého maxima, jsou li všechny pravděpodobnostu stejné.
+\end_layout
+
+\begin_layout Section
+Kódování zpráv
+\end_layout
+
+\begin_layout Subparagraph
+
+\series bold
+Definice:
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+Nechť 
+\emph on
+X
+\emph default
+ je náhodná veličina s výběrovým prostorem 
+\begin_inset Formula $\mathcal{X}$
+\end_inset
+
+.
+ Nechť 
+\begin_inset Formula $\mathcal{D}$
+\end_inset
+
+ je konečná abeceda a 
+\begin_inset Formula $\mathcal{D^{\star}}=\bigcup_{n=1}^{\infty}\mathcal{D}^{n}$
+\end_inset
+
+.
+ 
+\series bold
+Kód
+\series default
+ pro 
+\emph on
+X
+\emph default
+ je zobrazení 
+\begin_inset Formula $\mathcal{C}:\mathcal{X}\rightarrow\mathcal{D}^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subparagraph
+
+\series bold
+Definice: 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Střední délka
+\series default
+ kódu 
+\emph on
+C 
+\emph default
+je 
+\begin_inset Formula $L(C)=\sum_{x\in X}\: p_{X}(x)l(C(x))$
+\end_inset
+
+, kde 
+\begin_inset Formula $l(C(x))$
+\end_inset
+
+ značí délku řetězce 
+\begin_inset Formula $C(x)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\emph{\,}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Subparagraph
+
+\series bold
+Příklad
+\series default
+ 1:
+\end_layout
+
+\begin_layout Plain Layout
+Nechť 
+\begin_inset Formula $p_{X}(i)=\frac{1}{3},\, i=1,2,3.$
+\end_inset
+
+ Mějme tento binární kód:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $C(1)=0,\, C(2)=10,\, C(3)=11.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Zřejmě 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $L(C)=\frac{5}{3}=1.\bar{6}$
+\end_inset
+
+, přičemž 
+\begin_inset Formula $H(X)=\log3\overset{.}{=}1.58$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\,$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Subparagraph
+
+\series bold
+Příklad 2:
+\end_layout
+
+\begin_layout Plain Layout
+Nechť 
+\begin_inset Formula $p_{X}(i)=2^{-i},\, i=1,2,3$
+\end_inset
+
+ a 
+\begin_inset Formula $p_{X}(4)=2^{-3}.$
+\end_inset
+
+ Mějme tento binární kód:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $C(1)=0,\, C(2)=10,\, C(3)=110,\, C(4)=111$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+Zřejmě 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $L(C)=$
+\end_inset
+
+
+\begin_inset Formula $H(X)=1.75$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Třídy kódů
+\end_layout
+
+\begin_layout Subparagraph
+
+\series bold
+Definice:
+\end_layout
+
+\begin_layout Standard
+Kód 
+\emph on
+C 
+\emph default
+je
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+nesingulární
+\series default
+, pokud je 
+\begin_inset Formula $\mathcal{C}:\mathcal{X}\rightarrow\mathcal{D}^{*}$
+\end_inset
+
+prosté zobrazení.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+jednoznačně dekódovatelný
+\series default
+, pokud je jeho rozšíření 
+\begin_inset Formula $\mathcal{C}^{*}$
+\end_inset
+
+nesingulární, kde 
+\begin_inset Formula $\mathcal{C}^{*}:\mathcal{X}^{*}\rightarrow\mathcal{D}^{*}$
+\end_inset
+
+ je definováno pomocí 
+\begin_inset Formula $\mathcal{C}^{*}(x_{1}...x_{n})=\mathcal{C}(x_{1})...\mathcal{C}(x_{n})$
+\end_inset
+
+, 
+\begin_inset Formula $x_{1}...x_{n}\in\mathcal{X}^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+instantní
+\series default
+, pokud žádné kódové slovo 
+\begin_inset Formula $\mathcal{C}(x)$
+\end_inset
+
+ není počátečním úsekem kódového slova 
+\begin_inset Formula $\mathcal{C}(x^{,})$
+\end_inset
+
+ pro 
+\begin_inset Formula $x,x^{,}\in\mathcal{X},\; x\neq x^{,}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Vztahy mezi kódy:
+\end_layout
+
+\begin_layout Enumerate
+Každý 
+\series bold
+instantní kód
+\series default
+ je 
+\series bold
+jednoznačně dekódovatelný
+\series default
+.
+\end_layout
+
+\begin_layout Enumerate
+Každý 
+\series bold
+jednoznačně dekódovatelý kód
+\series default
+ je 
+\series bold
+nesingulární
+\series default
+.
+\end_layout
+
+\begin_layout Subparagraph
+Třídy kódů
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\begin{array}{ccccc}
+\;\;\; x\;\;\; & \;\;\; singulární\;\;\; & \;\;\; nesingulární\;\;\; & \;\;\; jednoznačně\; d.\;\;\; & \;\;\; instantní\;\;\;\\
+1 & 0 & 0 & 01 & 0\\
+2 & 0 & 1 & 00 & 10\\
+3 & 0 & 00 & 11 & 110\\
+4 & 0 & 01 & 110 & 111
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+neinstantní jednoznačně dekódovatelný kód obecně umožňuje dekódovaní až
+ po přečtení 
+\series bold
+celého
+\series default
+ rozšířeného kódového slova 
+\begin_inset Formula $C(x_{1}...x_{n})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+instantní kód umožňuje dekódování 
+\series bold
+ihned
+\series default
+ po obdržení kódového slova
+\end_layout
+
+\begin_layout Section
+Kraftova-MacMillanova nerovnost
+\end_layout
+
+\begin_layout Subparagraph
+Věta (Kraft, 1949)
+\end_layout
+
+\begin_layout Standard
+Délky slov 
+\begin_inset Formula $l_{1},...,l_{m}$
+\end_inset
+
+ libovolného 
+\series bold
+instantního 
+\series default
+\emph on
+d
+\emph default
+-znakového kódu splňují nerovnost
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\overset{}{\overset{}{\underset{_{i=1}}{\sum^{m}}d^{-l_{i}}}\leq1.}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Obráceně, splňují-li 
+\begin_inset Formula $l_{1},...,l_{m}\in\mathbb{N}$
+\end_inset
+
+ tuto nerovnost, potom existuje 
+\series bold
+instantní 
+\series default
+\emph on
+d
+\emph default
+-znakový kód s délkami slov 
+\begin_inset Formula $l_{1},...,l_{m}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subparagraph
+Věta (MacMillan, 1956)
+\end_layout
+
+\begin_layout Standard
+Délky slov 
+\begin_inset Formula $l_{1},...,l_{m}$
+\end_inset
+
+ libovolného 
+\series bold
+jednoznačně dekódovatelného 
+\series default
+\emph on
+d
+\emph default
+-znakového kódu splňují nerovnost
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\overset{}{\overset{}{\underset{_{i=1}}{\sum^{m}}d^{-l_{i}}}\leq1.}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Obráceně, splňují-li 
+\begin_inset Formula $l_{1},...,l_{m}\in\mathbb{N}$
+\end_inset
+
+ tuto nerovnost, potom existuje 
+\series bold
+jednoznačně dekódovatelného 
+\series default
+\emph on
+d
+\emph default
+-znakový kód s délkami slov 
+\begin_inset Formula $l_{1},...,l_{m}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Kombinací těchto dvou nerovností dostaneme:
+\end_layout
+
+\begin_layout Subparagraph
+Věta (Kraft-MacMillanova)
+\end_layout
+
+\begin_layout Standard
+Jednoznačně dekódovatelné kódování s předepsanou délkou slov existuje právě
+ tehdy, když existuje instantní kó se stejnou délkou.
+\end_layout
+
+\begin_layout Section
+Souvislost entropie a střední délky kódovaného slova
+\end_layout
+
+\begin_layout Standard
+Jsou-li pravděpodobnosti výsledků známé a různé, můžeme to využít k úspornějšímu
+ kódování.
+ U úsporného kódu budou všechny použité znaky přibližně stejně pravděpodobné.
+ Entropie určuje teoretickou dolní mez průměrné délky zprávy při nejúspornějším
+ kódování.
+ Tím nám ukazuje meze možné komprese dat.
+ Častěji známe rozdělení jen přibližně, a proto nedosáhneme maximální účinnosti
+ komprese.
+\end_layout
+
+\begin_layout Section
+Kódy s optimální střední délkou 
+\end_layout
+
+\begin_layout Subsection
+Huffmanův kód
+\end_layout
+
+\begin_layout Itemize
+Je to optimální kód, tedy instantní kód minimalizující střední délku na
+ množině všech jednoznačně dekódovatelných kóků.
+\end_layout
+
+\begin_layout Itemize
+Výsledný kód není určen jednoznačně (např.
+ bitovou inverzí získáme jiný optimální kód).
+\end_layout
+
+\begin_layout Itemize
+Jednoznačně není určena ani délka kódových slov.
+\end_layout
+
+\begin_layout Itemize
+Aplikace : závěrečné zpracování formátů JPEG, MP3, DEFLATE, PKZIP
+\end_layout
+
+\begin_layout Subparagraph
+Příklad:
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename C:/Documents and Settings/rudolf/Plocha/huff.JPG
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+LZ algoritmy
+\end_layout
+
+\begin_layout Itemize
+autoři Lempel a Ziv publikovali 2 základní varianty algoritmu, a to LZ77
+ a LZ78
+\end_layout
+
+\begin_layout Itemize
+algoritmus má mnoho různých variací, jako je např.
+ Lempel-Ziv-Welsch LZW (komprese v Unixu, ZIP, RAR, GIF, PDF,...)
+\end_layout
+
+\begin_layout Itemize
+jde o třídu adaptivních kompresních algoritmů se slovníkem
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+optimalita
+\series default
+: LZ77 a LZ78 asymptoticky dosahují rychlosti entropie pro stacionární ergodické
+ zdroje
+\end_layout
+
+\begin_layout Paragraph
+LZ78 (Stromová verze LZ)
+\end_layout
+
+\begin_layout Itemize
+řetězec 
+\begin_inset Formula $x_{1}...x_{n}\in X^{n}$
+\end_inset
+
+ je sekvenčně testován na výskyt 
+\series bold
+nejkratších řetězců
+\series default
+, které se nevyskytly v předchozím kroku 
+\end_layout
+
+\begin_layout Itemize
+každý takový řetězec je označen a uložen do 
+\series bold
+slovníku
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+díky minimalitě ukládaného řetězce jsou jeho 
+\series bold
+prefixy
+\series default
+ již ve slovníku: řetězec 
+\begin_inset Formula $xi_{i}...x_{k}$
+\end_inset
+
+ byl uložen do slovníku před 
+\begin_inset Formula $x_{i}...x_{k}x_{k+1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Kód tvoří posloupnost dvojic 
+\begin_inset Formula $(U_{k},x_{k})$
+\end_inset
+
+, kde 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x_{k}$
+\end_inset
+
+je poslední znak řetězce 
+\begin_inset Formula $x_{i}...x_{l}x_{k}$
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $U_{k}$
+\end_inset
+
+je ukazatel na odpovídající prefix 
+\begin_inset Formula $x_{i}...x_{l}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Příklad
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $X=\left\{ A,B\right\} $
+\end_inset
+
+, řetězec ABBABBABBBAABABAA 
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dostaneme následující řetězce: A, B, BA, BB, AB, BBA, ABA, BAA 
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Výsledný kód: 0A 0B 2A 2B 1B 4A 5A 3A
+\end_layout
+
+\begin_layout Section
+Informační kanál a jeho kapacita 
+\end_layout
+
+\begin_layout Paragraph
+Definice
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Informační kanál 
+\series default
+je trojice 
+\begin_inset Formula $K=\left\langle X,\mathbf{P},Y\right\rangle $
+\end_inset
+
+, kde 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+X 
+\emph default
+je 
+\emph on
+m
+\emph default
+-prvková vstupní abeceda
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Y 
+\emph default
+je 
+\emph on
+n
+\emph default
+-prvkovávýstupní abeceda
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+P
+\series default
+\emph on
+ 
+\emph default
+je matice 
+\emph on
+m
+\begin_inset Formula $\times$
+\end_inset
+
+n 
+\emph default
+podmíněných pravděpodobností:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename C:/Documents and Settings/rudolf/Plocha/kanal.JPG
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Příklad
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Binární symetrický kanál
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename C:/Documents and Settings/rudolf/Plocha/kanal1.JPG
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Vstup a výstup kanálu
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Vstup
+\series default
+: Informační zdroj 
+\emph on
+X 
+\emph default
+s pravděpodobnostmi
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+(p_{X}(x_{1})\,...\, p_{X}(x_{m}))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Výstup
+\series default
+: Informační zdroj 
+\emph on
+Y 
+\emph default
+s pravděpodobnostmi
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+(p_{Y}(y_{1})\,...\, p_{Y}(y_{n}))=(p_{X}(x_{1})\,...\, p_{X}(x_{m})).\mathbf{P}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Přenositelnost zdroje 
+\emph on
+X 
+\emph default
+daným kanálem popisuje 
+\series bold
+vzájemná informace
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I(X;Y)=H(X)-H(X|Y)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Shannonova věta o kódování
+\end_layout
+
+\begin_layout Subsection
+Shannonova věta o kódování za přítomnosti šumu
+\end_layout
+
+\begin_layout Standard
+Tato věta říká, že existuje kódování opravující chyby, které dovoluje přenést
+ informaci reálným kanálem (kanál s přítomností šumu) rychlostí libovolně
+ blízkou kapacitě kanálu.
+\end_layout
+
+\begin_layout Subsection
+Shannonova věta o kódování bez přítomnosti šumu
+\end_layout
+
+\begin_layout Standard
+Mějme 
+\begin_inset Formula $f:W→A*$
+\end_inset
+
+ kód se zdrojovými slovy 
+\begin_inset Formula $w_{1},w_{2},…,w_{m}$
+\end_inset
+
+, délek 
+\begin_inset Formula $l_{i}$
+\end_inset
+
+, s pravděpodobností 
+\begin_inset Formula $p_{i}$
+\end_inset
+
+ vyslání slova 
+\begin_inset Formula $w_{i}$
+\end_inset
+
+ a kódovými slovy 
+\begin_inset Formula $a_{i}=f(w_{i})$
+\end_inset
+
+.
+ Pak 
+\series bold
+průměrná délka kódového slova
+\series default
+ je:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\overset{}{\overset{}{f=\underset{_{i=1}}{\sum^{m}}p_{i}l_{i}.}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
