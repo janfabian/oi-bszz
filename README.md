@@ -10,7 +10,7 @@ Otázky státních závěrečných zkoušek pro studijní program Otevřená inf
 Hotové otázky
 -------------
 
-### Společná část
+### Společná část (kompletní)
 
 01\.	Lineární závislost a nezávislost, báze, dimenze. Lineární zobrazení, jádro a obor hodnot, skalární a vektorový součin. (A0B01LAG)
 
@@ -75,6 +75,8 @@ Hotové otázky
 
 31\. Architektura počítače. Koncepce a techniky CPU. Porovnaní přístupů RISC a CISC procesorů. Sítě procesorů a paralelní architektury. Hierarchický koncept pamětí. Přerušovací a vstupně-výstupní podsystém počítače, řízení vstupů a výstupů. (A0B36APO) 
 
+32\. Mnohaúrovňová organizace počítače, virtuální stroje. Virtuální programovací prostředí a virtualizační techniky. Klasická registrově orientovaná architektura s kompletní instrukční sadou. Standardní systémové a I/O sběrnice počítačových systémů. (A0B36APO) 
+
 33\.     Lineární programování (LP). Transformace různých forem LP mezi sebou. Aplikace LP. Simplexová metoda. Dualita. Konvexní množiny a polyedry, konvexní funkce, konvexní optimalizační úlohy. (A4B33OPT)
 
 34\. Metoda nejmenších čtverců. Analytické podmínky na lokální optima diferencovatelných funkcí, volných i vázaných rovnostmi (metoda Lagrangeových multiplikátorů). Numerické metody pro optimalizaci bez omezení (gradientní, Newtonova, Gaussova-Newtonova, Levenberg-Marquardtova metoda). (A4B33OPT)
@@ -93,11 +95,15 @@ Hotové otázky
 
 ### Softwarové systémy
 
-7\. Koncept jazyka na bázi virtuálniho stroje, JVM memory management, datové struktury, výjimky, objektové programování, vlákna a synchronizace. (A4B77ASS)
+03\. Proces vývoje software, jeho struktura a fáze vývoje, klasické a moderní agilní metodiky vývoje, řízení rizika. (A4B33SI)
 
-8\. Architektury softwarových systémů, komponentové architektury, vzdálená invokace, distribuované komponentové architektury (CORBA), redundance a návrh spolehlivých systémů. (A4B77ASS)
+04\. Technické aspekty softwarového projektu, projektová dokumentace: uživatelská specifikace, technická specifikace a návrh, testování, validace a integrace. Systémy pro správu konfigurace a podporu vývoje. (A4B33SI) 
 
-9\. Webové služby a service-oriented architektury, asynchronní architektury komunikace, producer-consumer model, aktivní objekty a agentní systémy. (A4B77ASS)
+07\. Koncept jazyka na bázi virtuálniho stroje, JVM memory management, datové struktury, výjimky, objektové programování, vlákna a synchronizace. (A4B77PRDEL)
+
+08\. Architektury softwarových systémů, komponentové architektury, vzdálená invokace, distribuované komponentové architektury (CORBA), redundance a návrh spolehlivých systémů. (A4B77ASS)
+
+09\. Webové služby a service-oriented architektury, asynchronní architektury komunikace, producer-consumer model, aktivní objekty a agentní systémy. (A4B77ASS)
 
 10\. Testování uživatelských rozhraní. Definice pojmu použitelnosti (usability), modely úloh, prototypování uživatelských rozhraní. Testování použitelnosti (organizace a vyhodnocování testů). (A4B39TUR)
 
