@@ -1,0 +1,469 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass scrreprt
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{chapter}{03} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Technické aspekty softwarového projektu, projektová dokumentace: uživatelská
+ specifikace, technická specifikace a návrh, testování, validace a integrace.
+ Systémy pro správu konfigurace a podporu vývoje.
+ (A4B33SI) 
+\end_layout
+
+\begin_layout Section
+Technické aspekty softwarového projektu
+\end_layout
+
+\begin_layout Itemize
+řízení projektu - viz otázka 03
+\end_layout
+
+\begin_layout Itemize
+dodržování ISO - spolehlivost, efektivita, užitečnost, udržovatelnost, flexibili
+ta...
+\end_layout
+
+\begin_layout Section
+Projektová dokumentace
+\end_layout
+
+\begin_layout Subsection
+Uživatelská specifikace
+\end_layout
+
+\begin_layout Itemize
+zjištění aktuálního stavu, jak s ním jsou uživatelé spokojeni, co jím vadí,
+ co by pořebovali
+\end_layout
+
+\begin_layout Itemize
+výsledkem je 
+\emph on
+Specifikace
+\emph default
+ 
+\emph on
+požadavků
+\end_layout
+
+\begin_layout Itemize
+nutnost:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+vše správně pochopit (
+\emph on
+elicitation
+\emph default
+) 
+\end_layout
+
+\begin_layout Itemize
+správně popsat (
+\emph on
+specification
+\emph default
+)
+\end_layout
+
+\begin_layout Itemize
+sjednat podstatu problému (
+\emph on
+validation
+\emph default
+)
+\end_layout
+
+\begin_layout Itemize
+sjednat hranice problému (
+\emph on
+negotiation
+\emph default
+)
+\end_layout
+
+\begin_layout Itemize
+=> opakuji, dokud není vše jasné!
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename C:/Documents and Settings/rudolf/Plocha/specifikace.JPG
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Technická specifikace a návrh
+\end_layout
+
+\begin_layout Itemize
+vychází z uživatelské specifikace a přesně stanovuje, co se má udělat
+\end_layout
+
+\begin_layout Itemize
+! vyvarova se obecnému jazyku => kniha 
+\begin_inset Formula $\neq$
+\end_inset
+
+svazek knihy; přítomna 
+\begin_inset Formula $\times$
+\end_inset
+
+ nepřítomna (ztracena, zapůjčena, zničena,...)
+\end_layout
+
+\begin_layout Itemize
+vypracování všech use-cases - hiearchické uspořádání => rozložení do menších
+ celků
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ideálně přiřazení konkrétních stakeholderů
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+priority: MoSCoW
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Must have (nejvyšší priorita)
+\end_layout
+
+\begin_layout Itemize
+Should have (chtěné)
+\end_layout
+
+\begin_layout Itemize
+Could have (když zbyde čas/peníze)
+\end_layout
+
+\begin_layout Itemize
+Won't have (dnes ne)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+stanovení funkčních a nefunkčních (rychlost, spolehlivost, jednoduchost,...)
+ požadavků
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+CMM 
+\family roman
+\series medium
+(Capability Maturity Model)
+\end_layout
+
+\begin_layout Itemize
+na začátku opakovatelný level (analýza, requirements,...) => definitivní level
+ (techické řešení, V+V,...)
+\end_layout
+
+\begin_layout Paragraph
+SPI 
+\family roman
+\series medium
+(Software Process Increment)
+\end_layout
+
+\begin_layout Itemize
+stanovení hypotézy => sesbírání dat informací => interpretace dat 
+\begin_inset Formula $\circlearrowleft$
+\end_inset
+
+znovu, dokud nemáme vše
+\end_layout
+
+\begin_layout Paragraph
+Odhad ceny
+\end_layout
+
+\begin_layout Enumerate
+kvantitavní modely
+\end_layout
+
+\begin_layout Enumerate
+kvalitativní modely
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+COCOMO 
+\series default
+(Constructive Cost Model) - dobře dokumentované na výpočty, podle typu a
+ velikosti projektu
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+FPA 
+\series default
+(Function Point Analysis) - stanovení ceny dle struktury, vstupů, funkcí,...
+\end_layout
+
+\begin_layout Standard
+- těžké správně odhadnout
+\end_layout
+
+\begin_layout Subsection
+Testování
+\end_layout
+
+\begin_layout Itemize
+nutné testovat, dle metodiky je nejvhodnější testovat už v průběhu vývoje
+ (levnější)
+\end_layout
+
+\begin_layout Itemize
+poměr 2:3 (tester:vývojář)
+\end_layout
+
+\begin_layout Itemize
+testování je měření kvality SW - ISO 9000
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+funkčnost (správnost, spolehlivost), inženýrské řešení (efektivita, dokumentace)
+, adaptibilita (opětovné použitá, údržba)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+kritéria pokrytí testů:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+řádky - každý řádek se vykoná alespoň jednou => nedostatečné
+\end_layout
+
+\begin_layout Enumerate
+větve - každá musí být alespoň 1 pravdivá a 1 nepravdivá
+\end_layout
+
+\begin_layout Enumerate
+podmínky - zkontroluje všechny možnosti nastalé podmínky a vyhodnotí je
+ (vyžaduje armáda a letectví)
+\end_layout
+
+\begin_layout Enumerate
+úplné pokrytí cest - v praxi neproveditelné
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+definování pomocí grafů:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+uzly
+\emph default
+ = objekty, o které se zajímáme
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+hrany
+\emph default
+ = vztah objektů a relací mezi uzly
+\end_layout
+
+\begin_layout Itemize
+postup:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+definuj graf
+\end_layout
+
+\begin_layout Itemize
+definuj relace
+\end_layout
+
+\begin_layout Itemize
+navrhni testy pro pokrytí uzlů a hran
+\end_layout
+
+\begin_layout Itemize
+otestuj a porovnej s očekávanými výsledky
+\end_layout
+
+\begin_layout Itemize
+nahvrhni a otestuj testy smyček
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+po testování je nutné mít přesné a pdrobné specifikace! (jinak se nedá testovat,
+ není co)
+\end_layout
+
+\begin_layout Itemize
+automatizace testování:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+klady:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+častější testování
+\end_layout
+
+\begin_layout Itemize
+ověření na nové verzi programu
+\end_layout
+
+\begin_layout Itemize
+opakovatelnost testů
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+zápory:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+nereálná očekávání
+\end_layout
+
+\begin_layout Itemize
+slabší testovací praxe
+\end_layout
+
+\begin_layout Itemize
+údržba automatizovaných testů
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Section
+Systémy pro správu konfigurace a podporu vývoje
+\end_layout
+
+\begin_layout Paragraph
+WBS 
+\family roman
+\series medium
+(Work Breakdown Structure) - rozložení projektu na menší struktury
+\end_layout
+
+\begin_layout Paragraph
+PERT chart 
+\family roman
+\series medium
+(Program Evaluation and Review Technique) - analýza úkolu a rozvržení času
+ na dokončení jednotlivých částí rozložení projektu na menší struktury
+\end_layout
+
+\begin_layout Paragraph
+GANTT chart
+\family roman
+\series medium
+ - zobrazuje rozložení a stav jednotlivých částí v čase
+\end_layout
+
+\begin_layout Paragraph
+SVN 
+\family roman
+\series medium
+- synchronizace kódu, verzování,...
+\end_layout
+
+\end_body
+\end_document
