@@ -1,0 +1,386 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass scrreprt
+\begin_preamble
+
+
+\usepackage[english,czech]{babel}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language czech
+\language_package default
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 0
+\use_mathdots 0
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language german
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{chapter}{11}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Chapter
+Tvorba webových aplikací: Architektura webové aplikace, klientská část webové
+ aplikace, W3C doporučení, webové skriptovací jazyky.
+ Grafická a strukturální stránka prezentace.
+\end_layout
+
+\begin_layout Section
+Úvod
+\end_layout
+
+\begin_layout Standard
+Současná architektura webu je založena na vztahu 
+\series bold
+klient - server
+\series default
+.
+ Jediný způsob komunikace - tenký klient vysílá požadavky a server odpovídá
+ (změna od HTML5).
+\end_layout
+
+\begin_layout Standard
+Je možné dělit web na 
+\series bold
+statický
+\series default
+, 
+\series bold
+dynaický
+\series default
+ a 
+\series bold
+webové aplikace
+\series default
+ (s ajaxem).
+\end_layout
+
+\begin_layout Standard
+Mnoho standardů je specifikováno v RFC (Request for Comments); např HTTP,
+ HTML, SMTP.
+\end_layout
+
+\begin_layout Section
+Obsah
+\end_layout
+
+\begin_layout Subsection
+protokol - HTTP (Hypertext Transfer Protocol)
+\end_layout
+
+\begin_layout Itemize
+bezestavový, textový 
+\end_layout
+
+\begin_layout Itemize
+metody *
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+* - bezpečné metody = jen pro čtení
+\end_layout
+
+\end_inset
+
+ - GET*, POST, HEAD* (jako get, ale poskytne pouze metadata), PUT, DELETE,
+ trace*, options* (dotaz na poskytované metody), connect 
+\end_layout
+
+\begin_layout Itemize
+hlavička GETu obsahuje - UserAgent , accept-ln, accept-encoding, cookies
+ 
+\end_layout
+
+\begin_layout Itemize
+HTTP 1.0 vs HTTP 1.1 - 1.1 obsahuje délku zprávy 
+\end_layout
+
+\begin_layout Itemize
+stavy : 2XX - Úspěch x 3XX - Přesměrování x 4XX - Chyba klienta x 5XX -
+ Chyba serveru (200-ok , 403-forbidden, 404-notfound) 
+\end_layout
+
+\begin_layout Subsection
+HTML (HyperText Markup Language)
+\end_layout
+
+\begin_layout Itemize
+skupina SGML (Standard General Markup Language), XHTML skupina XML skupina
+ SGML...XML vs SGML - párovost tagů v xml 
+\end_layout
+
+\begin_layout Itemize
+zlepšování přístupnosti - labely, dlouhé popisy, alternativní texty, thead\SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Itemize
+zlepšení použitelnosti - accesskey 
+\end_layout
+
+\begin_layout Itemize
+od HTML 4 užívání CSS - oddělení obsahu a formy, kvůli robotům, vyhledávačům
+ 
+\end_layout
+
+\begin_layout Itemize
+DOM = Document Object Model - (stromová) reprezentace dokumentu 
+\end_layout
+
+\begin_layout Subsection
+CSS (Cascading Style Sheets)
+\end_layout
+
+\begin_layout Itemize
+selectors (#-id, .-class) 
+\end_layout
+
+\begin_layout Itemize
+dědičnost (dá se porušit important) 
+\end_layout
+
+\begin_layout Itemize
+@media (styli pro tisk, handheld) 
+\end_layout
+
+\begin_layout Itemize
+je vhodné zadávat v relativních jednotkách (em, ex) 
+\end_layout
+
+\begin_layout Subsection
+JS (JavaScript)
+\end_layout
+
+\begin_layout Itemize
+skriptovací jazyk na straně klienta, má omezená práva, dá se využít k měnění
+ DOMu, umí reagovat na události 
+\end_layout
+
+\begin_layout Itemize
+JSON (JavaScript Object Notation) - textový formát pro výměnu dat, skládá
+ se z kolekcí páru název/hodnota a z tříděného seznamu 
+\end_layout
+
+\begin_layout Itemize
+AJAX (Asynchronous JavaScript and XML) - provádění requestů za účelem jiným
+ než je načítání celé stránky 
+\end_layout
+
+\begin_layout Itemize
+objektovost a dědičnost - simulace, simulace pomocí prototypů 
+\end_layout
+
+\begin_layout Subsection
+Doporučení W3C (World Wide Web Consortium)
+\end_layout
+
+\begin_layout Standard
+World Wide Web Consortium (W3C) je mezinárodní konsorcium, jehož členové
+ společně s veřejností vyvíjejí webové standardy.
+ Takže jestli chcete něco dostat do standardů, tak je dobré mít 
+\series bold
+doporučení od W3C
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+Typy HTML 4.01 DTD (Document Type Definition) 
+\end_layout
+
+\begin_layout Itemize
+Strict includes all elements and attributes that have not been deprecated
+ or do not appear in frameset documents 
+\end_layout
+
+\begin_layout Itemize
+Transitional = strict + deprecated elements and attributes (most of which
+ concern visual presentation) 
+\end_layout
+
+\begin_layout Itemize
+Frameset = transitional + frames 
+\end_layout
+
+\begin_layout Section
+Zajímavosti
+\end_layout
+
+\begin_layout Standard
+Kdo by si přál konstanty v CSS?
+\end_layout
+
+\begin_layout Subsection
+novinky v HTML 5
+\end_layout
+
+\begin_layout Itemize
+přibilo - canvas, audio, video 
+\end_layout
+
+\begin_layout Itemize
+Web Sockets - obousměrná komunikace 
+\end_layout
+
+\begin_layout Itemize
+Web Storage - key-value databáze, IndexedDB - robustní indexovaná databáze
+ 
+\end_layout
+
+\begin_layout Itemize
+Web Workers - obdoba vlákna 
+\end_layout
+
+\begin_layout Itemize
+Native Drag & Drop 
+\end_layout
+
+\begin_layout Subsection
+knihovna jQuery
+\end_layout
+
+\begin_layout Standard
+mimo pěkné funkce umožňuje používat selectory v JS
+\end_layout
+
+\begin_layout Section
+Příloha
+\end_layout
+
+\begin_layout Subsection
+JS - prototipování + dědičnost
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim} 		
+\end_layout
+
+\begin_layout Plain Layout
+
+function vesmirny_objekt(){ 			
+\end_layout
+
+\begin_layout Plain Layout
+
+this.soustava = "slunecni"; 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+function planeta(pocet) {
+\end_layout
+
+\begin_layout Plain Layout
+
+this.pocet_mesicu = pocet
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+planeta.prototype = new vesmirny_objekt();
+\end_layout
+
+\begin_layout Plain Layout
+
+zeme = new planeta(3); 
+\end_layout
+
+\begin_layout Plain Layout
+
+alert(zeme.pocet_mesicu);
+\end_layout
+
+\begin_layout Plain Layout
+
+alert(zeme.soustava); 
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

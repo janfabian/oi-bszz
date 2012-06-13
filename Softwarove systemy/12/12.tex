@@ -1,0 +1,104 @@
+\documentclass{scrreprt}
+
+\usepackage[english,czech]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+
+\begin{document}
+
+\setcounter{chapter}{11}
+\chapter{Tvorba webových aplikací: Architektura webové aplikace, klientská část webové aplikace, W3C doporučení, webové skriptovací jazyky.
+Grafická a strukturální stránka prezentace.}
+
+\section{Úvod}
+Současná architektura webu je založena na vztahu \textbf{klient - server}. Jediný způsob komunikace - tenký klient vysílá požadavky a server odpovídá
+(změna od HTML5). 
+
+Je možné dělit web na \textbf{statický}, \textbf{dynaický} a \textbf{webové aplikace} (s ajaxem).
+
+Mnoho standardů je specifikováno v RFC (Request for Comments); např HTTP, HTML, SMTP. 
+
+\section{Obsah}
+
+\subsection{protokol - HTTP (Hypertext Transfer Protocol)}
+\begin{itemize}
+  \item bezestavový, textový
+  \item metody *\footnote{* - bezpečné metody = jen pro čtení} - GET*, POST, HEAD* (jako get, ale poskytne pouze metadata), PUT, DELETE, trace*,
+  options* (dotaz na poskytované metody), connect  
+  \item hlavička GETu obsahuje - UserAgent , accept-ln, accept-encoding, cookies
+  \item HTTP 1.0 vs HTTP 1.1  -  1.1 obsahuje délku zprávy
+  \item stavy : 2XX - Úspěch x 3XX - Přesměrování x 4XX - Chyba klienta x 5XX - Chyba serveru  (200-ok , 403-forbidden, 404-notfound)
+\end{itemize}        
+    
+\subsection{HTML (HyperText Markup Language)}
+\begin{itemize}
+  \item skupina SGML (Standard General Markup Language), XHTML skupina XML skupina SGML...XML vs SGML - párovost tagů v xml
+  \item zlepšování přístupnosti - labely, dlouhé popisy, alternativní texty, thead\ldots
+  \item zlepšení použitelnosti - accesskey
+  \item od HTML 4 užívání CSS - oddělení obsahu a formy, kvůli robotům, vyhledávačům
+  \item DOM = Document Object Model - (stromová) reprezentace dokumentu
+\end{itemize}
+
+    
+\subsection{CSS (Cascading Style Sheets)}
+\begin{itemize}
+  \item selectors (\#-id, .-class)
+  \item dědičnost (dá se porušit important)
+  \item @media (styli pro tisk, handheld)
+  \item je vhodné zadávat v relativních jednotkách (em, ex)
+\end{itemize}
+
+
+\subsection{JS (JavaScript)}
+\begin{itemize}
+  \item skriptovací jazyk na straně klienta, má omezená práva, dá se využít k měnění DOMu, umí reagovat na události
+  \item JSON (JavaScript Object Notation) - textový formát pro výměnu dat, skládá se z kolekcí páru název/hodnota a z tříděného seznamu
+  \item AJAX (Asynchronous JavaScript and XML) - provádění requestů za účelem jiným než je načítání celé stránky
+  \item objektovost a dědičnost - simulace,  simulace pomocí prototypů
+\end{itemize}
+
+    
+\subsection{Doporučení W3C (World Wide Web Consortium)}
+World Wide Web Consortium (W3C) je mezinárodní konsorcium, jehož členové společně s veřejností vyvíjejí webové standardy. Takže jestli chcete něco
+dostat do standardů, tak je dobré mít \textbf{doporučení od W3C}.
+
+Typy HTML 4.01 DTD (Document Type Definition)
+\begin{itemize}
+  \item Strict includes all elements and attributes that have not been deprecated or do not appear in frameset documents
+  \item Transitional = strict + deprecated elements and attributes (most of which concern visual presentation)
+  \item Frameset = transitional + frames
+\end{itemize}    
+        
+
+\section{Zajímavosti}
+Kdo by si přál konstanty v CSS?
+
+\subsection{novinky v HTML 5}
+\begin{itemize}
+  \item přibilo - canvas, audio, video
+  \item Web Sockets - obousměrná komunikace 
+  \item Web Storage - key-value databáze, IndexedDB - robustní indexovaná databáze
+  \item Web Workers - obdoba vlákna
+  \item Native Drag \& Drop
+\end{itemize}
+
+\subsection{knihovna jQuery}
+mimo pěkné funkce umožňuje používat selectory v JS
+
+\section{Příloha}
+\subsection{JS - prototipování + dědičnost}
+\begin{verbatim}
+		function vesmirny_objekt() {
+			this.soustava = "slunecni";
+		}
+		function planeta(pocet) {
+			this.pocet_mesicu = pocet
+		}
+		planeta.prototype = new vesmirny_objekt();
+		zeme = new planeta(3);
+		alert(zeme.pocet_mesicu);
+		alert(zeme.soustava);
+\end{verbatim}
+
+
+\end{document}
