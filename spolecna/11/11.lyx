@@ -138,8 +138,12 @@ epsilon
 \end_layout
 
 \begin_layout Standard
-Jestliže ε(e)=(u,v) pro u,v є V, říkáme, že vrchol u je počáteční vrchol
- hrany e a vrchol v je koncový vrchol hrany e; značíme PV(e)=u a KV(e)=v.
+Jestliže ε(e)=(u,v) pro 
+\begin_inset Formula $u,v\in V$
+\end_inset
+
+, říkáme, že vrchol u je počáteční vrchol hrany e a vrchol v je koncový
+ vrchol hrany e; značíme PV(e)=u a KV(e)=v.
  O vrcholech u,v říkáme, že jsou krajní vrcholy hrany e, též že jsou incidentní
  s hranou e.
  Jestliže počátční vrchol a koncový vrchol jsou stejné, říkáme, že hrana
@@ -154,8 +158,15 @@ Definice neorientovaného grafu
 \begin_layout Standard
 Nerientovaný graf je trojice G=(V,E,ε), kde V je konečná množina vrcholů
  (též zvaných uzlů), E je konečná množina jmen hran a ε je přiřazení, které
- každé hraně e є E přiřazuje množinu {u,v} pro vrcholy u,v є V a nazývá
- se vztah incidence.
+ každé hraně 
+\begin_inset Formula $e\in E$
+\end_inset
+
+ přiřazuje množinu {u,v} pro vrcholy 
+\begin_inset Formula $u,v\in V$
+\end_inset
+
+ a nazývá se vztah incidence.
  Jestliže ε(e)={u,v} pro u,v є V, říkáme, že u,v jsou krajní vrcholy hrany
  e, též že jsou incidentní s hranou e.
  Je-li u=v, říkáme že e je (neorientovaná) smyčka.
@@ -347,13 +358,19 @@ Minimální kostra
 
 \begin_layout Standard
 Je dán souvislý graf G spolu s ohodnocením hran c, tj.
- pro každou hranu eєE(G) je dáno číslo c(e) (číslo c(e) nazýváme cenou hrany
- e).
+ pro každou hranu 
+\begin_inset Formula $e\in E(G)$
+\end_inset
+
+ je dáno číslo c(e) (číslo c(e) nazýváme cenou hrany e).
  
 \end_layout
 
 \begin_layout Standard
-Minimální kostra grafu G=(V,E) je taková kostra grafu K=(V,L), že ∑eєL c(e)
+Minimální kostra grafu G=(V,E) je taková kostra grafu K=(V,L), že 
+\begin_inset Formula $∑e\in Lc(e)$
+\end_inset
+
  je nejmenší (mezi všemi kostrami grafu G).
  
 \end_layout
@@ -379,7 +396,11 @@ Je dán souvislý graf G=(V,E) a ohodnocení hran c.
 \begin_layout Enumerate
 Na začátku máme L=0.
  Označíme S množinu všech komponent souvislosti grafu K=(V,L); tj.
- na začátku je s={{v};vєV}.
+ na začátku je 
+\begin_inset Formula $s={{v};v\in V}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Enumerate
@@ -423,13 +444,21 @@ Setřídíme hrany podle ceny do neklesající posloupnosti, tj.
 \end_inset
 
 .
- Položíme L=0, S={{v};vєV}.
+ Položíme L=0, 
+\begin_inset Formula $S={{v};v\in V}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Enumerate
 Probíráme hrany v daném pořadí.
  Hranu ei přidáme do L, jestliže má oba krajní vrcholy v různých množinách
- S, S‘ є S.
+ 
+\begin_inset Formula $S,S‘\in S$
+\end_inset
+
+.
  V S množiny S a S‘ nahradíme jejich sjednocením.
  V opačném případě hranu přeskočíme.
 \end_layout
@@ -503,7 +532,7 @@ Eulerovy grafy
 
 \begin_layout Standard
 Tah je sled, ve kterém se neopakují hrany.
- Jinými slovy, tah obsahuje grany grafu vždy nejvýše jedenkrát.
+ Jinými slovy, tah obsahuje hrany grafu vždy nejvýše jedenkrát.
 \end_layout
 
 \begin_layout Subsection
