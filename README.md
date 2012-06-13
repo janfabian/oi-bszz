@@ -108,3 +108,5 @@ Hotové otázky
 10\. Testování uživatelských rozhraní. Definice pojmu použitelnosti (usability), modely úloh, prototypování uživatelských rozhraní. Testování použitelnosti (organizace a vyhodnocování testů). (A4B39TUR)
 
 11\. Psychologické a ergonomické aspekty používání uživatelských rozhraní. Speciální uživatelská rozhraní a jejich testování. (A4B39TUR) 
+
+12\. Tvorba webových aplikací: Architektura webové aplikace, klientská část webové aplikace, W3C doporučení, webové skriptovací jazyky. Grafická a strukturální stránka prezentace. (A4B39WA1)
