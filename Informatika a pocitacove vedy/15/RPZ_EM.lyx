@@ -1,0 +1,94 @@
+\documentclass[11pt]{article}
+\usepackage{a4wide}
+\usepackage{amsmath, amssymb}
+\usepackage{amsthm}
+
+\parindent 0pt
+\def\mathbi#1{\textbf{\em #1}}
+\newtheorem{thr}{Veta}
+
+\begin{document}
+\begin{center}
+\begin{Large}
+RPZ - EM algoritmus\\
+\end{Large}
+Petr Svec
+\end{center}
+\textit{Pozn. V textu budu kombinovat cesky vety s anglickymi pojmy, jelikoz u nekterych terminu vazne nevim cesky ekvivalenty.}\\
+\textit{Prerekvizita :) - znalost MLE}\\
+
+K cemu to je ve zkratce: K odhadu skrytych(latentnich) promennych u mixture models (smesi nekolika rozdeleni) a k nim nalezicim parametrum jednotlivych komponent smesi.\\
+
+\textbf{Formulace problemu:}\\
+Mejme smes rozdeleni 
+\begin{equation}
+S = Mix_{\mathbi{w}}(U_1,...,U_k) = p(\mathbf{x; \mathbi{w},\theta}) = \sum\limits_{k=1}^K w_k p_k(\mathbf{x};\theta_k),
+\end{equation}
+kde $\mathbi{w}$ je vektor vah(apriornich psti) jednotlivych komponent $\rightarrow \sum w_i = 1, w_i \in \langle 0;1 \rangle$ , $\theta$ je matice parametru $\rightarrow \theta_k$ je vektor parametru k-te komponenty smesi S. Komponenty oznacme $c_1,...,c_K$.\\
+Necht $\mathbf{x_1,...,x_n}$ jsou m-rozmerna mereni, ktere jsou z komponent $c_1,...,c_K$ smesi S. Skutecnost, ze lib. vzorek patri do tridy $c_i$ neni znama. 
+To formalne popiseme pomoci $K \times n$ (latentnich) promennych $z_{ik}; z_{ik} \in \{0;1\}$, kde $z_{ik} = 1$ pokud $\mathbf{x_i}$ bylo generovano tridou $k$, s podminkou, ze
+\begin{equation}
+\forall i \in \{1,..,n\}: \sum\limits_{k=1}^{K} z_{ik} = 1
+\end{equation}
+tj. $\mathbf{x_i}$ nalezi prave do jedne tridy smesi.\\
+Cilem je nalezt $\theta$ takove, ktere maximalizuje verohodnost.\\
+
+\textbf{Hrube odvozeni EM:}\\
+Nejprve je treba uvest Jensenovu nerovnost, ktera bude treba dale v textu(bez dukazu):
+\begin{thr}[Jensenova nerovnost]
+Necht f je konvexni funkce definovana na intervalu I.\\ Pokud $x_1,...,x_n \in I$ a $\lambda_1,...,\lambda_n \geq 0, pricemz \sum\limits_{i=1}^n \lambda_i = 1$, pak
+\begin{center}
+$f (\sum\limits_{i=1}^n \lambda_i x_i) \leq \sum\limits_{i=1}^n \lambda_i f(x_i)$.
+\end{center}
+U konkavnich fci je nerovnost opacna.
+\end{thr}
+
+S pouzitim pouze toho co vime(jsme schopni pozorovat) by log-likelihood vypadala nasledovne:
+\begin{equation}
+\ell (\mathbi{w},\theta ;\mathbf{x}) = \sum\limits_{i=1}^n \log\sum\limits_{k=1}^K w_kp_k(\mathbf{x_i};\theta_k)
+\end{equation}
+
+Je tu ale mensi problem s tim, ze nezname provazanost promennych pri maximalizaci sumy v logaritmu tj. tohle je pouze pro lidi kteri uz nechteji zit.\\
+
+\newpage
+Pokud bychom znali $z_{ik}$, pak ML je:
+
+\begin{equation}
+\ell (\mathbi{w},\theta ;\mathbf{x,z}) = \sum\limits_{i=1}^n\sum\limits_{k=1}^K z_{ik}(\log p_k(\mathbf{x_i};\theta_k) + \log w_k)
+\end{equation}
+
+Misto toho ale muzeme pouzit odhad $Q_{ik} = P[z_{ik}=1]$ tj. pst ze $\mathbf{x_i}$ patri do $c_k$.
+
+\begin{equation}
+E[\ell (\mathbi{w},\theta ;\mathbf{x,z}), Q] = \sum\limits_{i=1}^n\sum\limits_{k=1}^K Q_{ik}(\log p_k(\mathbf{x_i};\theta_k) + \log w_k)
+\end{equation}
+
+Ted prijde magie s pouzitim Jensenovy nerovnosti(aplikovana na logaritmus) a dobra myslenka v jednom:
+
+\begin{equation}
+\begin{split}
+\ell (\mathbi{w},\theta ;\mathbf{x}) &= \sum\limits_{i=1}^n \log\sum\limits_{k=1}^K w_kp_k(\mathbf{x_i};\theta_k)=\\ &= \sum\limits_{i=1}^n \log\sum\limits_{k=1}^K Q_{ik}\dfrac{w_kp_k(\mathbf{x_i};\theta_k)}{Q_{ik}}=\\
+& \geq \sum\limits_{i=1}^n \sum\limits_{k=1}^K Q_{ik}\log\dfrac{w_kp_k(\mathbf{x_i};\theta_k)}{Q_{ik}}=\\
+&= \sum\limits_{i=1}^n \sum\limits_{k=1}^K Q_{ik}\log w_kp_k(\mathbf{x_i};\theta_k) - \sum\limits_{i=1}^n \sum\limits_{k=1}^K Q_{ik}\log Q_{ik}=\\
+&= E[\ell (\mathbi{w},\theta ;\mathbf{x,z}), Q] - \sum\limits_{i=1}^n \sum\limits_{k=1}^K Q_{ik}\log Q_{ik}=\\
+&= L(w,\theta, Q; \mathbf{x})
+\end{split}
+\end{equation}
+
+Ona dvojita suma na 5. radku nas nemusi trapit, jelikoz neni zavisla na parametrech $w, \theta$. Maximalizace $L(w,\theta, Q; \mathbf{x})$ je tedy stejna jako maximalizace rovnice \#4.\\
+
+Shrnuti: pointou tedy je maximalizace dolni hranice log-likelihood (resp. hledani Q, ktery ji maximalizuje) nebo jinak receno optimalizace dolni hranice takova, ze rozdil mezi dolni hranici a skutecnou verohodnosti v danem bode je minimalni(zaroven ale vetsi nebo roven nule).\\
+Algoritmus je tvoren nasledujicimi dvema kroky:
+\begin{enumerate}
+\item Expectation step - $Q^{(t+1)} = \arg\max_Q L(w^{(t)}, \theta, Q; \mathbf{x})$
+\item Maximization step - $(w^{(t+1)},\theta^{(t+1)}) = \arg\max_{w,\theta}L(w,\theta, Q^{(t+1)}; \mathbf{x})$
+\end{enumerate}
+Bezi v nekonecne smycce, ktera je prerusena pokud $ (L^{(t)} - L^{(t+1)}) < \epsilon$, kde $\epsilon$ je pevne zvolena konstanta.\\
+1. krok - Expectation ma obecne reseni, kterym je aposteriorni pst. $Q_{ik}^* \equiv P(z_{ik} = 1 \vert \mathbf{x_i}; w, \theta)$, ktera maximalixuje $L(w,\theta, Q; \mathbf{x})$ pri danem $w, \theta$. Dukaz je triv, udelejte si za domaci ukol :D\\[10pt]
+2. krok odpovida temer klasicke MLE s tim rozdilem, ze je treba zahrnou i skryte promenne resp. jejich odhady do vypoctu odhadu parametru. Navic, coz je pomerne dulezity rozdil, nehledame parametry, ktere optimalizuji puvodni likelihood, ale dolni hranici.\\
+Priklad: pro odhad str. hodnoty jedne komponenty smesi, ktera se ridi normalnim rozdelenim bude odhad vypadat nasledovne:
+\begin{equation}
+\hat{\mu}_k = \dfrac{\sum\limits_{i=1}^n Q_{ik}\mathbf{x_i}}{\sum\limits_{i=1}^n Q_{ik}}
+\end{equation}
+
+\end{document}
