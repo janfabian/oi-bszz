@@ -1,0 +1,69 @@
+\documentclass{scrreprt}
+
+\usepackage[english,czech]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+
+\begin{document}
+
+\setcounter{chapter}{12}
+\chapter{Jazyk PHP, server-klient interakce. Šablony, MVC, frameworky, oddělení prezentační a aplikační logiky. Webové služby, AJAX.}
+
+\section{Úvod}
+Současná architektura webu je založena na vztahu \textbf{klient - server}. Jediný způsob komunikace - tenký klient vysílá požadavky a server odpovídá
+(změna od HTML5). 
+
+Je možné dělit web na \textbf{statický}, \textbf{dynaický} a \textbf{webové aplikace} (s ajaxem).
+
+Mnoho standardů je specifikováno v RFC (Request for Comments); např HTTP, HTML, SMTP. 
+
+\section{Obsah}
+
+\subsection{PHP (Personal Home Page)}
+\begin{itemize}
+  \item pole jsou asociativní, tedy ve skutečnosti se jedná o (hašovací) tabulky, které ukládají páry klíč -> hodnota.
+  \item slabě dynamicky typovaný
+  \item Imperativní (procedurální) a skriptovací jazyk, od PHP 5.0 podpora objektů
+  \item C-like syntax
+  \item Od PHP 5.3.0 - namespaces
+  \item magické metody - \_\_ , \_\_get \_\_set \_\_isset \_\_unset \_\_clone (shallow copy)
+  \item má modifikátory viditelnosti, final
+  \item typi hinting u parametrů funkcí (kontrola typů), neuspokojení může způsobit fatal error
+  \item Magické konstanty - \_\_LINE\_\_, \_\_FILE\_\_, \_\_DIR\_\_, \_\_FUNCTION\_\_, \_\_CLASS\_\_, \_\_METHOD\_\_, \_\_NAMESPACE\_\_
+  \item velikou výhodou ve široká podpora a komunita
+\end{itemize}
+
+
+\subsection{bezpečnost s PHP}
+\begin{description}
+  \item[Cross-side scripting] narušení html stránky pomocí uživatelského vstupu (html tagy,JS). Dá se bojovat funkcí \emph{htmlspecialchars}. 
+  \item[SQL injection] ovlivňování SQL databáze nezamýšlený způsobem pomocí uživatelského vstupu. Dá se bojovat pomocí \emph{prepareStatement} nebo
+  \emph{escape_string}. Někdo využívá na funkci \emph{magic_quotes}, která automaticky escapuje veškeré parametry GET a POST požadavků.
+\end{description}
+
+
+\subsection{MVC}
+\begin{itemize}
+  \item výhody - dobrá dělba práce + v aplikaci se častěji mění view + lehce umožňuje předkompilovat části kódu, takže zrychlení (a odstranění
+  komentářů)
+  \item Page Controller(URL má vlastní controller) X Front Controller(jeden hlavní controller) X Composite View(stránka je složená z více view)
+  \item super šablony Smarty
+  \item celé MVC - Zend, Nette  
+\end{itemize}
+
+
+\subsection{frameworks}
+\begin{itemize}
+  \item Doctrine - ORM
+  \item ZEND, NETTE  - řeší lokalizaci, MVC, strukturu projektu, formuláře, ajax, \ldots
+\end{itemize}
+
+\subsection{Webové služby}
+Toto téma je již zpracováno.
+
+\subsection{Ajax}
+Asynchronous JavaScript and XML - provádění requestů za účelem jiným než je načítání celé stránky (úprava DOMu na základě nových dat ze serveru,
+asynchroní odesílání dat).
+
+\end{document}
+
