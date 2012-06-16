@@ -110,3 +110,5 @@ Hotové otázky
 11\. Psychologické a ergonomické aspekty používání uživatelských rozhraní. Speciální uživatelská rozhraní a jejich testování. (A4B39TUR) 
 
 12\. Tvorba webových aplikací: Architektura webové aplikace, klientská část webové aplikace, W3C doporučení, webové skriptovací jazyky. Grafická a strukturální stránka prezentace. (A4B39WA1)
+
+13\. Jazyk PHP, server-klient interakce. Šablony, MVC, frameworky, oddělení prezentační a aplikační logiky. Webové služby, AJAX. (A4B39WA1)
