@@ -1030,7 +1030,7 @@ HW chyba
 \end_deeper
 \begin_layout Standard
 Obecne chyba vzniká pri porušení sémantických omezení jazyka Java.
- Bezpe4nostní prvek Javy: zpracování chyb a nestandardních stavů není ponecháno
+ Bezpečnostní prvek Javy: zpracování chyb a nestandardních stavů není ponecháno
  jen na vůli programátora! Reakce na očekávané chyby se vynucuje na úrovni
  překladu, při nerespektování se překlad nepodaří.
 \end_layout
@@ -1054,7 +1054,7 @@ Chyba při provádení programu v jazyku Java nemusí znamenat ukončení progra
 \end_layout
 
 \begin_layout Standard
-Žádné použití throws nebo try-catch, způsobí ukončení programu - CHYBA.
+Žádné použití throws nebo try-catch způsobí ukončení programu - CHYBA.
  Java sama ohlásí při překladu, které části jsou kritické a je je třeba
  ošetrit.
  Nejsou-li, pak minimálně "vyhozením" na vyšší úroven pomocí klauzule throws,

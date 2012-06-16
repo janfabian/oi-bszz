@@ -2030,7 +2030,7 @@ extern void vystup_dat(double obsah);
 \end_layout
 
 \begin_layout Itemize
-Příklad soubor xxx.c (includuje xxx.h0
+Příklad soubor xxx.c (includuje xxx.h)
 \end_layout
 
 \begin_layout LyX-Code
@@ -2385,7 +2385,7 @@ Definice je deklarace včetně přidělení paměti (memory allocation) proměnn
 \end_layout
 
 \begin_layout Section
-Standardní knihovyny
+Standardní knihovny
 \end_layout
 
 \begin_layout Standard

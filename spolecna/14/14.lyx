@@ -155,7 +155,7 @@ U většiny algoritmů nelze říci, že jejich složitost odpovídá přesně j
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\text{θ}(f(x))$
+\begin_inset Formula $\text{Θ}(f(x))$
 \end_inset
 
  - Theta(f(x)) – algoritmus probíhá asymptoticky stejně rychle jako 
@@ -207,7 +207,7 @@ Funkce
 
  zdola.
  
-\begin_inset Formula $\text{θ}(f(x))$
+\begin_inset Formula $\text{Θ}(f(x))$
 \end_inset
 
  pak značí ohraničení z obou stran.
@@ -236,7 +236,7 @@ Funkce
 
 \begin_inset Formula 
 \[
-\text{θ}(f(x))\rightarrow(\exists c_{1},c_{2}>0)(\exists n_{0})(\forall n>n_{0}):c_{1}*f(n)\leq g(n)\leq c_{2}*f(n)
+\text{Θ}(f(x))\rightarrow(\exists c_{1},c_{2}>0)(\exists n_{0})(\forall n>n_{0}):c_{1}*f(n)\leq g(n)\leq c_{2}*f(n)
 \]
 
 \end_inset

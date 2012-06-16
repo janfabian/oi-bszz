@@ -702,6 +702,26 @@ azyky typu 2
 .
 \end_layout
 
+\begin_layout Minisec
+Příklad
+\end_layout
+
+\begin_layout Standard
+S → aSb 
+\end_layout
+
+\begin_layout Standard
+S → ab
+\end_layout
+
+\begin_layout Standard
+Tato gramatika generuje jazyk 
+\begin_inset Formula $L=\{a^{n}b^{n}|n>1\}$
+\end_inset
+
+
+\end_layout
+
 \end_deeper
 \begin_layout Itemize
 
@@ -753,6 +773,22 @@ regulární jazyky
 jazyky typu 3
 \emph default
 .
+\end_layout
+
+\begin_layout Minisec
+Příklad
+\end_layout
+
+\begin_layout Standard
+S → aA|bB|ε 
+\end_layout
+
+\begin_layout Standard
+A → a|bB
+\end_layout
+
+\begin_layout Standard
+B → a|b|aA
 \end_layout
 
 \end_deeper
