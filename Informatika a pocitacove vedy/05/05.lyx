@@ -66,6 +66,24 @@ Numerická integrace, metody řešení diferenciálních rovnic, vliv délky kro
 \end_layout
 
 \begin_layout Standard
+\begin_inset External
+	template PDFPages
+	filename materialy/int_print.pdf
+	extra LaTeX "pages=-"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset External
+	template PDFPages
+	filename materialy/difrov_print.pdf
+	extra LaTeX "pages=-"
+
+\end_inset
+
 
 \end_layout
 

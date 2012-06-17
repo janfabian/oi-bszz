@@ -942,7 +942,7 @@ Formule
 
 \begin_layout Enumerate
 Formule 
-\begin_inset Formula $\alpha\vee\neg\alpha$
+\begin_inset Formula $\alpha\wedge\neg\alpha$
 \end_inset
 
  je kontradikce.
@@ -1565,7 +1565,7 @@ Logická spojka |, nazývaná NAND (také Sheffův operátor), je definována
 \begin_layout Standard
 \begin_inset Formula 
 \[
-x\textrm{ | }y\textrm{ |=| }\left(x\wedge y\right).
+x\textrm{ | }y\textrm{ |=| \neg}\left(x\wedge y\right).
 \]
 
 \end_inset
