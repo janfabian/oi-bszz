@@ -1,0 +1,2245 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass scrreprt
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Základy modelování dat, E-R diagramy, relační model.
+ Integritní omezení, normální formy.
+ Základy jazyka SQL, referenční integrita, agregační funkce, vnořené dotazy.
+ Transakce, jejich serializovatelnost, zamykání, stupně izolovanosti, uváznutí
+ transakcí, jeho prevence a řešení.
+ Objektově-relační mapování, persistence objektů.
+ (A4B33DS)
+\end_layout
+
+\begin_layout Section
+Základy modelování dat
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Konceptuální : 
+\series default
+Na této úrovni se snažíme popsat předmětnou oblast (obsah) datové základny.
+ V žádném případě nebereme v úvahu jakékoli pozdější způsoby implementace.
+ Konceptuální návrh určuje co je obsahem systému.
+ Nezávísí na použité DB technologii
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Logické : 
+\series default
+Na této úrovni se v relačních databázích používá tzv.
+ relační schéma.
+ Toto relační schéma obsahuje tabulky, a to včetně jejích sloupců (názvům
+ sloupců odpovídají názvy atributů každé entity).
+ Jsou zde vyznačeny primární a cizí klíče.
+ Logický model stále nesmí být zatížen implementačními specifiky řešení.
+ Logický návrh určuje jak je obsah systémů v dané technologii realizován.
+ Závisí na technologii, ale nezávisí na typu DB.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Fyzické : 
+\series default
+Popisuje, jak je záznam uložen (např.: o zákazníkovi).
+ Zde vybíráme konkrétní databázovou platformu, ve které bude navrhovaná
+ datová základna vytvořena.
+ Využívají se zde specifika použitého vývojového prostředí (programovací
+ jazyk, konkrétní databázové či vývojové prostředí GUI).
+\end_layout
+
+\begin_layout Standard
+Vzhledem k převaze relačních databází se často nerozlišuje fáze tvorby konceptuá
+lního a logického modelu.
+\end_layout
+
+\begin_layout Section
+Reláční model
+\end_layout
+
+\begin_layout Subsection
+Základní pojmy
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+relace 
+\series default
+(relation)
+\series bold
+: 
+\series default
+Jsou dvourozměrné struktury tvořené záhlavím a tělem (databázové tabulky).
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+entitní typ : 
+\series default
+je nějaká 
+\begin_inset Quotes eld
+\end_inset
+
+věc
+\begin_inset Quotes erd
+\end_inset
+
+ nebo 
+\begin_inset Quotes eld
+\end_inset
+
+objekt
+\begin_inset Quotes erd
+\end_inset
+
+ jednoznačně odlišitelná od ostatních (entita typ je popsán množinou svých
+ atributů).
+ Obvykle je vyjádřen podstatným jménem.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+entita : 
+\series default
+instance entitního typu
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+atribut : 
+\series default
+atributem může být určen jak pro entitní typ, tak i pto vztah.
+ 
+\emph on
+např.: 
+\emph default
+Entitní typ student může obsahovat atributy: 
+\emph on
+jmeno, prijmeni, 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+doména atributu : 
+\series default
+přípustné hodnoty pto atribut
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+vztah 
+\series default
+(relationship)
+\series bold
+: 
+\series default
+zachycuje, jakým způsobem jsou dvě nebo více entit vztažené mezi sebou.
+ Nezaměňovat s relací.
+ Existují 3 typy vztahu mezi relacema: 
+\series bold
+1:1, 1:N 
+\series default
+(cizí klíč na straně N), 
+\series bold
+M:N 
+\series default
+(využívá vazební tabulku).
+ Obvykle vyjádřen slovesem.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+klíč (primární klíč) : 
+\series default
+je atribut nebo množina atributů entitního typu, jejichž hodnot jednoznačně
+ určuje entitu.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+super klíč :
+\series default
+ Super klíč množiny entit je množina jednoho nebo více atributů, jejichž
+ hodnoty jednoznačně určují entitu (tedy klíč je podmnožina atributů – např.
+ všechny atributy).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+kandidátní klíč : 
+\series default
+Kandidátní klíč množiny entit je minimální super klíč.
+ – rodné číslo je kandidátní klíč entity zákazník – číslo účtu je kandidátní
+ klíč je kandidátní klíč entity účet
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+cizí klíč : 
+\series default
+je atribut, který korensponduje s primárním klíčem v jiné relaci (tabulce).
+ Hodnotami cizího klíče v referencující (odkazující) relaci smí být jen
+ ty hodnoty, které se vyskytují jako primární klíč v relaci referencované
+ (odkazované).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+slabá množina entit : 
+\series default
+při modelování reality se někdy vytváří entitní typy, které nemají samy
+ o sobě význa, Existance slabé množiny entit závisí na množině definujících
+ entit.
+\end_layout
+
+\begin_layout Subsection
+Parcialita a Konektivita
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/vztah.png
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Kardinalita vs.
+ Konektivita
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/kardinalita_konektivita.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Kardinalita určuje počet prvků asociované množiny entit (entitního typu)
+ prostřednictvím množiny vztahů.
+\end_layout
+
+\begin_layout Standard
+Pro binární vztahy existují 4 typy kardinality:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+1:1 : 
+\series default
+přiřazuje jednomu záznamu jeden jediný záznam v jiné tabulce.
+ Tento vztah se užívá jen ojediněle, protože vetšinou není důvod proč takové
+ záznamy neumístit do jedné tabulky.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+1:N : 
+\series default
+přiřadí jednomu záznamu více záznamů v tabulce jiné.
+ Nejpoužívanější typ relace, odpovídá mnoha situacím v reálném živoťe.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+N:1 : 
+\series default
+obdobně jako 
+\series bold
+1:N
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+M:N : 
+\series default
+méně častý.
+ Umožňuje několika záznamům v jedné tabulce přiřadit několik záznamů v tabulce
+ jiné.
+ V databázové praxi bývá tento vztah z praktických důvodů nejčastěji realizován
+ kombinací dvou vztahů 1:N a 1:M.
+\end_layout
+
+\begin_layout Section
+E-R diagramy
+\end_layout
+
+\begin_layout Standard
+E-R digram je grafická reprezentace E-R (entity-relationship) modelu.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/e-r_model.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+obdelníky
+\series default
+ - množiny entit (entitní typy)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+kosočtverce 
+\series default
+- množiny vztahů
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+ovály 
+\series default
+- atributy
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+zdvojené ovály se používají pro více hodnotové atributy
+\end_layout
+
+\begin_layout Itemize
+čárkované ováoy značí odvozené (počítané) atributy
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+podtržené atributy 
+\series default
+- značí primární klíče
+\end_layout
+
+\begin_layout Subsection
+Hlavní symboly
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/symboly_er_diagramu.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Normální formy
+\end_layout
+
+\begin_layout Subsection
+První norální forma (1NF)
+\end_layout
+
+\begin_layout Standard
+Relace je v 
+\series bold
+1NF
+\series default
+ právě tehdy, když platí současně:
+\end_layout
+
+\begin_layout Itemize
+atributy jsou atomické (dále nedělitelné)
+\end_layout
+
+\begin_layout Itemize
+k řádkům relace lze přistupovat podle obsahu (klíčových) atributů
+\end_layout
+
+\begin_layout Itemize
+řádky tabulky jsou jedineečné
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Příklad:
+\end_layout
+
+\begin_layout Standard
+Relace nesplňující 1NF:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+jmeno
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+prijmeni
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+adresa
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Josef
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Novák
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Technická 2, Praha 16627
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Petr
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pan
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Karlovo náměstí 13, Praha 12135
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Relace v 1NF:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+jmeno
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+prijmeni
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+ulice
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+cislo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+mesto
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+psc
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Josef
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Novák
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Technivká
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Praha
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+16627
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Petr
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pan
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Karlovo náměstí
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Praha
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12135
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Druhá normální forma (2NF)
+\end_layout
+
+\begin_layout Standard
+Relace je v 
+\series bold
+2NF 
+\series default
+právě tehdy, když platí zároveň:
+\end_layout
+
+\begin_layout Itemize
+relace je v 1NF
+\end_layout
+
+\begin_layout Itemize
+každý atribut, který není primárním klíčem je na primárním klíči úplně závislý
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Příklad:
+\end_layout
+
+\begin_layout Standard
+Mějme relaci 
+\emph on
+{
+\bar under
+IdStudentu
+\bar default
+, 
+\bar under
+IdPredmetu
+\bar default
+, JmenoStudenta, Semestr}, 
+\emph default
+kde 
+\emph on
+IdStudenta
+\emph default
+ a 
+\emph on
+IdPredmetu 
+\emph default
+tvoří primární klíč
+\emph on
+.
+ 
+\emph default
+Tato relace není v 2NF, protože 
+\emph on
+JmenoStudenta 
+\emph default
+je závislé pouze na 
+\emph on
+IdStudenta a Semestr 
+\emph default
+je závislé pouze na 
+\emph on
+IdPredmetu.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Řešení:
+\end_layout
+
+\begin_layout Standard
+Rozdělení relace do tří tabulek
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+{
+\bar under
+IdStudenta
+\bar default
+, 
+\bar under
+IdPredmetu
+\bar default
+}
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+{
+\bar under
+IdStudenta, 
+\bar default
+JmenoStudenta}
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+\bar under
+{IdPredmetu, 
+\bar default
+Semestr}
+\end_layout
+
+\begin_layout Subsection
+Třetí normální forma (3NF)
+\end_layout
+
+\begin_layout Standard
+Relace je v 
+\series bold
+3NF 
+\series default
+právě tehdy, když platí:
+\end_layout
+
+\begin_layout Itemize
+relace je v 
+\series bold
+2NF
+\end_layout
+
+\begin_layout Itemize
+žádný atribut, který není primárním klíčem, není tranzitivně závislý na
+ žádném klíči
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Příklad:
+\end_layout
+
+\begin_layout Standard
+Mějme relaci
+\emph on
+ {
+\bar under
+IdStudenta
+\bar default
+, JmenoStudenta, Fakulta, Dekan} ta
+\emph default
+ není ve 
+\series bold
+3NF
+\series default
+.
+ Sice je ve 
+\series bold
+2NF
+\series default
+, ale atribut Dekan je funčně závislý na 
+\emph on
+Fakulta
+\emph default
+ a 
+\emph on
+Fakulta
+\emph default
+ je funkčně závislá na 
+\emph on
+IdStudenta
+\emph default
+ (předpokládáme, že student nemůže být současně studentem více fakult téže
+ university).
+ 
+\emph on
+IdStudenta
+\emph default
+ není funkčně závislá na 
+\emph on
+Fakulta
+\emph default
+.
+ Atribut 
+\emph on
+Dekat
+\emph default
+ je tedy transitivně závislý na klíči.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Řešení:
+\end_layout
+
+\begin_layout Standard
+Rozdělíme relaci do tabulek:
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+{
+\bar under
+IdStudenta, 
+\bar default
+JmenoStudenta, Fakulta}
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+\bar under
+{Fakulta, 
+\bar default
+Dekan}
+\end_layout
+
+\begin_layout Section
+Integritní omezení
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Entitní
+\series default
+ – povinné integritní omezení, které zajišťuje úplnost primárního klíče
+ tabulky; zamezí uložení dat, která neobsahují všechna pole sdružená do
+ primárního klíče, nebo data, jež by v těchto polích byla stejná jako v
+ nějakém jiném, již zapsaném, řádku tabulky.
+ To znamená, že sloupce zvolené jako primární klíč by měli být unikátní
+ a nenulová.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Doménová
+\series default
+ – zajišťují dodržování datových typů/domén definovaných u sloupců databázové
+ tabulky
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Referenční
+\series default
+ – zabývají se vztahy dvou tabulek, kde jejich relace je určena vazbou primárníh
+o a cizího klíče
+\end_layout
+
+\begin_layout Section
+Základy SQL
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Structured Query Language 
+\series default
+(SQL) je jazyk pro kladení dotazl do databáze.
+ Obsahuje jak příkazy DML (Data manipulation Language), tak i DDL příkazy
+ (Data Definition Language).
+ SQL je case insensitive (nerozlišuje mezi velkými a malými písmeny).
+\end_layout
+
+\begin_layout Subsection
+Příkazy pro manipulaci s daty
+\end_layout
+
+\begin_layout Standard
+Jsou to příkazy pro získání dat z databáze a pro jejich úpravy.
+ Označují se zkráceně DML – Data Manipulation Language („jazyk pro manipulaci
+ s daty“).
+\end_layout
+
+\begin_layout Itemize
+SELECT – vybírá data z databáze, umožňuje výběr podmnožiny a řazení dat.
+\end_layout
+
+\begin_layout Itemize
+INSERT – vkládá do databáze nová data.
+ UPDATE – mění data v databázi (editace).
+\end_layout
+
+\begin_layout Itemize
+MERGE – kombinace INSERT a UPDATE – data buď vloží (pokud neexistuje odpovídajíc
+í klíč), pokud existuje, pak je upraví ve stylu UPDATE.
+\end_layout
+
+\begin_layout Itemize
+DELETE – odstraňuje data (záznamy) z databáze.
+\end_layout
+
+\begin_layout Itemize
+EXPLAIN – speciální příkaz, který zobrazuje postup zpracování SQL příkazu.
+ Pomáhá uživateli optimalizovat příkazy tak, aby byly rychlejší.
+\end_layout
+
+\begin_layout Itemize
+SHOW - méně častý příkaz, umožňující zobrazit databáze, tabulky nebo jejich
+ definice
+\end_layout
+
+\begin_layout Subsection
+Příkazy pro definici dat
+\end_layout
+
+\begin_layout Standard
+Těmito příkazy se vytvářejí struktury databáze – tabulky, indexy, pohledy
+ a další objekty.
+ Vytvořené struktury lze také upravovat, doplňovat a mazat.
+ Tato skupina příkazů se nazývá zkráceně DDL – Data Definition Language
+ („jazyk pro definici dat“).
+ 
+\end_layout
+
+\begin_layout Itemize
+CREATE – vytváření nových objektů.
+\end_layout
+
+\begin_layout Itemize
+ALTER – změny existujících objektů.
+\end_layout
+
+\begin_layout Itemize
+DROP – odstraňování objektů.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Příkazy pro řízení dat
+\end_layout
+
+\begin_layout Standard
+Do této skupiny patří příkazy pro nastavování přístupových práv a řízení
+ transakcí.
+ Označují se jako DCL – Data Control Language („jazyk pro ovládání dat“),
+ někdy také TCC – Transaction Control Commands („jazyk pro ovládání transakcí“).
+ 
+\end_layout
+
+\begin_layout Itemize
+GRANT – příkaz pro přidělení oprávnění uživateli k určitým objektům.
+\end_layout
+
+\begin_layout Itemize
+REVOKE – příkaz pro odnětí práv uživateli.
+ START TRANSACTION – zahájení transakce.
+\end_layout
+
+\begin_layout Itemize
+COMMIT – potvrzení transakce.
+\end_layout
+
+\begin_layout Itemize
+ROLLBACK – zrušení transakce, návrat do původního stavu.
+\end_layout
+
+\begin_layout Section
+Referenční integrita
+\end_layout
+
+\begin_layout Standard
+Referenční integrita je nástroj databázového stroje, který pomáhá udržovat
+ vztahy v relačně propojených databázových tabulkách.
+ Referenční integrita se definuje cizím klíčem, a to pro dvojici tabulek,
+ nebo nad jednou tabulkou, která obsahuje na sobě závislá data (například
+ stromové struktury).
+ Tabulka, v niž je pravidlo uvedeno, se nazývá podřízená tabulka (používá
+ se také anglický termín slave).
+ Tabulka, jejíž jméno je v omezení uvedeno, je nadřízená tabulka (master).
+ Pravidlo referenční integrity vyžaduje, aby pro každý záznam v podřízené
+ tabulce, pokud tento obsahuje data vztahující se k nadřízené tabulce, odpovídaj
+ící záznam v nadřízené tabulce existoval.
+ To znamená, že každý záznam v podřízené tabulce musí v cizím klíči obsahovat
+ hodnoty odpovídající primárnímu klíči nějakého záznamu v nadřízené tabulce,
+ nebo NULL.
+\end_layout
+
+\begin_layout Section
+Agregační funkce
+\end_layout
+
+\begin_layout Standard
+Agregační funkce jsou v SQL statistické funkce, pomocí kterých systém řízení
+ báze dat umožňuje seskupit vybrané řádky dotazu (získané příkazem SELECT)
+ a spočítat nad nimi výsledek určité aritmetické nebo statistické funkce.
+ Agregační funkce se v SQL používají s konstrukcí GROUP BY.
+ Agregační funkce pracují s kolekcí hodnot a vrací jedinou výslednou hodnotu.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+avg : 
+\series default
+průměrná hodnota
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+min : 
+\series default
+minimum
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+max : 
+\series default
+maximum
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+sum : 
+\series default
+součet hodnot
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+count : 
+\series default
+počet hodnot
+\end_layout
+
+\begin_layout Section
+Vnořené dotazy (poddotaz)
+\end_layout
+
+\begin_layout Standard
+Poddotaz je takový dotaz na databázi, který je umístěn uvnitř jiného „vnějšího“
+ dotazu a výsledky z něj se používají v nějaké podmínce v tom vnějším dotazu.
+ Poddotaz je nejčastěji příkaz SELECT a poskytuje hodnoty do porovnávací
+ podmínky (klauzuli WHERE) pro nadřazený dotaz (jiné části dotazu jen velmi
+ zřídka).
+ Používá se tam, kde není vhodné nebo možné použít agregační funkce nebo
+ (pro dodržení kompatibility) uložené procedury.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Příklad: 
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+SELECT * FROM tabulka1 WHERE sloupec1=(SELECT sloupec2 FROM tabulka2 WHERE
+ podmínka);
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Příklad: 
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+DELETE FROM tabulka1 WHERE sloupec1 IN (SELECT sloupec2 FROM tabulka2 WHERE
+ podmínka);
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Příklad: 
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+UPDATE tabulka1 SET sloupec1=hodnota1 WHERE EXISTS(SELECT sloupec2 FROM
+ tabulka2 WHERE podmínka);
+\end_layout
+
+\begin_layout Section
+Transakce
+\end_layout
+
+\begin_layout Itemize
+transakce je posloupnost operací (část programu), která přistupuje a aktualizuje
+ (mění) data.
+\end_layout
+
+\begin_layout Itemize
+Transakce pracuje s konzistentní databází.
+\end_layout
+
+\begin_layout Itemize
+Během spouštění transakce může být databáze v nekonzistentním stavu.
+\end_layout
+
+\begin_layout Itemize
+Ve chvíli, kdy je transakce úspěšně ukončena, databáze musí být konzistentní.
+\end_layout
+
+\begin_layout Itemize
+Dva hlavní problémy:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Různé výpadky, např.
+ chyba hardware nebo pád systému
+\end_layout
+
+\begin_layout Itemize
+Souběžné spouštění více transakci
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+
+\series bold
+ACID vlastnosti
+\end_layout
+
+\begin_layout Standard
+K zachování konzistence a integrity databáze, transakční mechanismus musí
+ zajistit:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+A
+\series default
+tomicity : transakce atomická - buď se podaří a provede se celá nebo nic.
+ Nelze vykonat jen čásst transakce.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+C
+\series default
+onsistency : transakce - konkrétní transformace stavu, zachování invariant
+ - integritní omezení.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+I
+\series default
+solation : (isolace = serializovatelnost).
+ Ikdyž jsou transakce vykonány zároveň, tak výsledek je stejný jako by byli
+ vykonány jedna po druhé.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+D
+\series default
+urability : po úspěšném vykonání transakce (commit) jsou změny stavu databáze
+ trvalé a to i v případě poruchy systému - zotavení chyb.
+\end_layout
+
+\begin_layout Subsection
+Akce
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+akce na objektech : 
+\series default
+READ, WRITE, XLOCK, SLOCK, UNLOCK
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+akce globální : 
+\series default
+BEGIN, COMMIT, ROLLBACK
+\end_layout
+
+\begin_layout Subsection
+Stavy transakce
+\end_layout
+
+\begin_layout Itemize
+Aktivní – počáteční stav; transakce zůstává v tomto stavu, dokud běží 
+\end_layout
+
+\begin_layout Itemize
+Částečně potvrzená (Partially Committed) – jakmile byla provedena poslední
+ operace transakce 
+\end_layout
+
+\begin_layout Itemize
+Chybující (Failed) – po zjištění, že normální běh transakce nemůže pokračovat
+ 
+\end_layout
+
+\begin_layout Itemize
+Zrušená (Aborted) – poté, co byla transakce vrácena (rolled back) a databáze
+ byla vrácena do stavu před spuštěním transakce.
+ Dvě možnosti po zrušení transakce: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Znovu spustit transakci – pouze pokud nedošlo k logické chybě 
+\end_layout
+
+\begin_layout Itemize
+Zamítnout transakci 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Potvrzená (Committed) – po úspěšném dokončeni
+\end_layout
+
+\begin_layout Subsection
+Transakční historie (rozvrh transakcí)
+\end_layout
+
+\begin_layout Standard
+Posloupnost akcí několika transakcí, jež zachovává pořadí akcí, v němž byly
+ prováděny.
+\end_layout
+
+\begin_layout Standard
+Historie (rozvrh) se nazývá sériová, pokud jsou všechny kroky jedné transakce
+ provedeny před všemi kroky druhé transakce.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/historie-serivost.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/hostorie-neserializovatelna.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Serializovatelnost
+\end_layout
+
+\begin_layout Subsubsection
+Teorie
+\end_layout
+
+\begin_layout Standard
+Nechť sese transakce 
+\begin_inset Formula $T_{i}$
+\end_inset
+
+ skjládá z následujících elementárních akcí:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\begin_inset Formula $\mathbf{\mathbf{READ}_{i}(A)}$
+\end_inset
+
+ 
+\series default
+- čtení objektu A v rámci transakce 
+\begin_inset Formula $T_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathbf{WRITE_{i}(A)}$
+\end_inset
+
+ - zápis (přepis) objektu A v rámci transakce 
+\begin_inset Formula $T_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathbf{ROLLBACK_{i}}$
+\end_inset
+
+ - přerušení transakce 
+\begin_inset Formula $T_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathbf{COMMIT_{i}}$
+\end_inset
+
+ - potvrzení transakce 
+\begin_inset Formula $T_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Jsou možné 4 případy:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+READI(A) - READJ(A)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Není konflikt
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Na pořadí nezávisi
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+READI(A) - WRITEJ(A)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Konflikt
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pořadí má význam
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+WRITEI(A) - READJ(A)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Konflikt
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pořadí má význam
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+WRITEI(A) - WRITEJ(A)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Konflikt
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pořadí má význam
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Zajímavé jsou navzájem konfliktní operace: 
+\series default
+Dvě 
+\series bold
+historie
+\series default
+ 
+\series bold
+H1
+\series default
+ a 
+\series bold
+H2
+\series default
+ (na téže množině transakcí) jsou 
+\series bold
+ekvivalentní
+\series default
+, pokud jsou 
+\series bold
+všechny konfliktní operace
+\series default
+ (nepřerušených) transakcí 
+\series bold
+provedeny v témže pořadí
+\series default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+To znamená, že pro dvě ekvivalentní historie a uspořádání <H1 indukované
+ historií H1 a <H2 indukované historií H2 platí: pokud pi a qj jsou konfliktní
+ operace takové, že pi 
+\begin_inset Formula $<_{H1}$
+\end_inset
+
+ qj , musí platit také pi 
+\begin_inset Formula $<_{H2}$
+\end_inset
+
+ qj .
+ Pořadí nekonfliktních operací není zajímavé.
+\end_layout
+
+\begin_layout Itemize
+Základní předpoklady – každá transakce zachovává konzistenci databáze
+\end_layout
+
+\begin_layout Itemize
+Tedy sériový plán zachovává konzistenci databáze 
+\end_layout
+
+\begin_layout Itemize
+Plán je serializovatelný, když je ekvivalentní sériovému plánu.
+ Různé formy ekvivalence plánů vedou k následujícím pojmům: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Konfliktní serializovatelnost 
+\end_layout
+
+\begin_layout Itemize
+Pohledová serializovatelnost 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Ignorujeme všechny instrukce kromě 
+\series bold
+čtení
+\series default
+ a 
+\series bold
+zápisu
+\series default
+ a předpokládáme, že transakce mohou provádět libovolné výpočty na datech
+ v lokálních vyrovnávacích pamětech mezi čteními a zápisy.
+ Naše zjednodušené plány se skládají pouze z operací 
+\series bold
+čtení
+\series default
+ a 
+\series bold
+zápisu
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/zavislostni_graf.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Historie H je serializovatelná právě tehdy, když její závislostní graf nemá
+ cykly.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Transakce je serializovatelná (s výjimkou fantom problémů), práve když:
+\end_layout
+
+\begin_layout Itemize
+je dobře formulovaná (všechny akce prokyty zámky) 
+\end_layout
+
+\begin_layout Itemize
+zamykat výhradně všechny data.
+ jejichž obsah modifikuje (legální) 
+\end_layout
+
+\begin_layout Itemize
+je dvoufázová - neměla by uvolňovat zámky dříve než budou všechny zámky
+ aplikovány
+\end_layout
+
+\begin_layout Itemize
+výhradní zámky drží až do COMMIT/ROLLBACK
+\end_layout
+
+\begin_layout Standard
+Serializovatelnost se řeší pomocí:
+\end_layout
+
+\begin_layout Itemize
+zamykání (locking) na různé úrovni granularity: 
+\end_layout
+
+\begin_layout Itemize
+zamykání celého systému (=>sériovost) 
+\end_layout
+
+\begin_layout Itemize
+jednotlivých tabulek 
+\end_layout
+
+\begin_layout Itemize
+Jednotlivých záznamů (vět) 
+\end_layout
+
+\begin_layout Itemize
+časové značky 
+\end_layout
+
+\begin_layout Itemize
+MVCC (multiversion concurrency control) 
+\end_layout
+
+\begin_layout Itemize
+predikátové zámky
+\end_layout
+
+\begin_layout Subsection
+Zamykání
+\end_layout
+
+\begin_layout Standard
+Jedním ze způsobů, jak zajistit požadavek sériovosti, je zpřístupnit data
+ vždy jen jediné transakci.
+ Když jedna transakce získá k údaji výlučný (exklusivní) přístup, pak tento
+ údaj nemůže modifikovat jiná transakce dříve, než první transakce skončí
+ a uvolní přístup k údaji - a to i v případě, že byla při paralelním zpracování
+ několikrát přerušena.
+ Říkáme, že údaje jsou zamčeny.
+ Jediný klíč ke každému zámku (při modifikaci) přiděluje systém pro řízení
+ paralelního zpracování těm transakcím, které o něj požádají.
+\end_layout
+
+\begin_layout Standard
+Existuje několik úrovní zamykání údajů (CO se zamyká): 
+\end_layout
+
+\begin_layout Enumerate
+Na úrovni operačního systému definujeme soubor typu read-only a tak zakážeme
+ zápis a modifikaci všem.
+\end_layout
+
+\begin_layout Enumerate
+Na úrovni SŘBD (DBMS) v aplikačním programu definujeme svůj pracovní soubor
+ jako soubor s výlučným přístupem (exclusive).
+ Tak zamezíme přístup všem ostatním procesům, dokud náš program neskončí
+ a neuvolní soubor.
+ Použijeme příkaz k uzamčení a uvolnění souboru, říkáme, že soubor zamykáme
+ explicitně.
+ V SŘBD existují příkazy pro práci se souborem, které vyžadují výlučný přístup
+ k souboru a tak si uzamykají soubor automaticky.
+\end_layout
+
+\begin_layout Enumerate
+V aplikačním programu stačí často zamknout jen jeden nebo několik záznamů,
+ ne celý soubor, aby tak byly ostatní záznamy přístupné ostatním uživatelům.
+ Opět zamykání záznamů může být explicitní nebo automatické.
+\end_layout
+
+\begin_layout Enumerate
+Některé SŘBD umožňují zamykat dokonce jen jednotlivé položky.
+\end_layout
+
+\begin_layout Standard
+Rozlišujeme 
+\series bold
+zámky dvou
+\series default
+ základních 
+\series bold
+druhů
+\series default
+ (JAK se zamyká):
+\end_layout
+
+\begin_layout Enumerate
+zámky pro sdílený přístup (shared) umožňují údaje jen číst více transakcím
+ současně, ne však do nich zapisovat (
+\series bold
+SLOCK
+\series default
+)
+\end_layout
+
+\begin_layout Enumerate
+zámky výlučné (exclusive) umožní čtení i zápis vždy pouze jediné transakci
+ (
+\series bold
+XLOCK
+\series default
+).
+\end_layout
+
+\begin_layout Standard
+Pokud má jedna transakce údaj (soubor, záznam) uzamčený a další transakce
+ jej chce uzamknout také, může dojít ke kolizi.
+ Proto v SŘBD existují funkce testující, zda je údaj volný.
+ Pokud není, je nutno situaci programově řešit (počkat na uvolnění, zrušit
+ transakci ap.).
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Způsob zamykání
+\series default
+ (KDO zamyká):
+\end_layout
+
+\begin_layout Enumerate
+Aplikační program (programátor) explicitním příkazem
+\end_layout
+
+\begin_layout Enumerate
+SŘBD automaticky (implicitně) současně s některým příkazem pro manipulaci
+ s daty
+\end_layout
+
+\begin_layout Standard
+Použití zámků však není jednoduché, nesprávné použití může vést k nesprávným
+ výsledkům.
+ Důvodem může být například uvolnění zámku příliš brzy (může dojít k nekonzisten
+ci)
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Dobře definovaná transakce:
+\end_layout
+
+\begin_layout Itemize
+Před každou operací READ se na daném DB objkektu uplatní zámek SLOCK, 
+\end_layout
+
+\begin_layout Itemize
+před každou operací WRITE se na daném DB objektu uplatní zámek XLOCK 
+\end_layout
+
+\begin_layout Itemize
+operace UNLOCK se na daném DB objektu může provést pouze tehdy, když je
+ na daném DB objektu uplatněn zámek SLOCK/XLOCK 
+\end_layout
+
+\begin_layout Itemize
+každá operace SLOCK/XLOCK je v někdy v následujícím běhu transakce následována
+ příslušnou akcí UNLOCK.
+\end_layout
+
+\begin_layout Subsection
+Jednoduchá transakce
+\end_layout
+
+\begin_layout Enumerate
+Obsahuje akce READ, WRITE, XLOCK, SLOCK a UNLOCK
+\end_layout
+
+\begin_layout Enumerate
+COMMIT se nahradí sekvencí příkazů UNLOCK A, pro každý objekt A, nanějž
+ bylo v průběhu transakce aplikováno SLOCK A nebo XLOCK
+\end_layout
+
+\begin_layout Enumerate
+ROLLBACK se nahradí ekvencí:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+WRITE A pro každý objekt A, na nějž T aplikovala akci WRITE A
+\end_layout
+
+\begin_layout Itemize
+UNLOCK A pro každý objekt A, na nějž T aplikovala akci SLOCK A nebo XLOCK
+ A
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Dvoufázová transakce
+\end_layout
+
+\begin_layout Standard
+Dvoufázové transakce Všechny akce LOCK jsou provedeny před všemi akcemi
+ UNLOCK.
+ Fáze vzrůstu (growing phase) - během ní se provedou všechny akce LOCK Fáze
+ poklesu (shrinking phase) - během ní se provedou všechny akce UNLOCK U
+ dvoufázové transakce se fáze vzrůstu a fáze poklesu nepřekrývaji
+\end_layout
+
+\begin_layout Subsection
+Stupně izolace
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/stupne_isolace.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Uváznutí transakcí a jeho prevence
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/deadlock2.png
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Takovéto situaci, kdy obě transakce čekají, nelze žádný požadavek uspokojit
+ a celý proces uvázne v mrtvém bodě nazýváme uváznutím (deadlock).
+ Problém tedy je v tom, že pokud používáme zámků málo, hrozí nekonzistence,
+ používáme-li zámků mnoho, hrozí uváznutí.
+\end_layout
+
+\begin_layout Standard
+Máme nyní dva problémy: splnění požadavku sériovosti a řešení uváznutí v
+ mrtvém bodě.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+1 Požadavek sériovosti
+\end_layout
+
+\begin_layout Standard
+K řešení prvního problému, požadavku sériovosti, se používá tzv.
+ protokolu o zámcích.
+ Je to řada pravidel udávajících, kdy může transakce zamknout a uvolnit
+ objekty.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Pro prevenci uváznutí existuje více technik.
+
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+Nejjednodušší metodou prevence uváznutí je uzamčení všech položek, které
+ transakce používá, hned na začátku transakce ještě před operacemi a jejich
+ uvolnění až na konci transakce.
+ Tak se transakce nezahájí dříve, dokud nemá k dispozici všechny potřebné
+ údaje a nemůže dojít k uváznutí uprostřed transakce.
+ Tato metoda však má dvě velké nevýhody:
+\end_layout
+
+\begin_layout Enumerate
+využití přístupu k položkám je nízké, protože jsou dlouhou dobu zbytečně
+ zamčené
+\end_layout
+
+\begin_layout Enumerate
+transakce musí čekat až budou volné současně všechny údaje,které chce na
+ začátku zamknout, a to může trvat velmi dlouho.
+\end_layout
+
+\begin_layout Standard
+Jiná metoda prevence uváznutí využívá faktu, že k uváznutí nedojde, jestliže
+ transakce zamykají objekty v pořadí respektujícím nějaké lineární uspořádání,
+ definované nad těmito objekty (např.
+ abecední ap.).
+ Z hlediska uživatelského však takový požadavek je příliš omezující.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Plánovače
+\end_layout
+
+\begin_layout Standard
+Některé systémy řeší problém uváznutí synchronizací paralelních transakcí
+ pomocí plánovače.
+ V SŘBD jsou zabudovány tyto programové moduly
+\end_layout
+
+\begin_layout Itemize
+Modul řízení transakcí (RT); je to fronta, na kterou se transakce obracejí
+ se žádostí o vykonání operací READ(X) a WRITE(X).
+ Každá transakce je doplněna příkazy BEGIN TRANSACTION a END TRANSACTION.
+\end_layout
+
+\begin_layout Itemize
+Modul řízení dat (RD) realizuje čtení a zápis objektů dle požadavků plánovače
+ a dává plánovači zprávu o výsledku a ukončení.
+\end_layout
+
+\begin_layout Itemize
+Plánovač zabezpečuje synchronizaci požadavků z fronty dle realizované strategie
+ a řadí požadavky do schémat.
+\end_layout
+
+\begin_layout Itemize
+Schéma pro množinu transakcí je pořadí, ve kterém se operace těchto transakcí
+ realizují.
+\end_layout
+
+\begin_layout Standard
+Nejjednodušší schéma je sériové (vždy proběhne celá transakce, pak další),
+ ovšem je málo průchodné.
+ Cílem celé strategie je větší průchodnost systému.
+ 
+\end_layout
+
+\begin_layout Standard
+Plánovač při dvoufázovém zamykání vykonává tyto operace
+\end_layout
+
+\begin_layout Itemize
+řídí zamykání objektů
+\end_layout
+
+\begin_layout Itemize
+operace čtení a modifikace objektů povoluje jen těm transakcím, které mají
+ příslušné objekty zamknuté
+\end_layout
+
+\begin_layout Itemize
+sleduje, jestli transakce dodržují protokol dvoufázového zamykání; pokud
+ zjistí jeho porušení, transakci zruší
+\end_layout
+
+\begin_layout Itemize
+předchází uváznutí nebo ho detekují a řeší zrušením transakce.
+\end_layout
+
+\begin_layout Standard
+Jestliže systém nepoužívá prevenci uváznutí, musí mít prostředky pro detekci
+ (rozpoznání) uváznutí a obnovu činnosti umrtvených transakcí.
+ Detekce se provádí obvykle použitím grafu relace "kdo na koho čeká".
+ Je to graf, jehož uzly jsou transakce a orientované hrany představují uvedenou
+ závislost.
+ Záznamem a analýzou grafu čekání se rozpoznává uváznutí.
+ Je-li v grafu cyklus, systém uvázl v mrtvém bodě.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figures/deadlock1.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Jestliže taková situace nastane, systém musí jednu nebo více transakcí vrátit
+ zpět (pomocí souboru log), čímž se zablokovaný přístup k datům (pro tuto
+ transakci) odblokuje a umožní provést ostatní transakce.
+ Připomíná to situaci, kdy se dva automobily potkají na úzké cestě a jeden
+ musí vycouvat.
+\end_layout
+
+\begin_layout Standard
+Obnovení činnosti se provádí pomocí souboru log, popsaného v předchozí kapitole.
+ V případě potřeby je možno kteroukoliv transakci vrátit.
+ Jde jen o to, kdy a které transakce se mají provést znovu.
+ Systém vybírá takové transakce, aby s celým postupem byly spojeny co nejmenší
+ náklady, k tomu bere v úvahu: 
+\end_layout
+
+\begin_layout Itemize
+jaká část transakce již byla provedena,
+\end_layout
+
+\begin_layout Itemize
+kolik dat transakce použila a kolik jich ještě potřebuje pro dokončení,
+\end_layout
+
+\begin_layout Itemize
+kolik transakcí bude třeba celkem vrátit.
+\end_layout
+
+\begin_layout Standard
+Podle těchto kriterií by se mohlo dále stát, že bude vracena stále tatáž
+ transakce a její dokončení by bylo stále odkládáno.
+ Je vhodné, aby systém měl evidenci o vracených transakcích a při výběru
+ bral v úvahu i tuto skutečnost.
+\end_layout
+
+\begin_layout Section
+Objektově-relační mapování (ORM)
+\end_layout
+
+\begin_layout Standard
+Onjektově-relační mapování je programovací technika v softwarovém inženýrství,
+ která zajišťuje automatickou konverzi dat mezi relační databází a objektově
+ orientovaným programovacím jazykem.
+ 
+\end_layout
+
+\begin_layout Standard
+Hlavním cílem ORM je synchronizace mezi používanými objekty v aplikaci a
+ jejich reprezentací v databázovém systému tak, aby byla zajištěna persistence
+ dat.
+\end_layout
+
+\begin_layout Standard
+Řada implementací ORM se snaží v co největší míře odstínit vývojáře od nutnosti
+ psaní SQL dotazů a pro selekci objektů z databáze používá raději objektový
+ přístup.
+ Takovýto postup však zpravidla umožňuje vyhledávat objekty jen podle databázové
+ho primárního klíče, což zpravidla nestačí.
+ Proto některé implementace ORM využívají pro selekci objektů objektový
+ dotazovací jazyk.
+ Jedna z výhod odstínění od práce s SQL může být i určitá nezávislost aplikace
+ na konkrétním databázovém systému, resp.
+ možnost zvolit databázový systém či jiné datové úložiště tak, aby vyhovovalo
+ konkrétním podmínkám a požadavkům.
+ Nezávislost na konkrétním databázovém systému a skrývání SQL dotazů jsou
+ však již jen příjemné důsledky použití ORM, není to ale primárním cílem.
+\end_layout
+
+\begin_layout Subsection
+
+\series bold
+Pesistence objektů
+\end_layout
+
+\begin_layout Standard
+Java Persistence API (JPA) je framework programovacího jazyka Java, který
+ umožňuje objektově relační mapování (ORM).
+ To usnadňuje práci s ukládáním objektů do databáze a naopak.
+ Je určen jak pro Java SE, tak pro Java EE.
+\end_layout
+
+\end_body
+\end_document
