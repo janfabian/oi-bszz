@@ -7,6 +7,11 @@ Otázky státních závěrečných zkoušek pro studijní program Otevřená inf
 
 [FAQ](https://github.com/janfabian/oi-bszz/wiki/FAQ)
 
+Další odkazy
+-------------
+
+[SSZ.Hanx.cz](http://szz.hanx.cz/)
+
 Hotové otázky
 -------------
 
